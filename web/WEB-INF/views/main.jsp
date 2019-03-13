@@ -89,7 +89,10 @@
             <div class="w3-row-padding">
                 <div class="w3-quarter w3-margin-top w3-margin-bottom">
                     <div class="w3-container w3-red w3-padding-16">
-                        <h4>App 1</h4>
+                        <h4 class="w3-button" onclick="loadXMLDoc()">App 1</h4>
+                    </div>
+                    <div id="app1-div">
+                        <h5>Using Ajax to change this text.</h5>
                     </div>
                 </div>
                 <div class="w3-quarter w3-margin-top w3-margin-bottom">
@@ -154,6 +157,30 @@
         document.getElementById("mySidebar").style.display = "none";
         document.getElementById("sidebar-close").style.display = "none";
         document.getElementById("sidebar-open").style.display = "block";
+    }
+    function loadXMLDoc()
+    {
+        var xmlhttp;
+        if (window.XMLHttpRequest)
+        {
+            //  IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+            // IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+                document.getElementById("app1-div").innerHTML=xmlhttp.responseText;
+            }
+        }
+        <%--xmlhttp.open("GET","${pageContext.request.contextPath}/web/try/ajax_info.txt",true);--%>
+        xmlhttp.open("GET","HelloWorld",true);
+        xmlhttp.send();
     }
 </script>
 </body>

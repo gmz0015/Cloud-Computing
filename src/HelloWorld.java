@@ -15,10 +15,9 @@ public class HelloWorld extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //设置响应内容类型  
+        //Set response type
         resp.setContentType("text/html");
 
-//        //设置逻辑实现
         PrintWriter out = resp.getWriter();
         out.println("<h1>" + message + "</h1>");
         System.out.println(resp);

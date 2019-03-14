@@ -11,6 +11,8 @@ The sharing place for team 06.
 ### Uploading to VM
 `$ scp -i cloudkey <source-path> root@143.167.9.209:<destination-path>`
 
+## Deploy
+- Copy the folder to `/var/lib/tomcat8/webapps/`
 
 ## Done
 - Using ajax and servlet to change div.

@@ -16,3 +16,7 @@ The sharing place for team 06.
 
 ## Done
 - Using ajax and servlet to change div.
+- Add navigating between the home page and account page.
+
+## TODO
+- Optimise navigating speed

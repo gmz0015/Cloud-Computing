@@ -27,10 +27,9 @@
 
 <div>
 
-<%@ include file="/WEB-INF/views/sidebar.jsp"%>
+    <%@ include file="/WEB-INF/views/sidebar.jsp"%>
 
-
-<jsp:include page="/WEB-INF/views/main.jsp"/>
+    <jsp:include page="/WEB-INF/views/main.jsp"/>
 
 </div>
 
@@ -42,6 +41,7 @@
             document.getElementById("main").style.marginLeft = "50px";
             document.getElementById("mySidebar").style.width = "50px";
             document.getElementById("sidebar-menu").style.display = "none";
+            document.getElementById("sidebar-home").style.display = "none";
             document.getElementById("sidebar-database").style.display = "none";
             document.getElementById("sidebar-playground").style.display = "none";
         }
@@ -50,6 +50,7 @@
             document.getElementById("main").style.marginLeft = "150px";
             document.getElementById("mySidebar").style.width = "150px";
             document.getElementById("sidebar-menu").style.display = "block";
+            document.getElementById("sidebar-home").style.display = "block";
             document.getElementById("sidebar-database").style.display = "block";
             document.getElementById("sidebar-playground").style.display = "block";
         }
@@ -76,6 +77,24 @@
         }
         <%--xmlhttp.open("GET","${pageContext.request.contextPath}/web/try/ajax_info.txt",true);--%>
         xmlhttp.open("GET","HelloWorld",true);
+        xmlhttp.send();
+    }
+    function loadMain(type)
+    {
+        var xmlhttp;
+        if (window.XMLHttpRequest)
+        {
+            //  IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+            // IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        <%--xmlhttp.open("GET","${pageContext.request.contextPath}/web/try/ajax_info.txt",true);--%>
+        console.log(type);
+        xmlhttp.open("GET","loadMain?type="+type,true);
         xmlhttp.send();
     }
 </script>

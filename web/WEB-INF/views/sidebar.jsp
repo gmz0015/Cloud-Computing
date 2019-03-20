@@ -37,13 +37,27 @@
                 </div>
             </div>
         </div>
-        <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue">
+
+        <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue"
+             onclick=window.location.href="/platform/index.jsp">
+            <div class="w3-row">
+                <div class="w3-col s2 w3-center">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div id="sidebar-home" class="w3-col s9 w3-center" style="display:none">
+                    Home
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue"
+             onclick=window.location.href="/platform/account.jsp">
             <div class="w3-row">
                 <div class="w3-col s2 w3-center">
                     <i class="fas fa-database"></i>
                 </div>
                 <div id="sidebar-database" class="w3-col s9 w3-center" style="display:none">
-                    Database
+                    <a>Database</a>
                 </div>
             </div>
         </div>
@@ -59,20 +73,5 @@
             </div>
         </div>
     </div>
-
-    <%-- Sidebar Opened --%>
-    <%--<div id="sidebar-close" class="w3-bar-block" style="display:none">--%>
-
-        <%--<a class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue"--%>
-           <%--onclick="w3_close()">--%>
-            <%--<i class="fas fa-outdent"></i> Menu</a>--%>
-
-
-        <%--<a class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue">--%>
-            <%--<i class="fas fa-database"></i> Database</a>--%>
-
-        <%--<a class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue">--%>
-            <%--<i class="fab fa-playstation"></i> Playground</a>--%>
-    <%--</div>--%>
 </div>
 </html>

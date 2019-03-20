@@ -19,8 +19,7 @@ public class HelloWorld extends HttpServlet {
         resp.setContentType("text/html");
 
         PrintWriter out = resp.getWriter();
-        out.println("<h1>" + message + "</h1>");
-        System.out.println(resp);
+        out.println("<h5>" + message + "</h5>");
     }
 
     @Override

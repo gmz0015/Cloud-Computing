@@ -13,4 +13,14 @@
         <servlet-name>HelloWorld</servlet-name>
         <url-pattern>/HelloWorld</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>loadMain</servlet-name>
+        <servlet-class>loadMain</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>loadMain</servlet-name>
+        <url-pattern>/loadMain</url-pattern>
+    </servlet-mapping>
 </web-app>

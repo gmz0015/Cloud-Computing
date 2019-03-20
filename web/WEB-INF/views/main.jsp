@@ -76,12 +76,11 @@
             <div class="w3-row-padding">
                 <div class="w3-quarter w3-margin-top w3-margin-bottom">
                     <div class="w3-container w3-red w3-padding-16">
-                        <%--<h4 class="w3-button" onclick="loadXMLDoc()">App 1</h4>--%>
-                        <h4>App 1</h4>
+                        <h4 class="w3-button" onclick="loadXMLDoc()">App 1</h4>
                     </div>
-                    <%--<div id="app1-div">--%>
-                        <%--<h5>Using Ajax to change this text.</h5>--%>
-                    <%--</div>--%>
+                    <div id="app1-div">
+                        <h5>Using Ajax to change this text.</h5>
+                    </div>
                 </div>
                 <div class="w3-quarter w3-margin-top w3-margin-bottom">
                     <div class="w3-container w3-blue w3-padding-16">
@@ -102,30 +101,30 @@
 
         </div>
 
-        <%--<br/>--%>
-        <%--&lt;%&ndash; Playground &ndash;%&gt;--%>
-        <%--<div class="w3-card-4">--%>
+        <br/>
+        <%-- Playground --%>
+        <div class="w3-card-4">
 
-            <%--<header class="w3-container w3-blue" >--%>
-                <%--<h3><b><i class="fab fa-playstation"></i> Playground</b></h3>--%>
-            <%--</header>--%>
+            <header class="w3-container w3-blue" >
+                <h3><b><i class="fab fa-playstation"></i> Playground</b></h3>
+            </header>
 
-            <%--<div class="w3-container">--%>
-                <%--<div class="w3-row-padding w3-margin-bottom">--%>
-                    <%--<%@ page import="java.util.Date" %>--%>
-                    <%--<h1>Today's Date</h1>--%>
-                    <%--<%! private int count = 0; %>--%>
-                    <%--<P>Hello! Today's date is--%>
-                        <%--<%= new Date() %>--%>
-                    <%--</p><p>--%>
-                    <%--You have asked for the date--%>
-                    <%--<%= ++count %> times since the--%>
-                    <%--server was last restarted.--%>
-                <%--</p>--%>
-                <%--</div>--%>
-            <%--</div>--%>
+            <div class="w3-container">
+                <div class="w3-row-padding w3-margin-bottom">
+                    <%@ page import="java.util.Date" %>
+                    <h1>Today's Date</h1>
+                    <%! private int count = 0; %>
+                    <P>Hello! Today's date is
+                        <%= new Date() %>
+                    </p><p>
+                    You have asked for the date
+                    <%= ++count %> times since the
+                    server was last restarted.
+                </p>
+                </div>
+            </div>
 
-        <%--</div>--%>
+        </div>
 
     </div>
 </div>

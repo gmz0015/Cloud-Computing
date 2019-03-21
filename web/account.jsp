@@ -17,7 +17,7 @@
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 
 
-<body>
+<body onload="getUserInfo(1)">
 
 <%@ include file="/WEB-INF/views/navigation.jsp"%>
 
@@ -25,11 +25,79 @@
 
     <%@ include file="/WEB-INF/views/sidebar.jsp"%>
 
-    There is a account
+    <div id="main" style="margin-left: 50px">
 
+        <!-- Page content -->
+        <div class="w3-container">
+            <div class="w3-row">
+                <%-- User --%>
+                <div class="w3-col w3-card-4 w3-margin" style="width:30%">
+                    <header class="w3-container" >
+                        <h4><i class="fas fa-braille"></i> <span id="username">UserName</span></h4>
+                    </header>
+
+                    <ul class="w3-ul">
+                        <li class="w3-hover-red"><span>E-Mail</span><span id="email" class="w3-right">xx@xx.com</span></li>
+                        <li class="w3-hover-blue"><span>Birthday</span><span id="birthday" class="w3-right">XXXX-XX-XX</span></li>
+                        <li class="w3-hover-green"><span>Last Login Time</span><span id="time" class="w3-right">13.4</span></li>
+                    </ul>
+                </div>
+
+                <%-- Account Overview --%>
+                <div class="w3-col w3-card-4 w3-margin" style="width:30%">
+                    <header class="w3-container" >
+                        <h4><i class="fas fa-braille"></i> Account Overview</h4>
+                    </header>
+                    <ul class="w3-ul">
+                        <li class="w3-hover-red"><span>Balance</span><span class="w3-right">203.13</span></li>
+                        <li class="w3-hover-blue"><span>Due</span><span class="w3-right">3.29</span></li>
+                        <li class="w3-hover-green"><span>Time</span><span class="w3-right">1234.2</span></li>
+                    </ul>
+                </div>
+
+                <%-- Account Overview --%>
+                <div class="w3-col w3-card-4 w3-margin" style="width:30%">
+                    <header class="w3-container" >
+                        <h4><i class="fas fa-braille"></i> XXXX</h4>
+                    </header>
+                    <ul class="w3-ul">
+                        <li class="w3-hover-red"><span>XXXX</span><span class="w3-right">XX.XX</span></li>
+                        <li class="w3-hover-blue"><span>XXXX</span><span class="w3-right">XX.XX</span></li>
+                        <li class="w3-hover-green"><span>XXXX</span><span class="w3-right">XX.XX</span></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <%-- Playground --%>
+        <div class="w3-card-4 w3-margin">
+
+            <header class="w3-container w3-blue" >
+                <h3><b><i class="fab fa-playstation"></i> Playground</b></h3>
+            </header>
+
+            <div class="w3-bar">
+                <button class="w3-bar-item w3-button w3-black" style="width:25%">Add User</button>
+                <button class="w3-bar-item w3-button w3-teal" style="width:25%">Switch User</button>
+                <button class="w3-bar-item w3-button w3-red" style="width:25%">Delete User</button>
+                <button class="w3-bar-item w3-button w3-yellow" style="width:25%" onclick="getUserInfo(2)">Update User</button>
+            </div>
+
+            <div class="w3-bar w3-margin-top">
+                <button class="w3-bar-item w3-button w3-black" style="width:33.3%">Add Balance</button>
+                <button class="w3-bar-item w3-button w3-teal" style="width:33.3%">Reduce Balance</button>
+                <button class="w3-bar-item w3-button w3-red" style="width:33.3%">Make number invisible</button>
+            </div>
+
+        </div>
+
+    </div>
 </div>
-</body>
 
+<script language='javascript' src='js/sidebar.js'></script>
+<script language='javascript' src='js/user.js'></script>
 <script>
     function loadMain(type)
     {
@@ -50,5 +118,5 @@
         xmlhttp.send();
     }
 </script>
-
+</body>
 </html>

@@ -17,9 +17,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 
-<style>
-    html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-</style>
+
 
 <body>
 
@@ -34,27 +32,8 @@
 </div>
 
 <!-- JS to open and close sidebar with overlay effect -->
+<script language='javascript' src='js/sidebar.js'></script>
 <script>
-    function w3_open() {
-        if (document.getElementById("mySidebar").style.width === "150px")
-        {
-            document.getElementById("main").style.marginLeft = "50px";
-            document.getElementById("mySidebar").style.width = "50px";
-            document.getElementById("sidebar-menu").style.display = "none";
-            document.getElementById("sidebar-home").style.display = "none";
-            document.getElementById("sidebar-database").style.display = "none";
-            document.getElementById("sidebar-playground").style.display = "none";
-        }
-        else
-        {
-            document.getElementById("main").style.marginLeft = "150px";
-            document.getElementById("mySidebar").style.width = "150px";
-            document.getElementById("sidebar-menu").style.display = "block";
-            document.getElementById("sidebar-home").style.display = "block";
-            document.getElementById("sidebar-database").style.display = "block";
-            document.getElementById("sidebar-playground").style.display = "block";
-        }
-    }
     function loadXMLDoc()
     {
         var xmlhttp;

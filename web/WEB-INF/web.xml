@@ -23,4 +23,14 @@
         <servlet-name>loadMain</servlet-name>
         <url-pattern>/loadMain</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>getUserInfo</servlet-name>
+        <servlet-class>user.User</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>getUserInfo</servlet-name>
+        <url-pattern>/getUserInfo</url-pattern>
+    </servlet-mapping>
 </web-app>

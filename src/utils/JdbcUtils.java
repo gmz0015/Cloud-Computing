@@ -17,29 +17,7 @@ public class JdbcUtils {
 
     static{
         try{
-            //读取db.properties文件中的数据库连接信息
-//            InputStream in = JdbcUtils.class.getClassLoader().getResourceAsStream("db.properties");
-//            Properties prop = new Properties();
-//            prop.load(in);
-//
-//            //获取数据库连接驱动
-//            driver = prop.getProperty("driver");
-//            //获取数据库连接URL地址
-//            url = "jdbc:mysql://localhost:3306/imooc";
-//            //获取数据库连接用户名
-//            username = "root";
-//            //获取数据库连接密码
-//            password = "Gmz110803";
-//
-//            System.out.println(driver);
-//            System.out.println(url);
-//            System.out.println(username);
-//            System.out.println(password);
-//
-//            //加载数据库驱动
-//            Class.forName(driver);
             Class.forName("com.mysql.cj.jdbc.Driver");
-//            Class.forName("oracle.jdbc.driver.OracleDriver");
 
         }catch (Exception e) {
             throw new ExceptionInInitializerError(e);

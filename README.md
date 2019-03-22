@@ -15,7 +15,7 @@ The sharing place for team 06.
 - Copy the folder to `/var/lib/tomcat8/webapps/`
 
 ## Done
-- ~~Using ajax and servlet to change div.~~
+- ~~Using ajax and servlet to change div.~~ (Discard)
 - Add navigating between the home page and account page.
 - Use JSON to pass value from back-end to front-end. The dependencies have listed below.
     - commons-beanutils-1.9.3.jar
@@ -27,8 +27,8 @@ The sharing place for team 06.
 
 ## TODO
 - Optimise navigating speed.
-- ~~Develop specific functions for account.~~
-    - Add Authentication and authrisation
-- ~~Figure out how to use Java Beans.~~
+- ~~Develop specific functions for account.~~ (Finish)
+    - Add ~~Authentication~~ (Finish) and Authorisation
+- ~~Figure out how to use Java Beans.~~ (Finish)
     - Add account functions based on Java Beans
 - Figure out about XML.

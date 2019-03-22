@@ -1,15 +1,21 @@
 package user;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import utils.JdbcUtils;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.*;
 
-public class User implements Serializable {
+public class User extends HttpServlet implements Serializable {
     private String submit;
     private HashMap<String, String> userInfo;
 
@@ -24,6 +30,10 @@ public class User implements Serializable {
     public static void main(String[] args) {
         User user = new User();
         user.setUser("1");
+    }
+
+    @Override
+    public void init() throws ServletException {
     }
 
 
@@ -98,6 +108,20 @@ public class User implements Serializable {
         else if (request.getParameter("submit").equals("switch User")){
             setUser(request.getParameter("userNameList"));
         }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Set response type
+        if (request.getParameter("submit").equals("switch User")) {
+            System.out.println("setUser");
+            setUser(request.getParameter("userNameList"));
+        }
+    }
+
+    @Override
+    public void destroy() {
+        super.destroy();
     }
 }
 

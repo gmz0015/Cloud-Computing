@@ -17,7 +17,7 @@
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 
 
-<body onload="getUserInfo(1)">
+<body onload="getUserInfo(1),getUserNameList()">
 
 <%@ include file="/WEB-INF/views/navigation.jsp"%>
 
@@ -30,7 +30,7 @@
         <!-- Page content -->
         <div class="w3-container">
             <div class="w3-row">
-                <%-- User --%>
+                <%-- User_old --%>
                 <div class="w3-col w3-card-4 w3-margin" style="width:30%">
                     <header class="w3-container" >
                         <h4><i class="fas fa-braille"></i> <span id="username">UserName</span></h4>
@@ -55,20 +55,59 @@
                     </ul>
                 </div>
 
+
+                    <jsp:useBean id="userBean" scope="session" class="user.User" />
+                    <jsp:setProperty name="userBean" property="*" />
+                    <%
+                        userBean.doAction(request);
+                    %>
                 <%-- Account Overview --%>
                 <div class="w3-col w3-card-4 w3-margin" style="width:30%">
+                    <%@ page import="java.util.Map" %>
+                    <%
+                        Map<String, String> userInfo = userBean.getUserInfo();
+                    %>
                     <header class="w3-container" >
-                        <h4><i class="fas fa-braille"></i> XXXX</h4>
+                        <h4><i class="fas fa-braille"></i> <%= userInfo.get("username") %></h4>
                     </header>
                     <ul class="w3-ul">
-                        <li class="w3-hover-red"><span>XXXX</span><span class="w3-right">XX.XX</span></li>
-                        <li class="w3-hover-blue"><span>XXXX</span><span class="w3-right">XX.XX</span></li>
+
+                        <li class="w3-hover-red"><span>E-Mail</span><span class="w3-right"><%= userInfo.get("email") %></span></li>
+                        <li class="w3-hover-blue"><span>Birthday</span><span class="w3-right"><%= userInfo.get("birthday") %></span></li>
                         <li class="w3-hover-green"><span>XXXX</span><span class="w3-right">XX.XX</span></li>
                     </ul>
                 </div>
 
             </div>
 
+        </div>
+
+        <div class="w3-card-4 w3-margin">
+
+            <header class="w3-container w3-blue" >
+                <h3><b><i class="fab fa-playstation"></i> Playground</b></h3>
+            </header>
+
+            <%--<jsp:useBean id="userBean" scope="session" class="user.User" />--%>
+            <%--<jsp:setProperty name="userBean" property="*" />--%>
+            <form type="post" action="">
+                    <span><br />Please enter item to add or remove:
+                        <br />Add Item:</span>
+                <select name="userNameList">
+                    <%@ page import="java.util.Map" %>
+                    <%@ page import="java.util.Iterator" %>
+                    <%
+                        Map<String, String> usersName = userBean.getUsersName();
+                        Iterator<Map.Entry<String, String>> usersNameIterator = usersName.entrySet().iterator();
+                        while (usersNameIterator.hasNext()) {
+                            Map.Entry<String, String> userName = usersNameIterator.next();
+                    %>
+                    <option value =<%= userName.getKey() %>> <%= userName.getValue() %> </option>
+                    <% } %>
+                </select>
+                <br /><br />
+                <input type="submit" name="submit" value="switch User" />
+            </form>
         </div>
 
         <%-- Playground --%>
@@ -80,15 +119,12 @@
 
             <div class="w3-bar">
                 <button class="w3-bar-item w3-button w3-black" style="width:25%">Add User</button>
-                <button class="w3-bar-item w3-button w3-teal" style="width:25%">Switch User</button>
+
+                <select id="UserList" class="w3-bar-item w3-button" style="width:12%">
+                </select>
+                <button class="w3-bar-item w3-button w3-teal" onclick="getUserNameList()" style="width:13%">Switch User</button>
                 <button class="w3-bar-item w3-button w3-red" style="width:25%">Delete User</button>
                 <button class="w3-bar-item w3-button w3-yellow" style="width:25%" onclick="getUserInfo(2)">Update User</button>
-            </div>
-
-            <div class="w3-bar w3-margin-top">
-                <button class="w3-bar-item w3-button w3-black" style="width:33.3%">Add Balance</button>
-                <button class="w3-bar-item w3-button w3-teal" style="width:33.3%">Reduce Balance</button>
-                <button class="w3-bar-item w3-button w3-red" style="width:33.3%">Make number invisible</button>
             </div>
 
         </div>
@@ -97,7 +133,10 @@
 </div>
 
 <script language='javascript' src='js/sidebar.js'></script>
+
+<%-- DISCARD --%>
 <script language='javascript' src='js/user.js'></script>
+<%-- DISCARD --%>
 <script>
     function loadMain(type)
     {

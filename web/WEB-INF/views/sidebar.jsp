@@ -50,8 +50,7 @@
             </div>
         </div>
 
-        <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue"
-             onclick=window.location.href="/platform/account.jsp">
+        <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue">
             <div class="w3-row">
                 <div class="w3-col s2 w3-center">
                     <i class="fas fa-database"></i>

@@ -27,54 +27,34 @@
 
     <%@ include file="/WEB-INF/views/sidebar.jsp"%>
 
-    <jsp:include page="/WEB-INF/views/main.jsp"/>
+    <%@ include file="/WEB-INF/views/main.jsp"%>
 
 </div>
+
+<%@ include file="/WEB-INF/views/login.jsp"%>
 
 <!-- JS to open and close sidebar with overlay effect -->
 <script language='javascript' src='js/sidebar.js'></script>
 <script>
-    function loadXMLDoc()
-    {
-        var xmlhttp;
-        if (window.XMLHttpRequest)
+    function w3_open() {
+        if (document.getElementById("mySidebar").style.width === "150px")
         {
-            //  IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp=new XMLHttpRequest();
+            document.getElementById("main").style.marginLeft = "50px";
+            document.getElementById("mySidebar").style.width = "50px";
+            document.getElementById("sidebar-menu").style.display = "none";
+            document.getElementById("sidebar-home").style.display = "none";
+            document.getElementById("sidebar-database").style.display = "none";
+            document.getElementById("sidebar-playground").style.display = "none";
         }
         else
         {
-            // IE6, IE5
-            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            document.getElementById("main").style.marginLeft = "150px";
+            document.getElementById("mySidebar").style.width = "150px";
+            document.getElementById("sidebar-menu").style.display = "block";
+            document.getElementById("sidebar-home").style.display = "block";
+            document.getElementById("sidebar-database").style.display = "block";
+            document.getElementById("sidebar-playground").style.display = "block";
         }
-        xmlhttp.onreadystatechange=function()
-        {
-            if (xmlhttp.readyState==4 && xmlhttp.status==200)
-            {
-                document.getElementById("app1-div").innerHTML=xmlhttp.responseText;
-            }
-        }
-        <%--xmlhttp.open("GET","${pageContext.request.contextPath}/web/try/ajax_info.txt",true);--%>
-        xmlhttp.open("GET","HelloWorld",true);
-        xmlhttp.send();
-    }
-    function loadMain(type)
-    {
-        var xmlhttp;
-        if (window.XMLHttpRequest)
-        {
-            //  IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp=new XMLHttpRequest();
-        }
-        else
-        {
-            // IE6, IE5
-            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        <%--xmlhttp.open("GET","${pageContext.request.contextPath}/web/try/ajax_info.txt",true);--%>
-        console.log(type);
-        xmlhttp.open("GET","loadMain?type="+type,true);
-        xmlhttp.send();
     }
 </script>
 

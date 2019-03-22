@@ -1,46 +1,109 @@
 package user;
 
-import net.sf.json.JSONObject;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
+import java.io.Serializable;
+import utils.JdbcUtils;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.*;
 
-public class User extends HttpServlet {
-    private String message;
+public class User implements Serializable {
+    private String submit;
+    private HashMap<String, String> userInfo;
 
-    @Override
-    public void init() throws ServletException {
-        message = "Hello world, this message is from servlet!";
+    public User() {
+        userInfo = new HashMap<String, String>();
     }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserQuery userQuery = new UserQuery();
-        JSONObject json = new JSONObject();
+    /**
+     * For debug
+     * @param args
+     */
+    public static void main(String[] args) {
+        User user = new User();
+        user.setUser("1");
+    }
 
-        //Set response type
-        response.setContentType("text/javascript");
 
-        String mode = request.getParameter("type");
+    /**
+     * get all users' name and userid
+     * store in Map<String, String>
+     * @return (user id, user name)
+     */
+    public Map<String, String> getUsersName() {
+        Map<String, String> usersName = new HashMap<String, String>();
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "SELECT userid,name FROM CloudComputing.users";
+            st = conn.prepareStatement(sql);
+//            st.setInt(1, 1);
+            rs = st.executeQuery();
+            while (rs.next()){
+                usersName.put(rs.getString("userid"), rs.getString("name"));
+            }
+        }catch (Exception e) {
 
-        switch (mode){
-            case "find":
-                String userid = request.getParameter("userid");
-                json = userQuery.find(userid);
-                response.getWriter().write(json.toString());
-                break;
-            case "database":
-                response.sendRedirect(request.getContextPath()+"/account.jsp");
-                break;
+        }finally{
+            JdbcUtils.release(conn, st, rs);
         }
-
+        return usersName;
     }
 
-    @Override
-    public void destroy() {
-        super.destroy();
+
+    /**
+     * set current user and change related info
+     */
+    public void setUser(String userid){
+        /* query database */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "SELECT * FROM CloudComputing.users WHERE userid=" + userid;
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+
+            /* Update userInfo */
+            while (rs.next()) {
+                userInfo.put("username", rs.getString("name"));
+                userInfo.put("email", rs.getString("email"));
+                userInfo.put("birthday", rs.getString("birthday"));
+            }
+
+        }catch (Exception e) {
+            System.out.println("Catch Exception: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+    }
+
+
+    /**
+     * get the user info
+     * @return
+     */
+    public HashMap<String, String> getUserInfo() {
+        return userInfo;
+    }
+
+    public void doAction(HttpServletRequest request) {
+        if (request.getParameter("submit") == null)
+            System.out.println("null");
+        else if (request.getParameter("submit").equals("switch User")){
+            setUser(request.getParameter("userNameList"));
+        }
     }
 }
+
+/**
+ * Backup
+ */
+//Iterator<Map.Entry<String, String>> usersNameIterator = userInfo.entrySet().iterator();
+//                while (usersNameIterator.hasNext()) {
+//                        Map.Entry<String, String> userName = usersNameIterator.next();

@@ -4,14 +4,28 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <!-- Welcome Page -->
     <servlet>
-        <servlet-name>HelloWorld</servlet-name>
-        <servlet-class>HelloWorld</servlet-class>
+        <servlet-name>Welcome</servlet-name>
+        <servlet-class>team06.web.UI.IndexUIServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>HelloWorld</servlet-name>
-        <url-pattern>/HelloWorld</url-pattern>
+        <servlet-name>Welcome</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!-- Application Detail -->
+    <servlet>
+        <description>Detail of the Application</description>
+        <display-name>AppDetail</display-name>
+        <servlet-name>AppDetail</servlet-name>
+        <servlet-class>team06.web.UI.ApplicationUIServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AppDetail</servlet-name>
+        <url-pattern>/application</url-pattern>
     </servlet-mapping>
 
     <!-- Login -->
@@ -27,10 +41,10 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
-    <!---->
+    <!-- Switch User -->
     <servlet>
         <servlet-name>switchUser</servlet-name>
-        <servlet-class>user.User</servlet-class>
+        <servlet-class>javabean.UserBean</servlet-class>
     </servlet>
 
     <servlet-mapping>

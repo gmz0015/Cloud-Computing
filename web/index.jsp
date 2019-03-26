@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE HTML>
+<html xmlns:jsp="http://java.sun.com/JSP/Page">
 
 <title>Team 06 - Welcome</title>
 <meta charset="UTF-8">
@@ -22,13 +23,15 @@
 
 <body>
 
-<%@ include file="/WEB-INF/views/navigation.jsp"%>
+<%@ include file="/WEB-INF/pages/component/navigation.jsp"%>
 
 <div>
 
-    <%@ include file="/WEB-INF/views/sidebar.jsp"%>
+    <%@ include file="/WEB-INF/pages/component/sidebar.jsp"%>
 
-    <%@ include file="/WEB-INF/views/main.jsp"%>
+    <%@ include file="/WEB-INF/pages/views/home.jsp"%>
+
+    <%--<jsp:include page="/WEB-INF/pages/views/home.jsp" />--%>
 
 </div>
 

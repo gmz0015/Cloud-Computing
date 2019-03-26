@@ -3,7 +3,7 @@ The sharing place for team 06.
 
 ## H-Drive
 ### Mount H-Drive
-`$ sshfs <user-name>@stulogin.dcs.shef.ac.uk: ~/dcshome`
+`$ sshfs <userController-name>@stulogin.dcs.shef.ac.uk: ~/dcshome`
 
 ## OpenNebula
 ### Login to VM
@@ -24,11 +24,34 @@ The sharing place for team 06.
     - commons-logging-1.2.jar
     - ezmorph-1.0.6.jar
     - json-lib-2.4-jdk15.jar
+- MVC
+    - Domain Layer
+        - contain Java Bean
+        - getter and setter
+    - Dao Layer
+        - The interface of database
+    - Service Layer
+        - Business
+    - Web Layer
+        - UI
+            - Provide pages
+        - Controller
 
 ## TODO
-- Optimise navigating speed.
-- ~~Develop specific functions for account.~~ (Finish)
+- Optimise 
+    - Navigating Speed up
+- Account
+    - ~~Develop specific functions for account.~~ (Finish)
     - Add ~~Authentication~~ (Finish) and Authorisation
-- ~~Figure out how to use Java Beans.~~ (Finish)
+    - Consider the rating level associated with peanut. So that they can even earn peanuts.
+    - Consider the number of visits associated with peanut
+- Rating System
+    - Add Rating System
+- Java Beans
+    - ~~Figure out how to use Java Beans.~~ (Finish)
     - Add account functions based on Java Beans
-- Figure out about XML.
+- Application
+    - Set javabean item clickable
+- Status
+    - Change Status
+- Figure out about XML.(Low Priority)

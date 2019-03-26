@@ -6,11 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
 
-<%
-    if(session.getAttribute("userinfo") == null) {
-        response.sendRedirect(request.getContextPath()+"/login.jsp");
-    }
-%>
+
+<% if(session.getAttribute("userinfo") == null) {
+    System.out.println("NO PERMISSION");
+    response.setHeader("refresh", "5;URL=" + request.getContextPath() + "/index.jsp");
+} %>
+
+<html>
 </html>

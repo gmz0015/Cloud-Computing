@@ -154,7 +154,7 @@
                             <td>
                                 <form action="${pageContext.request.contextPath}/application" method="POST">
                                     <input type="hidden" name="appid" value=<%= appInfo.getAppid().toString() %>>
-                                    <input class="w3-button w3-round-large w3-border w3-hover-white w3-hover-border-blue" type="submit" name="Detail" value="Detail">
+                                    <input class="w3-button w3-round-large w3-border w3-hover-white w3-hover-border-cyan" type="submit" name="Detail" value="Detail">
                                 </form>
                             </td>
                         </tr>

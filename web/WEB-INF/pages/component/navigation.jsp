@@ -8,13 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <%-- Navigation --%>
-<div class="w3-bar w3-flat-wet-asphalt w3-card w3-large" style="z-index:4">
+<header class="nav w3-bar w3-flat-wet-asphalt w3-card w3-large" style="z-index:4;background-color:rgb(55, 61, 65)">
     <a class="w3-bar-item">Welcome <strong>Team 06</strong>! <%= new java.util.Date() %></a>
     <%
         if(session.getAttribute("userinfo") == null) {
     %>
     <%-- logout, need to login --%>
-    <a href="#" class="w3-bar-item w3-button w3-right" onclick=window.location.href="login.jsp">Login</a>
+    <a href="#" class="w3-bar-item w3-button w3-right" onclick=window.location.href="login.jsp" >Login</a>
     <%
         } else {
     %>
@@ -25,5 +25,8 @@
         }
     %>
 
-</div>
+</header>
+<style>
+    /*.nav{position:fixed;top:0;left:0;}*/
+</style>
 </html>

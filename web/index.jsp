@@ -21,45 +21,19 @@
 <%-- Authentication --%>
 <%--<%@ include file="/WEB-INF/logic/authentication.jsp"%>--%>
 
-<body>
-
 <%@ include file="/WEB-INF/pages/component/navigation.jsp"%>
 
-<div>
+<%@ include file="/WEB-INF/pages/component/sidebar.jsp"%>
 
-    <%@ include file="/WEB-INF/pages/component/sidebar.jsp"%>
+<section style="background-color:rgb(234, 237, 241);min-height: 960px">
+<%--<div style="background-color:rgb(234, 237, 241);min-height: 960px">--%>
 
     <%@ include file="/WEB-INF/pages/views/home.jsp"%>
 
     <%--<jsp:include page="/WEB-INF/pages/views/home.jsp" />--%>
 
-</div>
+<%--</div>--%>
 
+</section>
 
-<!-- JS to open and close sidebar with overlay effect -->
-<script language='javascript' src='js/sidebar.js'></script>
-<script>
-    function w3_open() {
-        if (document.getElementById("mySidebar").style.width === "150px")
-        {
-            document.getElementById("main").style.marginLeft = "50px";
-            document.getElementById("mySidebar").style.width = "50px";
-            document.getElementById("sidebar-menu").style.display = "none";
-            document.getElementById("sidebar-home").style.display = "none";
-            document.getElementById("sidebar-database").style.display = "none";
-            document.getElementById("sidebar-playground").style.display = "none";
-        }
-        else
-        {
-            document.getElementById("main").style.marginLeft = "150px";
-            document.getElementById("mySidebar").style.width = "150px";
-            document.getElementById("sidebar-menu").style.display = "block";
-            document.getElementById("sidebar-home").style.display = "block";
-            document.getElementById("sidebar-database").style.display = "block";
-            document.getElementById("sidebar-playground").style.display = "block";
-        }
-    }
-</script>
-
-</body>
 </html>

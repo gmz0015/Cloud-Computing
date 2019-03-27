@@ -21,26 +21,62 @@
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 <%@ include file="/WEB-INF/pages/component/navigation.jsp"%>
 
-<div>
+<%@ include file="/WEB-INF/pages/component/sidebar.jsp"%>
+<body style="background-color:rgb(234, 237, 241);min-height: 960px">
 
-    <%@ include file="/WEB-INF/pages/component/sidebar.jsp"%>
+<div id="main" style="margin-left: 50px">
 
-        <div id="main" style="margin-left: 50px">
+    <!-- Page content -->
+    <div class="w3-container">
 
-            <!-- Page content -->
-            <div class="w3-container">
-                <br/>
-                <%-- Dashboard --%>
-                <div class="w3-card-4">
-                    <header class="w3-container w3-blue" >
-                        <h4><b><i class="fas fa-braille"></i> Dashboard</b></h4>
+        <br/>
+        <div class="w3-row-padding" >
+            <%-- Message --%>
+            <div class="w3-third">
+                <div class="w3-card" style="background-color:white">
+
+                    <header class="w3-container" >
+                        <h4>Message</h4>
                     </header>
-                    <div class="w3-container">
+
+                    <div class="w3-container w3-padding">
                         <h2>Hello World appid: <%= session.getAttribute("appid") %></h2>
                     </div>
+
+                </div>
+            </div>
+            <%-- Account Overview --%>
+            <div class="w3-third">
+                <div class="w3-card" style="background-color:white">
+
+                    <header class="w3-container" >
+                        <h4>Database Usage</h4>
+                    </header>
+
+                    <div class="w3-container w3-padding">
+                        Hello Guest.
+                    </div>
+
+                </div>
+            </div>
+
+            <%-- Review --%>
+            <div class="w3-third">
+                <div class="w3-card" style="background-color:white">
+
+                    <header class="w3-container" >
+                        <h4>Review</h4>
+                    </header>
+
+                    <div class="w3-container w3-padding">
+                        Hello Guest.
+                    </div>
+
                 </div>
             </div>
         </div>
 
+    </div>
 </div>
+</body>
 </html>

@@ -38,10 +38,10 @@
                 <div class="w3-card" style="background-color:white">
 
                     <header class="w3-container w3-padding" style="text-align: center;background-color: #f9f9f9">
-                        <span style="font-size: 20px">Instances</span>
+                        <span style="color: #333333;font-size: 20px">Instances</span>
                     </header>
 
-                    <table class="w3-table w3-centered" style="table-layout:fixed">
+                    <table class="w3-table w3-centered" style="table-layout:fixed;height: 100px">
                         <tr>
                             <td style="border-right:1px solid #dddddd">Total</td>
                             <td  style="border-right:1px solid #dddddd">Running</td>
@@ -60,29 +60,64 @@
             </div>
             <%-- Account Overview --%>
             <div class="w3-third">
-                <div class="w3-card" style="background-color:white">
+                <div class="w3-card" style="background-color:white;position:relative">
 
-                    <header class="w3-container" >
-                        <h4>Database Usage</h4>
+                    <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
+                        <span style="font-size: 20px">Account</span>
                     </header>
 
-                    <div class="w3-container w3-padding">
-                        Hello Guest.
-                    </div>
+                    <div class="w3-row" style="height:100px">
+                        <div class="w3-half w3-padding" style="border-right:1px dashed #dddddd">
+                            <div class="" style="background-color: #F5F5F6;text-align: center;height: 80px;">
+                                <div class="w3-row w3-container w3-padding w3-left" style="color: #666">
+                                    Balance
+                                </div>
+                                <div class="w3-row" style="text-align: center;vertical-align: middle">
+                                    <span style="color:#9B9EA0;font-size:18px">34.5</span>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="w3-half">
+                            <div class="w3-row" style=";margin-top: 10px;margin-bottom: 5px;margin-right: 10px;margin-left: 10px;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;">
+                                    <span style="vertical-align: middle;color: #666;">Charge</span>
+                                    <span style="vertical-align: middle;color: #666;">3.45/hour</span>
+                                </div>
+                            </div>
+
+                            <div class="w3-row" style=";margin-top: 5px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;">
+                                    <span style="vertical-align: middle;color: #666;">Earn Peanut</span>
+                                    <span style="vertical-align: middle;color: #666;">4.2/hour</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <%-- Review --%>
+            <%-- Database Usage --%>
             <div class="w3-third">
                 <div class="w3-card" style="background-color:white">
 
-                    <header class="w3-container" >
-                        <h4>Review</h4>
+                    <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
+                        <span style="font-size: 20px">Database Usage</span>
                     </header>
 
-                    <div class="w3-container w3-padding">
-                        <h2>Hello World appid: <%= session.getAttribute("appid") %></h2>
+                    <div style="height:90px">
+                        <div class="w3-container w3-row" style="margin-top: 10px;margin-bottom: 5px;">
+                            <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;">
+                                <span style="vertical-align: middle;color: #666;">Use</span>
+                                <span style="vertical-align: middle;color: #666;">1.34 G</span>
+                            </div>
+                        </div>
+                        <div class="w3-container w3-row" style="margin-top: 5px;margin-bottom: 10px;">
+                            <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="vertical-align: middle;background-color: #F5F5F6;height:35px;text-align: center;">
+                                <span style="vertical-align: middle;color: #666;">Remain</span>
+                                <span style="vertical-align: middle;color: #666;">0.63 G</span>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -116,7 +151,7 @@
                                     <div class="w3-margin-top s3-margin-bottom">
                                         <span style="color:#C6D0D4;font-size:30px">34%</span>
                                     </div>
-                                    <div class="w3-container w3-padding" style="margin-top: 20px">
+                                    <div class="w3-container w3-padding" style="color: #333333;margin-top: 20px">
                                         CPU
                                     </div>
                                 </div>
@@ -129,7 +164,7 @@
                                     <div class="w3-margin-top s3-margin-bottom">
                                         <span style="color:#C6D0D4;font-size:30px">53%</span>
                                     </div>
-                                    <div class="w3-container w3-padding" style="margin-top: 10px">
+                                    <div class="w3-container w3-padding" style="color: #333333;margin-top: 10px">
                                         Internet Usage
                                     </div>
                                 </div>
@@ -142,7 +177,7 @@
                                     <div class="w3-margin-top s3-margin-bottom">
                                         <span style="color:#FF0000;font-size:30px">89%</span>
                                     </div>
-                                    <div class="w3-container w3-padding" style="margin-top: 10px">
+                                    <div class="w3-container w3-padding" style="color: #333333;margin-top: 10px">
                                         Database Usage
                                     </div>
                                 </div>
@@ -152,35 +187,58 @@
 
                 </div>
             </div>
-            <%-- Account Overview --%>
-            <div class="w3-third">
-                <div class="w3-card" style="background-color:white">
 
-                    <header class="w3-container" >
-                        <h4>Database Usage</h4>
-                    </header>
+                <%-- Database Usage --%>
+                <div class="w3-third">
+                    <div class="w3-card" style="background-color:white">
 
-                    <div class="w3-container w3-padding">
-                        Hello Guest.
+                        <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
+                            <span style="font-size: 20px">Database Usage</span>
+                        </header>
+
+                        <div style="height:90px">
+                            <div class="w3-container w3-row" style="margin-top: 10px;margin-bottom: 5px;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;">
+                                    <span style="vertical-align: middle;color: #666;">Use</span>
+                                    <span style="vertical-align: middle;color: #666;">1.34 G</span>
+                                </div>
+                            </div>
+                            <div class="w3-container w3-row" style="margin-top: 5px;margin-bottom: 10px;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="vertical-align: middle;background-color: #F5F5F6;height:35px;text-align: center;">
+                                    <span style="vertical-align: middle;color: #666;">Remain</span>
+                                    <span style="vertical-align: middle;color: #666;">0.63 G</span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
 
-            <%-- Review --%>
-            <div class="w3-third">
-                <div class="w3-card" style="background-color:white">
+                <%-- Database Usage --%>
+                <div class="w3-third">
+                    <div class="w3-card" style="background-color:white">
 
-                    <header class="w3-container" >
-                        <h4>Review</h4>
-                    </header>
+                        <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
+                            <span style="font-size: 20px">Database Usage</span>
+                        </header>
 
-                    <div class="w3-container w3-padding">
-                        <h2>Hello World appid: <%= session.getAttribute("appid") %></h2>
+                        <div style="height:90px">
+                            <div class="w3-container w3-row" style="margin-top: 10px;margin-bottom: 5px;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;">
+                                    <span style="vertical-align: middle;color: #666;">Use</span>
+                                    <span style="vertical-align: middle;color: #666;">1.34 G</span>
+                                </div>
+                            </div>
+                            <div class="w3-container w3-row" style="margin-top: 5px;margin-bottom: 10px;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="vertical-align: middle;background-color: #F5F5F6;height:35px;text-align: center;">
+                                    <span style="vertical-align: middle;color: #666;">Remain</span>
+                                    <span style="vertical-align: middle;color: #666;">0.63 G</span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
         </div>
 
     </div>

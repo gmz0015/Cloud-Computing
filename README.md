@@ -14,6 +14,28 @@ The sharing place for team 06.
 ## Deploy
 - Copy the folder to `/var/lib/tomcat8/webapps/`
 
+## TODO
+- Optimise 
+    - Navigating Speed up
+- Account
+    - ~~Develop specific functions for account.~~ (Finish)
+    - Add ~~Authentication~~ (Finish) and Authorisation
+    - Consider the rating level associated with peanut. So that they can even earn peanuts.
+    - Consider the number of visits associated with peanut
+- Rating System
+    - Add Rating System
+- Java Beans
+    - ~~Figure out how to use Java Beans.~~ (Finish)
+    - Add account functions based on Java Beans
+- Application
+    - ~~Set javabean item clickable~~ (Finish)
+    - Add Application
+    - Associated with database
+    - Security Check
+- Status
+    - Change Status
+- Figure out about XML.(Low Priority)
+
 ## Done
 - ~~Using ajax and servlet to change div.~~ (Discard)
 - Add navigating between the home page and account page.
@@ -35,23 +57,7 @@ The sharing place for team 06.
     - Web Layer
         - UI
             - Provide pages
-        - Controller
-
-## TODO
-- Optimise 
-    - Navigating Speed up
-- Account
-    - ~~Develop specific functions for account.~~ (Finish)
-    - Add ~~Authentication~~ (Finish) and Authorisation
-    - Consider the rating level associated with peanut. So that they can even earn peanuts.
-    - Consider the number of visits associated with peanut
-- Rating System
-    - Add Rating System
-- Java Beans
-    - ~~Figure out how to use Java Beans.~~ (Finish)
-    - Add account functions based on Java Beans
-- Application
-    - Set javabean item clickable
-- Status
-    - Change Status
-- Figure out about XML.(Low Priority)
+        - controller
+            - Business logic
+        - bean
+            - Store data before commit to database

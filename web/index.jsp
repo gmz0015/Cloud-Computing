@@ -36,4 +36,6 @@
 
 </section>
 
+<%@ include file="/WEB-INF/pages/component/footer.jsp"%>
+
 </html>

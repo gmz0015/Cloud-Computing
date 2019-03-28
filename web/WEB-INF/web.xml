@@ -15,17 +15,30 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!-- Application -->
+    <servlet>
+        <description>Application</description>
+        <display-name>Application</display-name>
+        <servlet-name>Application</servlet-name>
+        <servlet-class>team06.web.UI.ApplicationUIServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Application</servlet-name>
+        <url-pattern>/application</url-pattern>
+    </servlet-mapping>
+
     <!-- Application Detail -->
     <servlet>
         <description>Detail of the Application</description>
         <display-name>AppDetail</display-name>
         <servlet-name>AppDetail</servlet-name>
-        <servlet-class>team06.web.UI.ApplicationUIServlet</servlet-class>
+        <servlet-class>team06.web.UI.ApplicationDetailUIServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>AppDetail</servlet-name>
-        <url-pattern>/application</url-pattern>
+        <url-pattern>/application/detail</url-pattern>
     </servlet-mapping>
 
     <!-- Login -->

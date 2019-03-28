@@ -18,37 +18,48 @@ public class IndexBean implements Serializable {
     private List<Application> appInfo;
     private String role;
 
-    private IApplicationService appService = new ApplicationServiceImpl();
-
     public IndexBean() {
-        if (isLogin()){
-            appsid = new LinkedList<>();
-            userid = "1";
-            username = "admin123";
-            appsid.add("1");
-            appsid.add("3");
-            appInfo = appService.queryAllApps();
-            role = "admin"; // Super Admin
-        }else {
-            userid = "0";
-            username = "";
-            appsid = new LinkedList<>();
-            appInfo = new LinkedList<>();
-            role = "guest";
+        IApplicationService appService = new ApplicationServiceImpl();
+
+        int type=2;
+        switch (type){
+            case 0: {
+                appsid = new LinkedList<>();
+                userid = "2";
+                username = "dev123";
+                appsid.add("1");
+                appsid.add("3");
+                role = "Developer"; // Super Admin
+                break;
+            }
+            case 1: {
+                userid = "0";
+                username = "";
+                appsid = new LinkedList<>();
+                role = "Guest";
+                break;
+            }
+            case 2: {
+                userid = "43";
+                username = "user43";
+                appsid = new LinkedList<>();
+                role = "User";
+                break;
+            }
+            case 3: {
+                userid = "1";
+                username = "admin111";
+                appsid = new LinkedList<>();
+                role = "Admin";
+                break;
+            }
         }
+
+        appInfo = appService.queryAllApps();
     }
 
     public List<Application> getAllApps(){
         return appInfo;
-    }
-
-    /**
-     * Simulate authentication
-     *
-     * Remove Before Submit
-     */
-    private boolean isLogin() {
-        return true;
     }
 
     public String getUserid() {

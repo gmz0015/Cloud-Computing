@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class ApplicationUIServlet extends HttpServlet {
+public class ApplicationDetailUIServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Check whether it is developer
+        // Check whether the user ownes this application
         if (true) {
             HttpSession session = request.getSession();
-            session.setAttribute("userid", request.getParameter("userid"));
-            System.out.println("userid is: " + request.getParameter("userid"));
-            request.getRequestDispatcher("/WEB-INF/pages/views/application.jsp").forward(request, response);
+            session.setAttribute("appid", request.getParameter("appid"));
+            request.getRequestDispatcher("/WEB-INF/pages/views/applicationDetail.jsp").forward(request, response);
         } else {
             response.sendRedirect(request.getContextPath() + "/?error=0");
         }
+
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)

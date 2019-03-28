@@ -9,7 +9,7 @@
 <html>
 <!-- Sidebar -->
 <aside class="w3-sidebar w3-flat-wet-asphalt w3-card-4 w3-animate-left"
-     style="width:50px;z-index:4;background-color:rgb(55, 61, 65)" id="mySidebar">
+     style="width:50px;z-index:4;background-color: #252a2f" id="mySidebar">
 
     <div class="w3-bar-block">
         <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue"
@@ -25,7 +25,7 @@
         </div>
 
         <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue" style="height:50px"
-             onclick="window.location.href=<%= request.getContextPath() + "/"%>" >
+             onclick="window.location.href='<%= request.getContextPath() + "/" %>'" >
             <div class="w3-row">
                 <div class="w3-col w3-center" style="width:20px">
                     <i class="fas fa-home"></i>
@@ -36,13 +36,14 @@
             </div>
         </div>
 
-        <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue" style="height:50px">
+        <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue" style="height:50px"
+             onclick="window.location.href='<%= request.getContextPath() + "/application" %>'" >
             <div class="w3-row">
                 <div class="w3-col w3-center" style="width:20px">
-                    <i class="fas fa-database"></i>
+                    <i class="fas fa-th-large"></i>
                 </div>
                 <div id="sidebar-database" class="w3-col w3-left  w3-margin-left" style="width:80px;display:none">
-                    <span>Database</span>
+                    <span>Application</span>
                 </div>
             </div>
         </div>

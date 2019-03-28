@@ -25,14 +25,11 @@
 
 <%@ include file="/WEB-INF/pages/component/sidebar.jsp"%>
 
-<section style="background-color:rgb(234, 237, 241);min-height: 700px">
-<%--<div style="background-color:rgb(234, 237, 241);min-height: 960px">--%>
+<section style="background-color:rgb(234, 237, 241);min-height: 700px;margin-top: 45px;">
 
     <%@ include file="/WEB-INF/pages/views/home.jsp"%>
 
     <%--<jsp:include page="/WEB-INF/pages/views/home.jsp" />--%>
-
-<%--</div>--%>
 
 </section>
 

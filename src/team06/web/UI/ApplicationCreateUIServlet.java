@@ -7,14 +7,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class ApplicationUIServlet extends HttpServlet {
+public class ApplicationCreateUIServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Check whether is developer
         if (true) {
             HttpSession session = request.getSession();
-            request.getRequestDispatcher("/WEB-INF/pages/views/application.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/pages/views/applicationCreate.jsp").forward(request, response);
         } else {
             response.sendRedirect(request.getContextPath() + "/?error=0");
         }
@@ -24,5 +24,4 @@ public class ApplicationUIServlet extends HttpServlet {
             throws ServletException, IOException {
         doGet(request, response);
     }
-
 }

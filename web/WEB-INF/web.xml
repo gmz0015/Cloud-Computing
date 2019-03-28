@@ -41,6 +41,19 @@
         <url-pattern>/application/detail</url-pattern>
     </servlet-mapping>
 
+    <!-- Application Create -->
+    <servlet>
+        <description>Create the Application</description>
+        <display-name>AppCreate</display-name>
+        <servlet-name>AppCreate</servlet-name>
+        <servlet-class>team06.web.UI.ApplicationCreateUIServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AppCreate</servlet-name>
+        <url-pattern>/application/create</url-pattern>
+    </servlet-mapping>
+
     <!-- Login -->
     <servlet>
         <description>Login</description>

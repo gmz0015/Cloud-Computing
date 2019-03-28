@@ -11,4 +11,10 @@ public interface IApplicationDao {
      * @return all applications' info
      */
     List<Application> queryAllApps();
+
+    /**
+     * get all applications
+     * @return all applications' info
+     */
+    List<Application> queryAppById(String userid);
 }

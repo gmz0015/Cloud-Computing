@@ -13,4 +13,7 @@ public class ApplicationServiceImpl implements IApplicationService {
     public List<Application> queryAllApps() {
         return appDao.queryAllApps();
     }
+
+    @Override
+    public List<Application> queryAppById(String userid) { return appDao.queryAppById(userid); }
 }

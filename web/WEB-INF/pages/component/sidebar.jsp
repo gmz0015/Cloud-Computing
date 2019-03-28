@@ -9,7 +9,8 @@
 <html>
 <!-- Sidebar -->
 <aside class="w3-sidebar w3-flat-wet-asphalt w3-card-4 w3-animate-left"
-     style="width:50px;z-index:4;background-color: #252a2f" id="mySidebar">
+     style="width:50px;z-index:4;background-color: #252a2f;"
+       id="mySidebar">
 
     <div class="w3-bar-block">
         <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue"
@@ -35,7 +36,6 @@
                 </div>
             </div>
         </div>
-
         <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue" style="height:50px"
              onclick="window.location.href='<%= request.getContextPath() + "/application" %>'" >
             <div class="w3-row">

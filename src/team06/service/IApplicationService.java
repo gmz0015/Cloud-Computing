@@ -11,4 +11,6 @@ public interface IApplicationService {
      * @return all applications' info
      */
     List<Application> queryAllApps();
+
+    List<Application> queryAppById(String userid);
 }

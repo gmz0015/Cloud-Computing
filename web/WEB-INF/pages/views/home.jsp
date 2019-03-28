@@ -18,7 +18,7 @@
 <%--<jsp:setProperty name="indexBean" property="*" />--%>
 
 <%-- Set userid to session --%>
-<% request.setAttribute("userid", indexBean.getUserid()); %>
+<% session.setAttribute("userid", indexBean.getUserid()); %>
 <% String error = request.getParameter("error"); %>
 <html xmlns:jsp="http://java.sun.com/JSP/Page">
 <%-- Error Permission --%>
@@ -302,15 +302,15 @@
                         <div class="w3-half">
                             <div class="w3-row" style=";margin-top: 10px;margin-bottom: 5px;margin-right: 10px;margin-left: 10px;">
                                 <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;">
-                                    <span style="vertical-align: middle;color: #666;">Charge</span>
-                                    <span style="vertical-align: middle;color: #666;">3.45/hour</span>
+                                    <span style="vertical-align: middle;color: #666;">Test Food Search </span>
+                                    <span style="vertical-align: middle;color: #666;">+ 6</span>
                                 </div>
                             </div>
 
                             <div class="w3-row" style=";margin-top: 5px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;">
                                 <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;">
-                                    <span style="vertical-align: middle;color: #666;">Earn Peanut</span>
-                                    <span style="vertical-align: middle;color: #666;">4.2/hour</span>
+                                    <span style="vertical-align: middle;color: #666;">Test School Gym </span>
+                                    <span style="vertical-align: middle;color: #666;">+ 3</span>
                                 </div>
                             </div>
                         </div>

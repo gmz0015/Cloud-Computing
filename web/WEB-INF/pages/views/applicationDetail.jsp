@@ -22,9 +22,9 @@
 <%@ include file="/WEB-INF/pages/component/navigation.jsp"%>
 
 <%@ include file="/WEB-INF/pages/component/sidebar.jsp"%>
-<body style="background-color:rgb(234, 237, 241);min-height: 700px">
+<body style="background-color:rgb(234, 237, 241);min-height: 700px;margin-top: 45px;">
 
-<div id="main" style="margin-left: 50px">
+<div id="main" style="margin-left: 50px;">
 
     <!-- Overview -->
     <div class="w3-container">

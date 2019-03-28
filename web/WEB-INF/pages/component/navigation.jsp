@@ -8,7 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <%-- Navigation --%>
-<header class="nav w3-bar w3-flat-wet-asphalt w3-card w3-large" style="z-index:4;background-color: #252a2f;">
+<header class="nav w3-bar w3-flat-wet-asphalt w3-card w3-large"
+        style="height: 45px;z-index:100;background-color: #252a2f;position: fixed;top:0">
     <a class="w3-bar-item">Welcome <strong>Team 06</strong>!</a>
     <%
         if(session.getAttribute("userinfo") == null) {

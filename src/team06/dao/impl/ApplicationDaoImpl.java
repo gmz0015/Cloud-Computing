@@ -35,10 +35,38 @@ public class ApplicationDaoImpl implements IApplicationDao {
                         username, rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status")));
             }
         }catch (Exception e) {
-            System.out.println("Catch a Exception: " + e);
+            System.out.println("(ApplicationDaoImpl.queryAllApps)Catch a Exception: " + e);
         }finally{
             JdbcUtils.release(conn, st, rs);
         }
         return appsInfo;
+    }
+
+    @Override
+    public List<Application> queryAppById(String userid) {
+        List<Application> appInfo = new ArrayList<Application>();
+
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "SELECT appid,appname,visits,rating,status FROM CloudComputing.applications WHERE ownerid=" + userid;
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            while (rs.next()){
+                appInfo.add(new Application(rs.getInt("appid"), rs.getString("appname"), Integer.valueOf(userid),
+                        "", rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status")));
+            }
+        }catch (Exception e) {
+            System.out.println("(ApplicationDaoImpl.queryAppById) Catch a Exception: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+
+        return appInfo;
     }
 }

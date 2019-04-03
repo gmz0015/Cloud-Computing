@@ -3,8 +3,7 @@ package team06.web.bean;
 import team06.domain.Application;
 import team06.service.IApplicationService;
 import team06.service.impl.ApplicationServiceImpl;
-
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +24,7 @@ public class ApplicationBean implements Serializable {
         appInfo = new ArrayList<>();
     }
 
+
     /**
      * Invoke service to query Database and retrieve applications data
      */
@@ -35,6 +35,10 @@ public class ApplicationBean implements Serializable {
     public List<Application> getAppInfo() {
         return appInfo;
     }
+
+
+
+    /* Setter and Getter */
 
     public void setAppInfo(List<Application> appInfo) {
         this.appInfo = appInfo;

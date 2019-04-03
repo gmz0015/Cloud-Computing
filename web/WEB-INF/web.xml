@@ -15,6 +15,30 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!-- test -->
+    <servlet>
+        <servlet-name>test</servlet-name>
+        <servlet-class>testJMX</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>test</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+
+    <!-- Admin -->
+    <servlet>
+        <description>Managerment Page</description>
+        <display-name>Admin</display-name>
+        <servlet-name>Admin</servlet-name>
+        <servlet-class>team06.web.UI.AdminUIServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+
     <!-- Application -->
     <servlet>
         <description>Application</description>
@@ -26,6 +50,7 @@
     <servlet-mapping>
         <servlet-name>Application</servlet-name>
         <url-pattern>/application</url-pattern>
+        <url-pattern>/application/deploy</url-pattern>
     </servlet-mapping>
 
     <!-- Application Detail -->

@@ -4,7 +4,9 @@ import team06.domain.Application;
 import team06.utils.JdbcUtils;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.Part;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,8 +36,10 @@ public class ApplicationBean extends HttpServlet implements Serializable {
             rs = st.executeQuery();
             while (rs.next()){
                 username = userBean.getUserNameById(rs.getInt("ownerid"));
-                appsInfo.add(new Application(rs.getInt("appid"), rs.getString("name"), rs.getInt("ownerid"),
-                        username, rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status")));
+                appsInfo.add(new Application(
+                        rs.getInt("appid"), rs.getString("name"), rs.getInt("ownerid"),
+                        username, rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
+                        "", "", ""));
             }
         }catch (Exception e) {
             System.out.println("Catch a Exception: " + e);

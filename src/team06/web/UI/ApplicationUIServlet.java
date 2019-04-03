@@ -1,5 +1,7 @@
 package team06.web.UI;
 
+import team06.web.bean.ApplicationBean;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +24,15 @@ public class ApplicationUIServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doGet(request, response);
+        if (request.getParameter("Deploy") != null) {
+//            if (request.getParameter("Deploy").equals("Deploy your Application")) {
+//                String resp = ApplicationBean.deploy(request.getParameter("appPath"));
+//                System.out.println("response: " + resp);
+//                request.setAttribute("DeployResponse", resp);
+//                request.getRequestDispatcher("/WEB-INF/pages/views/applicationCreate.jsp").forward(request, response);
+//            }
+        }else
+            doGet(request, response);
     }
 
 }

@@ -29,9 +29,17 @@ The sharing place for team 06.
     - Add account functions based on Java Beans
 - Application
     - ~~Set javabean item clickable~~ (Finish)
-    - Add Application
-    - Associated with database
+    - ~~Add Application~~ (Finish)
+        - Optimize
+    - ~~Associated with database~~ (Finish)
+        - Optimize
     - Security Check
+- Guide
+    - Add Guide
+- Admin
+    - ~~View All applications, databases, users~~ (Finish)
+    - Add Usage
+    - Add function to add, edit and delete.
 - Status
     - Change Status
 - Figure out about XML.(Low Priority)
@@ -46,7 +54,7 @@ The sharing place for team 06.
     - commons-logging-1.2.jar
     - ezmorph-1.0.6.jar
     - json-lib-2.4-jdk15.jar
-- MVC
+- MVC Mode
     - Domain Layer
         - contain Java Bean
         - getter and setter

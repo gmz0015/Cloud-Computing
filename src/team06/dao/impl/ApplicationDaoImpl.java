@@ -31,8 +31,10 @@ public class ApplicationDaoImpl implements IApplicationDao {
             rs = st.executeQuery();
             while (rs.next()){
                 username = userBean.getUserNameById(rs.getInt("ownerid"));
-                appsInfo.add(new Application(rs.getInt("appid"), rs.getString("appname"), rs.getInt("ownerid"),
-                        username, rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status")));
+                appsInfo.add(new Application(
+                        rs.getInt("appid"), rs.getString("appname"), rs.getInt("ownerid"),
+                        username, rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
+                        "", "", ""));
             }
         }catch (Exception e) {
             System.out.println("(ApplicationDaoImpl.queryAllApps)Catch a Exception: " + e);
@@ -58,8 +60,10 @@ public class ApplicationDaoImpl implements IApplicationDao {
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             while (rs.next()){
-                appInfo.add(new Application(rs.getInt("appid"), rs.getString("appname"), Integer.valueOf(userid),
-                        "", rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status")));
+                appInfo.add(new Application(
+                        rs.getInt("appid"), rs.getString("appname"), Integer.valueOf(userid),
+                        "", rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
+                        "", "",""));
             }
         }catch (Exception e) {
             System.out.println("(ApplicationDaoImpl.queryAppById) Catch a Exception: " + e);

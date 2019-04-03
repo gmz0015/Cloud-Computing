@@ -54,7 +54,7 @@ public class UserBean extends HttpServlet implements Serializable {
         ResultSet rs = null;
         try{
             conn = JdbcUtils.getConnection();
-            String sql = "SELECT userid,username FROM CloudComputing.users";
+            String sql = "SELECT userid,username FROM CloudComputing.platform_users";
             st = conn.prepareStatement(sql);
 //            st.setInt(1, 1);
             rs = st.executeQuery();
@@ -79,7 +79,7 @@ public class UserBean extends HttpServlet implements Serializable {
         ResultSet rs = null;
         try{
             conn = JdbcUtils.getConnection();
-            String sql = "SELECT username FROM CloudComputing.users WHERE userid=" + userid;
+            String sql = "SELECT username FROM CloudComputing.platform_users WHERE userid=" + userid;
             st = conn.prepareStatement(sql);
 //            st.setInt(1, 1);
             rs = st.executeQuery();
@@ -105,7 +105,7 @@ public class UserBean extends HttpServlet implements Serializable {
         ResultSet rs = null;
         try{
             conn = JdbcUtils.getConnection();
-            String sql = "SELECT * FROM CloudComputing.users WHERE userid=" + userid;
+            String sql = "SELECT * FROM CloudComputing.platform_users WHERE userid=" + userid;
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
 

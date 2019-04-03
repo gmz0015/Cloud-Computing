@@ -1,24 +1,27 @@
 package team06.utils;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Properties;
 
 public class JdbcUtils {
 
-    private static String driver = null;
-    private static String url = "jdbc:mysql://localhost:3306/CloudComputing";
-    private static String username = "root";
-    private static String password = "Gmz110803";
-
+    private static DataSource ds = null;
+    // Create connection pool
     static{
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
+            // Initial JNDI
+            Context initCtx = new InitialContext();
+            // Get JNDI container
+            Context envCtx = (Context) initCtx.lookup("java:comp/env");
+            // Retrieval the datasource named "jdbc/datasource" from JNDI container
+            ds = (DataSource)envCtx.lookup("jdbc/datasource");
         }catch (Exception e) {
             throw new ExceptionInInitializerError(e);
         }
@@ -26,13 +29,13 @@ public class JdbcUtils {
 
     /**
      * @Method: getConnection
-     * @Description: get connection object
+     * @Description: get connection object from datasource
      *
      * @return Connection object
      * @throws SQLException
      */
     public static Connection getConnection() throws SQLException{
-        return DriverManager.getConnection(url, username,password);
+        return ds.getConnection();
     }
 
     /**
@@ -47,7 +50,7 @@ public class JdbcUtils {
     public static void release(Connection conn,Statement st,ResultSet rs){
         if(rs!=null){
             try{
-                //close ResultSet
+                //close ResultSet Object
                 rs.close();
             }catch (Exception e) {
                 e.printStackTrace();
@@ -56,7 +59,7 @@ public class JdbcUtils {
         }
         if(st!=null){
             try{
-                //close Statement
+                //close Statement Object
                 st.close();
             }catch (Exception e) {
                 e.printStackTrace();

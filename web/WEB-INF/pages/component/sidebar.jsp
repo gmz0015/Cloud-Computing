@@ -17,7 +17,8 @@
            onclick="w3_open()" style="height:50px">
             <div class="w3-row">
                 <div class="w3-col w3-center" style="width:20px">
-                    <i class="fas fa-indent"></i>
+                    <i id="open-icon" class="fas fa-indent"></i>
+                    <%--<i id="close-icon" class="fas fa-outdentt" style="display: none"></i>--%>
                 </div>
                 <div id="sidebar-menu" class="w3-col w3-left w3-margin-left" style="width:80px;display:none">
                     Menu
@@ -51,23 +52,36 @@
         <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue" style="height:50px">
             <div class="w3-row">
                 <div class="w3-col w3-center" style="width:20px">
-                    <i class="fab fa-playstation"></i>
+                    <i class="fas fa-book"></i>
                 </div>
                 <div id="sidebar-playground" class="w3-col w3-left w3-margin-left" style="width:80px;display:none">
-                    <span>Upload</span>
+                    <span>Guide</span>
                 </div>
             </div>
         </div>
 
         <div class="w3-border-top w3-border-grey"></div>
 
-        <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue" style="height:50px">
+        <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue" style="height:50px"
+             onclick="window.location.href='<%= request.getContextPath() + "/admin" %>'">
+            <div class="w3-row">
+                <div class="w3-col w3-center" style="width:20px">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div id="sidebar-admin" class="w3-col w3-left w3-margin-left" style="width:80px;display:none">
+                    <span>Admin</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue" style="height:50px"
+             onclick="window.location.href='<%= request.getContextPath() + "/test" %>'">
             <div class="w3-row">
                 <div class="w3-col w3-center" style="width:20px">
                     <i class="fas fa-wrench"></i>
                 </div>
                 <div id="sidebar-setting" class="w3-col w3-left w3-margin-left" style="width:80px;display:none">
-                    <span>Setting</span>
+                    <span>Preferences</span>
                 </div>
             </div>
         </div>
@@ -75,24 +89,28 @@
 </aside>
 <script>
     function w3_open() {
-        if (document.getElementById("mySidebar").style.width === "150px")
+        if (document.getElementById("mySidebar").style.width === "160px")
         {
             // document.getElementById("main").style.marginLeft = "50px";
             document.getElementById("mySidebar").style.width = "50px";
+            document.getElementById("open-icon").className = "fas fa-indent";
             document.getElementById("sidebar-menu").style.display = "none";
             document.getElementById("sidebar-home").style.display = "none";
             document.getElementById("sidebar-database").style.display = "none";
             document.getElementById("sidebar-playground").style.display = "none";
+            document.getElementById("sidebar-admin").style.display = "none";
             document.getElementById("sidebar-setting").style.display = "none";
         }
         else
         {
             // document.getElementById("main").style.marginLeft = "150px";
-            document.getElementById("mySidebar").style.width = "150px";
+            document.getElementById("mySidebar").style.width = "160px";
+            document.getElementById("open-icon").className = "fas fa-outdent";
             document.getElementById("sidebar-menu").style.display = "block";
             document.getElementById("sidebar-home").style.display = "block";
             document.getElementById("sidebar-database").style.display = "block";
             document.getElementById("sidebar-playground").style.display = "block";
+            document.getElementById("sidebar-admin").style.display = "block";
             document.getElementById("sidebar-setting").style.display = "block";
         }
     }

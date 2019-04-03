@@ -8,8 +8,11 @@ public class Application {
     private int visits;
     private double rating;
     private int status;
+    private String dbusername;
+    private String dbpassword;
+    private String dbname;
 
-    public Application(int appid, String name, int ownerid, String ownername, int visits, double rating, int status) {
+    public Application(Integer appid, String name, int ownerid, String ownername, int visits, double rating, int status, String dbusername, String dbpassword, String dbname) {
         this.appid = appid;
         this.name = name;
         this.ownerid = ownerid;
@@ -17,6 +20,35 @@ public class Application {
         this.visits = visits;
         this.rating = rating;
         this.status = status;
+        this.dbusername = dbusername;
+        this.dbpassword = dbpassword;
+        this.dbname = dbname;
+    }
+
+    /* Getter and Setter */
+
+    public String getDbusername() {
+        return dbusername;
+    }
+
+    public void setDbusername(String dbusername) {
+        this.dbusername = dbusername;
+    }
+
+    public String getDbpassword() {
+        return dbpassword;
+    }
+
+    public void setDbpassword(String dbpassword) {
+        this.dbpassword = dbpassword;
+    }
+
+    public String getDbname() {
+        return dbname;
+    }
+
+    public void setDbname(String dbname) {
+        this.dbname = dbname;
     }
 
     public String getOwnername() {

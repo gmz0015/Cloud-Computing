@@ -9,9 +9,9 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>test Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <!--<name>test Maven Webapp</name>-->
+  <!--&lt;!&ndash; FIXME change it to the project's website &ndash;&gt;-->
+  <!--<url>http://www.example.com</url>-->
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -28,19 +28,19 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <!--jersey服务端包，将 Jersey 当做 Servlet-->
+      <!--jersey servlet package-->
       <groupId>org.glassfish.jersey.containers</groupId>
       <artifactId>jersey-container-servlet</artifactId>
       <version>${jersey.version}</version>
     </dependency>
     <dependency>
-      <!--服务端核心包-->
+      <!--server core package-->
       <groupId>org.glassfish.jersey.core</groupId>
       <artifactId>jersey-server</artifactId>
       <version>${jersey.version}</version>
     </dependency>
     <dependency>
-      <!--客户端包，封装了一些客户端操作的类-->
+      <!--client package-->
       <groupId>org.glassfish.jersey.core</groupId>
       <artifactId>jersey-client</artifactId>
       <version>${jersey.version}</version>
@@ -83,10 +83,6 @@
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>
         </plugin>
-        <!--<plugin>-->
-          <!--<artifactId>maven-compiler-plugin</artifactId>-->
-          <!--<version>3.8.0</version>-->
-        <!--</plugin>-->
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>

@@ -1,18 +1,18 @@
 package team06.domain;
 
 public class Application {
-    private Integer appid;
+    private String appid;
     private String name;
-    private int ownerid;
+    private String ownerid;
     private String ownername;
     private int visits;
     private double rating;
     private int status;
-    private String dbusername;
-    private String dbpassword;
-    private String dbname;
+    private String dbid;
+    private String warpath;
+    private String contextpath;
 
-    public Application(Integer appid, String name, int ownerid, String ownername, int visits, double rating, int status, String dbusername, String dbpassword, String dbname) {
+    public Application(String appid, String name, String ownerid, String ownername, int visits, double rating, int status, String dbid, String warpath, String contextpath) {
         this.appid = appid;
         this.name = name;
         this.ownerid = ownerid;
@@ -20,36 +20,12 @@ public class Application {
         this.visits = visits;
         this.rating = rating;
         this.status = status;
-        this.dbusername = dbusername;
-        this.dbpassword = dbpassword;
-        this.dbname = dbname;
+        this.dbid = dbid;
+        this.warpath = warpath;
+        this.contextpath = contextpath;
     }
 
     /* Getter and Setter */
-
-    public String getDbusername() {
-        return dbusername;
-    }
-
-    public void setDbusername(String dbusername) {
-        this.dbusername = dbusername;
-    }
-
-    public String getDbpassword() {
-        return dbpassword;
-    }
-
-    public void setDbpassword(String dbpassword) {
-        this.dbpassword = dbpassword;
-    }
-
-    public String getDbname() {
-        return dbname;
-    }
-
-    public void setDbname(String dbname) {
-        this.dbname = dbname;
-    }
 
     public String getOwnername() {
         return ownername;
@@ -59,11 +35,31 @@ public class Application {
         this.ownername = ownername;
     }
 
-    public Integer getAppid() {
+    public String getWarpath() {
+        return warpath;
+    }
+
+    public void setWarpath(String warpath) {
+        this.warpath = warpath;
+    }
+
+    public String getContextpath() {
+        return contextpath;
+    }
+
+    public void setContextpath(String contextpath) {
+        this.contextpath = contextpath;
+    }
+
+    public String getDbid() { return dbid; }
+
+    public void setDbid(String dbid) { this.dbid = dbid; }
+
+    public String getAppid() {
         return appid;
     }
 
-    public void setAppid(Integer appid) {
+    public void setAppid(String appid) {
         this.appid = appid;
     }
 
@@ -75,11 +71,9 @@ public class Application {
         this.name = name;
     }
 
-    public int getOwnerid() {
-        return ownerid;
-    }
+    public String getOwnerid() { return ownerid; }
 
-    public void setOwnerid(int ownerid) {
+    public void setOwnerid(String ownerid) {
         this.ownerid = ownerid;
     }
 

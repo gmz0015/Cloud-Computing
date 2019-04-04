@@ -1,7 +1,5 @@
 package team06.web.UI;
 
-import team06.web.bean.ApplicationBean;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

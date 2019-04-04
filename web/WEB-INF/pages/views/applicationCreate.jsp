@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<%@ page buffer="108kb" autoFlush="true" %>--%>
 
 <%-- Java Bean --%>
 <jsp:useBean id="appCreateBean" scope="page" class="team06.web.bean.AppCreateBean" />
@@ -101,7 +102,7 @@
                     <div class="w3-row-padding">
                         <%-- Applications --%>
                         <div class="w3-card" style="background-color:white;position:relative;height: 150px">
-                            <form action="" enctype="multipart/form-data" method="POST" style="height:100%">
+                            <form action="${pageContext.request.contextPath}/application/create/form" enctype="multipart/form-data" method="POST" style="height:100%">
                                 <div class="w3-display-container" style="height: 50%">
                                     <div class="w3-display-middle w3-border w3-border-white"
                                          style="width: 99%;height: 90%;background-color: #F5F5F6;">
@@ -117,7 +118,8 @@
                                     <div class="w3-display-middle w3-border w3-border-white"
                                          style="width: 99%;height: 90%;background-color: #F5F5F6;">
                                         <div class="w3-display-container" style="height: 100%">
-                                            <input class="w3-display-middle w3-button w3-round-large w3-border w3-hover-white w3-hover-border-cyan" type="submit" name="Detail" value="Upload">
+                                            <input type="hidden" name="dbid" value=<%= database.getDbid() %>>
+                                            <input class="w3-display-middle w3-button w3-round-large w3-border w3-hover-white w3-hover-border-cyan" type="submit" name="Upload" value="Upload">
                                         </div>
                                     </div>
                                 </div>
@@ -126,7 +128,6 @@
                     </div>
                 </div>
 
-                <% appCreateBean.doDeploy(request); %>
                 <%-- Deploy --%>
                 <div class="w3-half">
                     <div class="w3-panel w3-leftbar w3-border-blue">

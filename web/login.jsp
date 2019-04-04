@@ -18,7 +18,7 @@
 
 <div class="w3-container w3-half w3-margin-top">
 
-    <form class="w3-container w3-card-4" method="POST" name="login" action="login">
+    <form class="w3-container w3-card-4" method="POST" name="login" action="login" enctype="application/x-www-form-urlencoded">
 
         <p>
             <input class="w3-input" type="text" style="width:90%" name="username" required>

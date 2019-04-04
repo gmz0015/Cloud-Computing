@@ -66,7 +66,7 @@
         <url-pattern>/application/detail</url-pattern>
     </servlet-mapping>
 
-    <!-- Application Create -->
+    <!-- Application Create Page -->
     <servlet>
         <description>Create the Application</description>
         <display-name>AppCreate</display-name>
@@ -77,6 +77,19 @@
     <servlet-mapping>
         <servlet-name>AppCreate</servlet-name>
         <url-pattern>/application/create</url-pattern>
+    </servlet-mapping>
+
+    <!-- Application Create -->
+    <servlet>
+        <description>Create the Application Form</description>
+        <display-name>AppCreateForm</display-name>
+        <servlet-name>AppCreateForm</servlet-name>
+        <servlet-class>team06.web.controller.CreateNewAppServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AppCreateForm</servlet-name>
+        <url-pattern>/application/create/form</url-pattern>
     </servlet-mapping>
 
     <!-- Login -->

@@ -26,14 +26,14 @@ public class ApplicationDaoImpl implements IApplicationDao {
         /* Connect */
         try{
             conn = JdbcUtils.getConnection();
-            String sql = "SELECT appid,appname,ownerid,visits,rating,status FROM CloudComputing.applications";
+            String sql = "SELECT appid,appname,ownerid,ownername,visits,rating,status FROM CloudComputing.applications";
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             while (rs.next()){
                 username = userBean.getUserNameById(rs.getInt("ownerid"));
                 appsInfo.add(new Application(
-                        rs.getInt("appid"), rs.getString("appname"), rs.getInt("ownerid"),
-                        username, rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
+                        rs.getString("appid"), rs.getString("appname"), rs.getString("ownerid"),
+                        rs.getString("ownername"), rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
                         "", "", ""));
             }
         }catch (Exception e) {
@@ -56,14 +56,14 @@ public class ApplicationDaoImpl implements IApplicationDao {
         /* Connect */
         try{
             conn = JdbcUtils.getConnection();
-            String sql = "SELECT appid,appname,visits,rating,status FROM CloudComputing.applications WHERE ownerid=" + userid;
+            String sql = "SELECT appid,appname,visits,rating,status,dbid,contextpath FROM CloudComputing.applications WHERE ownerid=" + userid;
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             while (rs.next()){
                 appInfo.add(new Application(
-                        rs.getInt("appid"), rs.getString("appname"), Integer.valueOf(userid),
+                        rs.getString("appid"), rs.getString("appname"), userid,
                         "", rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
-                        "", "",""));
+                        rs.getString("dbid"), "", rs.getString("contextpath")));
             }
         }catch (Exception e) {
             System.out.println("(ApplicationDaoImpl.queryAppById) Catch a Exception: " + e);

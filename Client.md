@@ -63,3 +63,17 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
         }
 ```
 
+## Debug
+
+In order to run the API server and Client under one tomcat server on IDEA,  we need to add war file of API to tomcat configurations. 
+
+![](/img/Screenshot 2019-04-04 at 23.53.06.png)
+
+![](/img/Screenshot 2019-04-04 at 23.53.26.png)
+
+
+
+## Reference
+
+1. [Creating and Running Your First RESTful Web Service on GlassFish Application Server](https://www.jetbrains.com/help/idea/creating-and-running-your-first-restful-web-service.html)
+

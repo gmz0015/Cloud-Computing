@@ -18,7 +18,6 @@
 <%--<jsp:setProperty name="indexBean" property="*" />--%>
 
 <%-- Set userid to session --%>
-<% session.setAttribute("userid", indexBean.getUserid()); %>
 <% String error = request.getParameter("error"); %>
 <html xmlns:jsp="http://java.sun.com/JSP/Page">
 <%-- Error Permission --%>
@@ -45,7 +44,7 @@
     <div class="w3-container">
         <br/>
         <div class="w3-row-padding" >
-            <% switch (indexBean.getRole()) { case "Guest": { %>
+            <% if (session.getAttribute("userrole") == null) { %>
             <%-- Welcome Message - Guest --%>
             <div class="w3-third">
                 <div class="w3-card" style="background-color:white;position:relative;height: 150px">
@@ -129,7 +128,7 @@
                     </div>
                 </div>
             </div>
-            <% break; }case "User": { %>
+            <% }else if(session.getAttribute("userrole").equals("user")) { %>
             <%-- Welcome Message - User --%>
             <div class="w3-third">
                 <div class="w3-card" style="background-color:white;position:relative;height: 150px">
@@ -145,7 +144,7 @@
                                     Hello
                                 </div>
                                 <div class="w3-row" style="text-align: center;vertical-align: middle">
-                                    <span style="color:#9B9EA0;font-size:18px"><%=indexBean.getUsername()%></span>
+                                    <span style="color:#9B9EA0;font-size:18px"><%= session.getAttribute("username") %></span>
                                 </div>
                             </div>
                         </div>
@@ -236,7 +235,7 @@
 
                 </div>
             </div>
-            <% break; }case "Developer": { %>
+            <% }else if(session.getAttribute("userrole").equals("developer")) { %>
             <%-- Welcome Message - Developer --%>
             <div class="w3-third">
                 <div class="w3-card" style="background-color:white;position:relative;height: 150px">
@@ -252,7 +251,7 @@
                                     Hello
                                 </div>
                                 <div class="w3-row" style="text-align: center;vertical-align: middle">
-                                    <span style="color:#9B9EA0;font-size:18px"><%=indexBean.getUsername()%></span>
+                                    <span style="color:#9B9EA0;font-size:18px"><%= session.getAttribute("username") %></span>
                                 </div>
                             </div>
                         </div>
@@ -343,7 +342,7 @@
 
                 </div>
             </div>
-            <% break; }case "Admin": { %>
+            <% }else if(session.getAttribute("userrole").equals("admin")) { %>
             <%-- Welcome Message - Admin --%>
             <div class="w3-third">
                 <div class="w3-card" style="background-color:white;position:relative;height: 150px">
@@ -359,7 +358,7 @@
                                     Hello
                                 </div>
                                 <div class="w3-row" style="text-align: center;vertical-align: middle">
-                                    <span style="color:#9B9EA0;font-size:18px"><%=indexBean.getUsername()%></span>
+                                    <span style="color:#9B9EA0;font-size:18px"><%= session.getAttribute("username") %></span>
                                 </div>
                             </div>
                         </div>
@@ -450,7 +449,7 @@
 
                 </div>
             </div>
-            <% break; } } %>
+            <% } %>
         </div>
     </div>
 
@@ -481,7 +480,13 @@
                             for (Application appInfo: appsInfo) {
                         %>
                         <tr class="w3-border" style="background-color: #F5F5F6;text-align: center">
-                            <td><%= appInfo.getName() %></td>
+                            <td>
+                                <% if (appInfo.getStatus() == 2) { %>
+                                <a href="<%=appInfo.getContextpath()%>"><%= appInfo.getName() %></a>
+                                <% } else { %>
+                                <%= appInfo.getName() %>
+                                <% } %>
+                            </td>
                             <td><%= appInfo.getOwnername() %></td>
                             <td><%= appInfo.getVisits() %></td>
                             <td>
@@ -501,16 +506,16 @@
                             </td>
                             <td>
                                 <% if (appInfo.getStatus() == 0) { %>
-                                <%@ include file="/WEB-INF/pages/status/running.jsp"%>
+                                <%@ include file="/WEB-INF/pages/status/undeploy.jsp"%>
                                 <% } else if (appInfo.getStatus() == 1) { %>
-                                <%@ include file="/WEB-INF/pages/status/maintainance.jsp"%>
-                                <% } else if (appInfo.getStatus() == 2) { %>
                                 <%@ include file="/WEB-INF/pages/status/stop.jsp"%>
+                                <% } else if (appInfo.getStatus() == 2) { %>
+                                <%@ include file="/WEB-INF/pages/status/running.jsp"%>
                                 <% } %>
                             </td>
                             <td>
                                 <form action="${pageContext.request.contextPath}/application/detail" method="POST">
-                                    <input type="hidden" name="appid" value=<%= appInfo.getAppid().toString() %>>
+                                    <input type="hidden" name="appid" value=<%= appInfo.getAppid() %>>
                                     <input class="w3-button w3-round-large w3-border w3-hover-white w3-hover-border-cyan" type="submit" name="Detail" value="Detail">
                                 </form>
                             </td>

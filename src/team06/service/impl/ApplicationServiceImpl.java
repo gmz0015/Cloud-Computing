@@ -16,4 +16,24 @@ public class ApplicationServiceImpl implements IApplicationService {
 
     @Override
     public List<Application> queryAppById(String userid) { return appDao.queryAppById(userid); }
+
+    @Override
+    public String getWarById(String appid) {
+        return appDao.queryWarById(appid);
+    }
+
+    @Override
+    public void setContextById(String appid, String context) {
+        appDao.updateContextById(appid, context);
+    }
+
+    @Override
+    public String getContextById(String appid) {
+        return appDao.queryContextById(appid);
+    }
+
+    @Override
+    public void setStatusById(String appid, int status) {
+        appDao.updateStatusById(appid, status);
+    }
 }

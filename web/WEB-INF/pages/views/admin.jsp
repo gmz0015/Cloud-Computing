@@ -28,7 +28,7 @@
 <%@ include file="/WEB-INF/pages/component/navigation.jsp"%>
 
 <%@ include file="/WEB-INF/pages/component/sidebar.jsp"%>
-<section style="background-color:rgb(234, 237, 241);min-height: 700px;margin-top: 45px;">
+<section style="background-color:rgb(234, 237, 241);min-height: 700px;margin-top: 45px;padding-bottom: 20px">
 
     <div id="main" style="margin-left: 50px">
         <div class="w3-container">
@@ -143,4 +143,5 @@
     </div>
 
 </section>
+<%@ include file="/WEB-INF/pages/component/footer.jsp"%>
 </html>

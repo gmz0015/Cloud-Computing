@@ -22,7 +22,7 @@ public class AppCreateBean extends HttpServlet implements Serializable {
     private IManagerService managerService = new ManagerService();
 
 
-    public Database queryDBbyid(int userid) {
+    public Database queryDBbyid(String userid) {
         nextStep = 1;
         return databaseService.queryDBbyid(userid);
     }

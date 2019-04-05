@@ -25,7 +25,7 @@ public class AdminBean extends HttpServlet implements Serializable {
     public List<AppsInfo> listAllApps() {
         List<AppsInfo> appsInfo = new LinkedList<>();
         try {
-            URL url = new URL("http://localhost:9527/manager/text/list");
+            URL url = new URL("http://localhost:9528/manager/text/list");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setAllowUserInteraction(false);

@@ -139,28 +139,6 @@
 
 <script language='javascript' src='../../../js/sidebar.js'></script>
 
-<%-- DISCARD --%>
-<script language='javascript' src='js/userController.js'></script>
-<%-- DISCARD --%>
-<script>
-    function loadMain(type)
-    {
-        var xmlhttp;
-        if (window.XMLHttpRequest)
-        {
-            //  IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp=new XMLHttpRequest();
-        }
-        else
-        {
-            // IE6, IE5
-            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        <%--xmlhttp.open("GET","${pageContext.request.contextPath}/web/try/ajax_info.txt",true);--%>
-        console.log(type);
-        xmlhttp.open("GET","loadMain?type="+type,true);
-        xmlhttp.send();
-    }
-</script>
 </body>
+<%@ include file="/WEB-INF/pages/component/footer.jsp"%>
 </html>

@@ -15,6 +15,17 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!-- Guide Page -->
+    <servlet>
+        <servlet-name>Guide</servlet-name>
+        <servlet-class>team06.web.UI.GuideUIServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Guide</servlet-name>
+        <url-pattern>/guide</url-pattern>
+    </servlet-mapping>
+
     <!-- test -->
     <servlet>
         <servlet-name>test</servlet-name>
@@ -23,7 +34,7 @@
 
     <servlet-mapping>
         <servlet-name>test</servlet-name>
-        <url-pattern>/test</url-pattern>
+        <url-pattern>/test1</url-pattern>
     </servlet-mapping>
 
     <!-- Admin -->
@@ -39,18 +50,69 @@
         <url-pattern>/admin</url-pattern>
     </servlet-mapping>
 
-    <!-- Application -->
+    <!-- Application Detail -->
     <servlet>
-        <description>Application</description>
+        <description>List of the Application</description>
         <display-name>Application</display-name>
-        <servlet-name>Application</servlet-name>
+        <servlet-name>App</servlet-name>
         <servlet-class>team06.web.UI.ApplicationUIServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>Application</servlet-name>
+        <servlet-name>App</servlet-name>
         <url-pattern>/application</url-pattern>
-        <url-pattern>/application/deploy</url-pattern>
+    </servlet-mapping>
+
+    <!-- Application Deploy -->
+    <servlet>
+        <description>Deploy the Application</description>
+        <display-name>AppDetailDeploy</display-name>
+        <servlet-name>AppDetailDeploy</servlet-name>
+        <servlet-class>team06.web.controller.AppDeployServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AppDetailDeploy</servlet-name>
+        <url-pattern>/application/detail/deploy</url-pattern>
+    </servlet-mapping>
+
+    <!-- Application Start -->
+    <servlet>
+        <description>Start the Application</description>
+        <display-name>AppDetailStart</display-name>
+        <servlet-name>AppDetailStart</servlet-name>
+        <servlet-class>team06.web.controller.AppStartServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AppDetailStart</servlet-name>
+        <url-pattern>/application/detail/start</url-pattern>
+    </servlet-mapping>
+
+    <!-- Application Stop -->
+    <servlet>
+        <description>Stop the Application</description>
+        <display-name>AppDetailStop</display-name>
+        <servlet-name>AppDetailStop</servlet-name>
+        <servlet-class>team06.web.controller.AppStopServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AppDetailStop</servlet-name>
+        <url-pattern>/application/detail/stop</url-pattern>
+    </servlet-mapping>
+
+    <!-- Application Undeploy -->
+    <servlet>
+        <description>Undeploy the Application</description>
+        <display-name>AppDetailUndeploy</display-name>
+        <servlet-name>AppDetailUndeploy</servlet-name>
+        <servlet-class>team06.web.controller.AppUndeployServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AppDetailUndeploy</servlet-name>
+        <url-pattern>/application/detail/undeploy</url-pattern>
     </servlet-mapping>
 
     <!-- Application Detail -->
@@ -66,19 +128,6 @@
         <url-pattern>/application/detail</url-pattern>
     </servlet-mapping>
 
-    <!-- Application Create Page -->
-    <servlet>
-        <description>Create the Application</description>
-        <display-name>AppCreate</display-name>
-        <servlet-name>AppCreate</servlet-name>
-        <servlet-class>team06.web.UI.ApplicationCreateUIServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>AppCreate</servlet-name>
-        <url-pattern>/application/create</url-pattern>
-    </servlet-mapping>
-
     <!-- Application Create -->
     <servlet>
         <description>Create the Application Form</description>
@@ -89,7 +138,7 @@
 
     <servlet-mapping>
         <servlet-name>AppCreateForm</servlet-name>
-        <url-pattern>/application/create/form</url-pattern>
+        <url-pattern>/application/create</url-pattern>
     </servlet-mapping>
 
     <!-- Login -->
@@ -105,14 +154,16 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
-    <!-- Switch User -->
+    <!-- Logout -->
     <servlet>
-        <servlet-name>switchUser</servlet-name>
-        <servlet-class>javabean.UserBean</servlet-class>
+        <description>Logout</description>
+        <display-name>Logout</display-name>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>login.logout</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>switchUser</servlet-name>
-        <url-pattern>/switchUser</url-pattern>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 </web-app>

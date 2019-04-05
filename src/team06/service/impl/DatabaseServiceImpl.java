@@ -11,7 +11,12 @@ public class DatabaseServiceImpl implements IDatabaseService {
     private IDatabaseDao databaseDao = new DatabaseDaoImpl();
 
     @Override
-    public Database queryDBbyid(int userid) {
+    public int createDBbyId(String userid) {
+        return databaseDao.createDBbyId(userid);
+    }
+
+    @Override
+    public Database queryDBbyid(String userid) {
         return databaseDao.queryDBbyid(userid);
     }
 

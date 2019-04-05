@@ -1,7 +1,9 @@
 package team06.web.controller;
 
 import team06.domain.Application;
+import team06.service.IDatabaseService;
 import team06.service.IManagerService;
+import team06.service.impl.DatabaseServiceImpl;
 import team06.service.impl.ManagerService;
 
 import javax.servlet.ServletException;
@@ -19,6 +21,7 @@ public class CreateNewAppServlet extends HttpServlet {
     private final String SAVE_DIR = "uploadedFiles";
     private ManagerServlet managerServlet = new ManagerServlet();
     private IManagerService managerService = new ManagerService();
+    private IDatabaseService databaseService = new DatabaseServiceImpl();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -37,15 +40,14 @@ public class CreateNewAppServlet extends HttpServlet {
                             managerService.insertNewApp(new Application(
                                     generateAppid(),
                                     request.getSession().getAttribute("userid") + "_" + generateAppid(),
-                                    "2",
-                                    "dev123",
+                                    request.getSession().getAttribute("userid").toString(),
+                                    request.getSession().getAttribute("username").toString(),
                                     0,
                                     0.0,
                                     0,
-                                    request.getParameter("dbid"),
+                                    databaseService.queryDBbyid(request.getSession().getAttribute("userid").toString()).getDbid(),
                                     savePath,
                                     null));
-                            // request.getSession().getAttribute("userid").toString()
                         }catch (Exception e) {
                             System.out.println("[team06.web.controller.CreateNewAppServlet.doGet]: " + e);
 

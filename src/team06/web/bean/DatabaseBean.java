@@ -8,6 +8,6 @@ public class DatabaseBean {
 
 
     public void queryDBbyid() {
-        databaseDao.queryDBbyid(1);
+        databaseDao.queryDBbyid("1");
     }
 }

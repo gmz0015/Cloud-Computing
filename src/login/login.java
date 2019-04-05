@@ -25,12 +25,12 @@ public class login extends HttpServlet {
         BufferedReader in = null;
         String result = "";
 
+        System.out.println("requestURI is: " + request.getRequestURI());
+        System.out.println("requestURL is: " + request.getRequestURL());
+        System.out.println("remoteAddr is: " + request.getRemoteAddr());
+
         String userName = request.getParameter("username").trim();
         String userPwd = request.getParameter("userpassword").trim();
-
-        if(userName == null || userPwd == null) {
-            response.sendRedirect("userlogin.html");
-        }
 
         try {
             //Step 1: create URL
@@ -59,12 +59,23 @@ public class login extends HttpServlet {
             while ((line = in.readLine()) != null) {
                 result += line;
             }
-            System.out.println("result is:" + result);
-        }catch (Exception e) {
+
+            // Set session
+            if (result.equals("0")) {
+                System.out.println("[login.login.doPost]: Username is not right");
+            } else if (result.equals("1")) {
+                System.out.println("[login.login.doPost]: Password is not right");
+            } else {
+                String[] userinfo = result.split("&");
+                request.getSession().setMaxInactiveInterval(30*60);
+                request.getSession().setAttribute("userid", userinfo[0]);
+                request.getSession().setAttribute("username", userinfo[1]);
+                request.getSession().setAttribute("userrole", userinfo[2]);
+                response.sendRedirect(request.getContextPath());
+            }
+        } catch (Exception e) {
             System.out.println("Catch Exception: " + e);
-        }
-        //使用finally块来关闭输出流、输入流
-        finally {
+        } finally {
             try {
                 if (out != null) {
                     out.close();
@@ -76,17 +87,5 @@ public class login extends HttpServlet {
                 ex.printStackTrace();
             }
         }
-
-//        if(200 == responseCode){
-//            System.out.println(connection.getResponseMessage());
-//        }
-
-//        if(userName.equals(USERNAME) && userPwd.equals(USERPWD)) {
-//            request.getSession().setMaxInactiveInterval(30*60);		// 设置session失效时间（timeout），单位为秒
-//            request.getSession().setAttribute("userinfo", USERNAME);		// 用户名和密码正确，保存登录信息(获得session与jsp网页稍有不同)
-//            response.sendRedirect("index.jsp");
-//        } else {
-//            response.sendRedirect("userlogin.html");			// 用户名和密码错误，跳转到登录界面
-//        }
     }
 }

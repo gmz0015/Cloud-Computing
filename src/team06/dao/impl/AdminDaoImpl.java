@@ -29,7 +29,7 @@ public class AdminDaoImpl implements IAdminDao {
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             while (rs.next()){
-                allDB.add(new Database(0, 0, rs.getString("Database"),
+                allDB.add(new Database("0", "0", rs.getString("Database"),
                         "", ""));
             }
         }catch (Exception e) {

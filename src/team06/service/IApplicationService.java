@@ -13,4 +13,12 @@ public interface IApplicationService {
     List<Application> queryAllApps();
 
     List<Application> queryAppById(String userid);
+
+    String getWarById(String appid);
+
+    void setContextById(String appid, String context);
+
+    String getContextById(String appid);
+
+    void setStatusById(String appid, int status);
 }

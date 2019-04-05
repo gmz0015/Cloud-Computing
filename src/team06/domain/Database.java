@@ -1,13 +1,13 @@
 package team06.domain;
 
 public class Database {
-    private int dbid;
-    private int userid;
+    private String dbid;
+    private String userid;
     private String dbname;
     private String dbusername;
     private String dbpassword;
 
-    public Database(int dbid, int userid, String dbname, String dbusername, String dbpassword) {
+    public Database(String dbid, String userid, String dbname, String dbusername, String dbpassword) {
         this.dbid = dbid;
         this.userid = userid;
         this.dbname = dbname;
@@ -16,19 +16,19 @@ public class Database {
     }
 
     /* Getter and Setter */
-    public int getDbid() {
+    public String getDbid() {
         return dbid;
     }
 
-    public void setDbid(int dbid) {
+    public void setDbid(String dbid) {
         this.dbid = dbid;
     }
 
-    public int getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(int userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 

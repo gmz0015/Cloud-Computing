@@ -22,7 +22,7 @@
 <%@ include file="/WEB-INF/pages/component/navigation.jsp"%>
 
 <%@ include file="/WEB-INF/pages/component/sidebar.jsp"%>
-<body style="background-color:rgb(234, 237, 241);min-height: 700px;margin-top: 45px;">
+<body style="background-color:rgb(234, 237, 241);min-height: 700px;margin-top: 45px;padding-bottom: 20px">
 
 <div id="main" style="margin-left: 50px;">
 
@@ -125,6 +125,71 @@
         </div>
 
     </div>
+
+    <!-- Operation -->
+    <div class="w3-container">
+
+        <div class="w3-panel w3-leftbar w3-border-blue" >
+            <span style="font-size: 16px">Operation</span>
+        </div>
+        <div class="w3-row-padding" >
+            <%-- Message --%>
+            <div class="w3-third">
+                <div class="w3-card" style="background-color:white">
+
+                    <header class="w3-container w3-padding" style="text-align: center;background-color: #f9f9f9">
+                        <span style="color: #333333;font-size: 20px">Instances</span>
+                    </header>
+
+                    <div class="w3-row-padding" style="height: 100px">
+                        <form action="${pageContext.request.contextPath}/application/detail/deploy"
+                              method="POST"
+                              class="w3-quarter w3-display-container"
+                              style="height:100%">
+                            <div class="w3-display-middle"
+                                 style="background-color:#F5F5F6;height:90%;width:90%">
+                                <input type="hidden" name="appid" value=<%= session.getAttribute("appid") %>>
+                                <input class="w3-button w3-round-large w3-border w3-hover-white w3-hover-border-cyan" type="submit" name="Deploy" value="Deploy" >
+                            </div>
+                        </form>
+                        <form action="${pageContext.request.contextPath}/application/detail/start"
+                              method="POST"
+                              class="w3-quarter w3-display-container"
+                              style="height:100%">
+                            <div class="w3-display-middle"
+                                 style="background-color:#F5F5F6;height:90%;width:90%">
+                                <input type="hidden" name="appid" value=<%= session.getAttribute("appid") %>>
+                                <input class="w3-button w3-round-large w3-border w3-hover-white w3-hover-border-cyan" type="submit" name="Deploy" value="Start" >
+                            </div>
+                        </form>
+                        <form action="${pageContext.request.contextPath}/application/detail/stop"
+                              method="POST"
+                              class="w3-quarter w3-display-container"
+                              style="height:100%">
+                            <div class="w3-display-middle"
+                                 style="background-color:#F5F5F6;height:90%;width:90%">
+                                <input type="hidden" name="appid" value=<%= session.getAttribute("appid") %>>
+                                <input class="w3-button w3-round-large w3-border w3-hover-white w3-hover-border-cyan" type="submit" name="Deploy" value="Stop" >
+                            </div>
+                        </form>
+                        <form action="${pageContext.request.contextPath}/application/detail/undeploy"
+                              method="POST"
+                              class="w3-quarter w3-display-container"
+                              style="height:100%">
+                            <div class="w3-display-middle"
+                                 style="background-color:#F5F5F6;height:90%;width:90%">
+                                <input type="hidden" name="appid" value=<%= session.getAttribute("appid") %>>
+                                <input class="w3-button w3-round-large w3-border w3-hover-white w3-hover-border-cyan" type="submit" name="Deploy" value="Undeploy" >
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 </body>
+<%@ include file="/WEB-INF/pages/component/footer.jsp"%>
 </html>

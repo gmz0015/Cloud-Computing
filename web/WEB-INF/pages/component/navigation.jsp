@@ -12,7 +12,7 @@
         style="height: 45px;z-index:100;background-color: #252a2f;position: fixed;top:0">
     <a class="w3-bar-item">Welcome <strong>Team 06</strong>!</a>
     <%
-        if(session.getAttribute("userinfo") == null) {
+        if(session.getAttribute("userid") == null) {
     %>
     <%-- logout, need to login --%>
     <a href="#" class="w3-bar-item w3-button w3-right" onclick="window.location.href='<%= request.getContextPath() %>/login.jsp'" >Login</a>
@@ -20,7 +20,7 @@
         } else {
     %>
     <%-- login, need to logout --%>
-    <a href="#" class="w3-bar-item w3-button w3-right" onclick=window.location.href="<%= request.getContextPath() %>/account/logout.jsp">Logout</a>
+    <a href="#" class="w3-bar-item w3-button w3-right" onclick=window.location.href="<%= request.getContextPath() %>/logout">Logout</a>
     <a href="#" class="w3-bar-item w3-button w3-right" onclick=window.location.href="account.jsp">Account</a>
     <%
         }

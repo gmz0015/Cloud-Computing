@@ -1,8 +1,12 @@
 package team06.web.bean;
 
 import team06.domain.Application;
+import team06.domain.Database;
 import team06.service.IApplicationService;
+import team06.service.IDatabaseService;
 import team06.service.impl.ApplicationServiceImpl;
+import team06.service.impl.DatabaseServiceImpl;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +21,16 @@ public class ApplicationBean implements Serializable {
     private List<Integer> visits;
     private List<Double> rating;
     private List<Integer> status;
-
     private IApplicationService appService = new ApplicationServiceImpl();
+    private IDatabaseService databaseService = new DatabaseServiceImpl();
 
     public ApplicationBean(){
         appInfo = new ArrayList<>();
     }
 
+    public Database queryDBbyid(String userid) {
+        return databaseService.queryDBbyid(userid);
+    }
 
     /**
      * Invoke service to query Database and retrieve applications data

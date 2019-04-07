@@ -14,13 +14,11 @@ import java.util.List;
 public class ApplicationBean implements Serializable {
     private String userid;
     private List<Application> appInfo;
+    private Integer total = 0;
+    private Integer running = 0;
+    private Integer stop = 0;
+    private Integer undeploy = 0;
 
-    /* Maybe REMOVE */
-    private List<String> appid;
-    private List<String> appname;
-    private List<Integer> visits;
-    private List<Double> rating;
-    private List<Integer> status;
     private IApplicationService appService = new ApplicationServiceImpl();
     private IDatabaseService databaseService = new DatabaseServiceImpl();
 
@@ -36,7 +34,20 @@ public class ApplicationBean implements Serializable {
      * Invoke service to query Database and retrieve applications data
      */
     public void doQuery(){
-        appInfo = appService.queryAppById(userid);
+        appInfo = appService.getAppByUserId(userid);
+        count();
+    }
+
+    private void count(){
+        for (Application application: appInfo) {
+            total += 1;
+            if (application.getStatus() == 0)
+                undeploy += 1;
+            else if (application.getStatus() == 1)
+                stop += 1;
+            else if (application.getStatus() == 2)
+                running += 1;
+        }
     }
 
     public List<Application> getAppInfo() {
@@ -46,6 +57,38 @@ public class ApplicationBean implements Serializable {
 
 
     /* Setter and Getter */
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
+
+    public Integer getRunning() {
+        return running;
+    }
+
+    public void setRunning(Integer running) {
+        this.running = running;
+    }
+
+    public Integer getStop() {
+        return stop;
+    }
+
+    public void setStop(Integer stop) {
+        this.stop = stop;
+    }
+
+    public Integer getUndeploy() {
+        return undeploy;
+    }
+
+    public void setUndeploy(Integer undeploy) {
+        this.undeploy = undeploy;
+    }
 
     public void setAppInfo(List<Application> appInfo) {
         this.appInfo = appInfo;
@@ -57,45 +100,5 @@ public class ApplicationBean implements Serializable {
 
     public void setUserid(String userid) {
         this.userid = userid;
-    }
-
-    public List<String> getAppid() {
-        return appid;
-    }
-
-    public void setAppid(List<String> appid) {
-        this.appid = appid;
-    }
-
-    public List<String> getAppname() {
-        return appname;
-    }
-
-    public void setAppname(List<String> appname) {
-        this.appname = appname;
-    }
-
-    public List<Integer> getVisits() {
-        return visits;
-    }
-
-    public void setVisits(List<Integer> visits) {
-        this.visits = visits;
-    }
-
-    public List<Double> getRating() {
-        return rating;
-    }
-
-    public void setRating(List<Double> rating) {
-        this.rating = rating;
-    }
-
-    public List<Integer> getStatus() {
-        return status;
-    }
-
-    public void setStatus(List<Integer> status) {
-        this.status = status;
     }
 }

@@ -18,8 +18,14 @@ import java.net.URL;
         maxFileSize=1024*1024*10, // 10MB
         maxRequestSize=1024*1024*50) // 50MB
 public class ManagerServlet {
-    private String IP = "9528";
-    private String USERNAME = "tomcat2"; // manager-script
+    // Production
+//    private String PORT = "8080";
+//    private String USERNAME = "tomcatscript";
+//    private String PASSWORD = "tomcat";
+
+    // Development
+    private String PORT = "9528";
+    private String USERNAME = "tomcat2";
     private String PASSWORD = "tomcat";
     private IApplicationService applicationService = new ApplicationServiceImpl();
 
@@ -67,9 +73,8 @@ public class ManagerServlet {
      */
     public String deploy(String appid, String war_path, String target_path) {
         String message = "";
-        System.out.println("appid is:" + appid + "\nwar is:" + war_path + "\ntarget is:" + target_path);
         try {
-            URL url = new URL("http://localhost:" + IP + "/manager/text/deploy?path=" + target_path + "&war=file:" + war_path);
+            URL url = new URL("http://localhost:" + PORT + "/manager/text/deploy?path=" + target_path + "&war=file:" + war_path);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setAllowUserInteraction(false);
@@ -94,11 +99,13 @@ public class ManagerServlet {
             while ((len = input.read(bs)) != -1) {
                 message += new String(bs, 0, len);
             }
-            System.out.println("message is: " + message);
+            String[] temp = message.split(" - ");
 
-            // Update database
-            applicationService.setContextById(appid, target_path);
-            applicationService.setStatusById(appid, 2);
+            if (temp[0].equals("OK")) {
+                applicationService.setContextById(appid, target_path);
+                applicationService.setStatusById(appid, 2);
+            }
+
         } catch (MalformedURLException e) {
             System.out.println("[team06.service.impl.ManagerService.deploy]: " + e);
         } catch (ProtocolException e) {
@@ -116,9 +123,8 @@ public class ManagerServlet {
      */
     public String undeploy(String appid, String context) {
         String message = "";
-        System.out.println("undeploy - \nappid is:" + appid + "\ncontext is:" + context);
         try {
-            URL url = new URL("http://localhost:" + IP + "/manager/text/undeploy?path=" + context);
+            URL url = new URL("http://localhost:" + PORT + "/manager/text/undeploy?path=" + context);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setAllowUserInteraction(false);
@@ -143,11 +149,13 @@ public class ManagerServlet {
             while ((len = input.read(bs)) != -1) {
                 message += new String(bs, 0, len);
             }
-            System.out.println("message is: " + message);
+            String[] temp = message.split(" - ");
 
-            // Update database
-            applicationService.setContextById(appid, null);
-            applicationService.setStatusById(appid, 0);
+            if (temp[0].equals("OK")) {
+                // Update database
+                applicationService.setContextById(appid, null);
+                applicationService.setStatusById(appid, 0);
+            }
         } catch (MalformedURLException e) {
             System.out.println("[team06.service.impl.ManagerService.undeploy]: " + e);
         } catch (ProtocolException e) {
@@ -166,9 +174,8 @@ public class ManagerServlet {
      */
     public String start(String appid, String context) {
         String message = "";
-        System.out.println("start - \nappid is:" + appid + "\ncontext is:" + context);
         try {
-            URL url = new URL("http://localhost:" + IP + "/manager/text/start?path=" + context);
+            URL url = new URL("http://localhost:" + PORT + "/manager/text/start?path=" + context);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setAllowUserInteraction(false);
@@ -193,10 +200,12 @@ public class ManagerServlet {
             while ((len = input.read(bs)) != -1) {
                 message += new String(bs, 0, len);
             }
-            System.out.println("message is: " + message);
+            String[] temp = message.split(" - ");
 
-            // Update database
-            applicationService.setStatusById(appid, 2);
+            if (temp[0].equals("OK")) {
+                // Update database
+                applicationService.setStatusById(appid, 2);
+            }
         } catch (MalformedURLException e) {
             System.out.println("[team06.service.impl.ManagerService.start]: " + e);
         } catch (ProtocolException e) {
@@ -214,9 +223,8 @@ public class ManagerServlet {
      */
     public String stop(String appid, String context) {
         String message = "";
-        System.out.println("stop - \nappid is:" + appid + "\ncontext is:" + context);
         try {
-            URL url = new URL("http://localhost:" + IP + "/manager/text/stop?path=" + context);
+            URL url = new URL("http://localhost:" + PORT + "/manager/text/stop?path=" + context);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setAllowUserInteraction(false);
@@ -241,10 +249,12 @@ public class ManagerServlet {
             while ((len = input.read(bs)) != -1) {
                 message += new String(bs, 0, len);
             }
-            System.out.println("message is: " + message);
+            String[] temp = message.split(" - ");
 
-            // Update database
-            applicationService.setStatusById(appid, 1);
+            if (temp[0].equals("OK")) {
+                // Update database
+                applicationService.setStatusById(appid, 1);
+            }
         } catch (MalformedURLException e) {
             System.out.println("[team06.service.impl.ManagerService.stop]: " + e);
         } catch (ProtocolException e) {
@@ -252,6 +262,13 @@ public class ManagerServlet {
         } catch (IOException e) {
             System.out.println("[team06.service.impl.ManagerService.stop]: " + e);
         }
+        return message;
+    }
+
+    public String delete(String appid, String context) {
+        String message = undeploy(appid, context);
+        String[] temp = message.split(" - ");
+        applicationService.deleteAppByAppId(appid);
         return message;
     }
 }

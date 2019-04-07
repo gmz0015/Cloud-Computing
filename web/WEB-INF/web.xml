@@ -68,7 +68,7 @@
         <description>Deploy the Application</description>
         <display-name>AppDetailDeploy</display-name>
         <servlet-name>AppDetailDeploy</servlet-name>
-        <servlet-class>team06.web.controller.AppDeployServlet</servlet-class>
+        <servlet-class>team06.web.controller.Operation.AppDeployServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -81,7 +81,7 @@
         <description>Start the Application</description>
         <display-name>AppDetailStart</display-name>
         <servlet-name>AppDetailStart</servlet-name>
-        <servlet-class>team06.web.controller.AppStartServlet</servlet-class>
+        <servlet-class>team06.web.controller.Operation.AppStartServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -94,7 +94,7 @@
         <description>Stop the Application</description>
         <display-name>AppDetailStop</display-name>
         <servlet-name>AppDetailStop</servlet-name>
-        <servlet-class>team06.web.controller.AppStopServlet</servlet-class>
+        <servlet-class>team06.web.controller.Operation.AppStopServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -107,12 +107,25 @@
         <description>Undeploy the Application</description>
         <display-name>AppDetailUndeploy</display-name>
         <servlet-name>AppDetailUndeploy</servlet-name>
-        <servlet-class>team06.web.controller.AppUndeployServlet</servlet-class>
+        <servlet-class>team06.web.controller.Operation.AppUndeployServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>AppDetailUndeploy</servlet-name>
         <url-pattern>/application/detail/undeploy</url-pattern>
+    </servlet-mapping>
+
+    <!-- Application Delete -->
+    <servlet>
+        <description>Delete the Application</description>
+        <display-name>AppDetailDelete</display-name>
+        <servlet-name>AppDetailDelete</servlet-name>
+        <servlet-class>team06.web.controller.Operation.AppDeleteServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AppDetailDelete</servlet-name>
+        <url-pattern>/application/detail/delete</url-pattern>
     </servlet-mapping>
 
     <!-- Application Detail -->

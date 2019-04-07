@@ -1,7 +1,6 @@
 package team06.dao.impl;
 
 import team06.dao.IDatabaseDao;
-import team06.domain.Application;
 import team06.domain.Database;
 import team06.utils.JdbcUtils;
 
@@ -11,13 +10,14 @@ import java.sql.ResultSet;
 import java.util.List;
 
 public class DatabaseDaoImpl implements IDatabaseDao {
-    private String dbid = "1";
-    private String dbname = "testdb";
-    private String dbusername = "testusername";
-    private String dbpassword = "123456";
 
     @Override
-    public int createDBbyId(String userid) {
+    public Database createDBbyId(String userid) {
+        String dbid = userid + generateID().substring(1,3);
+        String DBNAME = dbid;
+        String DBUSERNAME = dbid;
+        String DBPASSWORD = "123456";
+
         /* Initial Connection */
         Connection conn = null;
         PreparedStatement st = null;
@@ -32,16 +32,16 @@ public class DatabaseDaoImpl implements IDatabaseDao {
             // Need to create database
             st = null;
             rs = null;
-            String sql1 = "CREATE USER '" + dbusername + "'@'localhost' identified BY '" + dbpassword + "';";
+            String sql1 = "CREATE USER '" + DBUSERNAME + "'@'localhost' identified BY '" + DBPASSWORD + "';";
             st = conn.prepareStatement(sql1);
-            st.executeUpdate();
-            String sql2 = "CREATE database " + dbname + " DEFAULT CHARSET utf8 COLLATE utf8_general_ci;";
+            st.execute();
+            String sql2 = "CREATE database " + DBNAME + " DEFAULT CHARSET utf8 COLLATE utf8_general_ci;";
             st = conn.prepareStatement(sql2);
-            st.executeUpdate();
-            String sql3 = "GRANT ALL on " + dbname + ".* TO '" + dbusername + "'@'localhost';";
+            st.execute();
+            String sql3 = "GRANT ALL on " + DBNAME + ".* TO '" + DBUSERNAME + "'@'localhost';";
             st = conn.prepareStatement(sql3);
-            st.executeUpdate();
-            String sql4 = "UPDATE CloudComputing.database SET dbid=" + dbid + " WHERE userid=" + userid;
+            st.execute();
+            String sql4 = "UPDATE CloudComputing.database SET dbid='" + dbid + "',dbname='" + DBNAME + "',dbusername='" + DBUSERNAME + "',dbpassword='" + DBPASSWORD + "' WHERE userid=" + userid;
             st = conn.prepareStatement(sql4);
             st.executeUpdate();
             conn.commit(); // Commit transaction after above sql update successful
@@ -50,7 +50,7 @@ public class DatabaseDaoImpl implements IDatabaseDao {
         }finally {
             JdbcUtils.release(conn, st, rs);
         }
-        return 1;
+        return new Database(userid, dbid, DBNAME, DBUSERNAME, DBPASSWORD);
     }
 
     @Override
@@ -77,6 +77,39 @@ public class DatabaseDaoImpl implements IDatabaseDao {
             }
         }catch (Exception e) {
             System.out.println("[team06.dao.impl.DatabaseDaoImpl.queryDBbyid]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return database;
+    }
+
+    @Override
+    public Database queryDBbyName(String name) {
+        Database database = null;
+
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            conn.setAutoCommit(false); // start transaction
+
+            String sql = "SELECT * FROM CloudComputing.database WHERE dbname='" + name + "';";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            conn.commit();
+            if (rs.next()) {
+                database = new Database(rs.getString("userid"), rs.getString("dbid"),
+                        name, rs.getString("dbusername"), rs.getString("dbpassword"));
+            }else {
+                database = new Database("[Not Applicable]", "[Not Applicable]",
+                        name, "[Not Applicable]", "[Not Applicable]");
+            }
+        }catch (Exception e) {
+            System.out.println("[team06.dao.impl.DatabaseDaoImpl.queryDBbyName]: " + e);
         }finally{
             JdbcUtils.release(conn, st, rs);
         }

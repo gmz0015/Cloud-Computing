@@ -29,11 +29,11 @@
 
 <body onload="getUserInfo(1), getUserNameList()">
 
-<%@ include file="/WEB-INF/pages/component/navigation.jsp"%>
+<%@ include file="/WEB-INF/pages/component/layout/navigation.jsp"%>
 
 <div>
 
-    <%@ include file="/WEB-INF/pages/component/sidebar.jsp"%>
+    <%@ include file="/WEB-INF/pages/component/layout/sidebar.jsp"%>
 
     <div id="main" style="margin-left: 50px">
 
@@ -140,5 +140,5 @@
 <script language='javascript' src='../../../js/sidebar.js'></script>
 
 </body>
-<%@ include file="/WEB-INF/pages/component/footer.jsp"%>
+<%@ include file="/WEB-INF/pages/component/layout/footer.jsp"%>
 </html>

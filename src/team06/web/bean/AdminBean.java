@@ -8,9 +8,7 @@ import team06.service.IAdminService;
 import team06.service.impl.AdminServiceImpl;
 
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -18,6 +16,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class AdminBean extends HttpServlet implements Serializable {
+    // Production
+//    private String PORT = "8080";
+//    private String USERNAME = "tomcatscript";
+//    private String PASSWORD = "tomcat";
+
+    // Development
+    private String PORT = "9528";
+    private String USERNAME = "tomcat2";
+    private String PASSWORD = "tomcat";
+
+
     private IAdminService adminService = new AdminServiceImpl();
 
     public AdminBean() {}
@@ -25,7 +34,7 @@ public class AdminBean extends HttpServlet implements Serializable {
     public List<AppsInfo> listAllApps() {
         List<AppsInfo> appsInfo = new LinkedList<>();
         try {
-            URL url = new URL("http://localhost:9528/manager/text/list");
+            URL url = new URL("http://localhost:" + PORT + "/manager/text/list");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setAllowUserInteraction(false);
@@ -38,9 +47,7 @@ public class AdminBean extends HttpServlet implements Serializable {
             conn.setRequestProperty("Accept-Charset", "utf-8");
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
-            String username = "tomcat2";
-            String password = "tomcat";
-            String authoInfo = new String(Base64.encode((username + ":" + password).getBytes()));
+            String authoInfo = new String(Base64.encode((USERNAME + ":" + PASSWORD).getBytes()));
             conn.setRequestProperty("Authorization", "Basic " + authoInfo);
             conn.setRequestProperty("Connection", "keep-alive");
             conn.connect();
@@ -73,7 +80,7 @@ public class AdminBean extends HttpServlet implements Serializable {
         return adminService.queryAllUsers();
     }
 
-    public List<Database> queryDB() {
+    public List<Database> getDB() {
         return adminService.queryAllDBs();
     }
 }

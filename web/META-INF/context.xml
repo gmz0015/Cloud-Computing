@@ -1,3 +1,4 @@
+<!-- Developemnt -->
 <Context>
     <Resource
             name="jdbc/datasource"
@@ -11,4 +12,16 @@
             maxIdle="4"/>
 </Context>
 
-<!-- url="jdbc:mysql://localhost:3306/CloudComputing" -->
+<!-- Production -->
+<!--<Context>-->
+<!--<Resource-->
+        <!--name="jdbc/datasource"-->
+        <!--auth="Container"-->
+        <!--type="javax.sql.DataSource"-->
+        <!--username="root"-->
+        <!--password="cloudcomputing"-->
+        <!--driverClassName="com.mysql.cj.jdbc.Driver"-->
+        <!--url="jdbc:mysql://localhost:3306"-->
+        <!--maxActive="8"-->
+        <!--maxIdle="4"/>-->
+<!--</Context>-->

@@ -16,7 +16,7 @@ public class IndexBean implements Serializable {
 
     public IndexBean() {
         IApplicationService appService = new ApplicationServiceImpl();
-        appInfo = appService.queryAllApps();
+        appInfo = appService.getAllApps();
     }
 
     public List<Application> getAllApps(){

@@ -42,7 +42,37 @@ public class ApplicationDaoImpl implements IApplicationDao {
     }
 
     @Override
-    public List<Application> queryAppById(String userid) {
+    public Application queryAppByAppId(String appid) {
+        Application appInfo = null;
+
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "SELECT * FROM CloudComputing.applications WHERE appid=" + appid;
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            while (rs.next()){
+                appInfo = new Application(
+                        appid, rs.getString("appname"), rs.getString("ownerid"),
+                        "", rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
+                        rs.getString("dbid"), rs.getString("warpath"), rs.getString("contextpath"));
+            }
+        }catch (Exception e) {
+            System.out.println("[team06.dao.implApplicationDaoImpl.queryAppByAppId]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+
+        return appInfo;
+    }
+
+    @Override
+    public List<Application> queryAppByUserId(String userid) {
         List<Application> appInfo = new ArrayList<Application>();
 
         /* Initial Connection */
@@ -63,7 +93,7 @@ public class ApplicationDaoImpl implements IApplicationDao {
                         rs.getString("dbid"), rs.getString("warpath"), rs.getString("contextpath")));
             }
         }catch (Exception e) {
-            System.out.println("[team06.dao.implApplicationDaoImpl.queryAppById]: " + e);
+            System.out.println("[team06.dao.implApplicationDaoImpl.queryAppByUserId]: " + e);
         }finally{
             JdbcUtils.release(conn, st, rs);
         }
@@ -98,6 +128,26 @@ public class ApplicationDaoImpl implements IApplicationDao {
     }
 
     @Override
+    public void deleteAppById(String appid) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "DELETE FROM `CloudComputing`.`applications` WHERE (`appid` = '" + appid + "');";
+            st = conn.prepareStatement(sql);
+            st.execute();
+        }catch (Exception e) {
+            System.out.println("[team06.dao.impl.ApplicationDaoImpl.deleteAppById]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+    }
+
+    @Override
     public void updateContextById(String appid, String contextPath) {
         /* Initial Connection */
         Connection conn = null;
@@ -108,7 +158,6 @@ public class ApplicationDaoImpl implements IApplicationDao {
         try{
             conn = JdbcUtils.getConnection();
             String sql = "UPDATE CloudComputing.applications SET contextpath='" + contextPath + "' WHERE appid='" + appid + "';";
-            System.out.println("sql is:" + sql);
             st = conn.prepareStatement(sql);
             st.executeUpdate();
         }catch (Exception e) {
@@ -130,7 +179,6 @@ public class ApplicationDaoImpl implements IApplicationDao {
         try{
             conn = JdbcUtils.getConnection();
             String sql = "SELECT contextpath FROM CloudComputing.applications WHERE appid='" + appid + "';";
-            System.out.println("sql is:" + sql);
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             while (rs.next()){
@@ -155,7 +203,6 @@ public class ApplicationDaoImpl implements IApplicationDao {
         try{
             conn = JdbcUtils.getConnection();
             String sql = "UPDATE CloudComputing.applications SET status=" + status + " WHERE appid='" + appid + "';";
-            System.out.println("sql is:" + sql);
             st = conn.prepareStatement(sql);
             st.executeUpdate();
         }catch (Exception e) {

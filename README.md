@@ -9,10 +9,15 @@ The sharing place for team 06.
 ### Login to VM
 `$ ssh -i cloudkey root@143.167.9.209`
 ### Uploading to VM
-`$ scp -i cloudkey <source-path> root@143.167.9.209:<destination-path>`
+- `$ scp -i cloudkey <source-path> root@143.167.9.209:<destination-path>`
+- `$ scp -i cloudkey -r platform/web root@143.167.9.209:/var/lib/tomcat8/webapps/platform`
 
 ## Deploy
 - Copy the folder to `/var/lib/tomcat8/webapps/`
+- Environemnt Switch List:
+    - team06.web.bean.AdminBean
+    - team06.web.controller.ManagerServlet
+    - context.xml
 
 ## TODO
 - Optimise 
@@ -26,7 +31,8 @@ The sharing place for team 06.
     - Add Rating System
 - Java Beans
     - ~~Figure out how to use Java Beans.~~ (Finish)
-    - Add account functions based on Java Beans
+- Log System
+    - Add Log4j
 - Application
     - ~~Set javabean item clickable~~ (Finish)
     - ~~Add Application~~ (Finish)

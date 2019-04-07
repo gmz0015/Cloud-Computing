@@ -10,12 +10,28 @@ public class ApplicationServiceImpl implements IApplicationService {
     private IApplicationDao appDao = new ApplicationDaoImpl();
 
     @Override
-    public List<Application> queryAllApps() {
+    public List<Application> getAllApps() {
         return appDao.queryAllApps();
     }
 
     @Override
-    public List<Application> queryAppById(String userid) { return appDao.queryAppById(userid); }
+    public Application getAppByAppId(String appid) {
+        return appDao.queryAppByAppId(appid);
+    }
+
+    @Override
+    public boolean checkAppUser(String userid, String appid) {
+        Application application = appDao.queryAppByAppId(appid);
+        return userid.equals(application.getOwnerid());
+    }
+
+    @Override
+    public void deleteAppByAppId(String appid) {
+        appDao.deleteAppById(appid);
+    }
+
+    @Override
+    public List<Application> getAppByUserId(String userid) { return appDao.queryAppByUserId(userid); }
 
     @Override
     public String getWarById(String appid) {

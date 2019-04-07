@@ -10,10 +10,17 @@ public interface IApplicationService {
      * get all applications
      * @return all applications' info
      */
-    List<Application> queryAllApps();
+    List<Application> getAllApps();
 
-    List<Application> queryAppById(String userid);
+    List<Application> getAppByUserId(String userid);
 
+    Application getAppByAppId(String appid);
+
+    boolean checkAppUser(String userid, String appid);
+
+    void deleteAppByAppId(String appid);
+
+    /* PATH */
     String getWarById(String appid);
 
     void setContextById(String appid, String context);

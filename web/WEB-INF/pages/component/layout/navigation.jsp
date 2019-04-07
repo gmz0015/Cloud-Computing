@@ -15,7 +15,7 @@
         if(session.getAttribute("userid") == null) {
     %>
     <%-- logout, need to login --%>
-    <a href="#" class="w3-bar-item w3-button w3-right" onclick="window.location.href='<%= request.getContextPath() %>/login.jsp'" >Login</a>
+    <a href="#" class="w3-bar-item w3-button w3-right" onclick="window.location.href='login.jsp'" >Login</a>
     <%
         } else {
     %>

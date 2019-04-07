@@ -14,7 +14,7 @@
 <%@ page import="java.util.List" %>
 
 <%-- Java Bean --%>
-<jsp:useBean id="indexBean" scope="session" class="team06.web.bean.IndexBean" />
+<jsp:useBean id="indexBean" scope="page" class="team06.web.bean.IndexBean" />
 <%--<jsp:setProperty name="indexBean" property="*" />--%>
 
 <%-- Set userid to session --%>
@@ -506,11 +506,11 @@
                             </td>
                             <td>
                                 <% if (appInfo.getStatus() == 0) { %>
-                                <%@ include file="/WEB-INF/pages/status/undeploy.jsp"%>
+                                <%@ include file="/WEB-INF/pages/component/status/undeploy.jsp"%>
                                 <% } else if (appInfo.getStatus() == 1) { %>
-                                <%@ include file="/WEB-INF/pages/status/stop.jsp"%>
+                                <%@ include file="/WEB-INF/pages/component/status/stop.jsp"%>
                                 <% } else if (appInfo.getStatus() == 2) { %>
-                                <%@ include file="/WEB-INF/pages/status/running.jsp"%>
+                                <%@ include file="/WEB-INF/pages/component/status/running.jsp"%>
                                 <% } %>
                             </td>
                             <td>

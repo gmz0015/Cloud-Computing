@@ -12,7 +12,7 @@ public interface IAdminDao {
      * Query all databases
      * @return
      */
-    List<Database> queryAllDBs();
+    List<String> queryAllDBs();
 
     /**
      * Query all Applications

@@ -14,6 +14,12 @@ import java.net.URL;
 public class login extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+    // Production
+//    private String IP = "8080";
+
+    // Development
+    private String IP = "9528";
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
     }
@@ -34,7 +40,7 @@ public class login extends HttpServlet {
 
         try {
             //Step 1: create URL
-            URL url = new URL("http://localhost:9528/test/api/user/login");
+            URL url = new URL("http://localhost:" + IP + "/test/api/user/login");
             //Step 2: open a connection
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             //Step 3: set parameters

@@ -9,7 +9,7 @@
 <html>
 <div class="w3-tag w3-round" style="padding:3px;background-color: transparent">
     <div class="w3-tag w3-round" style="background-color: transparent">
-        <span class="w3-text-red"><b>Stop</b></span>
+        <span style="color: #F00"><b>Stop</b></span>
     </div>
 </div>
 </html>

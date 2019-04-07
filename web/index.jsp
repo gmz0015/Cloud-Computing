@@ -21,9 +21,9 @@
 <%-- Authentication --%>
 <%--<%@ include file="/WEB-INF/logic/authentication.jsp"%>--%>
 
-<%@ include file="/WEB-INF/pages/component/navigation.jsp"%>
+<%@ include file="/WEB-INF/pages/component/layout/navigation.jsp"%>
 
-<%@ include file="/WEB-INF/pages/component/sidebar.jsp"%>
+<%@ include file="/WEB-INF/pages/component/layout/sidebar.jsp"%>
 
 <section style="background-color:rgb(234, 237, 241);min-height: 700px;margin-top: 45px;padding-bottom: 20px">
 
@@ -33,6 +33,6 @@
 
 </section>
 
-<%@ include file="/WEB-INF/pages/component/footer.jsp"%>
+<%@ include file="/WEB-INF/pages/component/layout/footer.jsp"%>
 
 </html>

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IDatabaseService {
 
-    int createDBbyId(String userid);
+    Database createDBbyId(String userid);
 
     Database queryDBbyid(String userid);
 

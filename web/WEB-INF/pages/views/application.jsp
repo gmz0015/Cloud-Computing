@@ -13,12 +13,17 @@
 <%@ page import="team06.domain.Database" %>
 
 <%-- Java Bean --%>
-<jsp:useBean id="appBean" scope="session" class="team06.web.bean.ApplicationBean" />
+<jsp:useBean id="appBean" scope="page" class="team06.web.bean.ApplicationBean" />
 <jsp:setProperty name="appBean" property="userid" value='<%= session.getAttribute("userid") %>'/>
 
+<% Database database = appBean.queryDBbyid(session.getAttribute("userid").toString()); %>
 <% appBean.doQuery(); %>
 
 <%-- Authentication --%>
+
+<%-- Message --%>
+<%@ include file="/WEB-INF/pages/component/message.jsp"%>
+
 <!DOCTYPE HTML>
 <html xmlns:jsp="http://java.sun.com/JSP/Page">
 
@@ -30,9 +35,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
-<%@ include file="/WEB-INF/pages/component/navigation.jsp"%>
+<%@ include file="/WEB-INF/pages/component/layout/navigation.jsp"%>
 
-<%@ include file="/WEB-INF/pages/component/sidebar.jsp"%>
+<%@ include file="/WEB-INF/pages/component/layout/sidebar.jsp"%>
 <section style="background-color:rgb(234, 237, 241);min-height: 700px;margin-top: 45px;padding-bottom: 20px">
 
     <div id="main" style="margin-left: 50px">
@@ -55,15 +60,15 @@
                         <table class="w3-table w3-centered" style="table-layout:fixed;height: 100px">
                             <tr>
                                 <td style="border-right:1px solid #dddddd">Total</td>
-                                <td  style="border-right:1px solid #dddddd">Running</td>
-                                <td  style="border-right:1px solid #dddddd">Maintain</td>
-                                <td>Stop</td>
+                                <td style="border-right:1px solid #dddddd">Running</td>
+                                <td style="border-right:1px solid #dddddd">Stop</td>
+                                <td>Undeploy</td>
                             </tr>
                             <tr>
-                                <td style="color: #09C;font-size: 24px;border-right:1px solid #dddddd">2</td>
-                                <td style="color: #090;font-size: 24px;border-right:1px solid #dddddd">1</td>
-                                <td style="color: #F00;font-size: 24px;border-right:1px solid #dddddd">0</td>
-                                <td style="color: #F00;font-size: 24px">1</td>
+                                <td style="color: #09C;font-size: 24px;border-right:1px solid #dddddd"><%= appBean.getTotal() %></td>
+                                <td style="color: #090;font-size: 24px;border-right:1px solid #dddddd"><%= appBean.getRunning() %></td>
+                                <td style="color: #F00;font-size: 24px;border-right:1px solid #dddddd"><%= appBean.getStop() %></td>
+                                <td class="w3-text-amber" style="font-size: 24px"><%= appBean.getUndeploy() %></td>
                             </tr>
                         </table>
 
@@ -164,7 +169,6 @@
                             <span style="font-size: 20px">Database Information</span>
                         </header>
 
-                        <% Database database = appBean.queryDBbyid(session.getAttribute("userid").toString()); %>
                         <div class="w3-row-padding" style="height: 67%">
                             <div class="w3-third w3-display-container" style="height: 100%">
                                 <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
@@ -400,11 +404,11 @@
                             <tr>
                                 <th rowspan="2" style="text-align: center;vertical-align: middle;border-right:2px dashed #dddddd">
                                     <% if (appInfo.getStatus() == 0) { %>
-                                    <%@ include file="/WEB-INF/pages/status/undeploy.jsp"%>
+                                    <%@ include file="/WEB-INF/pages/component/status/undeploy.jsp"%>
                                     <% } else if (appInfo.getStatus() == 1) { %>
-                                    <%@ include file="/WEB-INF/pages/status/stop.jsp"%>
+                                    <%@ include file="/WEB-INF/pages/component/status/stop.jsp"%>
                                     <% } else if (appInfo.getStatus() == 2) { %>
-                                    <%@ include file="/WEB-INF/pages/status/running.jsp"%>
+                                    <%@ include file="/WEB-INF/pages/component/status/running.jsp"%>
                                     <% } %>
                                 </th>
                                 <td>Visits <%= appInfo.getVisits() %></td>
@@ -422,5 +426,5 @@
         </div>
     </div>
 </section>
-<%@ include file="/WEB-INF/pages/component/footer.jsp"%>
+<%@ include file="/WEB-INF/pages/component/layout/footer.jsp"%>
 </html>

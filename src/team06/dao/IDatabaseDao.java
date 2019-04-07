@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IDatabaseDao {
 
-    int createDBbyId(String userid);
+    Database createDBbyId(String userid);
 
     /**
      * Query the database info by userid
@@ -14,6 +14,13 @@ public interface IDatabaseDao {
      * @return
      */
     Database queryDBbyid(String userid);
+
+    /**
+     * Query the database info by database name
+     * @param name
+     * @return
+     */
+    Database queryDBbyName(String name);
 
     /**
      * Query all database info

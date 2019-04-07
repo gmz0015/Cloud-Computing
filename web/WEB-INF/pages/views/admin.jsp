@@ -25,9 +25,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
-<%@ include file="/WEB-INF/pages/component/navigation.jsp"%>
+<%@ include file="/WEB-INF/pages/component/layout/navigation.jsp"%>
 
-<%@ include file="/WEB-INF/pages/component/sidebar.jsp"%>
+<%@ include file="/WEB-INF/pages/component/layout/sidebar.jsp"%>
 <section style="background-color:rgb(234, 237, 241);min-height: 700px;margin-top: 45px;padding-bottom: 20px">
 
     <div id="main" style="margin-left: 50px">
@@ -102,7 +102,7 @@
                                 <th>Database Password</th>
                             </tr>
                             <%
-                                List<Database> databases = adminBean.queryDB();
+                                List<Database> databases = adminBean.getDB();
                                 for (Database database: databases) {
                             %>
                             <tr style="text-align: center">
@@ -143,5 +143,5 @@
     </div>
 
 </section>
-<%@ include file="/WEB-INF/pages/component/footer.jsp"%>
+<%@ include file="/WEB-INF/pages/component/layout/footer.jsp"%>
 </html>

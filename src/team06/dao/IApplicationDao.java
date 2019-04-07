@@ -13,17 +13,31 @@ public interface IApplicationDao {
     List<Application> queryAllApps();
 
     /**
-     * get all applications
+     * get the user's all applications
      * @return all applications' info
      */
-    List<Application> queryAppById(String userid);
+    List<Application> queryAppByUserId(String userid);
 
+    /**
+     * get the application by appid
+     * @param appid
+     * @return
+     */
+    Application queryAppByAppId(String appid);
+
+    /* PATH */
     /**
      * query the path of war file by appid
      * @param appid
      * @return
      */
     String queryWarById(String appid);
+
+    /**
+     * drop the application
+     * @param appid
+     */
+    void deleteAppById(String appid);
 
     /**
      * update the context path of an application

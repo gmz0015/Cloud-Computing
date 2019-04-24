@@ -21,7 +21,7 @@
     %>
     <%-- login, need to logout --%>
     <a href="#" class="w3-bar-item w3-button w3-right" onclick=window.location.href="<%= request.getContextPath() %>/logout">Logout</a>
-    <a href="#" class="w3-bar-item w3-button w3-right" onclick=window.location.href="account.jsp">Account</a>
+    <a href="#" class="w3-bar-item w3-button w3-right" onclick="window.location.href='<%= request.getContextPath() + "/account" %>'">Account</a>
     <%
         }
     %>

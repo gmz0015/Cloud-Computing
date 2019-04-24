@@ -1,29 +1,27 @@
 package team06.platform.web.bean;
 
+import team06.platform.domain.Transaction;
 import team06.platform.service.IAccountService;
 import team06.platform.service.impl.AccountServiceImpl;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class AccountBean implements Serializable {
     private IAccountService accountService = new AccountServiceImpl();
-    private String userid;
-
-    private Integer balance;
+    private String userId;
 
     public Integer getBalance() {
-        return accountService.getBalance(this.userid);
+        return accountService.getBalance(Long.valueOf(this.userId));
     }
 
-    public void setBalance(Integer balance) {
-        this.balance = balance;
+    public List<Transaction> getTransaction() { return accountService.getTransaction(Long.valueOf(this.userId)); }
+
+    public String getUserId() {
+        return userId;
     }
 
-    public String getUserid() {
-        return userid;
-    }
-
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

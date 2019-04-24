@@ -7,25 +7,27 @@ import team06.platform.domain.Transaction;
 import team06.platform.service.IAccountService;
 
 import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
 
 public class AccountServiceImpl implements IAccountService {
     private IAccountDao accountDao = new AccountDaoImpl();
 
     @Override
-    public Integer getBalance(String userid) {
-        return  accountDao.queryBalance(userid);
+    public Integer getBalance(Long userId) {
+        return  accountDao.queryBalance(userId);
     }
 
     @Override
-    public Integer withdrawal(String userid, Integer amount) {
-        Integer currentBalance = accountDao.queryBalance(userid);
+    public Integer withdrawal(Long userId, Integer amount) {
+        Integer currentBalance = accountDao.queryBalance(userId);
         Integer newBalance = currentBalance - amount;
-        accountDao.updateBalance(new Account(userid, "", newBalance));
+        accountDao.updateBalance(new Account(userId, "", newBalance));
         return newBalance;
     }
 
     @Override
-    public Integer deposit(String userid, Integer amount) {
+    public Integer deposit(Long userid, Integer amount) {
         Integer currentBalance = accountDao.queryBalance(userid);
         Integer newBalance = currentBalance + amount;
         accountDao.updateBalance(new Account(userid, "", newBalance));
@@ -33,10 +35,17 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
-    public void transfer(String fromUserId, String toUserId, String type, String appId, Integer amount) {
+    public Boolean transfer(Long fromUserId, Long toUserId, String type, Long appId, Integer amount) {
+        Date date = new Date();
         this.withdrawal(fromUserId, amount);
         this.deposit(toUserId, amount);
-        accountDao.insertTransaction(new Transaction(fromUserId, "TEST", toUserId, "TEST", type, appId, amount, new Timestamp(1)));
+        accountDao.insertTransaction(new Transaction(fromUserId, "TEST", toUserId, "TEST", type, appId, amount, new Timestamp(date.getTime())));
+        return true;
+    }
+
+    @Override
+    public List<Transaction> getTransaction(Long userId) {
+        return accountDao.queryTransaction(userId);
     }
 
 

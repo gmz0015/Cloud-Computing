@@ -1,25 +1,26 @@
 package team06.platform.domain;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class Transaction {
-    private String fromUserId;
+    private Long fromUserId;
 
     private String fromUserName;
 
-    private String toUserId;
+    private Long toUserId;
 
     private String toUserName;
 
     private String type;
 
-    private String appId;
+    private Long appId;
 
     private Integer amount;
 
     private Timestamp time;
 
-    public Transaction(String fromUserId, String fromUserName, String toUserId, String toUserName, String type, String appId, Integer amount, Timestamp time) {
+    public Transaction(Long fromUserId, String fromUserName, Long toUserId, String toUserName, String type, Long appId, Integer amount, Timestamp time) {
         this.fromUserId = fromUserId;
         this.fromUserName = fromUserName;
         this.toUserId = toUserId;
@@ -28,13 +29,14 @@ public class Transaction {
         this.appId = appId;
         this.amount = amount;
         this.time = time;
+
     }
 
-    public String getFromUserId() {
+    public Long getFromUserId() {
         return fromUserId;
     }
 
-    public void setFromUserId(String fromUserId) {
+    public void setFromUserId(Long fromUserId) {
         this.fromUserId = fromUserId;
     }
 
@@ -46,11 +48,11 @@ public class Transaction {
         this.fromUserName = fromUserName;
     }
 
-    public String getToUserId() {
+    public Long getToUserId() {
         return toUserId;
     }
 
-    public void setToUserId(String toUserId) {
+    public void setToUserId(Long toUserId) {
         this.toUserId = toUserId;
     }
 
@@ -70,11 +72,11 @@ public class Transaction {
         this.type = type;
     }
 
-    public String getAppId() {
+    public Long getAppId() {
         return appId;
     }
 
-    public void setAppId(String appId) {
+    public void setAppId(Long appId) {
         this.appId = appId;
     }
 

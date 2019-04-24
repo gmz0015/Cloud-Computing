@@ -1,23 +1,23 @@
 package team06.platform.domain;
 
 public class Account {
-    private String userid;
+    private Long userid;
 
     private String username;
 
     private Integer balance;
 
-    public Account(String userid, String username, Integer balance) {
+    public Account(Long userid, String username, Integer balance) {
         this.userid = userid;
         this.username = username;
         this.balance = balance;
     }
 
-    public String getUserid() {
+    public Long getUserid() {
         return userid;
     }
 
-    public void setUserid(String userid) {
+    public void setUserid(Long userid) {
         this.userid = userid;
     }
 

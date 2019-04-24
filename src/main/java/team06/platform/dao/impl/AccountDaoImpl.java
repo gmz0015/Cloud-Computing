@@ -8,10 +8,14 @@ import team06.platform.utils.JdbcUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class AccountDaoImpl implements IAccountDao {
     @Override
-    public Integer queryBalance(String userid) {
+    public Integer queryBalance(Long userid) {
         /* Initial Connection */
         Connection conn = null;
         PreparedStatement st = null;
@@ -70,6 +74,8 @@ public class AccountDaoImpl implements IAccountDao {
         Connection conn = null;
         PreparedStatement st = null;
         ResultSet rs = null;
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         boolean result = false;
 
         /* Connect */
@@ -77,17 +83,18 @@ public class AccountDaoImpl implements IAccountDao {
             conn = JdbcUtils.getConnection();
             conn.setAutoCommit(false); // start transaction
 
-            String sql = "INSERT INTO" +
+            String sql = "INSERT INTO " +
                     "CloudComputing.transaction " +
-                    "VALUES " +
-                    "fromUserId='" + transaction.getFromUserId() + "' " +
-                    "fromUserName='" + transaction.getFromUserName() + "' " +
-                    "toUserId='" + transaction.getToUserId() + "' " +
-                    "toUserName='" + transaction.getToUserName() + "' " +
-                    "'type'='" + transaction.getType() + "' " +
-                    "'appId'='" + transaction.getAppId() + "' " +
-                    "'number'='" + transaction.getAmount() + "' " +
-                    ";";
+                    "VALUES (" +
+                    0 + ", " +
+                    transaction.getFromUserId() + ", " +
+                    "'" + transaction.getFromUserName() + "', " +
+                    transaction.getToUserId() + ", " +
+                    "'" + transaction.getToUserName() + "', " +
+                    "'" + transaction.getType() + "', " +
+                    transaction.getAppId() + ", " +
+                    transaction.getAmount() + ", " +
+                    "'" + transaction.getTime() + "');";
             st = conn.prepareStatement(sql);
             st.execute();
             conn.commit();
@@ -98,5 +105,37 @@ public class AccountDaoImpl implements IAccountDao {
             JdbcUtils.release(conn, st, rs);
         }
         return result;
+    }
+
+    @Override
+    public List<Transaction> queryTransaction(Long userId) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        List<Transaction> transactions = new ArrayList<>();
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            conn.setAutoCommit(false); // start transaction
+
+            String sql = "SELECT * FROM CloudComputing.transaction WHERE fromUserId='" + userId + "' OR toUserId='" + userId + "';";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            conn.commit();
+            while(rs.next()) {
+                transactions.add(new Transaction(
+                        rs.getLong("fromUserId"), rs.getString("fromUserName"),
+                        rs.getLong("toUserId"), rs.getString("toUserName"),
+                        rs.getString("type"), rs.getLong("appId"),
+                        rs.getInt("number"), rs.getTimestamp("time")));
+            }
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.AccountDaoImpl.queryTransaction]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return transactions;
     }
 }

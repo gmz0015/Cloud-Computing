@@ -15,6 +15,22 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!-- API -->
+    <servlet>
+        <servlet-name>JAX-RS Servlet</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>team06.platform.web.API</param-value>
+        </init-param>
+
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JAX-RS Servlet</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+
     <!-- Guide Page -->
     <servlet>
         <servlet-name>Guide</servlet-name>
@@ -24,6 +40,19 @@
     <servlet-mapping>
         <servlet-name>Guide</servlet-name>
         <url-pattern>/guide</url-pattern>
+    </servlet-mapping>
+
+    <!-- Admin -->
+    <servlet>
+        <description>Account Page</description>
+        <display-name>Account</display-name>
+        <servlet-name>Account</servlet-name>
+        <servlet-class>team06.platform.web.UI.AccountUIServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Account</servlet-name>
+        <url-pattern>/account</url-pattern>
     </servlet-mapping>
 
     <!-- Admin -->

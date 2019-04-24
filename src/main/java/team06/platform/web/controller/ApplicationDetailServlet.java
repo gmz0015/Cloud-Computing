@@ -23,7 +23,7 @@ public class ApplicationDetailServlet extends HttpServlet {
         } else {
             request.setAttribute("error", "0");
             System.out.println("Error 0");
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/console.jsp").forward(request, response);
         }
 //        request.getRequestDispatcher("/WEB-INF/views/detail.jsp").forward(request, response);
     }

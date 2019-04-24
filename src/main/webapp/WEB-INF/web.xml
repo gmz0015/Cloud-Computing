@@ -7,12 +7,23 @@
     <!-- Welcome Page -->
     <servlet>
         <servlet-name>Welcome</servlet-name>
-        <servlet-class>team06.platform.web.UI.IndexUIServlet</servlet-class>
+        <servlet-class>team06.platform.web.UI.WelcomeUIServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>Welcome</servlet-name>
         <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!-- Console Page -->
+    <servlet>
+        <servlet-name>Console</servlet-name>
+        <servlet-class>team06.platform.web.UI.IndexUIServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Console</servlet-name>
+        <url-pattern>/console</url-pattern>
     </servlet-mapping>
 
     <!-- API -->
@@ -196,5 +207,11 @@
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <!-- Whitelist -->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.jpg</url-pattern>
     </servlet-mapping>
 </web-app>

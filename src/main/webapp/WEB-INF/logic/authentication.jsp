@@ -10,7 +10,7 @@
 
 <% if(session.getAttribute("userinfo") == null) {
     System.out.println("NO PERMISSION");
-    response.setHeader("refresh", "5;URL=" + request.getContextPath() + "/index.jsp");
+    response.setHeader("refresh", "5;URL=" + request.getContextPath() + "/console.jsp");
 } %>
 
 <html>

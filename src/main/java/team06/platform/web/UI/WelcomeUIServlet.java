@@ -1,4 +1,4 @@
-package team06.platform.web.controller;
+package team06.platform.web.UI;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -6,15 +6,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AuthenticationServlet extends HttpServlet {
+public class WelcomeUIServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String requestURI = request.getRequestURI();
-        String userid = request.getSession().getAttribute("userid").toString();
-        String username = request.getSession().getAttribute("username").toString();
-
-        request.getRequestDispatcher(request.getContextPath() + "/console.jsp").forward(request, response);
+        request.getRequestDispatcher(request.getContextPath() + "/welcome.jsp").forward(request, response);
 
     }
 

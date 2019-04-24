@@ -10,7 +10,7 @@ public class IndexUIServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher(request.getContextPath() + "/index.jsp").forward(request, response);
+        request.getRequestDispatcher(request.getContextPath() + "/console.jsp").forward(request, response);
 
     }
 

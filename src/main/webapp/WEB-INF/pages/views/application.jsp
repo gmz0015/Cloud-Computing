@@ -81,36 +81,14 @@
                     <div class="w3-card" style="background-color:white;position:relative">
 
                         <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
-                            <span style="font-size: 20px">Account</span>
+                            <span style="font-size: 20px">Account Balance</span>
                         </header>
 
-                        <div class="w3-row" style="height:100px">
-                            <div class="w3-half w3-padding" style="border-right:1px dashed #dddddd">
-                                <div class="" style="background-color: #F5F5F6;text-align: center;height: 80px;">
-                                    <div class="w3-row w3-container w3-padding w3-left" style="color: #666">
-                                        Balance
-                                    </div>
-                                    <div class="w3-row" style="text-align: center;vertical-align: middle">
-                                        <span style="color:#9B9EA0;font-size:18px">34.5</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="w3-half">
-                                <div class="w3-row" style=";margin-top: 10px;margin-bottom: 5px;margin-right: 10px;margin-left: 10px;">
-                                    <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
-                                         style="background-color: #F5F5F6;height:35px;text-align: center;">
-                                        <span style="vertical-align: middle;color: #666;">Charge</span>
-                                        <span style="vertical-align: middle;color: #666;">3.45/hour</span>
-                                    </div>
-                                </div>
-
-                                <div class="w3-row" style=";margin-top: 5px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;">
-                                    <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;">
-                                        <span style="vertical-align: middle;color: #666;">Earn Peanut</span>
-                                        <span style="vertical-align: middle;color: #666;">4.2/hour</span>
-                                    </div>
-                                </div>
+                        <div class="w3-row" style="height:100%">
+                            <div class="w3-display-container w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;min-height: 80px;margin: 10px">
+                                <span class="w3-display-middle w3-xlarge" style="color:#9B9EA0">
+                                    <%= appBean.getBalance() %>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -163,16 +141,16 @@
             <div class="w3-panel w3-leftbar w3-border-blue" style="height:27px">
                 <span style="font-size: 16px">Database</span>
             </div>
-            <div class="w3-row-padding" >
+            <div class="w3-row-padding" style="min-height:150px">
                 <div class="w3-threequarter">
-                    <div class="w3-card" style="background-color:white;height:150px">
+                    <div class="w3-card" style="background-color:white;height: 100%">
 
                         <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
                             <span style="font-size: 20px">Database Information</span>
                         </header>
 
-                        <div class="w3-row-padding" style="height: 67%">
-                            <div class="w3-quarter w3-display-container" style="height: 100%">
+                        <div class="w3-row-padding">
+                            <div class="w3-quarter w3-display-container" style="min-height: 105px">
                                 <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
                                      style="background-color: #F5F5F6;height: 85%;width: 95%">
                                     <div class="w3-display-container" style="height: 100%;width: 100%">
@@ -187,7 +165,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="w3-quarter w3-display-container" style="height: 100%;border-right:1px dashed #dddddd;border-left:1px dashed #dddddd">
+                            <div class="w3-quarter w3-display-container" style="min-height: 105px;border-right:1px dashed #dddddd;border-left:1px dashed #dddddd">
                                 <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
                                      style="background-color: #F5F5F6;height: 85%;width: 95%">
                                     <div class="w3-display-container" style="height: 100%;width: 100%">
@@ -202,7 +180,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="w3-quarter w3-display-container" style="height: 100%">
+                            <div class="w3-quarter w3-display-container" style="min-height: 105px">
                                 <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
                                      style="background-color: #F5F5F6;height: 85%;width: 95%">
                                     <div class="w3-display-container" style="height: 100%;width: 100%">
@@ -217,7 +195,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="w3-quarter w3-display-container" style="height: 100%;border-left:1px dashed #dddddd">
+                            <div class="w3-quarter w3-display-container" style="min-height: 105px;border-left:1px dashed #dddddd">
                                 <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
                                      style="background-color: #F5F5F6;height: 85%;width: 95%">
                                     <div class="w3-display-container" style="height: 100%;width: 100%">

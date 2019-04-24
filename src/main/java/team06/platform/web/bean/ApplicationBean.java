@@ -2,8 +2,10 @@ package team06.platform.web.bean;
 
 import team06.platform.domain.Application;
 import team06.platform.domain.Database;
+import team06.platform.service.IAccountService;
 import team06.platform.service.IApplicationService;
 import team06.platform.service.IDatabaseService;
+import team06.platform.service.impl.AccountServiceImpl;
 import team06.platform.service.impl.ApplicationServiceImpl;
 import team06.platform.service.impl.DatabaseServiceImpl;
 
@@ -21,6 +23,7 @@ public class ApplicationBean implements Serializable {
 
     private IApplicationService appService = new ApplicationServiceImpl();
     private IDatabaseService databaseService = new DatabaseServiceImpl();
+    private IAccountService accountService = new AccountServiceImpl();
 
     public ApplicationBean(){
         appInfo = new ArrayList<>();
@@ -54,6 +57,9 @@ public class ApplicationBean implements Serializable {
         return appInfo;
     }
 
+    public Integer getBalance() {
+        return accountService.getBalance(Long.valueOf(this.userid));
+    }
 
 
     /* Setter and Getter */

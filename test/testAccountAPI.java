@@ -64,11 +64,11 @@ public class testAccountAPI{
             con.setDoOutput(true);
             con.setDoInput(true);
             con.setUseCaches(false);
-            // 获取URLConnection对象对应的输出流
+            // get output stream of URLConnection
             out = new PrintWriter(con.getOutputStream());
-            // 发送请求参数
+            // send post parameter
             out.print("fromUserId=345897325&toUserId=392849790&amount=5&appId=0");
-            // flush输出流的缓冲
+            // flush
             out.flush();
 
 

@@ -29,9 +29,39 @@ public class ApplicationDaoImpl implements IApplicationDao {
             rs = st.executeQuery();
             while (rs.next()){
                 appsInfo.add(new Application(
-                        rs.getString("appid"), rs.getString("appname"), rs.getString("ownerid"),
+                        rs.getString("appid"), rs.getString("appname"), rs.getString("description"), rs.getString("ownerid"),
                         rs.getString("ownername"), rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
-                        rs.getString("dbid"), rs.getString("warpath"), rs.getString("contextpath")));
+                        rs.getString("dbid"), rs.getString("warpath"), rs.getString("contextpath"), rs.getString("iconPath")));
+            }
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.queryAllApps]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return appsInfo;
+    }
+
+    @Override
+    public List<Application> queryAllLiveApps() {
+        List<Application> appsInfo = new ArrayList<Application>();
+        String username;
+
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "SELECT * FROM CloudComputing.applications WHERE status=2";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            while (rs.next()){
+                appsInfo.add(new Application(
+                        rs.getString("appid"), rs.getString("appname"), rs.getString("description"), rs.getString("ownerid"),
+                        rs.getString("ownername"), rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
+                        rs.getString("dbid"), rs.getString("warpath"), rs.getString("contextpath"), rs.getString("iconPath")));
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.queryAllApps]: " + e);
@@ -58,9 +88,9 @@ public class ApplicationDaoImpl implements IApplicationDao {
             rs = st.executeQuery();
             while (rs.next()){
                 appInfo = new Application(
-                        appid, rs.getString("appname"), rs.getString("ownerid"),
+                        appid, rs.getString("appname"), rs.getString("description"), rs.getString("ownerid"),
                         "", rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
-                        rs.getString("dbid"), rs.getString("warpath"), rs.getString("contextpath"));
+                        rs.getString("dbid"), rs.getString("warpath"), rs.getString("contextpath"), rs.getString("iconPath"));
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.implApplicationDaoImpl.queryAppByAppId]: " + e);
@@ -88,9 +118,9 @@ public class ApplicationDaoImpl implements IApplicationDao {
             rs = st.executeQuery();
             while (rs.next()){
                 appInfo.add(new Application(
-                        rs.getString("appid"), rs.getString("appname"), userid,
+                        rs.getString("appid"), rs.getString("appname"), rs.getString("description"), userid,
                         "", rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
-                        rs.getString("dbid"), rs.getString("warpath"), rs.getString("contextpath")));
+                        rs.getString("dbid"), rs.getString("warpath"), rs.getString("contextpath"), rs.getString("iconPath")));
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.implApplicationDaoImpl.queryAppByUserId]: " + e);

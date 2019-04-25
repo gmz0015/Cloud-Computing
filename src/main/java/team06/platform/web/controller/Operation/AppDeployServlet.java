@@ -19,7 +19,7 @@ public class AppDeployServlet extends HttpServlet {
         String result = managerServlet.deploy(
                 request.getParameter("appid"),
                 applicationService.getWarById(request.getParameter("appid")),
-                "/" + request.getSession().getAttribute("username") + generateid());
+                "/app/" + request.getSession().getAttribute("username") + generateid());
 
         String message = "<p>" + result + "</p>";
         request.setAttribute("message",message);

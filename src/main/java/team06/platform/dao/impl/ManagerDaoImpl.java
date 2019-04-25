@@ -54,6 +54,7 @@ public class ManagerDaoImpl implements IManagerDao {
             String sql = "INSERT INTO CloudComputing.applications VALUES ( '" +
                     application.getAppid() + "', '" +
                     application.getName() + "', '" +
+                    application.getDescription() + "', '" +
                     application.getOwnerid() + "', '" +
                     application.getOwnername() + "'," +
                     application.getVisits() + "," +
@@ -61,7 +62,8 @@ public class ManagerDaoImpl implements IManagerDao {
                     application.getStatus() + ", '" +
                     application.getDbid() + "', '" +
                     application.getWarpath() + "', '" +
-                    application.getContextpath() +
+                    application.getContextpath() + "', '" +
+                    application.getIconPath() +
                     "');";
             System.out.println("sql is: " + sql);
             st = conn.prepareStatement(sql);

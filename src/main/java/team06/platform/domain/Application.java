@@ -3,6 +3,7 @@ package team06.platform.domain;
 public class Application {
     private String appid;
     private String name;
+    private String description;
     private String ownerid;
     private String ownername;
     private int visits;
@@ -11,10 +12,12 @@ public class Application {
     private String dbid;
     private String warpath;
     private String contextpath;
+    private String iconPath;
 
-    public Application(String appid, String name, String ownerid, String ownername, int visits, double rating, int status, String dbid, String warpath, String contextpath) {
+    public Application(String appid, String name, String description, String ownerid, String ownername, int visits, double rating, int status, String dbid, String warpath, String contextpath, String iconPath) {
         this.appid = appid;
         this.name = name;
+        this.description = description;
         this.ownerid = ownerid;
         this.ownername = ownername;
         this.visits = visits;
@@ -23,9 +26,27 @@ public class Application {
         this.dbid = dbid;
         this.warpath = warpath;
         this.contextpath = contextpath;
+        this.iconPath = iconPath;
     }
 
+
     /* Getter and Setter */
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getIconPath() {
+        return iconPath;
+    }
+
+    public void setIconPath(String iconPath) {
+        this.iconPath = iconPath;
+    }
 
     public String getOwnername() {
         return ownername;

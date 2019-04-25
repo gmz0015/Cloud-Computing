@@ -13,7 +13,7 @@ public class logout extends HttpServlet {
         request.getSession().setAttribute("userid", null);
         request.getSession().setAttribute("username", null);
         request.getSession().setAttribute("userrole", null);
-        response.sendRedirect(request.getContextPath());
+        response.sendRedirect("/");
     }
 
     @Override

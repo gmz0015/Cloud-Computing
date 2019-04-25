@@ -12,6 +12,8 @@ public interface IApplicationService {
      */
     List<Application> getAllApps();
 
+    List<Application> getAllLiveAppInfo();
+
     List<Application> getAppByUserId(String userid);
 
     Application getAppByAppId(String appid);

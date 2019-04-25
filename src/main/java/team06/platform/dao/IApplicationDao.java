@@ -13,6 +13,11 @@ public interface IApplicationDao {
     List<Application> queryAllApps();
 
     /**
+     * get all running applications
+     */
+    List<Application> queryAllLiveApps();
+
+    /**
      * get the user's all applications
      * @return all applications' info
      */

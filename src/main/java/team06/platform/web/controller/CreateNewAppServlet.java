@@ -40,6 +40,7 @@ public class CreateNewAppServlet extends HttpServlet {
                             managerService.insertNewApp(new Application(
                                     generateAppid(),
                                     request.getSession().getAttribute("userid") + "_" + generateAppid(),
+                                    "Default Description",
                                     request.getSession().getAttribute("userid").toString(),
                                     request.getSession().getAttribute("username").toString(),
                                     0,
@@ -47,6 +48,7 @@ public class CreateNewAppServlet extends HttpServlet {
                                     0,
                                     databaseService.queryDBbyid(request.getSession().getAttribute("userid").toString()).getDbid(),
                                     savePath,
+                                    null,
                                     null));
                         }catch (Exception e) {
                             System.out.println("[team06.platform.web.controller.CreateNewAppServlet.doGet]: " + e);
@@ -57,7 +59,7 @@ public class CreateNewAppServlet extends HttpServlet {
                         }
 
                         // Upload Successful, redirect to application page
-                        response.sendRedirect(request.getContextPath() + "/application");
+                        response.sendRedirect("/application");
                     }
                 }
             }

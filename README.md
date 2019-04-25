@@ -52,6 +52,7 @@ The sharing place for team 06.
 - Figure out about XML.(Low Priority)
 
 ## Done
+- ~~Tomcat Realm~~ (Finish)
 - ~~Using ajax and servlet to change div.~~ (Discard)
 - Add navigating between the home page and account page.
 - Use JSON to pass value from back-end to front-end. The dependencies have listed below.

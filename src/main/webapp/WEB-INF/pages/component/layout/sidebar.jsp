@@ -38,6 +38,17 @@
             </div>
         </div>
         <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue" style="height:50px"
+            onclick="window.location.href='<%= request.getContextPath() + "/console" %>'" >
+            <div class="w3-row">
+                <div class="w3-col w3-center" style="width:20px">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div id="sidebar-console" class="w3-col w3-left  w3-margin-left" style="width:80px;display:none">
+                    <span>Console</span>
+                </div>
+            </div>
+        </div>
+        <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue" style="height:50px"
              onclick="window.location.href='<%= request.getContextPath() + "/application" %>'" >
             <div class="w3-row">
                 <div class="w3-col w3-center" style="width:20px">
@@ -97,6 +108,7 @@
             document.getElementById("open-icon").className = "fas fa-indent";
             document.getElementById("sidebar-menu").style.display = "none";
             document.getElementById("sidebar-home").style.display = "none";
+            document.getElementById("sidebar-console").style.display = "none";
             document.getElementById("sidebar-database").style.display = "none";
             document.getElementById("sidebar-playground").style.display = "none";
             document.getElementById("sidebar-admin").style.display = "none";
@@ -109,6 +121,7 @@
             document.getElementById("open-icon").className = "fas fa-outdent";
             document.getElementById("sidebar-menu").style.display = "block";
             document.getElementById("sidebar-home").style.display = "block";
+            document.getElementById("sidebar-console").style.display = "block";
             document.getElementById("sidebar-database").style.display = "block";
             document.getElementById("sidebar-playground").style.display = "block";
             document.getElementById("sidebar-admin").style.display = "block";

@@ -57,6 +57,8 @@ public class ApplicationBean implements Serializable {
         return appInfo;
     }
 
+    public List<Application> getAllLiveAppInfo() { return appService.getAllLiveAppInfo(); }
+
     public Integer getBalance() {
         return accountService.getBalance(Long.valueOf(this.userid));
     }

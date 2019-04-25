@@ -15,6 +15,9 @@ public class ApplicationServiceImpl implements IApplicationService {
     }
 
     @Override
+    public List<Application> getAllLiveAppInfo() { return appDao.queryAllLiveApps(); }
+
+    @Override
     public Application getAppByAppId(String appid) {
         return appDao.queryAppByAppId(appid);
     }

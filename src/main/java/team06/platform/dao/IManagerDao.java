@@ -13,7 +13,7 @@ public interface IManagerDao {
      * Insert the war file path to database
      * @param warPath
      */
-    void insertWarPath(String appid, String warPath);
+    void insertWarPath(String appId, String warPath);
 
     /**
      * Insert the context path

@@ -15,7 +15,7 @@
 
 <%-- Java Bean --%>
 <jsp:useBean id="appBean" scope="page" class="team06.platform.web.bean.ApplicationBean" />
-<jsp:setProperty name="appBean" property="userid" value='<%= session.getAttribute("userid") %>'/>
+<jsp:setProperty name="appBean" property="userId" value='<%= session.getAttribute("userId") %>'/>
 <!DOCTYPE html>
 <html>
 <title>Team 06 - Welcome</title>
@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 <style>
     body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 </style>
@@ -37,13 +38,12 @@
         </a>
         <img src="<%=request.getContextPath()%>/image/food.jpg" style="width:45%;" class="w3-round"><br><br>
         <h4><b>
-            <% if (session.getAttribute("userrole") == null) { %>
+            <% if (session.getAttribute("userId") == null) { %>
             Hello Guest
             <% }else { %>
-            <%=session.getAttribute("username")%>
+            <%=session.getAttribute("userName")%>
             <% } %>
-        </b>
-        <%= request.isUserInRole("ADMIN") %></h4>
+        </b></h4>
     </div>
     <div class="w3-bar-block">
         <a href="#" onclick="window.location.href='<%= request.getContextPath() + "/console" %>'" class="w3-bar-item w3-button w3-padding">
@@ -54,11 +54,11 @@
             <i class="fa fa-book fa-fw w3-margin-right"></i>
             Guide
         </a>
-        <% if (session.getAttribute("userid") == null) { %>
-        <a href="#" class="w3-bar-item w3-button" onclick="window.location.href='login.jsp'" ><i class="fa fa-step-forward fa-fw w3-margin-right"></i>Login</a>
+        <% if (session.getAttribute("userId") == null) { %>
+        <a href="#" class="w3-bar-item w3-button" onclick="window.location.href='<%= request.getContextPath() + "/login" %>'" ><i class="fa fa-step-forward fa-fw w3-margin-right"></i>Login</a>
         <% }else { %>
         <a href="#" class="w3-bar-item w3-button" onclick="window.location.href='<%= request.getContextPath() + "/account" %>'"><i class="fa fa-bank fa-fw w3-margin-right"></i>Account</a>
-        <a href="#" class="w3-bar-item w3-button" onclick=window.location.href="<%= request.getContextPath() %>/logout"><i class="fa fa-step-backward fa-fw w3-margin-right"></i>Logout</a>
+        <a href="#" class="w3-bar-item w3-button" onclick="window.location.href='<%= request.getContextPath() + "/logout" %>'"><i class="fa fa-step-backward fa-fw w3-margin-right"></i>Logout</a>
         <% } %>
         <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a>
         <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
@@ -85,15 +85,21 @@
         <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
         <div class="w3-container">
             <h1><b>
-                <% if (session.getAttribute("userrole") == null) { %>
+                <% if (session.getAttribute("userId") == null) { %>
                 Hello Guest
                 <% }else { %>
-                <%=session.getAttribute("username")%>
+                <%=session.getAttribute("userName")%>
                 <% } %>
             </b></h1>
-            <div class="w3-section w3-bottombar w3-padding-16"></div>
+
         </div>
     </header>
+
+    <div class="w3-section w3-bottombar w3-padding-16">
+        <h2 style="padding-left: 16px">Our Applications</h2>
+    </div>
+
+    <div>
 
     <%
         List<Application> appsInfo = appBean.getAllLiveAppInfo();
@@ -109,45 +115,103 @@
         <div class="w3-third w3-container w3-margin-bottom">
             <img src="<%= appInfo.getIconPath() %>" alt="<%= appInfo.getName() %>" style="width:100%" class="w3-hover-opacity">
             <div class="w3-container w3-white">
-                <p><b><a href="<%=appInfo.getContextpath()%>"><%= appInfo.getName() %></a> - <%= appInfo.getOwnername() %></b></p>
+                <p><b><a href="<%=appInfo.getContextPath()%>"><%= appInfo.getName() %></a> - <%= appInfo.getOwnerName() %></b></p>
                 <p><%= appInfo.getDescription() %></p>
             </div>
         </div>
         <% if ((i % 3) == 2) { %>
     </div>
     <% }/* end if */ i++; }/* end for */ %>
+    </div>
+    <div class="w3-section w3-bottombar w3-padding-16"></div>
 
-    <!-- Images of Us -->
-    <div class="w3-row-padding w3-padding-16" id="about">
-        <div class="w3-section w3-bottombar w3-padding-16"></div>
-        <div class="w3-display-container w3-col m3">
-            <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Me" style="width:100%">
-            <div class="w3-display-bottommiddle nameBoard" style="width:95%;margin-bottom: 10px;padding-left: 20px;padding-right: 20px">
-                <h3 style="color: black;text-align: center">Stelios Steliou</h3>
+    <!-- Work Row -->
+    <div class="w3-row-padding w3-padding-64 w3-theme-l1" id="work">
+
+        <div class="w3-quarter">
+            <h2>Our Advantages</h2>
+            <ul>
+                <li>Specific API Documents</li>
+                <li>Detailed Guide</li>
+                <li>Friendly Interface</li>
+                <li>Powerful Manager System</li>
+            </ul>
+        </div>
+
+        <div class="w3-quarter">
+            <div class="w3-card w3-white">
+                <img src="/image/avatar6.png" alt="User" style="width:100%">
+                <div class="w3-container">
+                    <h3>User</h3>
+                    <ul>
+                        <li>Look through all applications</li>
+                        <li>View visits and rating of applications</li>
+                        <li>View bank balance and transaction history</li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="w3-display-container w3-col m3">
-            <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Me" style="width:100%">
-            <div class="w3-display-bottommiddle nameBoard" style="width:95%;margin-bottom: 10px;padding-left: 20px;padding-right: 20px">
-                <h3 style="color: black;text-align: center">Aleksandar Pantovic</h3>
+
+        <div class="w3-quarter">
+            <div class="w3-card w3-white">
+                <img src="/image/avatar2.png" alt="Developer" style="width:100%">
+                <div class="w3-container">
+                    <h3>Developer</h3>
+                    <ul>
+                        <li>Deploy and manager applications</li>
+                        <li>View visits history</li>
+                        <li>View applications' transaction history</li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="w3-display-container w3-col m3">
-            <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Me" style="width:100%">
-            <div class="w3-display-bottommiddle nameBoard" style="width:95%;margin-bottom: 10px;padding-left: 20px;padding-right: 20px">
-                <h3 style="color: black;text-align: center">Mingze Gao</h3>
+
+        <div class="w3-quarter">
+            <div class="w3-card w3-white">
+                <img src="/image/avatar4.png" alt="Mountains" style="width:100%">
+                <div class="w3-container">
+                    <h3>Admin</h3>
+                    <ul>
+                        <li>Process feedback on time</li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="w3-display-container w3-col m3">
-            <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Me" style="width:100%">
-            <div class="w3-display-bottommiddle nameBoard" style="width:95%;margin-bottom: 10px;padding-left: 20px;padding-right: 20px">
-                <h3 style="color: black;text-align: center">Yilei Chen</h3>
-            </div>
-        </div>
+
     </div>
 
+
     <div class="w3-container w3-padding-large" style="margin-bottom:32px">
+
         <h4><b>About Us</b></h4>
+        <!-- Images of Us -->
+        <div class="w3-row-padding w3-padding-16" id="about">
+
+            <div class="w3-display-container w3-col m3">
+                <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Me" style="width:100%">
+                <div class="w3-display-bottommiddle nameBoard" style="width:95%;margin-bottom: 10px;padding-left: 20px;padding-right: 20px">
+                    <h3 style="color: black;text-align: center">Stelios Steliou</h3>
+                </div>
+            </div>
+            <div class="w3-display-container w3-col m3">
+                <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Me" style="width:100%">
+                <div class="w3-display-bottommiddle nameBoard" style="width:95%;margin-bottom: 10px;padding-left: 20px;padding-right: 20px">
+                    <h3 style="color: black;text-align: center">Aleksandar Pantovic</h3>
+                </div>
+            </div>
+            <div class="w3-display-container w3-col m3">
+                <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Me" style="width:100%">
+                <div class="w3-display-bottommiddle nameBoard" style="width:95%;margin-bottom: 10px;padding-left: 20px;padding-right: 20px">
+                    <h3 style="color: black;text-align: center">Mingze Gao</h3>
+                </div>
+            </div>
+            <div class="w3-display-container w3-col m3">
+                <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Me" style="width:100%">
+                <div class="w3-display-bottommiddle nameBoard" style="width:95%;margin-bottom: 10px;padding-left: 20px;padding-right: 20px">
+                    <h3 style="color: black;text-align: center">Yilei Chen</h3>
+                </div>
+            </div>
+        </div>
         <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
     </div>
 

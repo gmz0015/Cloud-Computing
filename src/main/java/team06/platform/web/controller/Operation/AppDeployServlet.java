@@ -17,9 +17,9 @@ public class AppDeployServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String result = managerServlet.deploy(
-                request.getParameter("appid"),
-                applicationService.getWarById(request.getParameter("appid")),
-                "/app/" + request.getSession().getAttribute("username") + generateid());
+                request.getParameter("appId"),
+                applicationService.getWarById(request.getParameter("appId")),
+                "/app/" + request.getSession().getAttribute("userName") + generateid());
 
         String message = "<p>" + result + "</p>";
         request.setAttribute("message",message);

@@ -17,8 +17,8 @@ public class AppDeleteServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String result = managerServlet.delete(
-                request.getParameter("appid"),
-                applicationService.getContextById(request.getParameter("appid")));
+                request.getParameter("appId"),
+                applicationService.getContextById(request.getParameter("appId")));
 
         String message = "<p>" + result + "</p><p>Delete Successful</p>";
         request.setAttribute("message",message);

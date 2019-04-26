@@ -11,16 +11,16 @@ public class DatabaseServiceImpl implements IDatabaseService {
     private IDatabaseDao databaseDao = new DatabaseDaoImpl();
 
     @Override
-    public Database createDBbyId(String userid) {
-        return databaseDao.createDBbyId(userid);
+    public Database createDBbyId(String userId) {
+        return databaseDao.createDBbyId(userId);
     }
 
     @Override
-    public Database queryDBbyid(String userid) {
-        Database database = databaseDao.queryDBbyid(userid);
-        if (database.getDbid().equals("none")) {
+    public Database queryDBbyid(String userId) {
+        Database database = databaseDao.queryDBbyid(userId);
+        if (database.getDbId().equals("none")) {
             //need to create database and user
-            return databaseDao.createDBbyId(userid);
+            return databaseDao.createDBbyId(userId);
         }else {
             return database;
         }
@@ -32,8 +32,8 @@ public class DatabaseServiceImpl implements IDatabaseService {
     }
 
     @Override
-    public String changePassword(String username, String newPassword) {
-        return databaseDao.changePassword(username, newPassword);
+    public String changePassword(String userName, String newPassword) {
+        return databaseDao.changePassword(userName, newPassword);
     }
 
     @Override

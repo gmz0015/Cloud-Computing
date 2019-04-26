@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface IDatabaseService {
 
-    Database createDBbyId(String userid);
+    Database createDBbyId(String userId);
 
-    Database queryDBbyid(String userid);
+    Database queryDBbyid(String userId);
 
     List<Database> queryAllDBs();
 
-    String changePassword(String username, String newPassword);
+    String changePassword(String userName, String newPassword);
 
     String executeSQL(String SQL);
 }

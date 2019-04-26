@@ -183,36 +183,56 @@
         <url-pattern>/application/create</url-pattern>
     </servlet-mapping>
 
-    <!-- Login -->
+    <!-- Login Service -->
     <servlet>
-        <description>Login</description>
+        <description>Login Service</description>
         <display-name>Login</display-name>
         <servlet-name>Login</servlet-name>
-        <servlet-class>team06.platform.login.login</servlet-class>
+        <servlet-class>team06.platform.web.UI.LoginUIServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 
-    <!-- Logout -->
     <servlet>
-        <description>Logout</description>
-        <display-name>Logout</display-name>
-        <servlet-name>Logout</servlet-name>
-        <servlet-class>team06.platform.login.logout</servlet-class>
+        <description>Login Service</description>
+        <display-name>Login</display-name>
+        <servlet-name>Login Action</servlet-name>
+        <servlet-class>team06.platform.web.controller.LoginServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>Logout</servlet-name>
-        <url-pattern>/logout</url-pattern>
+        <servlet-name>Login Action</servlet-name>
+        <url-pattern>/login/login</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <description>Login Service</description>
+        <display-name>Login</display-name>
+        <servlet-name>Register Action</servlet-name>
+        <servlet-class>team06.platform.web.controller.RegisterServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Register Action</servlet-name>
+        <url-pattern>/login/register</url-pattern>
+    </servlet-mapping>
+
+    <listener>
+        <description>ServletRequestListener</description>
+        <listener-class>team06.platform.web.listener.MyServletRequestListener</listener-class>
+    </listener>
 
     <!-- Whitelist -->
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>*.jpg</url-pattern>
+        <url-pattern>*.svg</url-pattern>
+        <url-pattern>*.png</url-pattern>
+        <url-pattern>/manager/*</url-pattern>
     </servlet-mapping>
 
     <!--<filter>-->

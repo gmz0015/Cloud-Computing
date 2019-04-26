@@ -15,10 +15,10 @@ import java.util.Map;
 public class DatabaseDaoImpl implements IDatabaseDao {
 
     @Override
-    public Database createDBbyId(String userid) {
-        String dbid = userid + generateID().substring(1,3);
-        String DBNAME = dbid;
-        String DBUSERNAME = dbid;
+    public Database createDBbyId(String userId) {
+        String dbId = userId + generateID().substring(1,3);
+        String DBNAME = dbId;
+        String DBUSERNAME = dbId;
         String DBPASSWORD = "123456";
 
         /* Initial Connection */
@@ -44,7 +44,7 @@ public class DatabaseDaoImpl implements IDatabaseDao {
             String sql3 = "GRANT SELECT ,CREATE ,INSERT ,UPDATE on " + DBNAME + ".* TO '" + DBUSERNAME + "'@'localhost';";
             st = conn.prepareStatement(sql3);
             st.execute();
-            String sql4 = "UPDATE CloudComputing.database SET dbid='" + dbid + "',dbname='" + DBNAME + "',dbusername='" + DBUSERNAME + "',dbpassword='" + DBPASSWORD + "' WHERE userid=" + userid;
+            String sql4 = "UPDATE CloudComputing.database SET dbId='" + dbId + "',dbName='" + DBNAME + "',dbUserName='" + DBUSERNAME + "',dbPassword='" + DBPASSWORD + "' WHERE userId=" + userId;
             st = conn.prepareStatement(sql4);
             st.executeUpdate();
             conn.commit(); // Commit transaction after above sql update successful
@@ -53,7 +53,7 @@ public class DatabaseDaoImpl implements IDatabaseDao {
         }finally {
             JdbcUtils.release(conn, st, rs);
         }
-        return new Database(userid, dbid, DBNAME, DBUSERNAME, DBPASSWORD);
+        return new Database(userId, dbId, DBNAME, DBUSERNAME, DBPASSWORD);
     }
 
     @Override
@@ -85,7 +85,7 @@ public class DatabaseDaoImpl implements IDatabaseDao {
     }
 
     @Override
-    public String changePassword(String username, String newPassword) {
+    public String changePassword(String userName, String newPassword) {
         /* Initial Connection */
         Connection conn = null;
         PreparedStatement st = null;
@@ -96,10 +96,10 @@ public class DatabaseDaoImpl implements IDatabaseDao {
             conn = JdbcUtils.getConnection();
             conn.setAutoCommit(false); // start transaction
 
-            String sql1="ALTER USER '" + username + "'@'localhost' IDENTIFIED BY '" + newPassword + "';";
+            String sql1="ALTER USER '" + userName + "'@'localhost' IDENTIFIED BY '" + newPassword + "';";
             st = conn.prepareStatement(sql1);
             st.execute();
-            String sql2 = "UPDATE CloudComputing.database SET dbpassword='" + newPassword + "' WHERE dbusername='" + username + "';";
+            String sql2 = "UPDATE CloudComputing.database SET dbPassword='" + newPassword + "' WHERE dbUserName='" + userName + "';";
             st = conn.prepareStatement(sql2);
             st.executeUpdate();
             String sql3="FLUSH PRIVILEGES;";
@@ -158,7 +158,7 @@ public class DatabaseDaoImpl implements IDatabaseDao {
             conn = JdbcUtils.getConnection();
             conn.setAutoCommit(false); // start transaction
 
-            String sql = "select table_name,table_rows,data_length+index_length,concat(round((data_length+index_length)/1024,2),'KB') data from information_schema.TABLES where table_schema='" + "CloudComputing" + "';";
+            String sql = "select table_name,table_rows,data_length+index_length,concat(round((data_length+index_length)/1024,2),'KB') data from information_schema.TABLES where table_schema='" + databaseName + "';";
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             conn.commit();
@@ -179,7 +179,7 @@ public class DatabaseDaoImpl implements IDatabaseDao {
     }
 
     @Override
-    public Database queryDBbyid(String userid) {
+    public Database queryDBbyid(String userId) {
         Database database = null;
 
         /* Initial Connection */
@@ -192,13 +192,14 @@ public class DatabaseDaoImpl implements IDatabaseDao {
             conn = JdbcUtils.getConnection();
             conn.setAutoCommit(false); // start transaction
 
-            String sql = "SELECT * FROM CloudComputing.database WHERE userid=" + userid;
+            String sql = "SELECT * FROM CloudComputing.database WHERE userId='" + userId + "';";
+            System.out.println("TEST SQL:" + sql);
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             conn.commit();
             while (rs.next()) {
-                database = new Database(rs.getString("userid"), rs.getString("dbid"),
-                        rs.getString("dbname"), rs.getString("dbusername"), rs.getString("dbpassword"));
+                database = new Database(rs.getString("userId"), rs.getString("dbId"),
+                        rs.getString("dbName"), rs.getString("dbUserName"), rs.getString("dbPassword"));
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.DatabaseDaoImpl.queryDBbyid]: " + e);
@@ -222,13 +223,13 @@ public class DatabaseDaoImpl implements IDatabaseDao {
             conn = JdbcUtils.getConnection();
             conn.setAutoCommit(false); // start transaction
 
-            String sql = "SELECT * FROM CloudComputing.database WHERE dbname='" + name + "';";
+            String sql = "SELECT * FROM CloudComputing.database WHERE dbName='" + name + "';";
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             conn.commit();
             if (rs.next()) {
-                database = new Database(rs.getString("userid"), rs.getString("dbid"),
-                        name, rs.getString("dbusername"), rs.getString("dbpassword"));
+                database = new Database(rs.getString("userId"), rs.getString("dbId"),
+                        name, rs.getString("dbUserName"), rs.getString("dbPassword"));
             }else {
                 database = new Database("[Not Applicable]", "[Not Applicable]",
                         name, "[Not Applicable]", "[Not Applicable]");

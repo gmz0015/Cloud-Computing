@@ -7,10 +7,17 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<%-- import --%>
+<%@ page import="java.util.List" %>
+<%@ page import="team06.platform.domain.Transaction" %>
+
 <%-- Java Bean --%>
 <jsp:useBean id="appCreateBean" scope="page" class="team06.platform.web.bean.ApplicationDetailBean" />
-<jsp:setProperty name="appCreateBean" property="userid" value='<%= session.getAttribute("userid") %>'/>
-<jsp:setProperty name="appCreateBean" property="appid" value='<%= session.getAttribute("appid") %>'/>
+<jsp:setProperty name="appCreateBean" property="userId" value='<%= session.getAttribute("userId") %>'/>
+<jsp:setProperty name="appCreateBean" property="appId" value='<%= session.getAttribute("appId") %>'/>
+<jsp:useBean id="appBean" scope="page" class="team06.platform.web.bean.ApplicationBean" />
+<jsp:setProperty name="appBean" property="userId" value='<%= session.getAttribute("userId") %>'/>
+<jsp:setProperty name="appCreateBean" property="appId" value='<%= session.getAttribute("appId") %>'/>
 
 <%-- onload --%>
 <% Application appInfo = appCreateBean.doQuery(); %>
@@ -45,7 +52,7 @@
                   method="POST"
                   class="w3-panel w3-leftbar w3-border-blue w3-display-container">
                 <span style="font-size: 16px">Overview</span>
-                <input type="hidden" name="appid" value=<%= session.getAttribute("appid") %>>
+                <input type="hidden" name="appId" value=<%= session.getAttribute("appId") %>>
                 <input class="w3-display-right w3-button w3-red w3-round-large w3-border w3-border-white w3-hover-white w3-hover-border-red"
                        style="margin-right: 10px"
                        type="submit" name="Deploy" value="Delete This Application" >
@@ -57,7 +64,7 @@
                     <header class="w3-container w3-padding" style="height: 45px;text-align: center;background-color: #f9f9f9">
                             <span style="font-size: 15px;vertical-align: middle">
                                 <% if (appInfo.getStatus() == 2) { %>
-                                <a href="<%=appInfo.getContextpath()%>"><%= appInfo.getName() %></a>
+                                <a href="<%=appInfo.getContextPath()%>"><%= appInfo.getName() %></a>
                                 <% } else { %>
                                 <%= appInfo.getName() %>
                                 <% } %>
@@ -97,7 +104,7 @@
                               method="POST"
                               class="w3-quarter w3-display-container"
                               style="height:100%">
-                            <input type="hidden" name="appid" value=<%= session.getAttribute("appid") %>>
+                            <input type="hidden" name="appId" value=<%= session.getAttribute("appId") %>>
                             <input class="w3-display-middle w3-button w3-round-large w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
                                    style="background-color:#F5F5F6;height:90%;width:90%"
                                    type="submit" name="Deploy" value="Deploy" >
@@ -106,7 +113,7 @@
                               method="POST"
                               class="w3-quarter w3-display-container"
                               style="height:100%">
-                            <input type="hidden" name="appid" value=<%= session.getAttribute("appid") %>>
+                            <input type="hidden" name="appId" value=<%= session.getAttribute("appId") %>>
                             <input class="w3-display-middle w3-button w3-round-large w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
                                    style="background-color:#F5F5F6;height:90%;width:90%"
                                    type="submit" name="Deploy" value="Start" >
@@ -115,7 +122,7 @@
                               method="POST"
                               class="w3-quarter w3-display-container"
                               style="height:100%">
-                            <input type="hidden" name="appid" value=<%= session.getAttribute("appid") %>>
+                            <input type="hidden" name="appId" value=<%= session.getAttribute("appId") %>>
                             <input class="w3-display-middle w3-button w3-round-large w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
                                    style="background-color:#F5F5F6;height:90%;width:90%"
                                    type="submit" name="Deploy" value="Stop" >
@@ -124,7 +131,7 @@
                               method="POST"
                               class="w3-quarter w3-display-container"
                               style="height:100%">
-                            <input type="hidden" name="appid" value=<%= session.getAttribute("appid") %>>
+                            <input type="hidden" name="appId" value=<%= session.getAttribute("appId") %>>
                             <input class="w3-display-middle w3-button w3-round-large w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
                                    style="background-color:#F5F5F6;height:90%;width:90%"
                                    type="submit" name="Deploy" value="Undeploy" >
@@ -156,6 +163,48 @@
                             <td style="color: #F00;font-size: 24px">1</td>
                         </tr>
                     </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Database -->
+        <div class="w3-container">
+
+            <div class="w3-panel w3-leftbar w3-border-blue" style="height:27px">
+                <span style="font-size: 16px">Transaction History</span>
+            </div>
+
+            <div class="w3-row-padding">
+                <div class="w3-card" style="background-color:white;margin-left:8px;margin-right:8px">
+
+                    <div style="">
+                        <table class="w3-table w3-bordered">
+                            <tr>
+                                <th>Index</th>
+                                <th>From User Name</th>
+                                <th>To User Name</th>
+                                <th>Type</th>
+                                <th>Application</th>
+                                <th>Amount</th>
+                                <th>Time</th>
+                            </tr>
+                            <%
+                                int i = 0;
+                                List<Transaction> transactions = appBean.getAppTransaction();
+                                for (Transaction transaction: transactions) {
+                            %>
+                            <tr style="text-align: center">
+                                <td><%= i++ %></td>
+                                <td><%= transaction.getFromUserName() %></td>
+                                <td><%= transaction.getToUserName() %></td>
+                                <td><%= transaction.getType() %></td>
+                                <td><%= transaction.getAppId() %></td>
+                                <td><%= transaction.getAmount() %></td>
+                                <td><%= transaction.getTime() %></td>
+                            </tr>
+                            <% } %>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

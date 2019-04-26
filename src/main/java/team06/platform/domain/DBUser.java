@@ -5,20 +5,20 @@ package team06.platform.domain;
  * Store the user info within database
  */
 public class DBUser {
-    private String username;
+    private String userName;
     private String host;
 
-    public DBUser(String username, String host) {
-        this.username = username;
+    public DBUser(String userName, String host) {
+        this.userName = userName;
         this.host = host;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getHost() {

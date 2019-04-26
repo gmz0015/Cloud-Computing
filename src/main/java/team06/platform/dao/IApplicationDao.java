@@ -24,43 +24,63 @@ public interface IApplicationDao {
     List<Application> queryAppByUserId(String userid);
 
     /**
-     * get the application by appid
-     * @param appid
+     * get the application by appId
+     * @param appId
      * @return
      */
-    Application queryAppByAppId(String appid);
+    Application queryAppByAppId(String appId);
 
     /* PATH */
     /**
-     * query the path of war file by appid
-     * @param appid
+     * query the path of war file by appId
+     * @param appId
      * @return
      */
-    String queryWarById(String appid);
+    String queryWarById(String appId);
+
+    /**
+     * query the visits of an application by its id
+     * @param appId
+     * @return
+     */
+    Integer queryVisit(String appId);
+
+    /**
+     * query the visits of an application by its context path
+     * @param appContext
+     * @return
+     */
+    Integer queryVisitByContext(String appContext);
 
     /**
      * drop the application
-     * @param appid
+     * @param appId
      */
-    void deleteAppById(String appid);
+    void deleteAppById(String appId);
 
     /**
      * update the context path of an application
-     * @param appid
+     * @param appId
      */
-    void updateContextById(String appid, String contextPath);
+    void updateContextById(String appId, String contextPath);
 
     /**
-     * query the context path by appid
-     * @param appid
+     * query the context path by appId
+     * @param appId
      * @return
      */
-    String queryContextById(String appid);
+    String queryContextById(String appId);
 
     /**
      * update the status of an application
-     * @param appid
+     * @param appId
      * @param status
      */
-    void updateStatusById(String appid, int status);
+    void updateStatusById(String appId, int status);
+
+    /**
+     * update the visit number of an application by its context path
+     * @param appContext
+     */
+    void updateVisitByContext(String appContext, Integer newVisits);
 }

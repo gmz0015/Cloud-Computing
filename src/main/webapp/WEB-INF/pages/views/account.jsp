@@ -9,12 +9,11 @@
 
 <%-- import --%>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.Map" %>
 <%@ page import="team06.platform.domain.Transaction" %>
 
 <%-- Java Bean --%>
 <jsp:useBean id="accountBean" scope="page" class="team06.platform.web.bean.AccountBean" />
-<jsp:setProperty name="accountBean" property="userId" value='<%= session.getAttribute("userid") %>'/>
+<jsp:setProperty name="accountBean" property="userId" value='<%= session.getAttribute("userId") %>'/>
 
 <%-- Authentication --%>
 
@@ -71,15 +70,11 @@
         <div class="w3-container">
 
             <div class="w3-panel w3-leftbar w3-border-blue" style="height:27px">
-                <span style="font-size: 16px">Database</span>
+                <span style="font-size: 16px">Transaction History</span>
             </div>
 
             <div class="w3-row-padding">
-                <div class="w3-card" style="background-color:white;margin-top:20px;margin-left:8px;margin-right:8px">
-
-                    <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
-                        <span style="font-size: 20px">Transaction</span>
-                    </header>
+                <div class="w3-card" style="background-color:white;margin-left:8px;margin-right:8px">
 
                     <div style="">
                         <table class="w3-table w3-bordered">

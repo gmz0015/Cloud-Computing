@@ -12,15 +12,15 @@
         style="height: 45px;z-index:100;background-color: #252a2f;position: fixed;top:0">
     <a class="w3-bar-item">Welcome <strong>Team 06</strong>!</a>
     <%
-        if(session.getAttribute("userid") == null) {
+        if(session.getAttribute("userId") == null) {
     %>
     <%-- logout, need to login --%>
-    <a href="#" class="w3-bar-item w3-button w3-right" onclick="window.location.href='login.jsp'" >Login</a>
+    <a href="#" class="w3-bar-item w3-button w3-right" onclick="window.location.href='<%= request.getContextPath() + "/login" %>'" >Login</a>
     <%
         } else {
     %>
     <%-- login, need to logout --%>
-    <a href="#" class="w3-bar-item w3-button w3-right" onclick=window.location.href="<%= request.getContextPath() %>/logout">Logout</a>
+    <a href="#" class="w3-bar-item w3-button w3-right" onclick="window.location.href='<%= request.getContextPath() + "/logout" %>'">Logout</a>
     <a href="#" class="w3-bar-item w3-button w3-right" onclick="window.location.href='<%= request.getContextPath() + "/account" %>'">Account</a>
     <%
         }

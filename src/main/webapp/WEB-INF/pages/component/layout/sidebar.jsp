@@ -41,7 +41,7 @@
             onclick="window.location.href='<%= request.getContextPath() + "/console" %>'" >
             <div class="w3-row">
                 <div class="w3-col w3-center" style="width:20px">
-                    <i class="fas fa-laptop-code"></i>
+                    <i class="fas fa-code"></i>
                 </div>
                 <div id="sidebar-console" class="w3-col w3-left  w3-margin-left" style="width:80px;display:none">
                     <span>Console</span>

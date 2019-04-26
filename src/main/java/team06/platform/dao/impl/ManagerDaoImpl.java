@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class ManagerDaoImpl implements IManagerDao {
     @Override
-    public void insertWarPath(String appid, String warPath) {
+    public void insertWarPath(String appId, String warPath) {
         /* Initial Connection */
         Connection conn = null;
         PreparedStatement st = null;
@@ -22,7 +22,7 @@ public class ManagerDaoImpl implements IManagerDao {
             conn = JdbcUtils.getConnection();
             conn.setAutoCommit(false); // start transaction
 
-            String sql = "UPDATE CloudComputing.applications SET warpath=" + warPath + " WHERE appid=" + appid;
+            String sql = "UPDATE CloudComputing.applications SET warPath='" + warPath + "' WHERE appId='" + appId + "';";
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             conn.commit();
@@ -52,17 +52,17 @@ public class ManagerDaoImpl implements IManagerDao {
             conn.setAutoCommit(false); // start transaction
 
             String sql = "INSERT INTO CloudComputing.applications VALUES ( '" +
-                    application.getAppid() + "', '" +
+                    application.getAppId() + "', '" +
                     application.getName() + "', '" +
                     application.getDescription() + "', '" +
-                    application.getOwnerid() + "', '" +
-                    application.getOwnername() + "'," +
+                    application.getOwnerId() + "', '" +
+                    application.getOwnerName() + "'," +
                     application.getVisits() + "," +
                     application.getRating() + "," +
                     application.getStatus() + ", '" +
-                    application.getDbid() + "', '" +
-                    application.getWarpath() + "', '" +
-                    application.getContextpath() + "', '" +
+                    application.getDbId() + "', '" +
+                    application.getWarPath() + "', '" +
+                    application.getContextPath() + "', '" +
                     application.getIconPath() +
                     "');";
             System.out.println("sql is: " + sql);

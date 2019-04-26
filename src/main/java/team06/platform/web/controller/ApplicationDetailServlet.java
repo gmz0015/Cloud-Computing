@@ -18,7 +18,7 @@ public class ApplicationDetailServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         if (true) {
-            session.setAttribute("appid", request.getParameter("appid"));
+            session.setAttribute("appId", request.getParameter("appId"));
             response.sendRedirect(request.getContextPath() + "/detail.jsp");
         } else {
             request.setAttribute("error", "0");

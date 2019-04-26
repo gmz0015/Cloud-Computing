@@ -14,20 +14,26 @@ public interface IApplicationService {
 
     List<Application> getAllLiveAppInfo();
 
-    List<Application> getAppByUserId(String userid);
+    List<Application> getAppByUserId(String userId);
 
-    Application getAppByAppId(String appid);
+    Application getAppByAppId(String appId);
 
-    boolean checkAppUser(String userid, String appid);
+    void increaseVisitByContext(String appContext);
 
-    void deleteAppByAppId(String appid);
+    Integer getVisit(String appId);
+
+    Integer getVisitByContext(String appContext);
+
+    boolean checkAppUser(String userId, String appId);
+
+    void deleteAppByAppId(String appId);
 
     /* PATH */
-    String getWarById(String appid);
+    String getWarById(String appId);
 
-    void setContextById(String appid, String context);
+    void setContextById(String appId, String context);
 
-    String getContextById(String appid);
+    String getContextById(String appId);
 
-    void setStatusById(String appid, int status);
+    void setStatusById(String appId, int status);
 }

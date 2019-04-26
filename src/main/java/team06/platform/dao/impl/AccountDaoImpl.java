@@ -15,7 +15,7 @@ import java.util.List;
 
 public class AccountDaoImpl implements IAccountDao {
     @Override
-    public Integer queryBalance(Long userid) {
+    public Integer queryBalance(Long userId) {
         /* Initial Connection */
         Connection conn = null;
         PreparedStatement st = null;
@@ -27,7 +27,7 @@ public class AccountDaoImpl implements IAccountDao {
             conn = JdbcUtils.getConnection();
             conn.setAutoCommit(false); // start transaction
 
-            String sql = "SELECT balance FROM CloudComputing.account WHERE userid='" + userid + "';";
+            String sql = "SELECT balance FROM CloudComputing.account WHERE userId='" + userId + "';";
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             conn.commit();
@@ -55,7 +55,7 @@ public class AccountDaoImpl implements IAccountDao {
             conn = JdbcUtils.getConnection();
             conn.setAutoCommit(false); // start transaction
 
-            String sql = "UPDATE CloudComputing.account SET balance='" + account.getBalance() + "' WHERE userid='" + account.getUserid() + "';";
+            String sql = "UPDATE CloudComputing.account SET balance='" + account.getBalance() + "' WHERE userId='" + account.getUserId() + "';";
             st = conn.prepareStatement(sql);
             st.executeUpdate();
             conn.commit();
@@ -121,6 +121,38 @@ public class AccountDaoImpl implements IAccountDao {
             conn.setAutoCommit(false); // start transaction
 
             String sql = "SELECT * FROM CloudComputing.transaction WHERE fromUserId='" + userId + "' OR toUserId='" + userId + "';";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            conn.commit();
+            while(rs.next()) {
+                transactions.add(new Transaction(
+                        rs.getLong("fromUserId"), rs.getString("fromUserName"),
+                        rs.getLong("toUserId"), rs.getString("toUserName"),
+                        rs.getString("type"), rs.getLong("appId"),
+                        rs.getInt("number"), rs.getTimestamp("time")));
+            }
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.AccountDaoImpl.queryTransaction]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return transactions;
+    }
+
+    @Override
+    public List<Transaction> queryAppTransaction(Long appId) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        List<Transaction> transactions = new ArrayList<>();
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            conn.setAutoCommit(false); // start transaction
+
+            String sql = "SELECT * FROM CloudComputing.transaction WHERE appId='" + appId + "';";
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             conn.commit();

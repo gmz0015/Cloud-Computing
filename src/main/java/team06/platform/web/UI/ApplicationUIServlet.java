@@ -15,19 +15,21 @@ public class ApplicationUIServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Check whether is developer
-        if (request.getSession().getAttribute("userid") == null) {
-            response.sendRedirect(request.getContextPath() + "/login.jsp");
+        if (request.getSession().getAttribute("userId") == null) {
+            request.setAttribute("fromURI", request.getRequestURL());
+            request.getRequestDispatcher(request.getContextPath() + "/login").forward(request, response);
+//            response.sendRedirect(request.getContextPath() + "/login");
         } else {
-//            String userid = request.getSession().getAttribute("userid").toString();
-//            String username = request.getSession().getAttribute("username").toString();
-            String userrole = request.getSession().getAttribute("userrole").toString();
+            String userId = request.getSession().getAttribute("userId").toString();
+            String userName = request.getSession().getAttribute("userName").toString();
+            String userRole = request.getSession().getAttribute("userRole").toString();
 
-            if (userrole.equals("developer")) {
+            if (userRole.equals("DEVELOPER")) {
                 // access to application page
                 request.getRequestDispatcher("/WEB-INF/pages/views/application.jsp").forward(request, response);
             } else {
                 // no access
-                response.sendRedirect(request.getContextPath() + "/?error=0");
+                response.sendRedirect(request.getContextPath() + "/console/?error=0");
             }
         }
     }
@@ -35,7 +37,7 @@ public class ApplicationUIServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("changePassword") != null) {
-            request.setAttribute("message", databaseService.changePassword(request.getParameter("username"), request.getParameter("password")));
+            request.setAttribute("message", databaseService.changePassword(request.getParameter("userName"), request.getParameter("password")));
             doGet(request, response);
 
         } else if (request.getParameter("executeSQL") != null) {

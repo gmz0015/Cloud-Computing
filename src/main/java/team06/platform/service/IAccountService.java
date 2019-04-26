@@ -13,5 +13,7 @@ public interface IAccountService {
 
     Boolean transfer(Long fromUserId, Long toUserId, String type, Long appId, Integer amount);
 
-    List<Transaction> getTransaction(Long userid);
+    List<Transaction> getTransaction(Long userId);
+
+    List<Transaction> getAppTransaction(Long appId);
 }

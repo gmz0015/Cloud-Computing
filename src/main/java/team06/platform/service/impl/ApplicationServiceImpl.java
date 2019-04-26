@@ -18,41 +18,56 @@ public class ApplicationServiceImpl implements IApplicationService {
     public List<Application> getAllLiveAppInfo() { return appDao.queryAllLiveApps(); }
 
     @Override
-    public Application getAppByAppId(String appid) {
-        return appDao.queryAppByAppId(appid);
+    public Application getAppByAppId(String appId) {
+        return appDao.queryAppByAppId(appId);
     }
 
     @Override
-    public boolean checkAppUser(String userid, String appid) {
-        Application application = appDao.queryAppByAppId(appid);
-        return userid.equals(application.getOwnerid());
+    public void increaseVisitByContext(String appContext) {
+        appDao.updateVisitByContext(appContext, this.getVisitByContext(appContext) + 1);
     }
 
     @Override
-    public void deleteAppByAppId(String appid) {
-        appDao.deleteAppById(appid);
+    public Integer getVisit(String appId) {
+        return appDao.queryVisit(appId);
     }
 
     @Override
-    public List<Application> getAppByUserId(String userid) { return appDao.queryAppByUserId(userid); }
-
-    @Override
-    public String getWarById(String appid) {
-        return appDao.queryWarById(appid);
+    public Integer getVisitByContext(String appContext) {
+        return appDao.queryVisitByContext(appContext);
     }
 
     @Override
-    public void setContextById(String appid, String context) {
-        appDao.updateContextById(appid, context);
+    public boolean checkAppUser(String userId, String appId) {
+        Application application = appDao.queryAppByAppId(appId);
+        return userId.equals(application.getOwnerId());
     }
 
     @Override
-    public String getContextById(String appid) {
-        return appDao.queryContextById(appid);
+    public void deleteAppByAppId(String appId) {
+        appDao.deleteAppById(appId);
     }
 
     @Override
-    public void setStatusById(String appid, int status) {
-        appDao.updateStatusById(appid, status);
+    public List<Application> getAppByUserId(String userId) { return appDao.queryAppByUserId(userId); }
+
+    @Override
+    public String getWarById(String appId) {
+        return appDao.queryWarById(appId);
+    }
+
+    @Override
+    public void setContextById(String appId, String context) {
+        appDao.updateContextById(appId, context);
+    }
+
+    @Override
+    public String getContextById(String appId) {
+        return appDao.queryContextById(appId);
+    }
+
+    @Override
+    public void setStatusById(String appId, int status) {
+        appDao.updateStatusById(appId, status);
     }
 }

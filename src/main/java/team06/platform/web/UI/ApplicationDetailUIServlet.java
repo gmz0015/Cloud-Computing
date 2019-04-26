@@ -14,15 +14,17 @@ public class ApplicationDetailUIServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String appid = request.getParameter("appid");
-        String userid = request.getSession().getAttribute("userid").toString();
+        String appId = request.getParameter("appId");
+        String userId = request.getSession().getAttribute("userId").toString();
 
         // Check whether the user ownes this application
-        if (applicationService.checkAppUser(userid, appid)) {
-            request.getSession().setAttribute("appid", appid);
+        if (applicationService.checkAppUser(userId, appId)) {
+            System.out.println("TEST applicationDetail--" + userId + "--" + appId);
+            request.getSession().setAttribute("appId", appId);
+            request.getSession().setAttribute("userId", userId);
             request.getRequestDispatcher("/WEB-INF/pages/views/applicationDetail.jsp").forward(request, response);
         } else {
-            request.getSession().setAttribute("appid", null);
+            request.getSession().setAttribute("appId", null);
             response.sendRedirect(request.getContextPath() + "/?error=0");
         }
 

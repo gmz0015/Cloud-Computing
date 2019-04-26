@@ -1,87 +1,43 @@
 package team06.platform.domain;
 
 public class Application {
-    private String appid;
+    private String appId;
     private String name;
     private String description;
-    private String ownerid;
-    private String ownername;
+    private String ownerId;
+    private String ownerName;
     private int visits;
     private double rating;
     private int status;
-    private String dbid;
-    private String warpath;
-    private String contextpath;
+    private String dbId;
+    private String warPath;
+    private String contextPath;
     private String iconPath;
 
-    public Application(String appid, String name, String description, String ownerid, String ownername, int visits, double rating, int status, String dbid, String warpath, String contextpath, String iconPath) {
-        this.appid = appid;
+    public Application(String appId, String name, String description, String ownerId, String ownerName, int visits, double rating, int status, String dbId, String warPath, String contextPath, String iconPath) {
+        this.appId = appId;
         this.name = name;
         this.description = description;
-        this.ownerid = ownerid;
-        this.ownername = ownername;
+        this.ownerId = ownerId;
+        this.ownerName = ownerName;
         this.visits = visits;
         this.rating = rating;
         this.status = status;
-        this.dbid = dbid;
-        this.warpath = warpath;
-        this.contextpath = contextpath;
+        this.dbId = dbId;
+        this.warPath = warPath;
+        this.contextPath = contextPath;
         this.iconPath = iconPath;
     }
 
 
     /* Getter and Setter */
 
-    public String getDescription() {
-        return description;
+    public String getAppId() {
+        return appId;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getIconPath() {
-        return iconPath;
-    }
-
-    public void setIconPath(String iconPath) {
-        this.iconPath = iconPath;
-    }
-
-    public String getOwnername() {
-        return ownername;
-    }
-
-    public void setOwnername(String ownername) {
-        this.ownername = ownername;
-    }
-
-    public String getWarpath() {
-        return warpath;
-    }
-
-    public void setWarpath(String warpath) {
-        this.warpath = warpath;
-    }
-
-    public String getContextpath() {
-        return contextpath;
-    }
-
-    public void setContextpath(String contextpath) {
-        this.contextpath = contextpath;
-    }
-
-    public String getDbid() { return dbid; }
-
-    public void setDbid(String dbid) { this.dbid = dbid; }
-
-    public String getAppid() {
-        return appid;
-    }
-
-    public void setAppid(String appid) {
-        this.appid = appid;
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 
     public String getName() {
@@ -92,10 +48,28 @@ public class Application {
         this.name = name;
     }
 
-    public String getOwnerid() { return ownerid; }
+    public String getDescription() {
+        return description;
+    }
 
-    public void setOwnerid(String ownerid) {
-        this.ownerid = ownerid;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
     }
 
     public int getVisits() {
@@ -120,5 +94,37 @@ public class Application {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getDbId() {
+        return dbId;
+    }
+
+    public void setDbId(String dbId) {
+        this.dbId = dbId;
+    }
+
+    public String getWarPath() {
+        return warPath;
+    }
+
+    public void setWarPath(String warPath) {
+        this.warPath = warPath;
+    }
+
+    public String getContextPath() {
+        return contextPath;
+    }
+
+    public void setContextPath(String contextPath) {
+        this.contextPath = contextPath;
+    }
+
+    public String getIconPath() {
+        return iconPath;
+    }
+
+    public void setIconPath(String iconPath) {
+        this.iconPath = iconPath;
     }
 }

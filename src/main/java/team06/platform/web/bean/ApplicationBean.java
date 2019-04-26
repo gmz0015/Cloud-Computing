@@ -2,6 +2,7 @@ package team06.platform.web.bean;
 
 import team06.platform.domain.Application;
 import team06.platform.domain.Database;
+import team06.platform.domain.Transaction;
 import team06.platform.service.IAccountService;
 import team06.platform.service.IApplicationService;
 import team06.platform.service.IDatabaseService;
@@ -14,7 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApplicationBean implements Serializable {
-    private String userid;
+    private String userId;
+    private String appId;
     private List<Application> appInfo;
     private Integer total = 0;
     private Integer running = 0;
@@ -29,15 +31,15 @@ public class ApplicationBean implements Serializable {
         appInfo = new ArrayList<>();
     }
 
-    public Database queryDBbyid(String userid) {
-        return databaseService.queryDBbyid(userid);
+    public Database queryDBbyid(String userId) {
+        return databaseService.queryDBbyid(userId);
     }
 
     /**
      * Invoke service to query Database and retrieve applications data
      */
     public void doQuery(){
-        appInfo = appService.getAppByUserId(userid);
+        appInfo = appService.getAppByUserId(userId);
         count();
     }
 
@@ -60,11 +62,22 @@ public class ApplicationBean implements Serializable {
     public List<Application> getAllLiveAppInfo() { return appService.getAllLiveAppInfo(); }
 
     public Integer getBalance() {
-        return accountService.getBalance(Long.valueOf(this.userid));
+        return accountService.getBalance(Long.valueOf(this.userId));
     }
 
+    public List<Transaction> getAppTransaction() {
+        return accountService.getAppTransaction(Long.valueOf(this.appId));
+    }
 
     /* Setter and Getter */
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
+    }
 
     public Integer getTotal() {
         return total;
@@ -102,11 +115,11 @@ public class ApplicationBean implements Serializable {
         this.appInfo = appInfo;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

@@ -39,17 +39,17 @@ public class CreateNewAppServlet extends HttpServlet {
                             // Insert to database
                             managerService.insertNewApp(new Application(
                                     generateAppid(),
-                                    request.getSession().getAttribute("userid") + "_" + generateAppid(),
+                                    request.getSession().getAttribute("userId") + "_" + generateAppid(),
                                     "Default Description",
-                                    request.getSession().getAttribute("userid").toString(),
-                                    request.getSession().getAttribute("username").toString(),
+                                    request.getSession().getAttribute("userId").toString(),
+                                    request.getSession().getAttribute("userName").toString(),
                                     0,
                                     0.0,
                                     0,
-                                    databaseService.queryDBbyid(request.getSession().getAttribute("userid").toString()).getDbid(),
+                                    databaseService.queryDBbyid(request.getSession().getAttribute("userid").toString()).getDbId(),
                                     savePath,
                                     null,
-                                    null));
+                                    "/image/defalutAPP.jpg"));
                         }catch (Exception e) {
                             System.out.println("[team06.platform.web.controller.CreateNewAppServlet.doGet]: " + e);
 

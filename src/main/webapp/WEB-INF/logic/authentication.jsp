@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<% if(session.getAttribute("userinfo") == null) {
+<% if(session.getAttribute("userid") == null) {
     System.out.println("NO PERMISSION");
     response.setHeader("refresh", "5;URL=" + request.getContextPath() + "/console.jsp");
 } %>

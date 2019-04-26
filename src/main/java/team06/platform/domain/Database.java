@@ -1,58 +1,59 @@
 package team06.platform.domain;
 
 public class Database {
-    private String dbid;
-    private String userid;
-    private String dbname;
-    private String dbusername;
-    private String dbpassword;
+    private String dbId;
+    private String userId;
+    private String dbName;
+    private String dbUsername;
+    private String dbPassword;
 
-    public Database(String dbid, String userid, String dbname, String dbusername, String dbpassword) {
-        this.dbid = dbid;
-        this.userid = userid;
-        this.dbname = dbname;
-        this.dbusername = dbusername;
-        this.dbpassword = dbpassword;
+    public Database(String dbId, String userId, String dbName, String dbUsername, String dbPassword) {
+        this.dbId = dbId;
+        this.userId = userId;
+        this.dbName = dbName;
+        this.dbUsername = dbUsername;
+        this.dbPassword = dbPassword;
     }
 
     /* Getter and Setter */
-    public String getDbid() {
-        return dbid;
+
+    public String getDbId() {
+        return dbId;
     }
 
-    public void setDbid(String dbid) {
-        this.dbid = dbid;
+    public void setDbId(String dbId) {
+        this.dbId = dbId;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getDbname() {
-        return dbname;
+    public String getDbName() {
+        return dbName;
     }
 
-    public void setDbname(String dbname) {
-        this.dbname = dbname;
+    public void setDbName(String dbName) {
+        this.dbName = dbName;
     }
 
-    public String getDbusername() {
-        return dbusername;
+    public String getDbUsername() {
+        return dbUsername;
     }
 
-    public void setDbusername(String dbusername) {
-        this.dbusername = dbusername;
+    public void setDbUsername(String dbUsername) {
+        this.dbUsername = dbUsername;
     }
 
-    public String getDbpassword() {
-        return dbpassword;
+    public String getDbPassword() {
+        return dbPassword;
     }
 
-    public void setDbpassword(String dbpassword) {
-        this.dbpassword = dbpassword;
+    public void setDbPassword(String dbPassword) {
+        this.dbPassword = dbPassword;
     }
 }

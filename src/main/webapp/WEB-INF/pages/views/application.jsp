@@ -15,10 +15,10 @@
 
 <%-- Java Bean --%>
 <jsp:useBean id="appBean" scope="page" class="team06.platform.web.bean.ApplicationBean" />
-<jsp:setProperty name="appBean" property="userid" value='<%= session.getAttribute("userid") %>'/>
+<jsp:setProperty name="appBean" property="userId" value='<%= session.getAttribute("userId") %>'/>
 
 <jsp:useBean id="database" scope="page" class="team06.platform.web.bean.DatabaseBean" />
-<% Database databaseInfo = appBean.queryDBbyid(session.getAttribute("userid").toString()); %>
+<% Database databaseInfo = appBean.queryDBbyid(session.getAttribute("userId").toString()); %>
 <% appBean.doQuery(); %>
 
 <%-- Authentication --%>
@@ -159,7 +159,7 @@
                                         </span>
                                         <div>
                                             <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0;padding-top:18%">
-                                                <%= databaseInfo.getDbname() %>
+                                                <%= databaseInfo.getDbName() %>
                                             </span>
                                         </div>
                                     </div>
@@ -174,7 +174,7 @@
                                         </span>
                                         <div>
                                             <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0;padding-top:18%">
-                                                <%= databaseInfo.getDbusername() %>
+                                                <%= databaseInfo.getDbUsername() %>
                                             </span>
                                         </div>
                                     </div>
@@ -189,7 +189,7 @@
                                         </span>
                                         <div>
                                             <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0;padding-top:18%">
-                                                <%= databaseInfo.getDbpassword() %>
+                                                <%= databaseInfo.getDbPassword() %>
                                             </span>
                                         </div>
                                     </div>
@@ -204,7 +204,7 @@
                                         </span>
                                         <div>
                                             <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0;padding-top:18%">
-                                                <%= database.queryUsage(databaseInfo.getDbname()) %>
+                                                <%= database.queryUsage(databaseInfo.getDbName()) %>
                                             </span>
                                         </div>
                                     </div>
@@ -229,7 +229,7 @@
                               action="${pageContext.request.contextPath}/application"
                               method="POST">
                             <div class="w3-section">
-                                <input type="hidden" name="username" value=<%= databaseInfo.getDbusername() %>>
+                                <input type="hidden" name="username" value=<%= databaseInfo.getDbUsername() %>>
                                 <label><b>New Password</b></label>
                                 <input class="w3-input w3-border" type="password" placeholder="Please Enter New Password" name="password" required>
                                 <button class="w3-button w3-block w3-green w3-section w3-padding"
@@ -255,8 +255,8 @@
                               action="${pageContext.request.contextPath}/application"
                               method="POST">
                             <div class="w3-section">
-                                <input type="hidden" name="username" value=<%= databaseInfo.getDbusername() %>>
-                                <input type="hidden" name="dbname" value=<%= databaseInfo.getDbname() %>>
+                                <input type="hidden" name="username" value=<%= databaseInfo.getDbUsername() %>>
+                                <input type="hidden" name="dbname" value=<%= databaseInfo.getDbName() %>>
                                 <label><b>New Password</b></label>
                                 <textarea class="w3-input w3-border" placeholder="Please Enter SQL" name="SQL" required style="height:200px"></textarea>
                                 <button class="w3-button w3-block w3-green w3-section w3-padding"
@@ -322,7 +322,7 @@
                                     <th>Usage - KB</th>
                                 </tr>
                                 <%
-                                    List<Map<String, String>> tableUsages = database.queryTableUsage(databaseInfo.getDbname());
+                                    List<Map<String, String>> tableUsages = database.queryTableUsage(databaseInfo.getDbName());
                                     for (Map<String, String> tableUsage: tableUsages) {
                                 %>
                                 <tr style="text-align: center">
@@ -479,14 +479,14 @@
                         <header class="w3-container w3-padding" style="text-align: left;background-color: #f9f9f9">
                             <span style="font-size: 15px;vertical-align: middle">
                                 <% if (appInfo.getStatus() == 2) { %>
-                                <a href="<%=appInfo.getContextpath()%>"><%= appInfo.getName() %></a>
+                                <a href="<%=appInfo.getContextPath()%>"><%= appInfo.getName() %></a>
                                 <% } else { %>
                                 <%= appInfo.getName() %>
                                 <% } %>
                             </span>
                             <form class="w3-right" action="${pageContext.request.contextPath}/application/detail" method="POST">
-                                <input type="hidden" name="appid" value=<%= appInfo.getAppid().toString() %>>
-                                <input type="hidden" name="userid" value=<%= appBean.getUserid() %>>
+                                <input type="hidden" name="appId" value=<%= appInfo.getAppId() %>>
+                                <input type="hidden" name="userId" value=<%= appBean.getUserId() %>>
                                 <input class="w3-button w3-round-large w3-border w3-hover-white w3-hover-border-cyan" type="submit" name="Detail" value="View Detail" >
                             </form>
                         </header>

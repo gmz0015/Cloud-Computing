@@ -106,9 +106,9 @@
                                 for (Database database: databases) {
                             %>
                             <tr style="text-align: center">
-                                <td><%= database.getDbname() %></td>
-                                <td><%= database.getDbusername() %></td>
-                                <td><%= database.getDbpassword() %></td>
+                                <td><%= database.getDbName() %></td>
+                                <td><%= database.getDbUsername() %></td>
+                                <td><%= database.getDbPassword() %></td>
                             </tr>
                             <% } %>
                         </table>
@@ -131,7 +131,7 @@
                                 for (DBUser dbUser: dbUsers) {
                             %>
                             <tr style="text-align: center">
-                                <td><%= dbUser.getUsername() %></td>
+                                <td><%= dbUser.getUserName() %></td>
                                 <td><%= dbUser.getHost() %></td>
                             </tr>
                             <% } %>

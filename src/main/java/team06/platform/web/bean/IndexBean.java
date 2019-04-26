@@ -8,9 +8,9 @@ import java.io.Serializable;
 import java.util.List;
 
 public class IndexBean implements Serializable {
-    private String userid;
-    private String username;
-    private List<String> appsid;
+    private String userId;
+    private String userName;
+    private List<String> appsId;
     private List<Application> appInfo;
     private String role;
 
@@ -23,28 +23,36 @@ public class IndexBean implements Serializable {
         return appInfo;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public List<String> getAppid() {
-        return appsid;
+    public List<String> getAppsId() {
+        return appsId;
     }
 
-    public void setAppid(List<String> appid) {
-        this.appsid = appid;
+    public void setAppsId(List<String> appsId) {
+        this.appsId = appsId;
+    }
+
+    public List<Application> getAppInfo() {
+        return appInfo;
+    }
+
+    public void setAppInfo(List<Application> appInfo) {
+        this.appInfo = appInfo;
     }
 
     public String getRole() {

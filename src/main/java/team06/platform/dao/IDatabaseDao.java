@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface IDatabaseDao {
 
-    Database createDBbyId(String userid);
+    Database createDBbyId(String userId);
 
     /**
      * execute the SQL provided by user
@@ -16,7 +16,7 @@ public interface IDatabaseDao {
      */
     String executeSQL(String SQL);
 
-    String changePassword(String username, String newPassword);
+    String changePassword(String userName, String newPassword);
 
     /**
      * Query the usage of a database based on its name
@@ -33,11 +33,11 @@ public interface IDatabaseDao {
     List<Map<String, String>> queryDBTableUsage(String databaseName);
 
     /**
-     * Query the database info by userid
-     * @param userid
+     * Query the database info by userId
+     * @param userId
      * @return
      */
-    Database queryDBbyid(String userid);
+    Database queryDBbyid(String userId);
 
     /**
      * Query the database info by database name

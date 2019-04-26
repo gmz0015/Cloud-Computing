@@ -48,5 +48,10 @@ public class AccountServiceImpl implements IAccountService {
         return accountDao.queryTransaction(userId);
     }
 
+    @Override
+    public List<Transaction> getAppTransaction(Long appId) {
+        return accountDao.queryAppTransaction(appId);
+    }
+
 
 }

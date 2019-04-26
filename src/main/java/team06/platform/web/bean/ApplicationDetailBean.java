@@ -9,8 +9,8 @@ import team06.platform.service.impl.DatabaseServiceImpl;
 import java.io.Serializable;
 
 public class ApplicationDetailBean implements Serializable {
-    private String userid;
-    private String appid;
+    private String userId;
+    private String appId;
     private Application appInfo;
 
     private IApplicationService appService = new ApplicationServiceImpl();
@@ -19,7 +19,7 @@ public class ApplicationDetailBean implements Serializable {
     public ApplicationDetailBean() {}
 
     public Application doQuery() {
-        appInfo = appService.getAppByAppId(appid);
+        appInfo = appService.getAppByAppId(appId);
         return appInfo;
     }
 
@@ -31,19 +31,19 @@ public class ApplicationDetailBean implements Serializable {
         this.appInfo = appInfo;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getAppid() {
-        return appid;
+    public String getAppId() {
+        return appId;
     }
 
-    public void setAppid(String appid) {
-        this.appid = appid;
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 }

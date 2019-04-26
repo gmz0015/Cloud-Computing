@@ -21,19 +21,23 @@ public class login extends HttpServlet {
     private String IP = "9527";
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        System.out.println("Referer doGet is: " + request.getHeader("Referer"));
+//        System.out.println("URI doGet is: " + request.getRequestURI());
+//        System.out.println("URI Att doGet is: " + request.getAttribute("fromURI"));
+        request.setAttribute("Referer", request.getAttribute("fromURI"));
+        request.getRequestDispatcher("/login.jsp").forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         PrintWriter out = null;
         BufferedReader in = null;
         String result = "";
+        String referer = request.getParameter("Referer");
 
-        System.out.println("requestURI is: " + request.getRequestURI());
-        System.out.println("requestURL is: " + request.getRequestURL());
-        System.out.println("remoteAddr is: " + request.getRemoteAddr());
+//        System.out.println("doPost:" + referer);
 
         String userName = request.getParameter("username").trim();
         String userPwd = request.getParameter("userpassword").trim();
@@ -57,9 +61,6 @@ public class login extends HttpServlet {
 
             //Step 4: receive response from server
             int responseCode = connection.getResponseCode();
-            System.out.println("code is: " + connection.getResponseCode());
-            System.out.println("message is: " + connection.getResponseMessage());
-            System.out.println("content type is: " + connection.getContentType());
             in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
             String line;
             while ((line = in.readLine()) != null) {
@@ -74,10 +75,11 @@ public class login extends HttpServlet {
             } else {
                 String[] userinfo = result.split("&");
                 request.getSession().setMaxInactiveInterval(30*60);
-                request.getSession().setAttribute("userid", userinfo[0]);
-                request.getSession().setAttribute("username", userinfo[1]);
-                request.getSession().setAttribute("userrole", userinfo[2]);
-                response.sendRedirect("/");
+                request.getSession().setAttribute("userId", userinfo[0]);
+                request.getSession().setAttribute("userName", userinfo[1]);
+                request.getSession().setAttribute("userRole", userinfo[2]);
+                request.login(userName, userPwd);
+                response.sendRedirect(referer);
             }
         } catch (Exception e) {
             System.out.println("Catch Exception: " + e);

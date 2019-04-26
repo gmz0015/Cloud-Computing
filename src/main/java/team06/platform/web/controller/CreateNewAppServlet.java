@@ -1,5 +1,9 @@
 package team06.platform.web.controller;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import team06.platform.domain.Application;
 import team06.platform.service.IDatabaseService;
 import team06.platform.service.IManagerService;
@@ -8,10 +12,7 @@ import team06.platform.service.impl.ManagerService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB
@@ -22,9 +23,32 @@ public class CreateNewAppServlet extends HttpServlet {
     private ManagerServlet managerServlet = new ManagerServlet();
     private IManagerService managerService = new ManagerService();
     private IDatabaseService databaseService = new DatabaseServiceImpl();
+    private static final String TOKEN_SECRET = "fd8780zdufb7f5bnz456fd";
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String userId = null;
+        String userName = null;
+        String userRole = null;
+        String token = null;
+
+        Cookie[] cs = request.getCookies();
+        if(cs != null) {
+            for(Cookie c : cs) {
+                if(c.getName().equals("token")) {
+                    token = c.getValue();
+                }
+            }
+        }
+        if (token != null) {
+            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT jwt = verifier.verify(token);
+            userId = jwt.getClaim("userId").asString();
+            userName = jwt.getClaim("userName").asString();
+            userRole = jwt.getClaim("userRole").asString();
+        }
+
         String appPath = request.getServletContext().getRealPath("");
         if (request.getContentType() != null) {
             if (request.getContentType().split(";")[0].equals("multipart/form-data")) {
@@ -39,14 +63,14 @@ public class CreateNewAppServlet extends HttpServlet {
                             // Insert to database
                             managerService.insertNewApp(new Application(
                                     generateAppid(),
-                                    request.getSession().getAttribute("userId") + "_" + generateAppid(),
+                                    userName + "_" + generateAppid(),
                                     "Default Description",
-                                    request.getSession().getAttribute("userId").toString(),
-                                    request.getSession().getAttribute("userName").toString(),
+                                    userId,
+                                    userName,
                                     0,
                                     0.0,
                                     0,
-                                    databaseService.queryDBbyid(request.getSession().getAttribute("userid").toString()).getDbId(),
+                                    databaseService.queryDBbyid(userId).getDbId(),
                                     savePath,
                                     null,
                                     "/image/defalutAPP.jpg"));
@@ -54,12 +78,11 @@ public class CreateNewAppServlet extends HttpServlet {
                             System.out.println("[team06.platform.web.controller.CreateNewAppServlet.doGet]: " + e);
 
                             // Upload Failed, dispatch back
-                            request.setAttribute("error", 1);
-                            request.getRequestDispatcher("/WEB-INF/pages/views/applicationCreate.jsp").forward(request, response);
+                            response.sendRedirect(request.getContextPath() + "/application/?error=0");
                         }
 
                         // Upload Successful, redirect to application page
-                        response.sendRedirect("/application");
+                        response.sendRedirect("/application/?error=1");
                     }
                 }
             }

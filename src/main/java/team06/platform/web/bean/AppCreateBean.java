@@ -1,5 +1,9 @@
 package team06.platform.web.bean;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import team06.platform.domain.Database;
 import team06.platform.service.IDatabaseService;
 import team06.platform.service.IManagerService;
@@ -7,6 +11,7 @@ import team06.platform.service.impl.DatabaseServiceImpl;
 import team06.platform.service.impl.ManagerService;
 import team06.platform.web.controller.ManagerServlet;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
@@ -18,13 +23,35 @@ public class AppCreateBean extends HttpServlet implements Serializable {
     private final String SAVE_DIR = "uploadedFiles";
     private int nextStep = 0;
     private IDatabaseService databaseService = new DatabaseServiceImpl();
+    private String userId;
     private ManagerServlet managerServlet = new ManagerServlet();
     private IManagerService managerService = new ManagerService();
 
+    private static final String TOKEN_SECRET = "fd8780zdufb7f5bnz456fd";
 
-    public Database queryDBbyid(String userid) {
+    public void getInfo(HttpServletRequest request) {
+        String token = null;
+
+        Cookie[] cs = request.getCookies();
+        if(cs != null) {
+            for(Cookie c : cs) {
+                if(c.getName().equals("token")) {
+                    token = c.getValue();
+                }
+            }
+        }
+        if (token != null) {
+            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT jwt = verifier.verify(token);
+            this.userId = jwt.getClaim("userId").asString();
+        }
+    }
+
+
+    public Database queryDBbyid() {
         nextStep = 1;
-        return databaseService.queryDBbyid(userid);
+        return databaseService.queryDBbyid(this.userId);
     }
 
     public void doUpload(HttpServletRequest request){

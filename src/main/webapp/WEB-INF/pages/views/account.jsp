@@ -13,7 +13,7 @@
 
 <%-- Java Bean --%>
 <jsp:useBean id="accountBean" scope="page" class="team06.platform.web.bean.AccountBean" />
-<jsp:setProperty name="accountBean" property="userId" value='<%= session.getAttribute("userId") %>'/>
+<% accountBean.getInfo(request); %>
 
 <%-- Authentication --%>
 

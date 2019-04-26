@@ -14,36 +14,18 @@
 
 <%-- Java Bean --%>
 <jsp:useBean id="indexBean" scope="page" class="team06.platform.web.bean.IndexBean" />
+<% indexBean.getInfo(request); %>
 <%--<jsp:setProperty name="indexBean" property="*" />--%>
 
-<%-- Set userId to session --%>
-<% String error = request.getParameter("error"); %>
+<%-- Error --%>
+<%@ include file="/WEB-INF/pages/error/errorPermission.jsp"%>
 <html xmlns:jsp="http://java.sun.com/JSP/Page">
-<%-- Error Permission --%>
-<%-- 0 => No permission to access the application --%>
-<% if (error != null){ if (error.equals("0")) { %>
-<div id="errorPermission" class="w3-modal" style="display:block;">
-    <div class="w3-modal-content w3-animate-top w3-card-4">
-        <header class="w3-container w3-red">
-            <h2>Permission Denied</h2>
-        </header>
-        <div class="w3-container">
-            <h4>Sorry, you don't have the permission to access this application.</h4>
-            <button class="w3-button w3-blue w3-padding w3-round-large w3-hover-red w3-margin"
-                    onclick="document.getElementById('errorPermission').style.display='none'">
-                Close
-            </button>
-        </div>
-    </div>
-</div>
-<% } } %>
-
 <div id="main" style="margin-left: 50px">
     <%-- Welcome Message --%>
     <div class="w3-container">
         <br/>
         <div class="w3-row-padding" >
-            <% if (session.getAttribute("userRole") == null) { %>
+            <% if (indexBean.getUserRole() == null) { %>
             <%-- Welcome Message - Guest --%>
             <div class="w3-third">
                 <div class="w3-card" style="background-color:white;position:relative;height: 150px">
@@ -127,7 +109,7 @@
                     </div>
                 </div>
             </div>
-            <% }else if(session.getAttribute("userRole").equals("USER")) { %>
+            <% }else if(indexBean.getUserRole().equals("USER")) { %>
             <%-- Welcome Message - User --%>
             <div class="w3-third">
                 <div class="w3-card" style="background-color:white;position:relative;height: 150px">
@@ -143,7 +125,7 @@
                                     Hello
                                 </div>
                                 <div class="w3-row" style="text-align: center;vertical-align: middle">
-                                    <span style="color:#9B9EA0;font-size:18px"><%= session.getAttribute("userName") %></span>
+                                    <span style="color:#9B9EA0;font-size:18px"><%= indexBean.getUserName() %></span>
                                 </div>
                             </div>
                         </div>
@@ -234,7 +216,7 @@
 
                 </div>
             </div>
-            <% }else if(session.getAttribute("userRole").equals("DEVELOPER")) { %>
+            <% }else if(indexBean.getUserRole().equals("DEVELOPER")) { %>
             <%-- Welcome Message - Developer --%>
             <div class="w3-third">
                 <div class="w3-card" style="background-color:white;position:relative;height: 150px">
@@ -250,7 +232,7 @@
                                     Hello
                                 </div>
                                 <div class="w3-row" style="text-align: center;vertical-align: middle">
-                                    <span style="color:#9B9EA0;font-size:18px"><%= session.getAttribute("userName") %></span>
+                                    <span style="color:#9B9EA0;font-size:18px"><%= indexBean.getUserName() %></span>
                                 </div>
                             </div>
                         </div>
@@ -341,7 +323,7 @@
 
                 </div>
             </div>
-            <% }else if(session.getAttribute("userRole").equals("ADMIN")) { %>
+            <% }else if(indexBean.getUserRole().equals("ADMIN")) { %>
             <%-- Welcome Message - Admin --%>
             <div class="w3-third">
                 <div class="w3-card" style="background-color:white;position:relative;height: 150px">
@@ -357,7 +339,7 @@
                                     Hello
                                 </div>
                                 <div class="w3-row" style="text-align: center;vertical-align: middle">
-                                    <span style="color:#9B9EA0;font-size:18px"><%= session.getAttribute("userName") %></span>
+                                    <span style="color:#9B9EA0;font-size:18px"><%= indexBean.getUserName() %></span>
                                 </div>
                             </div>
                         </div>
@@ -524,37 +506,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <%-- Charge Information --%>
-    <div class="w3-container">
-        <br/>
-        <div class="w3-panel w3-leftbar w3-border-blue">
-            <span style="font-size: 16px">Charge Information</span>
-        </div>
-        <div class="w3-row-padding">
-            <%--<div class=""--%>
-            <%-- Applications --%>
-            <div class="w3-card">
-
-                <div class="w3-responsive">
-                    <%-- w3-table w3-bordered --%>
-                    <table class="w3-table-all w3-centered">
-                        <tr class="w3-border">
-                            <th>Standard</th>
-                            <th>Gold</th>
-                            <th>Ultimate</th>
-                        </tr>
-                        <tr >
-                            <th>10/hour</th>
-                            <th>15/hour</th>
-                            <th>20/hour</th>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
 

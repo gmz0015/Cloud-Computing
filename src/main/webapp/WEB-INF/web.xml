@@ -235,6 +235,24 @@
         <url-pattern>/manager/*</url-pattern>
     </servlet-mapping>
 
+    <!-- Error Page -->
+    <!--<error-page>-->
+        <!--<exception-type>java.lang.Exception</exception-type>-->
+        <!--<location>/errorPage/error500.jsp</location>-->
+    <!--</error-page>-->
+    <!--<error-page>-->
+        <!--<error-code>404</error-code>-->
+        <!--<location>/errorPage/error404.jsp</location>-->
+    <!--</error-page>-->
+    <!--<error-page>-->
+        <!--<error-code>400</error-code>-->
+        <!--<location>/errorPage/error400.jsp</location>-->
+    <!--</error-page>-->
+    <!--<error-page>-->
+        <!--<error-code>500</error-code>-->
+        <!--<location>/errorPage/error500.jsp</location>-->
+    <!--</error-page>-->
+
     <!--<filter>-->
         <!--<filter-name>Authentication</filter-name>-->
         <!--<filter-class>team06.platform.web.filter.authenticationFilter</filter-class>-->

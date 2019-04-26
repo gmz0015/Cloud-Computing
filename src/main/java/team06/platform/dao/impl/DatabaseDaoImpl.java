@@ -193,7 +193,6 @@ public class DatabaseDaoImpl implements IDatabaseDao {
             conn.setAutoCommit(false); // start transaction
 
             String sql = "SELECT * FROM CloudComputing.database WHERE userId='" + userId + "';";
-            System.out.println("TEST SQL:" + sql);
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             conn.commit();

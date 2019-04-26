@@ -15,20 +15,23 @@
 
 <%-- Java Bean --%>
 <jsp:useBean id="appBean" scope="page" class="team06.platform.web.bean.ApplicationBean" />
-<jsp:setProperty name="appBean" property="userId" value='<%= session.getAttribute("userId") %>'/>
 
-<jsp:useBean id="database" scope="page" class="team06.platform.web.bean.DatabaseBean" />
-<% Database databaseInfo = appBean.queryDBbyid(session.getAttribute("userId").toString()); %>
-<% appBean.doQuery(); %>
+<jsp:useBean id="databaseBean" scope="page" class="team06.platform.web.bean.DatabaseBean" />
+<jsp:setProperty name="databaseBean" property="appId" value='<%= session.getAttribute("appId") %>'/>
+<%
+    databaseBean.getInfo(request);
+    appBean.getInfo(request);
+    appBean.doQuery(request, response);
+    Database databaseInfo = databaseBean.queryDBbyId(request, response);
+%>
 
 <%-- Authentication --%>
 
 <%-- Message --%>
 <%@ include file="/WEB-INF/pages/component/message.jsp"%>
-
+<%@ include file="/WEB-INF/pages/error/errorApp.jsp"%>
 <!DOCTYPE HTML>
 <html xmlns:jsp="http://java.sun.com/JSP/Page">
-
 <title>Team 06 - Application</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -204,7 +207,7 @@
                                         </span>
                                         <div>
                                             <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0;padding-top:18%">
-                                                <%= database.queryUsage(databaseInfo.getDbName()) %>
+                                                <%= databaseBean.queryUsage(databaseInfo.getDbName()) %>
                                             </span>
                                         </div>
                                     </div>
@@ -322,7 +325,7 @@
                                     <th>Usage - KB</th>
                                 </tr>
                                 <%
-                                    List<Map<String, String>> tableUsages = database.queryTableUsage(databaseInfo.getDbName());
+                                    List<Map<String, String>> tableUsages = databaseBean.queryTableUsage(databaseInfo.getDbName());
                                     for (Map<String, String> tableUsage: tableUsages) {
                                 %>
                                 <tr style="text-align: center">
@@ -486,7 +489,6 @@
                             </span>
                             <form class="w3-right" action="${pageContext.request.contextPath}/application/detail" method="POST">
                                 <input type="hidden" name="appId" value=<%= appInfo.getAppId() %>>
-                                <input type="hidden" name="userId" value=<%= appBean.getUserId() %>>
                                 <input class="w3-button w3-round-large w3-border w3-hover-white w3-hover-border-cyan" type="submit" name="Detail" value="View Detail" >
                             </form>
                         </header>

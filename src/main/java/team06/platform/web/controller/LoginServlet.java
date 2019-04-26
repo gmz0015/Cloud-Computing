@@ -1,5 +1,7 @@
 package team06.platform.web.controller;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import team06.platform.domain.User;
 import team06.platform.service.IUserService;
 import team06.platform.service.impl.UserServiceImpl;
@@ -8,12 +10,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginServlet extends HttpServlet {
     private IUserService userService = new UserServiceImpl();
+    private static final String TOKEN_SECRET = "fd8780zdufb7f5bnz456fd";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Set Token
+        Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+        Map<String, Object> header = new HashMap<>(2);
+        header.put("typ", "JWT");
+        header.put("alg", "HS256");
+
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter pw = response.getWriter();
         String Referer;
@@ -38,32 +49,24 @@ public class LoginServlet extends HttpServlet {
         }
 
         //get session object
-        HttpSession session = request.getSession();
         request.getSession().setAttribute("userId", webuser.getUserId().toString());
         request.getSession().setAttribute("userName", webuser.getUserName());
         request.getSession().setAttribute("userRole", webuser.getUserRole());
+        request.getSession().setAttribute("avatar", webuser.getAvatar());
 
-        Cookie idCookie = new Cookie("userId", webuser.getUserId().toString());
-        idCookie.setMaxAge(1*24*60*60);
-        idCookie.setPath("/");
-        Cookie nameCookie = new Cookie("userName", webuser.getUserName());
-        nameCookie.setMaxAge(1*24*60*60);
-        nameCookie.setPath("/");
-        Cookie roleCookie = new Cookie("userRole", webuser.getUserRole());
-        roleCookie.setMaxAge(1*24*60*60);
-        roleCookie.setPath("/");
-        Cookie cookie = new Cookie("JSESSIONID", session.getId());
-        cookie.setMaxAge(1*24*60*60);
-        cookie.setPath("/");
+        String token = JWT.create()
+                .withHeader(header)
+                .withClaim("userId", webuser.getUserId().toString())
+                .withClaim("userName", webuser.getUserName())
+                .withClaim("userRole", webuser.getUserRole())
+                .sign(algorithm);
+        Cookie tokenCookie = new Cookie("token", token);
+        tokenCookie.setMaxAge(1*24*60*60);
+        tokenCookie.setPath("/");
 
-        response.addCookie(cookie);
-        response.addCookie(idCookie);
-        response.addCookie(nameCookie);
-        response.addCookie(roleCookie);
+        response.addCookie(tokenCookie);
 
         request.login(webuser.getUserName(), webuser.getPassword());
-
-
 
         response.sendRedirect(Referer);
     }

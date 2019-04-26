@@ -10,6 +10,40 @@ import java.sql.ResultSet;
 
 public class UserDaoImpl implements IUserDao {
     @Override
+    public Boolean insertUser(User user) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        boolean result = false;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            conn.setAutoCommit(false); // start transaction
+
+            String sql = "INSERT INTO " +
+                    "CloudComputing.users " +
+                    "VALUES (" +
+                    user.getUserId() + ", " +
+                    "'" + user.getUserName() + "', " +
+                    "'" + user.getPassword() + "', " +
+                    "'" + user.getEmail() + "', " +
+                    "'" + user.getAvatar() + "', " +
+                    "'" + user.getUserRole() + "');";
+            st = conn.prepareStatement(sql);
+            st.execute();
+            conn.commit();
+            result = true;
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.UserDaoImpl.insertUser]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return result;
+    }
+
+    @Override
     public User queryUserInfoByName(String userName) {
         /* Initial Connection */
         Connection conn = null;

@@ -15,9 +15,11 @@
 
 <%-- Java Bean --%>
 <jsp:useBean id="appBean" scope="page" class="team06.platform.web.bean.ApplicationBean" />
-<jsp:setProperty name="appBean" property="userId" value='<%= session.getAttribute("userId") %>'/>
+
+<%-- Error --%>
+<%@ include file="/WEB-INF/pages/error/errorPermission.jsp"%>
 <!DOCTYPE html>
-<html>
+<html xmlns:jsp="http://java.sun.com/JSP/Page">
 <title>Team 06 - Welcome</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,14 +38,17 @@
         <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
             <i class="fa fa-remove"></i>
         </a>
-        <img src="<%=request.getContextPath()%>/image/food.jpg" style="width:45%;" class="w3-round"><br><br>
+        <% if (session.getAttribute("userId") == null) { %>
+        <img src="/image/avatar/avatar.jpg" style="width:45%;" class="w3-round"><br><br>
         <h4><b>
-            <% if (session.getAttribute("userId") == null) { %>
             Hello Guest
-            <% }else { %>
-            <%=session.getAttribute("userName")%>
-            <% } %>
         </b></h4>
+        <% }else { %>
+        <img src="/image/avatar/<%= session.getAttribute("avatar") %>" style="width:45%;" class="w3-round"><br><br>
+        <h4><b>
+            Hello <%=session.getAttribute("userName")%>
+        </b></h4>
+        <% } %>
     </div>
     <div class="w3-bar-block">
         <a href="#" onclick="window.location.href='<%= request.getContextPath() + "/console" %>'" class="w3-bar-item w3-button w3-padding">

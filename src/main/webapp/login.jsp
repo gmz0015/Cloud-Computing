@@ -38,17 +38,12 @@
     <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
       <i class="fa fa-bars"></i>
     </a>
-    <a href="#home" class="w3-bar-item w3-button">HOME</a>
-    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
-    <a href="https://www.google.com/" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
-      <i class="fa fa-search"></i>
-    </a>
+    <a href="/" class="w3-bar-item w3-button">HOME</a>
   </div>
 
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
-    <a href="#" class="w3-bar-item w3-button">SEARCH</a>
+    <a href="/" class="w3-bar-item w3-button">HOME</a>
   </div>
 </div>
 
@@ -65,11 +60,11 @@
 		<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black w3-large">Register</button>
 		<button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-black w3-large">Login</button>
 	</div>
-  
-	
+
+
   <div id="id01" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-left" style="max-width:600px">
-			
+
       <div class="w3-center"><br>
 				<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
 				<h3>Welcome to Cloud Platform Registration page!</h3>
@@ -86,6 +81,11 @@
 		  <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Email Address" name="email" required>
 		  <label><b>Upload a custom avatar</b></label>
 		  <input class="w3-input w3-border w3-margin-bottom" type="file" name="avatar">
+          <label><b>Become a</b></label>
+          <div class="w3-row">
+            <div class="w3-half"><input type="radio" checked="checked" name="role" value="USER" /><span style="padding-left:10px">User</span></div>
+            <div class="w3-half"><input type="radio" name="role" value="DEVELOPER" /><span style="padding-left:10px">Developer</span></div>
+          </div>
           <button class="w3-button w3-block w3-black w3-section w3-padding" type="submit">Register</button>
         </div>
       </form>
@@ -97,13 +97,13 @@
 
     </div>
   </div>
-	
+
   <div id="id02" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-right" style="max-width:600px">
-  
+
       <div class="w3-center"><br>
         <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">x</span>
-        <img src="/image/avatar.jpg" alt="Avatar" style="width:30%;height:30%" class="w3-circle w3-margin-top">
+        <img src="/image/avatar/avatar.jpg" alt="Avatar" style="width:30%;height:30%" class="w3-circle w3-margin-top">
       </div>
 
       <form class="w3-container" action="${pageContext.request.contextPath}/login/login" method="post" name="form1">
@@ -140,7 +140,7 @@ function toggleFunction() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
-</script>		
+</script>
 </body>
 
 </html>

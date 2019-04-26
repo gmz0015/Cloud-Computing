@@ -12,4 +12,9 @@ public class UserServiceImpl implements IUserService {
     public User login(String userName, String password) {
         return userDao.queryUserInfo(userName, password);
     }
+
+    @Override
+    public Boolean register(User user) {
+        return userDao.insertUser(user);
+    }
 }

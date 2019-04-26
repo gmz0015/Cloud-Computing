@@ -1,15 +1,19 @@
 package team06.platform.web.bean;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import team06.platform.domain.Application;
-import team06.platform.domain.Database;
 import team06.platform.domain.Transaction;
 import team06.platform.service.IAccountService;
 import team06.platform.service.IApplicationService;
-import team06.platform.service.IDatabaseService;
 import team06.platform.service.impl.AccountServiceImpl;
 import team06.platform.service.impl.ApplicationServiceImpl;
-import team06.platform.service.impl.DatabaseServiceImpl;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,25 +26,45 @@ public class ApplicationBean implements Serializable {
     private Integer running = 0;
     private Integer stop = 0;
     private Integer undeploy = 0;
+    private static final String TOKEN_SECRET = "fd8780zdufb7f5bnz456fd";
 
-    private IApplicationService appService = new ApplicationServiceImpl();
-    private IDatabaseService databaseService = new DatabaseServiceImpl();
+    private IApplicationService applicationService = new ApplicationServiceImpl();
     private IAccountService accountService = new AccountServiceImpl();
 
     public ApplicationBean(){
         appInfo = new ArrayList<>();
     }
 
-    public Database queryDBbyid(String userId) {
-        return databaseService.queryDBbyid(userId);
-    }
-
     /**
      * Invoke service to query Database and retrieve applications data
      */
-    public void doQuery(){
-        appInfo = appService.getAppByUserId(userId);
-        count();
+    public void doQuery(HttpServletRequest request, HttpServletResponse response) throws IOException{
+
+        if (applicationService.checkAppUser(userId, appId)) {
+            appInfo = applicationService.getAppByUserId(userId);
+            count();
+        }else {
+            response.sendRedirect(request.getContextPath() + "/console/?error=401.4");
+        }
+    }
+
+    public void getInfo(HttpServletRequest request) {
+        String token = null;
+
+        Cookie[] cs = request.getCookies();
+        if(cs != null) {
+            for(Cookie c : cs) {
+                if(c.getName().equals("token")) {
+                    token = c.getValue();
+                }
+            }
+        }
+        if (token != null) {
+            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT jwt = verifier.verify(token);
+            this.userId = jwt.getClaim("userId").asString();
+        }
     }
 
     private void count(){
@@ -59,7 +83,7 @@ public class ApplicationBean implements Serializable {
         return appInfo;
     }
 
-    public List<Application> getAllLiveAppInfo() { return appService.getAllLiveAppInfo(); }
+    public List<Application> getAllLiveAppInfo() { return applicationService.getAllLiveAppInfo(); }
 
     public Integer getBalance() {
         return accountService.getBalance(Long.valueOf(this.userId));
@@ -113,13 +137,5 @@ public class ApplicationBean implements Serializable {
 
     public void setAppInfo(List<Application> appInfo) {
         this.appInfo = appInfo;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 }

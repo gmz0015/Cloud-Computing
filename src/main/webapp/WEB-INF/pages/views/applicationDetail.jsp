@@ -13,14 +13,16 @@
 
 <%-- Java Bean --%>
 <jsp:useBean id="appCreateBean" scope="page" class="team06.platform.web.bean.ApplicationDetailBean" />
-<jsp:setProperty name="appCreateBean" property="userId" value='<%= session.getAttribute("userId") %>'/>
 <jsp:setProperty name="appCreateBean" property="appId" value='<%= session.getAttribute("appId") %>'/>
 <jsp:useBean id="appBean" scope="page" class="team06.platform.web.bean.ApplicationBean" />
-<jsp:setProperty name="appBean" property="userId" value='<%= session.getAttribute("userId") %>'/>
 <jsp:setProperty name="appCreateBean" property="appId" value='<%= session.getAttribute("appId") %>'/>
 
 <%-- onload --%>
-<% Application appInfo = appCreateBean.doQuery(); %>
+<%
+    appCreateBean.getInfo(request);
+    appBean.getInfo(request);
+    Application appInfo = appCreateBean.doQuery(request, response);
+%>
 
 <%-- Message --%>
 <%@ include file="/WEB-INF/pages/component/message.jsp"%>

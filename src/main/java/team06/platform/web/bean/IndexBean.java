@@ -1,9 +1,15 @@
 package team06.platform.web.bean;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import team06.platform.domain.Application;
 import team06.platform.service.IApplicationService;
 import team06.platform.service.impl.ApplicationServiceImpl;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,11 +18,33 @@ public class IndexBean implements Serializable {
     private String userName;
     private List<String> appsId;
     private List<Application> appInfo;
-    private String role;
+    private String userRole;
+    private static final String TOKEN_SECRET = "fd8780zdufb7f5bnz456fd";
 
     public IndexBean() {
         IApplicationService appService = new ApplicationServiceImpl();
         appInfo = appService.getAllApps();
+    }
+
+    public void getInfo(HttpServletRequest request) {
+        String token = null;
+
+        Cookie[] cs = request.getCookies();
+        if(cs != null) {
+            for(Cookie c : cs) {
+                if(c.getName().equals("token")) {
+                    token = c.getValue();
+                }
+            }
+        }
+        if (token != null) {
+            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT jwt = verifier.verify(token);
+            this.userId = jwt.getClaim("userId").asString();
+            this.userName = jwt.getClaim("userName").asString();
+            this.userRole = jwt.getClaim("userRole").asString();
+        }
     }
 
     public List<Application> getAllApps(){
@@ -27,16 +55,8 @@ public class IndexBean implements Serializable {
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
     public String getUserName() {
         return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public List<String> getAppsId() {
@@ -55,11 +75,7 @@ public class IndexBean implements Serializable {
         this.appInfo = appInfo;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
+    public String getUserRole() {
+        return userRole;
     }
 }

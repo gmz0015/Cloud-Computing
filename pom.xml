@@ -29,6 +29,23 @@
       <artifactId>commons-fileupload</artifactId>
       <version>1.4</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.json/json -->
+    <!--<dependency>-->
+      <!--<groupId>org.json</groupId>-->
+      <!--<artifactId>json</artifactId>-->
+      <!--<version>20180813</version>-->
+    <!--</dependency>-->
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.9.8</version>
+    </dependency>
+    <dependency>
+      <groupId>com.auth0</groupId>
+      <artifactId>java-jwt</artifactId>
+      <version>3.4.0</version>
+    </dependency>
     <dependency>
       <!--jersey servlet package-->
       <groupId>org.glassfish.jersey.containers</groupId>

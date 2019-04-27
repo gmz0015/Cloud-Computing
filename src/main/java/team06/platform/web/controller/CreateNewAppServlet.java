@@ -70,7 +70,7 @@ public class CreateNewAppServlet extends HttpServlet {
                                     0,
                                     0.0,
                                     0,
-                                    databaseService.queryDBbyid(userId).getDbId(),
+                                    databaseService.queryDBbyid(userId, userName).getDbId(),
                                     savePath,
                                     null,
                                     "/image/defalutAPP.jpg"));

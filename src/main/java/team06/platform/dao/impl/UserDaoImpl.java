@@ -34,6 +34,14 @@ public class UserDaoImpl implements IUserDao {
             st = conn.prepareStatement(sql);
             st.execute();
             conn.commit();
+            String sql1 = "INSERT INTO " +
+                    "CloudComputing.user_roles " +
+                    "VALUES (" +
+                    "'" + user.getUserName() + "', " +
+                    "'" + user.getUserRole() + "');";
+            st = conn.prepareStatement(sql1);
+            st.execute();
+            conn.commit();
             result = true;
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.UserDaoImpl.insertUser]: " + e);
@@ -66,6 +74,8 @@ public class UserDaoImpl implements IUserDao {
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.UserDaoImpl.queryUserInfoByName]: " + e);
+            user = new User(Long.valueOf("0"), "", "",
+                    "", "", "");
         }finally{
             JdbcUtils.release(conn, st, rs);
         }
@@ -95,6 +105,8 @@ public class UserDaoImpl implements IUserDao {
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.UserDaoImpl.queryUserInfo]: " + e);
+            user = new User(Long.valueOf("0"), "", "",
+                    "", "", "");
         }finally{
             JdbcUtils.release(conn, st, rs);
         }

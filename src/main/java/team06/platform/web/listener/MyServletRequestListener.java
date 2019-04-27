@@ -22,8 +22,16 @@ public class MyServletRequestListener implements ServletRequestListener {
         Pattern r = Pattern.compile(pattern);
         Matcher m = r.matcher(request.getRequestURI());
         if (m.find( )) {
-            System.out.println("Found value: " + m.group(0));
-            applicationService.increaseVisitByContext(m.group(0));
+            if (m.group(0).equals("/app/null")) {
+                System.out.println("Find Null");
+            }else {
+                System.out.println("Found value: " + m.group(0));
+                if (m.group(0).equals("/app/j_security_check")) {
+                    System.out.println("Security Check");
+                }else {
+                    applicationService.increaseVisitByContext(m.group(0));
+                }
+            }
         }
 //        System.out.println("2 context Header is:" + request.getHeader("Referer"));
     }

@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface IAccountDao {
 
+    void insertAccount(Long userId, String userName);
+
     Integer queryBalance(Long userId);
 
     boolean updateBalance(Account account);

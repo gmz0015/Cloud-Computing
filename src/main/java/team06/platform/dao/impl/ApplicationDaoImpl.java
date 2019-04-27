@@ -34,6 +34,8 @@ public class ApplicationDaoImpl implements IApplicationDao {
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.queryAllApps]: " + e);
+            appsInfo.add(new Application("", "", "", "", "",
+                    0, 0, 0, "", "", "", ""));
         }finally{
             JdbcUtils.release(conn, st, rs);
         }
@@ -63,6 +65,8 @@ public class ApplicationDaoImpl implements IApplicationDao {
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.queryAllApps]: " + e);
+            appsInfo.add(new Application("", "", "", "", "",
+                    0, 0, 0, "", "", "", ""));
         }finally{
             JdbcUtils.release(conn, st, rs);
         }
@@ -82,7 +86,7 @@ public class ApplicationDaoImpl implements IApplicationDao {
         try{
             conn = JdbcUtils.getConnection();
             String sql = "SELECT * FROM CloudComputing.applications WHERE appId='" + appId + "';";
-            System.out.println("TEST[team06.platform.dao.implApplicationDaoImpl.queryAppByAppId] " + sql);
+            System.out.println("TEST[team06.platform.dao.impl.ApplicationDaoImpl.queryAppByAppId] " + sql);
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             while (rs.next()){
@@ -91,13 +95,15 @@ public class ApplicationDaoImpl implements IApplicationDao {
                         "", rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
                         rs.getString("dbId"), rs.getString("warPath"), rs.getString("contextPath"), rs.getString("iconPath"));
             }
-            System.out.println("test "+appInfo.getAppId());
+
         }catch (Exception e) {
-            System.out.println("[team06.platform.dao.implApplicationDaoImpl.queryAppByAppId]: " + e);
+            System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.queryAppByAppId]: " + e);
+            appInfo = new Application("", "", "", "", "",
+                    0, 0, 0, "", "", "", "");
         }finally{
             JdbcUtils.release(conn, st, rs);
         }
-
+        System.out.println("test "+appInfo.getAppId());
         return appInfo;
     }
 
@@ -124,6 +130,8 @@ public class ApplicationDaoImpl implements IApplicationDao {
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.implApplicationDaoImpl.queryAppByUserId]: " + e);
+            appInfo.add(new Application("", "", "", "", "",
+                    0, 0, 0, "", "", "", ""));
         }finally{
             JdbcUtils.release(conn, st, rs);
         }

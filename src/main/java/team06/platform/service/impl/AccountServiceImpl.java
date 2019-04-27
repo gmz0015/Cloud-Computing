@@ -14,6 +14,11 @@ public class AccountServiceImpl implements IAccountService {
     private IAccountDao accountDao = new AccountDaoImpl();
 
     @Override
+    public void createAccount(Long userId, String userName) {
+        accountDao.insertAccount(userId, userName);
+    }
+
+    @Override
     public Integer getBalance(Long userId) {
         return  accountDao.queryBalance(userId);
     }

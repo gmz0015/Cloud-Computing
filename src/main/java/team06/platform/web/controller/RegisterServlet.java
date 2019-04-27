@@ -5,7 +5,11 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import team06.platform.domain.User;
+import team06.platform.service.IAccountService;
+import team06.platform.service.IDatabaseService;
 import team06.platform.service.IUserService;
+import team06.platform.service.impl.AccountServiceImpl;
+import team06.platform.service.impl.DatabaseServiceImpl;
 import team06.platform.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
@@ -20,6 +24,8 @@ import java.util.regex.Pattern;
 
 public class RegisterServlet extends HttpServlet {
     private IUserService userService = new UserServiceImpl();
+    private IDatabaseService databaseService = new DatabaseServiceImpl();
+    private IAccountService accountService = new AccountServiceImpl();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -30,8 +36,9 @@ public class RegisterServlet extends HttpServlet {
         String password = null;
         String email = null;
         String avatar = null;
-        String role = null;
-        String fileName = null;
+        String role = "USER";
+        String fileNameTemp = null;
+        String fileName = "avatar.jpg";
 
         //use regular expressions to show a email format
         final String format = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
@@ -82,9 +89,17 @@ public class RegisterServlet extends HttpServlet {
                     //represent the upload field
                     //need upload the Specified file
                     //get the entire file path
-                    fileName = item.getName();
+                    fileNameTemp = item.getName();
                     //get the real file name
-                    fileName = fileName.substring(fileName.lastIndexOf("\\")+1);
+                    fileNameTemp = fileNameTemp.substring(fileNameTemp.lastIndexOf("\\")+1);
+                    System.out.println("TEST fileName" + fileNameTemp);
+                    if (fileNameTemp.equals("")) {
+                        System.out.println("Not Avatar");
+                    }else {
+                        String fileNamePre = fileNameTemp.substring(fileNameTemp.indexOf("=") + 1, fileNameTemp.indexOf("."));
+                        String fileType = fileNameTemp.substring(fileNameTemp.indexOf(".") + 1, fileNameTemp.length());
+                        fileName = username + "_" + generateUserId() + "." + fileType;
+                    }
 
                     InputStream in = item.getInputStream();
                     int hasRead=0;
@@ -96,8 +111,8 @@ public class RegisterServlet extends HttpServlet {
                     //write data in Specified space
                     FileOutputStream fos = new FileOutputStream(savepath+"/"+fileName);
                     //store the avatar storage path
-                    avatar = savepath+"\\"+fileName;
-                    System.out.println("avatar is:" + avatar);
+//                    avatar = savepath+"\\"+fileName;
+//                    System.out.println("avatar is:" + avatar);
 
 
                     while((hasRead=in.read(buffer))!=-1) {
@@ -119,22 +134,22 @@ public class RegisterServlet extends HttpServlet {
                     response.addCookie(cookie);
                 }
             }
+            String userId = generateUserId() + generateUserId().toString().substring(1, 4);
 
-            if (fileName == null) {
-                if (userService.register(new User(generateAppid(), username, password, email, "avatar.jpg", role))) {
-                    response.sendRedirect("/login");
-                }else {
-                    pw.println("<script>alert('User name is duplicate!');window.location.href='/login'</script>");
-                    return;
-                }
+            if (userService.register(new User(Long.valueOf(userId), username, password, email, fileName, role))) {
+                response.sendRedirect("/login");
             }else {
-                if (userService.register(new User(generateAppid(), username, password, email, fileName, role))) {
-                    response.sendRedirect("/login");
-                }else {
-                    pw.println("<script>alert('User name is duplicate!');window.location.href='/login'</script>");
-                    return;
-                }
+                pw.println("<script>alert('User name is duplicate!');window.location.href='/login'</script>");
+                return;
             }
+
+            // Create database
+            if (role.equals("DEVELOPER")) {
+                databaseService.createDBbyId(userId, username);
+            }
+
+            // Create account
+            accountService.createAccount(Long.valueOf(userId), username);
 
         } catch (FileUploadException e) {
             // TODO Auto-generated catch block
@@ -150,7 +165,7 @@ public class RegisterServlet extends HttpServlet {
         doGet(request, response);
     }
 
-    private Long generateAppid() {
+    private Long generateUserId() {
         return System.currentTimeMillis();
     }
 }

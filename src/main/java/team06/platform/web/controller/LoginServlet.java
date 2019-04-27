@@ -59,6 +59,7 @@ public class LoginServlet extends HttpServlet {
                 .withClaim("userId", webuser.getUserId().toString())
                 .withClaim("userName", webuser.getUserName())
                 .withClaim("userRole", webuser.getUserRole())
+                .withClaim("userAvatar", webuser.getAvatar())
                 .sign(algorithm);
         Cookie tokenCookie = new Cookie("token", token);
         tokenCookie.setMaxAge(1*24*60*60);

@@ -5,6 +5,8 @@ import team06.platform.domain.Transaction;
 import java.util.List;
 
 public interface IAccountService {
+    void createAccount(Long userId, String userName);
+
     Integer getBalance(Long userid);
 
     Integer withdrawal(Long userid, Integer amount);

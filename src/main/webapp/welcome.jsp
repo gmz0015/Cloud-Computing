@@ -15,6 +15,10 @@
 
 <%-- Java Bean --%>
 <jsp:useBean id="appBean" scope="page" class="team06.platform.web.bean.ApplicationBean" />
+<% appBean.getInfo(request); %>
+<%-- Java Bean --%>
+<jsp:useBean id="indexBean" scope="page" class="team06.platform.web.bean.IndexBean" />
+<% indexBean.getInfo(request); %>
 
 <%-- Error --%>
 <%@ include file="/WEB-INF/pages/error/errorPermission.jsp"%>
@@ -38,15 +42,15 @@
         <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
             <i class="fa fa-remove"></i>
         </a>
-        <% if (session.getAttribute("userId") == null) { %>
+        <% if (indexBean.getUserId() == null) { %>
         <img src="/image/avatar/avatar.jpg" style="width:45%;" class="w3-round"><br><br>
         <h4><b>
             Hello Guest
         </b></h4>
         <% }else { %>
-        <img src="/image/avatar/<%= session.getAttribute("avatar") %>" style="width:45%;" class="w3-round"><br><br>
+        <img src="/image/avatar/<%= indexBean.getAvatar() %>" style="width:45%;" class="w3-round"><br><br>
         <h4><b>
-            Hello <%=session.getAttribute("userName")%>
+            Hello <%= indexBean.getUserName() %>
         </b></h4>
         <% } %>
     </div>
@@ -59,14 +63,14 @@
             <i class="fa fa-book fa-fw w3-margin-right"></i>
             Guide
         </a>
-        <% if (session.getAttribute("userId") == null) { %>
+        <% if (indexBean.getUserId() == null) { %>
         <a href="#" class="w3-bar-item w3-button" onclick="window.location.href='<%= request.getContextPath() + "/login" %>'" ><i class="fa fa-step-forward fa-fw w3-margin-right"></i>Login</a>
         <% }else { %>
         <a href="#" class="w3-bar-item w3-button" onclick="window.location.href='<%= request.getContextPath() + "/account" %>'"><i class="fa fa-bank fa-fw w3-margin-right"></i>Account</a>
         <a href="#" class="w3-bar-item w3-button" onclick="window.location.href='<%= request.getContextPath() + "/logout" %>'"><i class="fa fa-step-backward fa-fw w3-margin-right"></i>Logout</a>
         <% } %>
-        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a>
-        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>About</a>
+        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Contact</a>
     </div>
     <div class="w3-panel w3-large">
         <i class="fa fa-facebook-official w3-hover-opacity"></i>

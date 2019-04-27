@@ -1,6 +1,6 @@
 package team06.platform.web.bean;
 
-import com.sun.org.apache.xml.internal.security.utils.Base64;
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import team06.platform.domain.AppsInfo;
 import team06.platform.domain.DBUser;
 import team06.platform.domain.Database;

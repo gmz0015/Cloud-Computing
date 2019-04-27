@@ -24,13 +24,13 @@ public class ApplicationDetailBean implements Serializable {
     private static final String TOKEN_SECRET = "fd8780zdufb7f5bnz456fd";
 
     private IApplicationService applicationService = new ApplicationServiceImpl();
-    private IDatabaseService databaseService = new DatabaseServiceImpl();
 
     public ApplicationDetailBean() {}
 
     public Application doQuery(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        if (applicationService.checkAppUser(userId, appId)) {
-            appInfo = applicationService.getAppByAppId(appId);
+        if (applicationService.checkAppUser(this.userId, this.appId)) {
+            appInfo = applicationService.getAppByAppId(this.appId);
+            System.out.println("TEST queryApp:" + appInfo.getOwnerName());
         }else {
             response.sendRedirect(request.getContextPath() + "/console/?error=401.4");
         }

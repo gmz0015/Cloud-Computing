@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface IDatabaseDao {
 
-    Database createDBbyId(String userId);
+    Database createDBbyId(String userId, String userName);
 
     /**
      * execute the SQL provided by user

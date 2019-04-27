@@ -15,7 +15,7 @@
 <jsp:useBean id="appCreateBean" scope="page" class="team06.platform.web.bean.ApplicationDetailBean" />
 <jsp:setProperty name="appCreateBean" property="appId" value='<%= session.getAttribute("appId") %>'/>
 <jsp:useBean id="appBean" scope="page" class="team06.platform.web.bean.ApplicationBean" />
-<jsp:setProperty name="appCreateBean" property="appId" value='<%= session.getAttribute("appId") %>'/>
+<jsp:setProperty name="appBean" property="appId" value='<%= session.getAttribute("appId") %>'/>
 
 <%-- onload --%>
 <%

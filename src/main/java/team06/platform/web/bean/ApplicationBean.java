@@ -39,13 +39,8 @@ public class ApplicationBean implements Serializable {
      * Invoke service to query Database and retrieve applications data
      */
     public void doQuery(HttpServletRequest request, HttpServletResponse response) throws IOException{
-
-        if (applicationService.checkAppUser(userId, appId)) {
-            appInfo = applicationService.getAppByUserId(userId);
-            count();
-        }else {
-            response.sendRedirect(request.getContextPath() + "/console/?error=401.4");
-        }
+        appInfo = applicationService.getAppByUserId(this.userId);
+        count();
     }
 
     public void getInfo(HttpServletRequest request) {

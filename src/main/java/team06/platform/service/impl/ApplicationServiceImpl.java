@@ -24,6 +24,7 @@ public class ApplicationServiceImpl implements IApplicationService {
 
     @Override
     public void increaseVisitByContext(String appContext) {
+        System.out.println("appContext is:" + appContext);
         appDao.updateVisitByContext(appContext, this.getVisitByContext(appContext) + 1);
     }
 

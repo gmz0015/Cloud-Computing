@@ -1,6 +1,7 @@
 package team06.platform.web.UI;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,10 @@ public class LoginUIServlet extends HttpServlet {
                 request.getSession().setAttribute("userName", null);
                 request.getSession().setAttribute("userRole", null);
                 request.logout();
+                Cookie tokenCookie = new Cookie("token", "");
+                tokenCookie.setMaxAge(0);
+                tokenCookie.setPath("/");
+                response.addCookie(tokenCookie);
                 response.sendRedirect("/");
             }else {
                 System.out.println("Wrong Request LoginUIServlet");
@@ -31,6 +36,10 @@ public class LoginUIServlet extends HttpServlet {
                 request.getSession().setAttribute("userName", null);
                 request.getSession().setAttribute("userRole", null);
                 request.logout();
+                Cookie tokenCookie = new Cookie("token", "");
+                tokenCookie.setMaxAge(0);
+                tokenCookie.setPath("/");
+                response.addCookie(tokenCookie);
                 response.sendRedirect("/");
             }else {
                 System.out.println("Wrong Request LoginUIServlet");

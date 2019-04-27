@@ -18,6 +18,7 @@ public class IndexBean implements Serializable {
     private String userName;
     private List<String> appsId;
     private List<Application> appInfo;
+    private String avatar;
     private String userRole;
     private static final String TOKEN_SECRET = "fd8780zdufb7f5bnz456fd";
 
@@ -44,7 +45,12 @@ public class IndexBean implements Serializable {
             this.userId = jwt.getClaim("userId").asString();
             this.userName = jwt.getClaim("userName").asString();
             this.userRole = jwt.getClaim("userRole").asString();
+            this.avatar = jwt.getClaim("userAvatar").asString();
         }
+    }
+
+    public String getAvatar() {
+        return avatar;
     }
 
     public List<Application> getAllApps(){

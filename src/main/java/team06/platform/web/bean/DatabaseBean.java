@@ -23,7 +23,8 @@ public class DatabaseBean {
     private IDatabaseDao databaseDao = new DatabaseDaoImpl();
     private static final String TOKEN_SECRET = "fd8780zdufb7f5bnz456fd";
     private String userId;
-    private String appId;
+    private String appId = null;
+    private String userName;
     private IApplicationService applicationService = new ApplicationServiceImpl();
     private IDatabaseService databaseService = new DatabaseServiceImpl();
 
@@ -43,17 +44,12 @@ public class DatabaseBean {
             JWTVerifier verifier = JWT.require(algorithm).build();
             DecodedJWT jwt = verifier.verify(token);
             this.userId = jwt.getClaim("userId").asString();
-            System.out.println("TEST database userID:" + userId);
+            this.userName = jwt.getClaim("userName").asString();
         }
     }
 
     public Database queryDBbyId(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        if (applicationService.checkAppUser(userId, appId)) {
-            return databaseService.queryDBbyid(this.userId);
-        }else {
-            response.sendRedirect(request.getContextPath() + "/console/?error=401.4");
-            return null;
-        }
+        return databaseService.queryDBbyid(this.userId, this.userName);
     }
 
     public String queryUsage(String databaseName) {

@@ -145,166 +145,71 @@
                 <span style="font-size: 16px">Database</span>
             </div>
             <div class="w3-row-padding" style="min-height:150px">
-                <div class="w3-threequarter">
-                    <div class="w3-card" style="background-color:white;height: 100%">
+                <div class="w3-card" style="background-color:white;height: 100%">
 
-                        <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
-                            <span style="font-size: 20px">Database Information</span>
-                        </header>
+                    <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
+                        <span style="font-size: 20px">Database Information</span>
+                    </header>
 
-                        <div class="w3-row-padding">
-                            <div class="w3-quarter w3-display-container" style="min-height: 105px">
-                                <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
-                                     style="background-color: #F5F5F6;height: 85%;width: 95%">
-                                    <div class="w3-display-container" style="height: 100%;width: 100%">
-                                        <span class="w3-display-topleft" style="padding-top: 5%;padding-left: 5%;color: #666;">
-                                            Database Name
-                                        </span>
-                                        <div>
-                                            <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0;padding-top:18%">
-                                                <%= databaseInfo.getDbName() %>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w3-quarter w3-display-container" style="min-height: 105px;border-right:1px dashed #dddddd;border-left:1px dashed #dddddd">
-                                <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
-                                     style="background-color: #F5F5F6;height: 85%;width: 95%">
-                                    <div class="w3-display-container" style="height: 100%;width: 100%">
-                                        <span class="w3-display-topleft" style="padding-top: 5%;padding-left: 5%;color: #666;">
-                                            User Name
-                                        </span>
-                                        <div>
-                                            <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0;padding-top:18%">
-                                                <%= databaseInfo.getDbUsername() %>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w3-quarter w3-display-container" style="min-height: 105px">
-                                <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
-                                     style="background-color: #F5F5F6;height: 85%;width: 95%">
-                                    <div class="w3-display-container" style="height: 100%;width: 100%">
-                                        <span class="w3-display-topleft" style="padding-top: 5%;padding-left: 5%;color: #666;">
-                                            User Password
-                                        </span>
-                                        <div>
-                                            <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0;padding-top:18%">
-                                                <%= databaseInfo.getDbPassword() %>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w3-quarter w3-display-container" style="min-height: 105px;border-left:1px dashed #dddddd">
-                                <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
-                                     style="background-color: #F5F5F6;height: 85%;width: 95%">
-                                    <div class="w3-display-container" style="height: 100%;width: 100%">
-                                        <span class="w3-display-topleft" style="padding-top: 5%;padding-left: 5%;color: #666;">
-                                            Total Usage
-                                        </span>
-                                        <div>
-                                            <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0;padding-top:18%">
-                                                <%= databaseBean.queryUsage(databaseInfo.getDbName()) %>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="changePassword" class="w3-modal">
-                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
-
-                        <div class="w3-center"><br>
-                            <span onclick="document.getElementById('changePassword').style.display='none'"
-                                  class="w3-button w3-xlarge w3-hover-red w3-display-topright"
-                                  title="Cancel Change">
-                                &times;
-                            </span>
-                        </div>
-
-                        <form class="w3-container"
-                              action="${pageContext.request.contextPath}/application"
-                              method="POST">
-                            <div class="w3-section">
-                                <input type="hidden" name="username" value=<%= databaseInfo.getDbUsername() %>>
-                                <label><b>New Password</b></label>
-                                <input class="w3-input w3-border" type="password" placeholder="Please Enter New Password" name="password" required>
-                                <button class="w3-button w3-block w3-green w3-section w3-padding"
-                                        type="submit"
-                                        name="changePassword"
-                                        value="changePassword">
-                                    Confirm Change Password
-                                </button>
-                            </div>
-                        </form>
-
-                        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-                            <button onclick="document.getElementById('changePassword').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div id="ExecuteSQL" class="w3-modal">
-                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
-
-                        <form class="w3-container"
-                              action="${pageContext.request.contextPath}/application"
-                              method="POST">
-                            <div class="w3-section">
-                                <input type="hidden" name="username" value=<%= databaseInfo.getDbUsername() %>>
-                                <input type="hidden" name="dbname" value=<%= databaseInfo.getDbName() %>>
-                                <label><b>New Password</b></label>
-                                <textarea class="w3-input w3-border" placeholder="Please Enter SQL" name="SQL" required style="height:200px"></textarea>
-                                <button class="w3-button w3-block w3-green w3-section w3-padding"
-                                        type="submit"
-                                        name="executeSQL"
-                                        value="executeSQL">
-                                    Confirm Execute SQL
-                                </button>
-                            </div>
-                        </form>
-
-                        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-                            <button onclick="document.getElementById('ExecuteSQL').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
-                        </div>
-
-                    </div>
-                </div>
-
-                <%-- Database Usage --%>
-                <div class="w3-quarter">
-                    <div class="w3-card" style="background-color:white;height:150px">
-
-                        <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
-                            <span style="font-size: 20px">Database Operation</span>
-                        </header>
-
-                        <div style="height:90px">
-                            <div class="w3-container w3-row" style="margin-top: 10px;margin-bottom: 5px;">
-                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
-                                     onclick="document.getElementById('changePassword').style.display='block'"
-                                     style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;">
-                                    <span style="vertical-align: middle;color: #666;">
-                                        Change Password
+                    <div class="w3-row-padding w3-display-container" style="min-height: 80px">
+                        <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
+                             style="background-color: #F5F5F6;height: 85%;width: 95%">
+                            <div class="w3-display-container" style="height: 100%;width: 100%">
+                                <span class="w3-display-left" style="padding-left: 10px;color: #666;font-size: 20px">
+                                    Database Name:
+                                </span>
+                                <div>
+                                    <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0;">
+                                        <%= databaseInfo.getDbName() %>
                                     </span>
                                 </div>
                             </div>
-                            <div class="w3-container w3-row" style="margin-top: 5px;margin-bottom: 10px;">
-                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
-                                     onclick="document.getElementById('ExecuteSQL').style.display='block'"
-                                     style="vertical-align: middle;background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;">
-                                    <span style="vertical-align: middle;color: #666;">Execute SQL</span>
+                        </div>
+                    </div>
+                    <div class="w3-row-padding w3-display-container" style="min-height: 80px;border-right:1px dashed #dddddd;border-left:1px dashed #dddddd">
+                        <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
+                             style="background-color: #F5F5F6;height: 85%;width: 95%">
+                            <div class="w3-display-container" style="height: 100%;width: 100%">
+                                <span class="w3-display-left" style="padding-left: 10px;color: #666;font-size: 20px">
+                                    User Name:
+                                </span>
+                                <div>
+                                    <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0;">
+                                        <%= databaseInfo.getDbUsername() %>
+                                    </span>
                                 </div>
                             </div>
                         </div>
-
+                    </div>
+                    <div class="w3-display-container" style="min-height: 80px">
+                        <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
+                             style="background-color: #F5F5F6;height: 85%;width: 95%">
+                            <div class="w3-display-container" style="height: 100%;width: 100%">
+                                <span class="w3-display-left" style="padding-left: 10px;color: #666;font-size: 20px">
+                                    User Password
+                                </span>
+                                <div>
+                                    <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0;">
+                                        <%= databaseInfo.getDbPassword() %>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w3-display-container" style="min-height: 80px;border-left:1px dashed #dddddd">
+                        <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
+                             style="background-color: #F5F5F6;height: 85%;width: 95%">
+                            <div class="w3-display-container" style="height: 100%;width: 100%">
+                                <span class="w3-display-left" style="padding-left: 10px;color: #666;font-size: 20px">
+                                    Total Usage:
+                                </span>
+                                <div>
+                                    <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0">
+                                        <%= databaseBean.queryUsage(databaseInfo.getDbName()) %>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

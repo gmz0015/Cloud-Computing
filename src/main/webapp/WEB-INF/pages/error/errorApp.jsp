@@ -26,12 +26,12 @@
 <% }else if(error.equals("1")) {%>
 <div id="errorPermission" class="w3-modal" style="display:block;">
     <div class="w3-modal-content w3-animate-top w3-card-4">
-        <header class="w3-container w3-red">
-            <h2>Permission Denied - Unauthorised</h2>
+        <header class="w3-container w3-green">
+            <h2>Upload Success</h2>
         </header>
         <div class="w3-container">
-            <h4>Sorry, you have no access to the application.</h4>
-            <button class="w3-button w3-blue w3-padding w3-round-large w3-hover-red w3-margin"
+            <h4>You have uploaded application successfully.</h4>
+            <button class="w3-button w3-blue w3-padding w3-round-large w3-hover-green w3-margin"
                     onclick="document.getElementById('errorPermission').style.display='none'">
                 Close
             </button>

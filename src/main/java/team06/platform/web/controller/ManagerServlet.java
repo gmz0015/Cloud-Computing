@@ -1,6 +1,7 @@
 package team06.platform.web.controller;
 
-import com.sun.org.apache.xml.internal.security.utils.Base64;
+
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import team06.platform.service.IApplicationService;
 import team06.platform.service.impl.ApplicationServiceImpl;
 
@@ -86,7 +87,6 @@ public class ManagerServlet {
 
             conn.setRequestProperty("Accept-Charset", "utf-8");
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-
             String authoInfo = Base64.encode((USERNAME + ":" + PASSWORD).getBytes());
             conn.setRequestProperty("Authorization", "Basic " + authoInfo);
 //            conn.setRequestProperty("Connection", "keep-alive");

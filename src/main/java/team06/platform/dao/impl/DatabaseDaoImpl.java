@@ -7,19 +7,16 @@ import team06.platform.utils.JdbcUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DatabaseDaoImpl implements IDatabaseDao {
 
     @Override
-    public Database createDBbyId(String userId) {
+    public Database createDBbyId(String userId, String userName) {
         String dbId = userId + generateID().substring(1,3);
-        String DBNAME = dbId;
-        String DBUSERNAME = dbId;
-        String DBPASSWORD = "123456";
+        String DBNAME = userName + userId + generateID().substring(1,5);
+        String DBUSERNAME = userName + generateID();
+        String DBPASSWORD = UUID.randomUUID().toString();
 
         /* Initial Connection */
         Connection conn = null;
@@ -44,7 +41,12 @@ public class DatabaseDaoImpl implements IDatabaseDao {
             String sql3 = "GRANT SELECT ,CREATE ,INSERT ,UPDATE on " + DBNAME + ".* TO '" + DBUSERNAME + "'@'localhost';";
             st = conn.prepareStatement(sql3);
             st.execute();
-            String sql4 = "UPDATE CloudComputing.database SET dbId='" + dbId + "',dbName='" + DBNAME + "',dbUserName='" + DBUSERNAME + "',dbPassword='" + DBPASSWORD + "' WHERE userId=" + userId;
+            String sql4 = "INSERT INTO CloudComputing.database VALUES (" +
+                    "'" + userId + "'," +
+                    "'" + dbId + "'," +
+                    "'" + DBNAME + "'," +
+                    "'" + DBUSERNAME + "'," +
+                    "'" + DBPASSWORD + "');";
             st = conn.prepareStatement(sql4);
             st.executeUpdate();
             conn.commit(); // Commit transaction after above sql update successful
@@ -202,6 +204,8 @@ public class DatabaseDaoImpl implements IDatabaseDao {
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.DatabaseDaoImpl.queryDBbyid]: " + e);
+            database = new Database("none", "",
+                    "", "", "");
         }finally{
             JdbcUtils.release(conn, st, rs);
         }
@@ -235,6 +239,8 @@ public class DatabaseDaoImpl implements IDatabaseDao {
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.DatabaseDaoImpl.queryDBbyName]: " + e);
+            database = new Database("", "",
+                    "", "", "");
         }finally{
             JdbcUtils.release(conn, st, rs);
         }

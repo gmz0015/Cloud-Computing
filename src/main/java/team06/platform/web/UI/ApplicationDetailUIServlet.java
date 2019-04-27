@@ -50,6 +50,7 @@ public class ApplicationDetailUIServlet extends HttpServlet {
             } else {
                 if (userRole.equals("DEVELOPER") || userRole.equals("ADMIN")) {
                     if (applicationService.checkAppUser(userId, appId)) {
+                        request.getSession().setAttribute("appId", appId);
                         request.getRequestDispatcher("/WEB-INF/pages/views/applicationDetail.jsp").forward(request, response);
                     } else {
                         response.sendRedirect(request.getContextPath() + "/?error=401.4");

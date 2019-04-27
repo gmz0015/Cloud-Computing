@@ -24,6 +24,7 @@ public class AppCreateBean extends HttpServlet implements Serializable {
     private int nextStep = 0;
     private IDatabaseService databaseService = new DatabaseServiceImpl();
     private String userId;
+    private String userName;
     private ManagerServlet managerServlet = new ManagerServlet();
     private IManagerService managerService = new ManagerService();
 
@@ -45,13 +46,14 @@ public class AppCreateBean extends HttpServlet implements Serializable {
             JWTVerifier verifier = JWT.require(algorithm).build();
             DecodedJWT jwt = verifier.verify(token);
             this.userId = jwt.getClaim("userId").asString();
+            this.userName = jwt.getClaim("userName").asString();
         }
     }
 
 
     public Database queryDBbyid() {
         nextStep = 1;
-        return databaseService.queryDBbyid(this.userId);
+        return databaseService.queryDBbyid(this.userId, this.userName);
     }
 
     public void doUpload(HttpServletRequest request){

@@ -15,6 +15,34 @@ import java.util.List;
 
 public class AccountDaoImpl implements IAccountDao {
     @Override
+    public void insertAccount(Long userId, String userName) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            conn.setAutoCommit(false); // start transaction
+
+            String sql = "INSERT INTO " +
+                    "CloudComputing.account " +
+                    "VALUES (" +
+                    userId + ", " +
+                    "'" + userName + "', " +
+                    1000 + ");";
+            st = conn.prepareStatement(sql);
+            st.execute();
+            conn.commit();
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.AccountDaoImpl.insertAccount]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+    }
+
+    @Override
     public Integer queryBalance(Long userId) {
         /* Initial Connection */
         Connection conn = null;

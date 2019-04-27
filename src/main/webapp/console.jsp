@@ -18,9 +18,6 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 
-<%-- Authentication --%>
-<%--<%@ include file="/WEB-INF/logic/authentication.jsp"%>--%>
-
 <%@ include file="/WEB-INF/pages/component/layout/navigation.jsp"%>
 
 <%@ include file="/WEB-INF/pages/component/layout/sidebar.jsp"%>

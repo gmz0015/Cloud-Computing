@@ -26,6 +26,17 @@
         <url-pattern>/console</url-pattern>
     </servlet-mapping>
 
+    <!-- Change Operation -->
+    <servlet>
+        <servlet-name>Change</servlet-name>
+        <servlet-class>team06.platform.web.controller.ChangeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Change</servlet-name>
+        <url-pattern>/change</url-pattern>
+    </servlet-mapping>
+
     <!-- API -->
     <servlet>
         <servlet-name>JAX-RS Servlet</servlet-name>
@@ -194,6 +205,19 @@
     <servlet-mapping>
         <servlet-name>AppCreateForm</servlet-name>
         <url-pattern>/application/create</url-pattern>
+    </servlet-mapping>
+
+    <!-- Preference -->
+    <servlet>
+        <description>Preference</description>
+        <display-name>Preference</display-name>
+        <servlet-name>Preference</servlet-name>
+        <servlet-class>team06.platform.web.UI.PreferenceUIServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Preference</servlet-name>
+        <url-pattern>/preference</url-pattern>
     </servlet-mapping>
 
     <!-- Login Service -->

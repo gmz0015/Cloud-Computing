@@ -22,6 +22,73 @@
 <%-- Error --%>
 <%@ include file="/WEB-INF/pages/error/errorPermission.jsp"%>
 <html xmlns:jsp="http://java.sun.com/JSP/Page">
+
+<%-- Change Password --%>
+<div id="changePassword" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+        <form class="w3-container" action="/change?type=password" method="post">
+            <div class="w3-section">
+                <label><b>Please Enter Your Old Password</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Old Password" name="psw0" required>
+                <label><b>Please Enter Your New Password</b></label>
+                <input class="w3-input w3-border" type="text" placeholder="Enter New Password" name="psw1" required>
+                <label><b>Please Enter Your New Password Again</b></label>
+                <input class="w3-input w3-border" type="text" placeholder="Enter New Password Again" name="psw2" required>
+                <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Change</button>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('changePassword').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+        </div>
+
+    </div>
+</div>
+
+<%-- Change Avatar --%>
+<div id="changeAvatar" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+        <form class="w3-container" action="/change?type=avatar" enctype="multipart/form-data" method="post" >
+            <div class="w3-section">
+                <label><b>Please Enter Your Password</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
+                <label><b>Please Upload Your New Avatar</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="file" name="avatar">
+                <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Change</button>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('changeAvatar').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+        </div>
+
+    </div>
+</div>
+
+<%-- Change Email --%>
+<div id="changeEmail" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+        <form class="w3-container" action="/change?type=email" method="post">
+            <div class="w3-section">
+                <label><b>Please Enter Your Password</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
+                <label><b>Please Enter Your New Email</b></label>
+                <input class="w3-input w3-border" type="text" placeholder="Enter New Email" name="email" required>
+                <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Change</button>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('changeEmail').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+        </div>
+
+    </div>
+</div>
+
+
 <div id="main" style="margin-left: 50px">
     <%-- Welcome Message --%>
     <div class="w3-container">
@@ -157,13 +224,13 @@
                     <div class="w3-row" style="height:100px">
                         <div class="w3-half" style="border-right:1px dashed #dddddd">
                             <div class="w3-row" style=";margin-top: 10px;margin-bottom: 5px;margin-right: 10px;margin-left: 10px;">
-                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" onclick="document.getElementById('changePassword').style.display='block'">
                                     <span style="vertical-align: middle;color: #666;">Change Password</span>
                                 </div>
                             </div>
 
                             <div class="w3-row" style=";margin-top: 5px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;">
-                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" onclick="document.getElementById('changeAvatar').style.display='block'">
                                     <span style="vertical-align: middle;color: #666;">Change Avatar</span>
                                 </div>
                             </div>
@@ -171,13 +238,13 @@
 
                         <div class="w3-half">
                             <div class="w3-row" style=";margin-top: 10px;margin-bottom: 5px;margin-right: 10px;margin-left: 10px;">
-                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" onclick="document.getElementById('changeEmail').style.display='block'">
                                     <span style="vertical-align: middle;color: #666;">Change Email</span>
                                 </div>
                             </div>
 
                             <div class="w3-row" style=";margin-top: 5px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;">
-                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" >
                                     <span style="vertical-align: middle;color: #666;">Become a Developer</span>
                                 </div>
                             </div>
@@ -256,13 +323,13 @@
                     <div class="w3-row" style="height:100px">
                         <div class="w3-half" style="border-right:1px dashed #dddddd">
                             <div class="w3-row" style=";margin-top: 10px;margin-bottom: 5px;margin-right: 10px;margin-left: 10px;">
-                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" onclick="document.getElementById('changePassword').style.display='block'">
                                     <span style="vertical-align: middle;color: #666;">Change Password</span>
                                 </div>
                             </div>
 
                             <div class="w3-row" style=";margin-top: 5px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;">
-                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" onclick="document.getElementById('changeAvatar').style.display='block'">
                                     <span style="vertical-align: middle;color: #666;">Change Avatar</span>
                                 </div>
                             </div>
@@ -270,13 +337,13 @@
 
                         <div class="w3-half">
                             <div class="w3-row" style=";margin-top: 10px;margin-bottom: 5px;margin-right: 10px;margin-left: 10px;">
-                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" onclick="document.getElementById('changeEmail').style.display='block'">
                                     <span style="vertical-align: middle;color: #666;">Change Email</span>
                                 </div>
                             </div>
 
                             <div class="w3-row" style=";margin-top: 5px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;">
-                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" >
                                     <span style="vertical-align: middle;color: #666;">You are Developer</span>
                                 </div>
                             </div>
@@ -356,13 +423,13 @@
                     <div class="w3-row" style="height:100px">
                         <div class="w3-half" style="border-right:1px dashed #dddddd">
                             <div class="w3-row" style=";margin-top: 10px;margin-bottom: 5px;margin-right: 10px;margin-left: 10px;">
-                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" onclick="document.getElementById('changePassword').style.display='block'">
                                     <span style="vertical-align: middle;color: #666;">Change Password</span>
                                 </div>
                             </div>
 
                             <div class="w3-row" style=";margin-top: 5px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;">
-                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" onclick="document.getElementById('changeAvatar').style.display='block'">
                                     <span style="vertical-align: middle;color: #666;">Change Avatar</span>
                                 </div>
                             </div>
@@ -370,14 +437,14 @@
 
                         <div class="w3-half">
                             <div class="w3-row" style=";margin-top: 10px;margin-bottom: 5px;margin-right: 10px;margin-left: 10px;">
-                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" onclick="document.getElementById('changeEmail').style.display='block'">
                                     <span style="vertical-align: middle;color: #666;">Change Email</span>
                                 </div>
                             </div>
 
                             <div class="w3-row" style=";margin-top: 5px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;">
-                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;">
-                                    <span style="vertical-align: middle;color: #666;">You are Admin</span>
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" >
+                                    <span style="vertical-align: middle;color: #666;">You are Developer</span>
                                 </div>
                             </div>
                         </div>

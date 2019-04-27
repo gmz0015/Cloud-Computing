@@ -23,7 +23,7 @@
         </div>
     </div>
 </div>
-<% }else if(error.equals("401.4")) {%>
+<% }else if(error.equals("401.4")) { %>
 <div id="errorPermission" class="w3-modal" style="display:block;">
     <div class="w3-modal-content w3-animate-top w3-card-4">
         <header class="w3-container w3-red">
@@ -31,6 +31,21 @@
         </header>
         <div class="w3-container">
             <h4>Sorry, you have no access to the application.</h4>
+            <button class="w3-button w3-blue w3-padding w3-round-large w3-hover-red w3-margin"
+                    onclick="document.getElementById('errorPermission').style.display='none'">
+                Close
+            </button>
+        </div>
+    </div>
+</div>
+<% } else if(error.equals("401.2")) { %>
+<div id="errorPermission" class="w3-modal" style="display:block;">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+        <header class="w3-container w3-red">
+            <h2>Change Denied - Form Error</h2>
+        </header>
+        <div class="w3-container">
+            <h4>Sorry, you need to complete form.</h4>
             <button class="w3-button w3-blue w3-padding w3-round-large w3-hover-red w3-margin"
                     onclick="document.getElementById('errorPermission').style.display='none'">
                 Close

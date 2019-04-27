@@ -17,4 +17,24 @@ public class UserServiceImpl implements IUserService {
     public Boolean register(User user) {
         return userDao.insertUser(user);
     }
+
+    @Override
+    public Boolean changePassword(String userId, String password) {
+        return userDao.updateUserPassword(userId, password);
+    }
+
+    @Override
+    public Boolean changeEmail(String userId, String email) {
+        return userDao.updateUserEmail(userId, email);
+    }
+
+    @Override
+    public Boolean changeAvatar(String userId, String avatar) {
+        return userDao.updateUserAvatar(userId, avatar);
+    }
+
+    @Override
+    public User getUserInfo(String userId) {
+        return userDao.queryUserInfoById(userId);
+    }
 }

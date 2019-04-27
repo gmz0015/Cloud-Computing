@@ -143,4 +143,82 @@ public class UserDaoImpl implements IUserDao {
         }
         return user;
     }
+
+    @Override
+    public Boolean updateUserPassword(String userId, String password) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        Boolean result = false;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            conn.setAutoCommit(false); // start transaction
+
+            String sql = "UPDATE CloudComputing.users SET user_pass='" + password + "' WHERE user_id='" + userId + "';";
+            st = conn.prepareStatement(sql);
+            st.executeUpdate();
+            conn.commit();
+            result = true;
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.UserDaoImpl.updateUserPassword]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return result;
+    }
+
+    @Override
+    public Boolean updateUserEmail(String userId, String email) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        Boolean result = false;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            conn.setAutoCommit(false); // start transaction
+
+            String sql = "UPDATE CloudComputing.users SET email='" + email + "' WHERE user_id='" + userId + "';";
+            st = conn.prepareStatement(sql);
+            st.executeUpdate();
+            conn.commit();
+            result = true;
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.UserDaoImpl.updateUserEmail]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return result;
+    }
+
+    @Override
+    public Boolean updateUserAvatar(String userId, String avatarPath) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        Boolean result = false;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            conn.setAutoCommit(false); // start transaction
+
+            String sql = "UPDATE CloudComputing.users SET avatar='" + avatarPath + "' WHERE user_id='" + userId + "';";
+            st = conn.prepareStatement(sql);
+            st.executeUpdate();
+            conn.commit();
+            result = true;
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.UserDaoImpl.updateUserAvatar]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return result;
+    }
 }

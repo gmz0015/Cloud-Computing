@@ -19,10 +19,7 @@ public class LoginUIServlet extends HttpServlet {
                 request.getSession().setAttribute("userName", null);
                 request.getSession().setAttribute("userRole", null);
                 request.logout();
-                Cookie tokenCookie = new Cookie("token", "");
-                tokenCookie.setMaxAge(0);
-                tokenCookie.setPath("/");
-                response.addCookie(tokenCookie);
+                request.getSession().setAttribute("token", null);
                 response.sendRedirect("/");
             }else {
                 System.out.println("Wrong Request LoginUIServlet");
@@ -35,11 +32,8 @@ public class LoginUIServlet extends HttpServlet {
                 request.getSession().setAttribute("userId", null);
                 request.getSession().setAttribute("userName", null);
                 request.getSession().setAttribute("userRole", null);
+                request.getSession().setAttribute("token", null);
                 request.logout();
-                Cookie tokenCookie = new Cookie("token", "");
-                tokenCookie.setMaxAge(0);
-                tokenCookie.setPath("/");
-                response.addCookie(tokenCookie);
                 response.sendRedirect("/");
             }else {
                 System.out.println("Wrong Request LoginUIServlet");

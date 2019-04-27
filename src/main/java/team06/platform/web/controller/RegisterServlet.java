@@ -153,7 +153,7 @@ public class RegisterServlet extends HttpServlet {
 
         } catch (FileUploadException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            System.out.println("[team06.platform.web.controller.RegisterServlet.doGet]: " + e);
         }
 
 

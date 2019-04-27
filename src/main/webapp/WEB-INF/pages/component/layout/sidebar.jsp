@@ -87,7 +87,7 @@
         </div>
 
         <div class="w3-bar-item w3-button w3-hover-none w3-text-white w3-hover-text-blue" style="height:50px"
-             onclick="window.location.href='<%= request.getContextPath() + "/test1" %>'">
+             onclick="window.location.href='<%= request.getContextPath() + "/preference" %>'">
             <div class="w3-row">
                 <div class="w3-col w3-center" style="width:20px">
                     <i class="fas fa-wrench"></i>

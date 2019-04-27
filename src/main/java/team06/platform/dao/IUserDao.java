@@ -11,4 +11,10 @@ public interface IUserDao {
     User queryUserInfoById(String userId);
 
     User queryUserInfo(String userName, String password);
+
+    Boolean updateUserPassword(String userId, String password);
+
+    Boolean updateUserEmail(String userId, String email);
+
+    Boolean updateUserAvatar(String userId, String avatarPath);
 }

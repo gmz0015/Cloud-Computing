@@ -147,21 +147,22 @@
                 <span style="font-size: 16px">Database</span>
             </div>
             <div class="w3-row-padding" style="min-height:150px">
-                <div class="w3-card" style="background-color:white;height: 100%">
+                <div class="w3-quarter">
+                    <div class="w3-card" style="background-color:white;height: 100%">
 
                     <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
-                        <span style="font-size: 20px">Database Information</span>
+                        <span style="font-size: 20px">Information</span>
                     </header>
 
                     <div class="w3-row-padding w3-display-container" style="min-height: 80px">
                         <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
                              style="background-color: #F5F5F6;height: 85%;width: 95%">
                             <div class="w3-display-container" style="height: 100%;width: 100%">
-                                <span class="w3-display-left" style="padding-left: 10px;color: #666;font-size: 20px">
-                                    Database Name:
-                                </span>
+                                <h5 class="w3-display-topleft" style="padding-left: 10px;color: #666;margin-top: 0">
+                                    Database Name
+                                </h5>
                                 <div>
-                                    <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0;">
+                                    <span class="w3-display-middle" style="font-size: 16px;color:#9B9EA0;padding-top: 20px">
                                         <%= databaseInfo.getDbName() %>
                                     </span>
                                 </div>
@@ -172,11 +173,11 @@
                         <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
                              style="background-color: #F5F5F6;height: 85%;width: 95%">
                             <div class="w3-display-container" style="height: 100%;width: 100%">
-                                <span class="w3-display-left" style="padding-left: 10px;color: #666;font-size: 20px">
-                                    User Name:
-                                </span>
+                                <h5 class="w3-display-topleft" style="padding-left: 10px;color: #666;margin-top: 0">
+                                    User Name
+                                </h5>
                                 <div>
-                                    <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0;">
+                                    <span class="w3-display-middle" style="font-size: 16px;color:#9B9EA0;padding-top: 20px">
                                         <%= databaseInfo.getDbUsername() %>
                                     </span>
                                 </div>
@@ -187,11 +188,11 @@
                         <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
                              style="background-color: #F5F5F6;height: 85%;width: 95%">
                             <div class="w3-display-container" style="height: 100%;width: 100%">
-                                <span class="w3-display-left" style="padding-left: 10px;color: #666;font-size: 20px">
+                                <h5 class="w3-display-topleft" style="padding-left: 10px;color: #666;margin-top: 0">
                                     User Password
-                                </span>
+                                </h5>
                                 <div>
-                                    <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0;">
+                                    <span class="w3-display-middle" style="font-size: 16px;color:#9B9EA0;padding-top: 20px">
                                         <%= databaseInfo.getDbPassword() %>
                                     </span>
                                 </div>
@@ -202,11 +203,11 @@
                         <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
                              style="background-color: #F5F5F6;height: 85%;width: 95%">
                             <div class="w3-display-container" style="height: 100%;width: 100%">
-                                <span class="w3-display-left" style="padding-left: 10px;color: #666;font-size: 20px">
-                                    Total Usage:
-                                </span>
+                                <h5 class="w3-display-topleft" style="padding-left: 10px;color: #666;margin-top: 0">
+                                    Total Usage
+                                </h5>
                                 <div>
-                                    <span class="w3-display-middle" style="font-size: 20px;color:#9B9EA0">
+                                    <span class="w3-display-middle" style="font-size: 16px;color:#9B9EA0;padding-top: 20px">
                                         <%= databaseBean.queryUsage(databaseInfo.getDbName()) %>
                                     </span>
                                 </div>
@@ -214,13 +215,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="w3-row-padding">
-                    <div class="w3-card" style="background-color:white;margin-top:20px;margin-left:8px;margin-right:8px">
+                </div>
+                <div class="w3-threequarter">
+                    <div class="w3-card" style="background-color:white">
 
                         <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
-                            <span style="font-size: 20px">Database Detail</span>
+                            <span style="font-size: 20px">Detail</span>
                         </header>
 
                         <div style="">
@@ -245,6 +245,7 @@
                             </table>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
         <br/>

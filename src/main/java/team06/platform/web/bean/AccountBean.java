@@ -21,19 +21,18 @@ public class AccountBean implements Serializable {
     public void getInfo(HttpServletRequest request) {
         String token = null;
 
-        Cookie[] cs = request.getCookies();
-        if(cs != null) {
-            for(Cookie c : cs) {
-                if(c.getName().equals("token")) {
-                    token = c.getValue();
-                }
+        if (request.getSession().getAttribute("token") != null) {
+            token = request.getSession().getAttribute("token").toString();
+            if (token != null) {
+                Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+                JWTVerifier verifier = JWT.require(algorithm).build();
+                DecodedJWT jwt = verifier.verify(token);
+                this.userId = jwt.getClaim("userId").asString();
+            }else {
+                this.userId = null;
             }
-        }
-        if (token != null) {
-            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
-            JWTVerifier verifier = JWT.require(algorithm).build();
-            DecodedJWT jwt = verifier.verify(token);
-            this.userId = jwt.getClaim("userId").asString();
+        }else {
+            this.userId = null;
         }
     }
 

@@ -22,31 +22,31 @@ public class AccountUIServlet extends HttpServlet {
         String userRole = null;
         String token = null;
 
-        Cookie[] cs = request.getCookies();
-        if(cs != null) {
-            for(Cookie c : cs) {
-                if(c.getName().equals("token")) {
-                    token = c.getValue();
+        if (request.getSession().getAttribute("token") != null) {
+            token = request.getSession().getAttribute("token").toString();
+            if (token != null) {
+                Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+                JWTVerifier verifier = JWT.require(algorithm).build();
+                DecodedJWT jwt = verifier.verify(token);
+                userId = jwt.getClaim("userId").asString();
+                userName = jwt.getClaim("userName").asString();
+                userRole = jwt.getClaim("userRole").asString();
+
+                // Check whether logon
+                if (userId == null || userId.equals("")) {
+//                    response.sendRedirect(request.getContextPath() + "/?error=401.1");
+                    request.setAttribute("fromURI", request.getRequestURL());
+                    request.getRequestDispatcher(request.getContextPath() + "/login").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("/WEB-INF/pages/views/account.jsp").forward(request, response);
                 }
-            }
-        }
-
-        if (token != null) {
-            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
-            JWTVerifier verifier = JWT.require(algorithm).build();
-            DecodedJWT jwt = verifier.verify(token);
-            userId = jwt.getClaim("userId").asString();
-            userName = jwt.getClaim("userName").asString();
-            userRole = jwt.getClaim("userRole").asString();
-
-            // Check whether logon
-            if (userId == null || userId.equals("")) {
-                response.sendRedirect(request.getContextPath() + "/?error=401.1");
+            }else {
                 request.setAttribute("fromURI", request.getRequestURL());
                 request.getRequestDispatcher(request.getContextPath() + "/login").forward(request, response);
-            } else {
-                request.getRequestDispatcher("/WEB-INF/pages/views/account.jsp").forward(request, response);
             }
+        }else {
+            request.setAttribute("fromURI", request.getRequestURL());
+            request.getRequestDispatcher(request.getContextPath() + "/login").forward(request, response);
         }
     }
 

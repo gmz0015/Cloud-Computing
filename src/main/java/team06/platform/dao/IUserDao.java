@@ -8,5 +8,7 @@ public interface IUserDao {
 
     User queryUserInfoByName(String userName);
 
+    User queryUserInfoById(String userId);
+
     User queryUserInfo(String userName, String password);
 }

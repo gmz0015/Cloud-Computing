@@ -32,6 +32,11 @@ public class DatabaseServiceImpl implements IDatabaseService {
     }
 
     @Override
+    public String getUsage(String databaseName) {
+        return databaseDao.queryDBUsage(databaseName);
+    }
+
+    @Override
     public String changePassword(String userName, String newPassword) {
         return databaseDao.changePassword(userName, newPassword);
     }

@@ -12,6 +12,8 @@ public interface IDatabaseService {
 
     List<Database> queryAllDBs();
 
+    String getUsage(String databaseName);
+
     String changePassword(String userName, String newPassword);
 
     String executeSQL(String SQL);

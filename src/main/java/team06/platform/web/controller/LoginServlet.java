@@ -62,12 +62,14 @@ public class LoginServlet extends HttpServlet {
                 .withClaim("userName", webuser.getUserName())
                 .withClaim("userRole", webuser.getUserRole())
                 .withClaim("userAvatar", webuser.getAvatar())
+                .withClaim("isCharge", "NO")
                 .sign(algorithm);
-        Cookie tokenCookie = new Cookie("token", token);
-        tokenCookie.setMaxAge(1*24*60*60);
-        tokenCookie.setPath("/");
+//        Cookie tokenCookie = new Cookie("token", token);
+//        tokenCookie.setMaxAge(1*24*60*60);
+//        tokenCookie.setPath("/");
 
-        response.addCookie(tokenCookie);
+//        response.addCookie(tokenCookie);
+        request.getSession().setAttribute("token", token);
         try {
             request.login(webuser.getUserName(), webuser.getPassword());
         }catch (Exception e) {

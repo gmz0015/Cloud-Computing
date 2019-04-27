@@ -18,6 +18,8 @@ public interface IApplicationService {
 
     Application getAppByAppId(String appId);
 
+    Application getAppByContext(String context);
+
     void increaseVisitByContext(String appContext);
 
     Integer getVisit(String appId);

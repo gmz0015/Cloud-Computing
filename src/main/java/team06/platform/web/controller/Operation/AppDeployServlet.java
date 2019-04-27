@@ -27,34 +27,34 @@ public class AppDeployServlet extends HttpServlet {
         String userName = null;
         String result = null;
 
-        Cookie[] cs = request.getCookies();
-        if(cs != null) {
-            for(Cookie c : cs) {
-                if(c.getName().equals("token")) {
-                    token = c.getValue();
+        if (request.getSession().getAttribute("token") != null) {
+            token = request.getSession().getAttribute("token").toString();
+            if (token != null) {
+                Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+                JWTVerifier verifier = JWT.require(algorithm).build();
+                DecodedJWT jwt = verifier.verify(token);
+                userId = jwt.getClaim("userId").asString();
+
+                if (applicationService.checkAppUser(userId, request.getParameter("appId"))) {
+                    result = managerServlet.deploy(
+                            request.getParameter("appId"),
+                            applicationService.getWarById(request.getParameter("appId")),
+                            userName + generateid());
+                }else {
+                    result = "Delete Failed - You have no access to deploy the application";
                 }
+
+                String message = "<p>" + result + "</p>";
+                request.setAttribute("message",message);
+                request.getRequestDispatcher("/WEB-INF/pages/views/applicationDetail.jsp").forward(request, response);
+            } else {
+                // no access
+                response.sendRedirect(request.getContextPath() + "/?error=401.1");
             }
+        } else {
+            // no access
+            response.sendRedirect(request.getContextPath() + "/?error=401.1");
         }
-        if (token != null) {
-            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
-            JWTVerifier verifier = JWT.require(algorithm).build();
-            DecodedJWT jwt = verifier.verify(token);
-            userId = jwt.getClaim("userId").asString();
-            userName = jwt.getClaim("userName").asString();
-        }
-
-        if (applicationService.checkAppUser(userId, request.getParameter("appId"))) {
-            result = managerServlet.deploy(
-                request.getParameter("appId"),
-                applicationService.getWarById(request.getParameter("appId")),
-                    userName + generateid());
-        }else {
-            result = "Delete Failed - You have no access to deploy the application";
-        }
-
-        String message = "<p>" + result + "</p>";
-        request.setAttribute("message",message);
-        request.getRequestDispatcher("/WEB-INF/pages/views/applicationDetail.jsp").forward(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)

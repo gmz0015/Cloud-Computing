@@ -23,6 +23,11 @@ public class ApplicationServiceImpl implements IApplicationService {
     }
 
     @Override
+    public Application getAppByContext(String context) {
+        return appDao.queryAppByContext(context);
+    }
+
+    @Override
     public void increaseVisitByContext(String appContext) {
         System.out.println("appContext is:" + appContext);
         appDao.updateVisitByContext(appContext, this.getVisitByContext(appContext) + 1);
@@ -40,8 +45,12 @@ public class ApplicationServiceImpl implements IApplicationService {
 
     @Override
     public boolean checkAppUser(String userId, String appId) {
-        Application application = appDao.queryAppByAppId(appId);
-        return userId.equals(application.getOwnerId());
+        if (userId == null || appId == null) {
+            return false;
+        }else {
+            Application application = appDao.queryAppByAppId(appId);
+            return userId.equals(application.getOwnerId());
+        }
     }
 
     @Override

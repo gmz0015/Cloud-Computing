@@ -16,7 +16,11 @@ public class DatabaseDaoImpl implements IDatabaseDao {
         String dbId = userId + generateID().substring(1,3);
         String DBNAME = userName + userId + generateID().substring(1,5);
         String DBUSERNAME = userName + generateID();
-        String DBPASSWORD = UUID.randomUUID().toString();
+        String tempPWDs = UUID.randomUUID().toString();
+        StringBuilder DBPASSWORD = new StringBuilder();
+        for (String tempPWD: tempPWDs.split("-")) {
+            DBPASSWORD.append(tempPWD);
+        }
 
         /* Initial Connection */
         Connection conn = null;
@@ -32,7 +36,7 @@ public class DatabaseDaoImpl implements IDatabaseDao {
             // Need to create database
             st = null;
             rs = null;
-            String sql1 = "CREATE USER '" + DBUSERNAME + "'@'localhost' identified BY '" + DBPASSWORD + "';";
+            String sql1 = "CREATE USER '" + DBUSERNAME + "'@'localhost' identified BY '" + DBPASSWORD.toString() + "';";
             st = conn.prepareStatement(sql1);
             st.execute();
             String sql2 = "CREATE database " + DBNAME + " DEFAULT CHARSET utf8 COLLATE utf8_general_ci;";
@@ -55,7 +59,7 @@ public class DatabaseDaoImpl implements IDatabaseDao {
         }finally {
             JdbcUtils.release(conn, st, rs);
         }
-        return new Database(userId, dbId, DBNAME, DBUSERNAME, DBPASSWORD);
+        return new Database(userId, dbId, DBNAME, DBUSERNAME, DBPASSWORD.toString());
     }
 
     @Override

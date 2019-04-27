@@ -72,6 +72,13 @@ public interface IApplicationDao {
     String queryContextById(String appId);
 
     /**
+     * query the app info by its context path
+     * @param context
+     * @return
+     */
+    Application queryAppByContext(String context);
+
+    /**
      * update the status of an application
      * @param appId
      * @param status

@@ -32,21 +32,16 @@ public class CreateNewAppServlet extends HttpServlet {
         String userRole = null;
         String token = null;
 
-        Cookie[] cs = request.getCookies();
-        if(cs != null) {
-            for(Cookie c : cs) {
-                if(c.getName().equals("token")) {
-                    token = c.getValue();
-                }
+        if (request.getSession().getAttribute("token") != null) {
+            token = request.getSession().getAttribute("token").toString();
+            if (token != null) {
+                Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+                JWTVerifier verifier = JWT.require(algorithm).build();
+                DecodedJWT jwt = verifier.verify(token);
+                userId = jwt.getClaim("userId").asString();
+                userName = jwt.getClaim("userName").asString();
+                userRole = jwt.getClaim("userRole").asString();
             }
-        }
-        if (token != null) {
-            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
-            JWTVerifier verifier = JWT.require(algorithm).build();
-            DecodedJWT jwt = verifier.verify(token);
-            userId = jwt.getClaim("userId").asString();
-            userName = jwt.getClaim("userName").asString();
-            userRole = jwt.getClaim("userRole").asString();
         }
 
         String appPath = request.getServletContext().getRealPath("");

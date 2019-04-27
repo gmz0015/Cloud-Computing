@@ -83,6 +83,37 @@ public class UserDaoImpl implements IUserDao {
     }
 
     @Override
+    public User queryUserInfoById(String userId) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        User user = null;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            conn.setAutoCommit(false); // start transaction
+
+            String sql = "SELECT * FROM CloudComputing.users WHERE user_id='" + userId + "';";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            conn.commit();
+            while(rs.next()) {
+                user = new User(rs.getLong("user_id"), rs.getString("user_name"), rs.getString("user_pass"),
+                        rs.getString("email"), rs.getString("avatar"), rs.getString("user_role"));
+            }
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.UserDaoImpl.queryUserInfoById]: " + e);
+            user = new User(Long.valueOf("0"), "", "",
+                    "", "", "");
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return user;
+    }
+
+    @Override
     public User queryUserInfo(String userName, String password) {
         /* Initial Connection */
         Connection conn = null;

@@ -120,7 +120,7 @@
                             <input type="hidden" name="appId" value=<%= session.getAttribute("appId") %>>
                             <input class="w3-display-middle w3-button w3-round-large w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
                                    style="background-color:#F5F5F6;height:90%;width:90%"
-                                   type="submit" name="Deploy" value="Start" >
+                                   type="submit" name="Start" value="Start" >
                         </form>
                         <form action="${pageContext.request.contextPath}/application/detail/stop"
                               method="POST"
@@ -129,7 +129,7 @@
                             <input type="hidden" name="appId" value=<%= session.getAttribute("appId") %>>
                             <input class="w3-display-middle w3-button w3-round-large w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
                                    style="background-color:#F5F5F6;height:90%;width:90%"
-                                   type="submit" name="Deploy" value="Stop" >
+                                   type="submit" name="Stop" value="Stop" >
                         </form>
                         <form action="${pageContext.request.contextPath}/application/detail/undeploy"
                               method="POST"
@@ -138,7 +138,7 @@
                             <input type="hidden" name="appId" value=<%= session.getAttribute("appId") %>>
                             <input class="w3-display-middle w3-button w3-round-large w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
                                    style="background-color:#F5F5F6;height:90%;width:90%"
-                                   type="submit" name="Deploy" value="Undeploy" >
+                                   type="submit" name="Undeploy" value="Undeploy" >
                         </form>
                     </div>
 

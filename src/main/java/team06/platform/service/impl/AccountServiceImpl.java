@@ -1,8 +1,13 @@
 package team06.platform.service.impl;
 
 import team06.platform.dao.IAccountDao;
+import team06.platform.dao.IApplicationDao;
+import team06.platform.dao.IUserDao;
 import team06.platform.dao.impl.AccountDaoImpl;
+import team06.platform.dao.impl.ApplicationDaoImpl;
+import team06.platform.dao.impl.UserDaoImpl;
 import team06.platform.domain.Account;
+import team06.platform.domain.Application;
 import team06.platform.domain.Transaction;
 import team06.platform.service.IAccountService;
 
@@ -12,6 +17,8 @@ import java.util.List;
 
 public class AccountServiceImpl implements IAccountService {
     private IAccountDao accountDao = new AccountDaoImpl();
+    private IUserDao userDao = new UserDaoImpl();
+    private IApplicationDao applicationDao = new ApplicationDaoImpl();
 
     @Override
     public void createAccount(Long userId, String userName) {
@@ -40,11 +47,40 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
+    public void charge(Long fromUserId, Long appId, Integer amount) {
+        Application application = applicationDao.queryAppByAppId(appId.toString());
+        String ownerId = application.getOwnerId();
+        String ownerName = application.getOwnerName();
+        Date date = new Date();
+        this.withdrawal(fromUserId, amount);
+        this.deposit(Long.valueOf(ownerId), amount);
+        accountDao.insertTransaction(new Transaction(
+                fromUserId,
+                userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
+                Long.valueOf(ownerId),
+                ownerName,
+                "Royalties",
+                appId,
+                amount,
+                new Timestamp(date.getTime())));
+
+//        TODO deposit to login & account
+    }
+
+    @Override
     public Boolean transfer(Long fromUserId, Long toUserId, String type, Long appId, Integer amount) {
         Date date = new Date();
         this.withdrawal(fromUserId, amount);
         this.deposit(toUserId, amount);
-        accountDao.insertTransaction(new Transaction(fromUserId, "TEST", toUserId, "TEST", type, appId, amount, new Timestamp(date.getTime())));
+        accountDao.insertTransaction(new Transaction(
+                fromUserId,
+                userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
+                toUserId,
+                userDao.queryUserInfoById(toUserId.toString()).getUserName(),
+                type,
+                appId,
+                amount,
+                new Timestamp(date.getTime())));
         return true;
     }
 

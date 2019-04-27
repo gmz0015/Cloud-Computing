@@ -13,6 +13,8 @@ public interface IAccountService {
 
     Integer deposit(Long userid, Integer amount);
 
+    void charge(Long fromUserId, Long appId, Integer amount);
+
     Boolean transfer(Long fromUserId, Long toUserId, String type, Long appId, Integer amount);
 
     List<Transaction> getTransaction(Long userId);

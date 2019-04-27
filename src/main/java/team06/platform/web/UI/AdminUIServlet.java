@@ -22,36 +22,36 @@ public class AdminUIServlet extends HttpServlet {
         String userRole = null;
         String token = null;
 
-        Cookie[] cs = request.getCookies();
-        if(cs != null) {
-            for(Cookie c : cs) {
-                if(c.getName().equals("token")) {
-                    token = c.getValue();
-                }
-            }
-        }
+        if (request.getSession().getAttribute("token") != null) {
+            token = request.getSession().getAttribute("token").toString();
+            if (token != null) {
+                Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+                JWTVerifier verifier = JWT.require(algorithm).build();
+                DecodedJWT jwt = verifier.verify(token);
+                userId = jwt.getClaim("userId").asString();
+                userName = jwt.getClaim("userName").asString();
+                userRole = jwt.getClaim("userRole").asString();
 
-        if (token != null) {
-            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
-            JWTVerifier verifier = JWT.require(algorithm).build();
-            DecodedJWT jwt = verifier.verify(token);
-            userId = jwt.getClaim("userId").asString();
-            userName = jwt.getClaim("userName").asString();
-            userRole = jwt.getClaim("userRole").asString();
-
-            // Check whether is developer
-            if (userId == null || userId.equals("")) {
-                request.setAttribute("fromURI", request.getRequestURL());
-                request.getRequestDispatcher(request.getContextPath() + "/login").forward(request, response);
-            } else {
-                if (userRole.equals("ADMIN")) {
-                    // access to application page
-                    request.getRequestDispatcher("/WEB-INF/pages/views/admin.jsp").forward(request, response);
+                // Check whether is admin
+                if (userId == null || userId.equals("")) {
+                    request.setAttribute("fromURI", request.getRequestURL());
+                    request.getRequestDispatcher(request.getContextPath() + "/login").forward(request, response);
                 } else {
-                    // no access
-                    response.sendRedirect(request.getContextPath() + "/console?error=Unauthorized");
+                    if (userRole.equals("ADMIN")) {
+                        // access to application page
+                        request.getRequestDispatcher("/WEB-INF/pages/views/admin.jsp").forward(request, response);
+                    } else {
+                        // no access
+                        response.sendRedirect(request.getContextPath() + "/console?error=401.4");
+                    }
                 }
+            } else {
+                // no access
+                response.sendRedirect(request.getContextPath() + "/console?error=401.4");
             }
+        } else {
+            // no access
+            response.sendRedirect(request.getContextPath() + "/console?error=401.4");
         }
     }
 

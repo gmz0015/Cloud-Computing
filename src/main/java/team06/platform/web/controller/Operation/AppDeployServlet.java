@@ -24,6 +24,7 @@ public class AppDeployServlet extends HttpServlet {
             throws ServletException, IOException {
         String token = null;
         String userId = null;
+        String userName = null;
         String result = null;
 
         Cookie[] cs = request.getCookies();
@@ -39,13 +40,14 @@ public class AppDeployServlet extends HttpServlet {
             JWTVerifier verifier = JWT.require(algorithm).build();
             DecodedJWT jwt = verifier.verify(token);
             userId = jwt.getClaim("userId").asString();
+            userName = jwt.getClaim("userName").asString();
         }
 
         if (applicationService.checkAppUser(userId, request.getParameter("appId"))) {
             result = managerServlet.deploy(
                 request.getParameter("appId"),
                 applicationService.getWarById(request.getParameter("appId")),
-                "/app/" + request.getSession().getAttribute("userName") + generateid());
+                    userName + generateid());
         }else {
             result = "Delete Failed - You have no access to deploy the application";
         }

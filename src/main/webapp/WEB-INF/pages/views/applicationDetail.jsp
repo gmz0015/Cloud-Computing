@@ -10,6 +10,8 @@
 <%-- import --%>
 <%@ page import="java.util.List" %>
 <%@ page import="team06.platform.domain.Transaction" %>
+<%@ page import="java.sql.Timestamp" %>
+<%@ page import="java.util.Date" %>
 
 <%-- Java Bean --%>
 <jsp:useBean id="appCreateBean" scope="page" class="team06.platform.web.bean.ApplicationDetailBean" />
@@ -66,7 +68,7 @@
                     <header class="w3-container w3-padding" style="height: 45px;text-align: center;background-color: #f9f9f9">
                             <span style="font-size: 15px;vertical-align: middle">
                                 <% if (appInfo.getStatus() == 2) { %>
-                                <a href="<%=appInfo.getContextPath()%>"><%= appInfo.getName() %></a>
+                                <a href="/enter/?<%=appInfo.getContextPath()%>"><%= appInfo.getName() %></a>
                                 <% } else { %>
                                 <%= appInfo.getName() %>
                                 <% } %>

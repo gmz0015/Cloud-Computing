@@ -4,6 +4,7 @@ package team06.platform.web.controller;
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import team06.platform.service.IApplicationService;
 import team06.platform.service.impl.ApplicationServiceImpl;
+import team06.platform.utils.ConfigUtils;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
@@ -14,23 +15,24 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.Map;
 
 @MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB
         maxFileSize=1024*1024*10, // 10MB
         maxRequestSize=1024*1024*50) // 50MB
 public class ManagerServlet {
-    // Production
-//    private String PORT = "8080";
-//    private String USERNAME = "tomcatscript";
-//    private String PASSWORD = "tomcat";
-
-    // Development
-    private String PORT = "9527";
-    private String USERNAME = "tomcat2";
-    private String PASSWORD = "tomcat";
+    private String PORT;
+    private String USERNAME;
+    private String PASSWORD;
     private IApplicationService applicationService = new ApplicationServiceImpl();
+    private ConfigUtils configUtils = new ConfigUtils();
 
-    public ManagerServlet() {}
+    public ManagerServlet() {
+        Map<String, String> temp = configUtils.getConfig();
+        this.PORT = temp.get("PORT");
+        this.USERNAME = temp.get("USERNAME");
+        this.PASSWORD = temp.get("PASSWORD");
+    }
 
 
     public String upload(String savePath, Part part) throws IOException {
@@ -75,7 +77,7 @@ public class ManagerServlet {
     public String deploy(String appid, String war_path, String target_path) {
         String message = "";
         try {
-            URL url = new URL("http://localhost:" + PORT + "/manager/text/deploy?path=" + target_path + "&war=file:" + war_path);
+            URL url = new URL("http://localhost:" + PORT + "/manager/text/deploy?path=/app/" + target_path + "&war=file:" + war_path);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setAllowUserInteraction(false);
@@ -124,7 +126,7 @@ public class ManagerServlet {
     public String undeploy(String appid, String context) {
         String message = "";
         try {
-            URL url = new URL("http://localhost:" + PORT + "/manager/text/undeploy?path=" + context);
+            URL url = new URL("http://localhost:" + PORT + "/manager/text/undeploy?path=/app/" + context);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setAllowUserInteraction(false);
@@ -175,7 +177,7 @@ public class ManagerServlet {
     public String start(String appid, String context) {
         String message = "";
         try {
-            URL url = new URL("http://localhost:" + PORT + "/manager/text/start?path=" + context);
+            URL url = new URL("http://localhost:" + PORT + "/manager/text/start?path=/app/" + context);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setAllowUserInteraction(false);
@@ -224,7 +226,7 @@ public class ManagerServlet {
     public String stop(String appid, String context) {
         String message = "";
         try {
-            URL url = new URL("http://localhost:" + PORT + "/manager/text/stop?path=" + context);
+            URL url = new URL("http://localhost:" + PORT + "/manager/text/stop?path=/app/" + context);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setAllowUserInteraction(false);
@@ -265,10 +267,15 @@ public class ManagerServlet {
         return message;
     }
 
-    public String delete(String appid, String context) {
-        String message = undeploy(appid, context);
-        String[] temp = message.split(" - ");
-        applicationService.deleteAppByAppId(appid);
-        return message;
+    public String delete(String appid, String context, int status) {
+        if (status == 0) {
+            applicationService.deleteAppByAppId(appid);
+            return "Delete Successful";
+        }else {
+            String message = undeploy(appid, context);
+            String[] temp = message.split(" - ");
+            applicationService.deleteAppByAppId(appid);
+            return message;
+        }
     }
 }

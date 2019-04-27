@@ -12,6 +12,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="team06.platform.domain.Database" %>
 <%@ page import="java.util.Map" %>
+<%@ page import="java.sql.Timestamp" %>
+<%@ page import="java.util.Date" %>
 
 <%-- Java Bean --%>
 <jsp:useBean id="appBean" scope="page" class="team06.platform.web.bean.ApplicationBean" />
@@ -124,7 +126,7 @@
         <div class="w3-third w3-container w3-margin-bottom">
             <img src="<%= appInfo.getIconPath() %>" alt="<%= appInfo.getName() %>" style="width:100%" class="w3-hover-opacity">
             <div class="w3-container w3-white">
-                <p><b><a href="<%=appInfo.getContextPath()%>"><%= appInfo.getName() %></a> - <%= appInfo.getOwnerName() %></b></p>
+                <p><b><a href="/enter/?<%=appInfo.getContextPath()%>"><%= appInfo.getName() %></a> - <%= appInfo.getOwnerName() %></b></p>
                 <p><%= appInfo.getDescription() %></p>
             </div>
         </div>

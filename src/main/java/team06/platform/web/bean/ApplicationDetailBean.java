@@ -32,7 +32,7 @@ public class ApplicationDetailBean implements Serializable {
             appInfo = applicationService.getAppByAppId(this.appId);
             System.out.println("TEST queryApp:" + appInfo.getOwnerName());
         }else {
-            response.sendRedirect(request.getContextPath() + "/console/?error=401.4");
+            response.sendRedirect(request.getContextPath() + "/console?error=401.4");
         }
         return appInfo;
     }

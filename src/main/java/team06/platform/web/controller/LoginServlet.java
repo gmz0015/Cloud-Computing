@@ -10,6 +10,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -66,8 +68,12 @@ public class LoginServlet extends HttpServlet {
         tokenCookie.setPath("/");
 
         response.addCookie(tokenCookie);
+        try {
+            request.login(webuser.getUserName(), webuser.getPassword());
+        }catch (Exception e) {
+            System.out.printf("[%-23s][%-20s][%-20s] Catch Exception: %s\n", new Timestamp(new Date().getTime()), "LoginServlet", "doGet", e);
+        }
 
-        request.login(webuser.getUserName(), webuser.getPassword());
 
         response.sendRedirect(Referer);
     }

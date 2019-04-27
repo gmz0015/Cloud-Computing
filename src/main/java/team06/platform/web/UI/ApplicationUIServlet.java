@@ -52,7 +52,7 @@ public class ApplicationUIServlet extends HttpServlet {
                     request.getRequestDispatcher("/WEB-INF/pages/views/application.jsp").forward(request, response);
                 } else {
                     // no access
-                    response.sendRedirect(request.getContextPath() + "/console/?error=401.4");
+                    response.sendRedirect(request.getContextPath() + "/console?error=401.4");
                 }
             }
         }

@@ -12,6 +12,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="team06.platform.domain.Database" %>
 <%@ page import="java.util.Map" %>
+<%@ page import="java.sql.Timestamp" %>
+<%@ page import="java.util.Date" %>
 
 <%-- Java Bean --%>
 <jsp:useBean id="appBean" scope="page" class="team06.platform.web.bean.ApplicationBean" />
@@ -245,124 +247,7 @@
                     </div>
             </div>
         </div>
-
-
         <br/>
-        <!-- Security -->
-        <%--<div class="w3-container">--%>
-
-        <%--<div class="w3-panel w3-leftbar w3-border-blue">--%>
-        <%--<span style="font-size: 16px">Security</span>--%>
-        <%--</div>--%>
-        <%--<div class="w3-row-padding" >--%>
-        <%--&lt;%&ndash; Message &ndash;%&gt;--%>
-        <%--<div class="w3-third">--%>
-        <%--<div class="w3-card" style="background-color:white">--%>
-
-        <%--<header class="w3-container w3-padding" >--%>
-        <%--<span style="font-size: 17px">Operation Status</span>--%>
-        <%--</header>--%>
-
-        <%--<div class="w3-container w3-padding">--%>
-        <%--<div class="w3-row-padding">--%>
-        <%--&lt;%&ndash; CPU &ndash;%&gt;--%>
-        <%--<div class="w3-third">--%>
-        <%--<div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan"--%>
-        <%--style="background-color: #F5F5F6;text-align: center; height: 130px">--%>
-        <%--<div class="w3-margin-top s3-margin-bottom">--%>
-        <%--<span style="color:#C6D0D4;font-size:30px">34%</span>--%>
-        <%--</div>--%>
-        <%--<div class="w3-container w3-padding" style="color: #333333;margin-top: 20px">--%>
-        <%--CPU--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-
-        <%--&lt;%&ndash; Database Usage &ndash;%&gt;--%>
-        <%--<div class="w3-third">--%>
-        <%--<div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan"--%>
-        <%--style="background-color: #F5F5F6;text-align: center; height: 130px">--%>
-        <%--<div class="w3-margin-top s3-margin-bottom">--%>
-        <%--<span style="color:#C6D0D4;font-size:30px">53%</span>--%>
-        <%--</div>--%>
-        <%--<div class="w3-container w3-padding" style="color: #333333;margin-top: 10px">--%>
-        <%--Internet Usage--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-
-        <%--&lt;%&ndash; Database Usage &ndash;%&gt;--%>
-        <%--<div class="w3-third">--%>
-        <%--<div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan"--%>
-        <%--style="background-color: #F5F5F6;text-align: center; height: 130px">--%>
-        <%--<div class="w3-margin-top s3-margin-bottom">--%>
-        <%--<span style="color:#FF0000;font-size:30px">89%</span>--%>
-        <%--</div>--%>
-        <%--<div class="w3-container w3-padding" style="color: #333333;margin-top: 10px">--%>
-        <%--Database Usage--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-
-        <%--</div>--%>
-        <%--</div>--%>
-
-        <%--&lt;%&ndash; Database Usage &ndash;%&gt;--%>
-        <%--<div class="w3-third">--%>
-        <%--<div class="w3-card" style="background-color:white">--%>
-
-        <%--<header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">--%>
-        <%--<span style="font-size: 20px">Database Usage</span>--%>
-        <%--</header>--%>
-
-        <%--<div style="height:90px">--%>
-        <%--<div class="w3-container w3-row" style="margin-top: 10px;margin-bottom: 5px;">--%>
-        <%--<div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;">--%>
-        <%--<span style="vertical-align: middle;color: #666;">Use</span>--%>
-        <%--<span style="vertical-align: middle;color: #666;">1.34 G</span>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="w3-container w3-row" style="margin-top: 5px;margin-bottom: 10px;">--%>
-        <%--<div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="vertical-align: middle;background-color: #F5F5F6;height:35px;text-align: center;">--%>
-        <%--<span style="vertical-align: middle;color: #666;">Remain</span>--%>
-        <%--<span style="vertical-align: middle;color: #666;">0.63 G</span>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-
-        <%--</div>--%>
-        <%--</div>--%>
-
-        <%--&lt;%&ndash; Database Usage &ndash;%&gt;--%>
-        <%--<div class="w3-third">--%>
-        <%--<div class="w3-card" style="background-color:white">--%>
-
-        <%--<header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">--%>
-        <%--<span style="font-size: 20px">Database Usage</span>--%>
-        <%--</header>--%>
-
-        <%--<div style="height:90px">--%>
-        <%--<div class="w3-container w3-row" style="margin-top: 10px;margin-bottom: 5px;">--%>
-        <%--<div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;">--%>
-        <%--<span style="vertical-align: middle;color: #666;">Use</span>--%>
-        <%--<span style="vertical-align: middle;color: #666;">1.34 G</span>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="w3-container w3-row" style="margin-top: 5px;margin-bottom: 10px;">--%>
-        <%--<div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="vertical-align: middle;background-color: #F5F5F6;height:35px;text-align: center;">--%>
-        <%--<span style="vertical-align: middle;color: #666;">Remain</span>--%>
-        <%--<span style="vertical-align: middle;color: #666;">0.63 G</span>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-
-        <%--</div>--%>
 
         <!-- Instances -->
         <div class="w3-container">
@@ -387,7 +272,7 @@
                         <header class="w3-container w3-padding" style="text-align: left;background-color: #f9f9f9">
                             <span style="font-size: 15px;vertical-align: middle">
                                 <% if (appInfo.getStatus() == 2) { %>
-                                <a href="<%=appInfo.getContextPath()%>"><%= appInfo.getName() %></a>
+                                <a href="/enter/?<%=appInfo.getContextPath()%>"><%= appInfo.getName() %></a>
                                 <% } else { %>
                                 <%= appInfo.getName() %>
                                 <% } %>

@@ -49,7 +49,7 @@ public class AdminUIServlet extends HttpServlet {
                     request.getRequestDispatcher("/WEB-INF/pages/views/admin.jsp").forward(request, response);
                 } else {
                     // no access
-                    response.sendRedirect(request.getContextPath() + "/console/?error=Unauthorized");
+                    response.sendRedirect(request.getContextPath() + "/console?error=Unauthorized");
                 }
             }
         }

@@ -78,11 +78,11 @@ public class CreateNewAppServlet extends HttpServlet {
                             System.out.println("[team06.platform.web.controller.CreateNewAppServlet.doGet]: " + e);
 
                             // Upload Failed, dispatch back
-                            response.sendRedirect(request.getContextPath() + "/application/?error=0");
+                            response.sendRedirect(request.getContextPath() + "/application?error=0");
                         }
 
                         // Upload Successful, redirect to application page
-                        response.sendRedirect("/application/?error=1");
+                        response.sendRedirect("/application?error=1");
                     }
                 }
             }

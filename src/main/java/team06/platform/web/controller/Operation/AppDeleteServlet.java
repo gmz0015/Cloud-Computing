@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import team06.platform.domain.Application;
 import team06.platform.service.IApplicationService;
 import team06.platform.service.impl.ApplicationServiceImpl;
 import team06.platform.web.controller.ManagerServlet;
@@ -42,9 +43,11 @@ public class AppDeleteServlet extends HttpServlet {
         }
 
         if (applicationService.checkAppUser(userId, request.getParameter("appId"))) {
+            Application application = applicationService.getAppByAppId(request.getParameter("appId"));
              result = managerServlet.delete(
                     request.getParameter("appId"),
-                    applicationService.getContextById(request.getParameter("appId")));
+                    application.getContextPath(),
+                     application.getStatus());
         }else {
             result = "Delete Failed - You have no access to delete the application";
         }

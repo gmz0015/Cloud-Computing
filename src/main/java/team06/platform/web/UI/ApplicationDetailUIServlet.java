@@ -53,11 +53,11 @@ public class ApplicationDetailUIServlet extends HttpServlet {
                         request.getSession().setAttribute("appId", appId);
                         request.getRequestDispatcher("/WEB-INF/pages/views/applicationDetail.jsp").forward(request, response);
                     } else {
-                        response.sendRedirect(request.getContextPath() + "/?error=401.4");
+                        response.sendRedirect(request.getContextPath() + "?error=401.4");
                     }
                 } else {
                     // no access
-                    response.sendRedirect(request.getContextPath() + "/console/?error=401.4");
+                    response.sendRedirect(request.getContextPath() + "/console?error=401.4");
                 }
             }
         }

@@ -6,9 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%-- Java Bean --%>
+<jsp:useBean id="countBean" scope="page" class="team06.platform.web.bean.CountBean" />
+<% countBean.doCount(request); %>
 <html>
 <title>Cloud Base Login</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="3;url=/" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

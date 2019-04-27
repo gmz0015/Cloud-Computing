@@ -11,6 +11,8 @@
 <%-- import --%>
 <%@ page import="team06.platform.domain.Application" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.sql.Timestamp" %>
+<%@ page import="java.util.Date" %>
 
 <%-- Java Bean --%>
 <jsp:useBean id="indexBean" scope="page" class="team06.platform.web.bean.IndexBean" />
@@ -463,7 +465,7 @@
                         <tr class="w3-border" style="background-color: #F5F5F6;text-align: center">
                             <td>
                                 <% if (appInfo.getStatus() == 2) { %>
-                                <a href="<%=appInfo.getContextPath()%>"><%= appInfo.getName() %></a>
+                                <a href="/enter/?<%=appInfo.getContextPath()%>"><%= appInfo.getName() %></a>
                                 <% } else { %>
                                 <%= appInfo.getName() %>
                                 <% } %>

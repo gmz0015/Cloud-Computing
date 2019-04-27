@@ -79,6 +79,19 @@
         <url-pattern>/admin</url-pattern>
     </servlet-mapping>
 
+    <!-- Enter -->
+    <servlet>
+        <description>Enter an Application</description>
+        <display-name>Enter</display-name>
+        <servlet-name>Enter</servlet-name>
+        <servlet-class>team06.platform.web.UI.EnterUIServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Enter</servlet-name>
+        <url-pattern>/enter/*</url-pattern>
+    </servlet-mapping>
+
     <!-- Application -->
     <servlet>
         <description>List of the Application</description>
@@ -233,10 +246,10 @@
         <url-pattern>/login/register</url-pattern>
     </servlet-mapping>
 
-    <listener>
-        <description>ServletRequestListener</description>
-        <listener-class>team06.platform.web.listener.MyServletRequestListener</listener-class>
-    </listener>
+    <!--<listener>-->
+        <!--<description>ServletRequestListener</description>-->
+        <!--<listener-class>team06.platform.web.listener.MyServletRequestListener</listener-class>-->
+    <!--</listener>-->
 
     <!-- Whitelist -->
     <servlet-mapping>
@@ -274,4 +287,13 @@
         <!--<filter-name>Authentication</filter-name>-->
         <!--<url-pattern>/*</url-pattern>-->
     <!--</filter-mapping>-->
+    <!-- ===================== Default MIME Type Mappings =================== -->
+    <!-- When serving static resources, Tomcat will automatically generate    -->
+    <!-- a "Content-Type" header based on the resource's filename extension,  -->
+    <!-- based on these mappings.  Additional mappings can be added here (to  -->
+    <!-- apply to all web applications), or in your own application's web.xml -->
+    <!-- deployment descriptor.                                               -->
+    <!-- Note: Extensions are always matched in a case-insensitive manner.    -->
+
+
 </web-app>

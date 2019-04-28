@@ -17,4 +17,6 @@ public interface IUserDao {
     Boolean updateUserEmail(String userId, String email);
 
     Boolean updateUserAvatar(String userId, String avatarPath);
+
+    Boolean updateUserRole(String userId, String userName, String role);
 }

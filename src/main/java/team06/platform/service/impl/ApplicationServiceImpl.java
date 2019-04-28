@@ -80,4 +80,19 @@ public class ApplicationServiceImpl implements IApplicationService {
     public void setStatusById(String appId, int status) {
         appDao.updateStatusById(appId, status);
     }
+
+    @Override
+    public Boolean changeName(String appId, String appName) {
+        return appDao.updateAppNameById(appId, appName);
+    }
+
+    @Override
+    public Boolean changeDescription(String appId, String appDescription) {
+        return appDao.updateAppDescriptionById(appId, appDescription);
+    }
+
+    @Override
+    public Boolean changeIcon(String appId, String icon) {
+        return appDao.updateAppIconById(appId, icon);
+    }
 }

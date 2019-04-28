@@ -2,11 +2,14 @@ package team06.platform.service.impl;
 
 import team06.platform.dao.IUserDao;
 import team06.platform.dao.impl.UserDaoImpl;
+import team06.platform.domain.Database;
 import team06.platform.domain.User;
+import team06.platform.service.IDatabaseService;
 import team06.platform.service.IUserService;
 
 public class UserServiceImpl implements IUserService {
     private IUserDao userDao = new UserDaoImpl();
+    private IDatabaseService databaseService = new DatabaseServiceImpl();
 
     @Override
     public User login(String userName, String password) {
@@ -26,6 +29,16 @@ public class UserServiceImpl implements IUserService {
     @Override
     public Boolean changeEmail(String userId, String email) {
         return userDao.updateUserEmail(userId, email);
+    }
+
+    @Override
+    public Boolean changeToDeveloper(String userId, String userName) {
+        Database database = databaseService.createDBbyId(userId, userName);
+        if ((database == null) || !userDao.updateUserRole(userId, userName, "DEVELOPER")) {
+            return false;
+        }else {
+            return true;
+        }
     }
 
     @Override

@@ -44,6 +44,69 @@
 <%@ include file="/WEB-INF/pages/component/layout/navigation.jsp"%>
 
 <%@ include file="/WEB-INF/pages/component/layout/sidebar.jsp"%>
+
+<%-- Change Name --%>
+<div id="changeName" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+        <form class="w3-container" action="/change?type=name" method="post">
+            <div class="w3-section">
+                <label><b>Please Enter Your Password</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
+                <label><b>Please Enter Your Application's New Name</b></label>
+                <input class="w3-input w3-border" type="text" placeholder="Enter New Name" name="name" required>
+                <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Change</button>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('changeName').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+        </div>
+
+    </div>
+</div>
+
+<%-- Change Icon --%>
+<div id="changeIcon" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+        <form class="w3-container" action="/change?type=icon" enctype="multipart/form-data" method="post" >
+            <div class="w3-section">
+                <label><b>Please Enter Your Password</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
+                <label><b>Please Upload Your Application's New Icon</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="file" name="icon">
+                <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Change</button>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('changeIcon').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+        </div>
+
+    </div>
+</div>
+
+<%-- Change Description --%>
+<div id="changeDescription" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+        <form class="w3-container" action="/change?type=description" method="post">
+            <div class="w3-section">
+                <label><b>Please Enter Your Password</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
+                <label><b>Please Enter Your Application's New Description</b></label>
+                <input class="w3-input w3-border" type="text" placeholder="Enter New Description" name="description" required>
+                <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Change</button>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('changeDescription').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+        </div>
+
+    </div>
+</div>
 <section style="background-color:rgb(234, 237, 241);min-height: 700px;margin-top: 45px;padding-bottom: 20px">
 
 <div id="main" style="margin-left: 50px;padding-bottom: 20px">
@@ -145,33 +208,74 @@
                 </div>
             </div>
 
-            <%-- Overview --%>
+            <%-- Control Center --%>
             <div class="w3-third">
-                <div class="w3-card" style="background-color:white">
+                <div class="w3-card" style="background-color:white;position:relative">
 
-                    <header class="w3-container w3-padding" style="height: 45px;text-align: center;background-color: #f9f9f9">
-                        <span style="color: #333333;font-size: 20px">Instances</span>
+                    <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
+                        <span style="font-size: 20px">Control Center</span>
                     </header>
 
-                    <table class="w3-table w3-centered" style="table-layout:fixed;height: 100px">
-                        <tr>
-                            <td style="border-right:1px solid #dddddd">Total</td>
-                            <td  style="border-right:1px solid #dddddd">Running</td>
-                            <td  style="border-right:1px solid #dddddd">Maintain</td>
-                            <td>Stop</td>
-                        </tr>
-                        <tr>
-                            <td style="color: #09C;font-size: 24px;border-right:1px solid #dddddd">2</td>
-                            <td style="color: #090;font-size: 24px;border-right:1px solid #dddddd">1</td>
-                            <td style="color: #F00;font-size: 24px;border-right:1px solid #dddddd">0</td>
-                            <td style="color: #F00;font-size: 24px">1</td>
-                        </tr>
-                    </table>
+                    <div class="w3-row" style="height:100px">
+                        <div class="w3-half" style="border-right:1px dashed #dddddd">
+                            <div class="w3-row" style=";margin-top: 10px;margin-bottom: 5px;margin-right: 10px;margin-left: 10px;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" onclick="document.getElementById('changeName').style.display='block'">
+                                    <span style="vertical-align: middle;color: #666;">Change Name</span>
+                                </div>
+                            </div>
+
+                            <div class="w3-row" style=";margin-top: 5px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" onclick="document.getElementById('changeDescription').style.display='block'">
+                                    <span style="vertical-align: middle;color: #666;">Change Description</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w3-half">
+                            <div class="w3-row" style=";margin-top: 10px;margin-bottom: 5px;margin-right: 10px;margin-left: 10px;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" onclick="document.getElementById('changeIcon').style.display='block'">
+                                    <span style="vertical-align: middle;color: #666;">Change Icon</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Database -->
+            <%-- Overview --%>
+            <div class="w3-row-padding" >
+                <div class="w3-panel w3-leftbar w3-border-blue w3-display-container">
+                    <span style="font-size: 16px">Overview</span>
+                </div>
+
+                <%-- Icon --%>
+                <div class="w3-third">
+                    <div class="w3-card-4" style="max-width: 430px">
+                        <img src="/image/icon/<%= appInfo.getIconPath() %>" alt="<%= appInfo.getName() %>" style="width:100%;max-width:430px">
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="w3-third">
+                    <div class="w3-card" style="background-color:white">
+
+                        <header class="w3-container w3-padding" style="height:45px;text-align: center;background-color: #f9f9f9">
+                            <span style="color: #333333;font-size: 20px">Description</span>
+                        </header>
+
+                        <div class="w3-row-padding" style="height: 100px">
+                            <p><%= appInfo.getDescription() %></p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="w3-third">
+                </div>
+            </div>
+
+        <!-- Transaction History -->
         <div class="w3-container">
 
             <div class="w3-panel w3-leftbar w3-border-blue" style="height:27px">

@@ -221,4 +221,33 @@ public class UserDaoImpl implements IUserDao {
         }
         return result;
     }
+
+    @Override
+    public Boolean updateUserRole(String userId, String userName, String role) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        Boolean result = false;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            conn.setAutoCommit(false); // start transaction
+
+            String sql1 = "UPDATE CloudComputing.users SET user_role='" + role + "' WHERE user_id='" + userId + "';";
+            st = conn.prepareStatement(sql1);
+            st.executeUpdate();
+            String sql2 = "UPDATE CloudComputing.user_roles SET user_role='" + role + "' WHERE user_name='" + userName + "';";
+            st = conn.prepareStatement(sql2);
+            st.executeUpdate();
+            conn.commit();
+            result = true;
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.UserDaoImpl.updateUserRole]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return result;
+    }
 }

@@ -349,4 +349,73 @@ public class ApplicationDaoImpl implements IApplicationDao {
             JdbcUtils.release(conn, st, rs);
         }
     }
+
+    @Override
+    public Boolean updateAppNameById(String appId, String name) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        Boolean result = false;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "UPDATE CloudComputing.applications SET appName='" + name + "' WHERE appId='" + appId + "';";
+            st = conn.prepareStatement(sql);
+            st.executeUpdate();
+            result = true;
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.updateAppNameById]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return result;
+    }
+
+    @Override
+    public Boolean updateAppDescriptionById(String appId, String description) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        Boolean result = false;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "UPDATE CloudComputing.applications SET description='" + description + "' WHERE appId='" + appId + "';";
+            st = conn.prepareStatement(sql);
+            st.executeUpdate();
+            result = true;
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.updateAppDescriptionById]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return result;
+    }
+
+    @Override
+    public Boolean updateAppIconById(String appId, String icon) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        Boolean result = false;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "UPDATE CloudComputing.applications SET iconPath='" + icon + "' WHERE appId='" + appId + "';";
+            st = conn.prepareStatement(sql);
+            st.executeUpdate();
+            result = true;
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.updateAppIconById]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return result;
+    }
 }

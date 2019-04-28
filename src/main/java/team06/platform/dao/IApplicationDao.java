@@ -90,4 +90,10 @@ public interface IApplicationDao {
      * @param appContext
      */
     void updateVisitByContext(String appContext, Integer newVisits);
+
+    Boolean updateAppNameById(String appId, String name);
+
+    Boolean updateAppDescriptionById(String appId, String description);
+
+    Boolean updateAppIconById(String appId, String icon);
 }

@@ -124,7 +124,7 @@
         <% }/* end if */ %>
         <%-- Application --%>
         <div class="w3-third w3-container w3-margin-bottom">
-            <img src="<%= appInfo.getIconPath() %>" alt="<%= appInfo.getName() %>" style="width:100%" class="w3-hover-opacity">
+            <img src="/image/icon/<%= appInfo.getIconPath() %>" alt="<%= appInfo.getName() %>" style="width:100%;max-height: 250px" class="w3-hover-opacity">
             <div class="w3-container w3-white">
                 <p><b><a href="/enter/?<%=appInfo.getContextPath()%>"><%= appInfo.getName() %></a> - <%= appInfo.getOwnerName() %></b></p>
                 <p><%= appInfo.getDescription() %></p>

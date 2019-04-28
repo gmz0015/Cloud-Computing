@@ -88,6 +88,26 @@
     </div>
 </div>
 
+<%-- Change Developer --%>
+<div id="changeDev" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+        <form class="w3-container" action="/change?type=developer" method="post">
+            <div class="w3-section">
+                <label><b>Please Enter Your Password</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
+                <label><b>Confirm to Become a Developer</b></label>
+                <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Confirm</button>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('changeDev').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+        </div>
+
+    </div>
+</div>
+
 
 <div id="main" style="margin-left: 50px">
     <%-- Welcome Message --%>
@@ -244,7 +264,7 @@
                             </div>
 
                             <div class="w3-row" style=";margin-top: 5px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;">
-                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" >
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" onclick="document.getElementById('changeDev').style.display='block'">
                                     <span style="vertical-align: middle;color: #666;">Become a Developer</span>
                                 </div>
                             </div>

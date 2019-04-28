@@ -38,4 +38,10 @@ public interface IApplicationService {
     String getContextById(String appId);
 
     void setStatusById(String appId, int status);
+
+    Boolean changeName(String appId, String appName);
+
+    Boolean changeDescription(String appId, String appDescription);
+
+    Boolean changeIcon(String appId, String icon);
 }

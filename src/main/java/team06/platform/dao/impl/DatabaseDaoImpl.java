@@ -56,6 +56,7 @@ public class DatabaseDaoImpl implements IDatabaseDao {
             conn.commit(); // Commit transaction after above sql update successful
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.DatabaseDaoImpl.createDBbyId]: " + e);
+            return null;
         }finally {
             JdbcUtils.release(conn, st, rs);
         }

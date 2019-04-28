@@ -12,6 +12,8 @@ public interface IUserService {
 
     Boolean changeEmail(String userId, String email);
 
+    Boolean changeToDeveloper(String userId, String userName);
+
     Boolean changeAvatar(String userId, String avatar);
 
     User getUserInfo(String userId);

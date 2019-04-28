@@ -29,6 +29,7 @@
 <title>Team 06 - Welcome</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -141,11 +142,12 @@
 
         <div class="w3-quarter">
             <h2>Our Advantages</h2>
-            <ul>
-                <li>Specific API Documents</li>
-                <li>Detailed Guide</li>
-                <li>Friendly Interface</li>
-                <li>Powerful Manager System</li>
+            <ul style="line-height: 40px">
+                <li><b>Specific API Documents</b></li>
+                <li><b>Detailed Guide</b></li>
+                <li><b>Rating System</b></li>
+                <li><b>Friendly Interface</b></li>
+                <li><b>Powerful Manager System</b></li>
             </ul>
         </div>
 
@@ -188,7 +190,75 @@
                 </div>
             </div>
         </div>
-
+    </div>
+    <div class="w3-row-padding w3-padding w3-theme-l1" id="list">
+        <h2><b>Authority List</b></h2>
+        <!-- Images of Us -->
+        <table class="w3-table w3-centered">
+            <tr class="" style="border-bottom:1px solid #dddddd">
+                <th>Web Page</th>
+                <th>Guest</th>
+                <th>User</th>
+                <th>Developer</th>
+                <th>Admin</th>
+            </tr>
+            <tr>
+                <td>Home</td>
+                <td><i class="material-icons">check</i></td>
+                <td><i class="material-icons">check</i></td>
+                <td><i class="material-icons">check</i></td>
+                <td><i class="material-icons">check</i></td>
+            </tr>
+            <tr>
+                <td>Guide</td>
+                <td><i class="material-icons">check</i></td>
+                <td><i class="material-icons">check</i></td>
+                <td><i class="material-icons">check</i></td>
+                <td><i class="material-icons">check</i></td>
+            </tr>
+            <tr>
+                <td>Console</td>
+                <td><i class="material-icons">check</i></td>
+                <td><i class="material-icons">check</i></td>
+                <td><i class="material-icons">check</i></td>
+                <td><i class="material-icons">check</i></td>
+            </tr>
+            <tr>
+                <td>Account</td>
+                <td><i class="material-icons">close</i></td>
+                <td><i class="material-icons">check</i></td>
+                <td><i class="material-icons">check</i></td>
+                <td><i class="material-icons">check</i></td>
+            </tr>
+            <tr>
+                <td>Preference</td>
+                <td><i class="material-icons">close</i></td>
+                <td><i class="material-icons">check</i></td>
+                <td><i class="material-icons">check</i></td>
+                <td><i class="material-icons">check</i></td>
+            </tr>
+            <tr>
+                <td>Application</td>
+                <td><i class="material-icons">close</i></td>
+                <td><i class="material-icons">close</i></td>
+                <td><i class="material-icons">check</i></td>
+                <td><i class="material-icons">check</i></td>
+            </tr>
+            <tr>
+                <td>Application Detail</td>
+                <td><i class="material-icons">close</i></td>
+                <td><i class="material-icons">close</i></td>
+                <td><i class="material-icons">check</i></td>
+                <td><i class="material-icons">check</i></td>
+            </tr>
+            <tr>
+                <td>Admin</td>
+                <td><i class="material-icons">close</i></td>
+                <td><i class="material-icons">close</i></td>
+                <td><i class="material-icons">close</i></td>
+                <td><i class="material-icons">check</i></td>
+            </tr>
+        </table>
     </div>
 
 
@@ -199,25 +269,25 @@
         <div class="w3-row-padding w3-padding-16" id="about">
 
             <div class="w3-display-container w3-col m3">
-                <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Me" style="width:100%">
+                <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Stelios Steliou" style="width:100%">
                 <div class="w3-display-bottommiddle nameBoard" style="width:95%;margin-bottom: 10px;padding-left: 20px;padding-right: 20px">
                     <h3 style="color: black;text-align: center">Stelios Steliou</h3>
                 </div>
             </div>
             <div class="w3-display-container w3-col m3">
-                <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Me" style="width:100%">
+                <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Aleksandar Pantovic" style="width:100%">
                 <div class="w3-display-bottommiddle nameBoard" style="width:95%;margin-bottom: 10px;padding-left: 20px;padding-right: 20px">
                     <h3 style="color: black;text-align: center">Aleksandar Pantovic</h3>
                 </div>
             </div>
             <div class="w3-display-container w3-col m3">
-                <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Me" style="width:100%">
+                <img class="" src="<%=request.getContextPath()%>/image/MingzeGao.jpg" alt="Mingze Gao" style="width:100%">
                 <div class="w3-display-bottommiddle nameBoard" style="width:95%;margin-bottom: 10px;padding-left: 20px;padding-right: 20px">
                     <h3 style="color: black;text-align: center">Mingze Gao</h3>
                 </div>
             </div>
             <div class="w3-display-container w3-col m3">
-                <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Me" style="width:100%">
+                <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Yilei Chen" style="width:100%">
                 <div class="w3-display-bottommiddle nameBoard" style="width:95%;margin-bottom: 10px;padding-left: 20px;padding-right: 20px">
                     <h3 style="color: black;text-align: center">Yilei Chen</h3>
                 </div>
@@ -247,7 +317,7 @@
         </form>
     </div>
 
-    <div class="w3-black w3-center w3-padding-24">Designed by Team 06</div>
+    <div class="w3-black w3-center w3-padding-24">Develop by Team 06</div>
 
     <!-- End page content -->
 </div>
@@ -265,6 +335,13 @@
         bottom: 0;
         background-color: rgba(255,255,255,0.8);
         z-index: -1;
+    }
+    .mingze {
+        transform: rotate(90deg);
+        -ms-transform: rotate(90deg); /* IE 9 */
+        -moz-transform: rotate(90deg); /* Firefox */
+        -webkit-transform: rotate(90deg); /* Safari and Chrome */
+        -o-transform: rotate(90deg); /* Opera */
     }
 </style>
 

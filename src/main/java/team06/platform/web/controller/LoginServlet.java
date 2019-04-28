@@ -6,6 +6,7 @@ import team06.platform.domain.User;
 import team06.platform.service.IUserService;
 import team06.platform.service.impl.UserServiceImpl;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -76,6 +77,14 @@ public class LoginServlet extends HttpServlet {
             System.out.printf("[%-23s][%-20s][%-20s] Catch Exception: %s\n", new Timestamp(new Date().getTime()), "LoginServlet", "doGet", e);
         }
 
+        ServletContext servletContext = getServletContext();
+        Object object = servletContext.getAttribute("userCount");
+        if (object == null) {
+            servletContext.setAttribute("userCount", 1);
+        } else {
+            int num =(int)object;
+            servletContext.setAttribute("userCount", num + 1);
+        }
 
         response.sendRedirect(Referer);
     }

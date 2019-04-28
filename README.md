@@ -19,6 +19,13 @@ The sharing place for team 06.
     - team06.platform.web.controller.ManagerServlet
     - context.xml
     - login.login
+- Step(under`/var/lib/tomcat8/webapps`):
+    - `mv ./ROOT/uploadedFiles ./backup/uploadedFiles`
+    - `mv ./ROOT/image/avatar ./backup/avatar`
+    - tomcat deploy
+    - `mv ./backup/uploadedFiles ./ROOT/uploadedFiles`
+    - `mv ./ROOT/image/avatar ./backup/avatar`
+    - `mv platform ROOT`
 
 ## TODO
 - Optimise 

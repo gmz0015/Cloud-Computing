@@ -20,6 +20,7 @@ public class LoginUIServlet extends HttpServlet {
                 request.getSession().setAttribute("userRole", null);
                 request.logout();
                 request.getSession().setAttribute("token", null);
+                request.getSession().invalidate();
                 response.sendRedirect("/");
             }else {
                 System.out.println("Wrong Request LoginUIServlet");
@@ -37,6 +38,7 @@ public class LoginUIServlet extends HttpServlet {
                 response.sendRedirect("/");
             }else {
                 System.out.println("Wrong Request LoginUIServlet");
+                request.getSession().invalidate();
                 response.sendRedirect("/");
             }
         }

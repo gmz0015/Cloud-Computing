@@ -46,6 +46,10 @@ public class testAccountAPI{
         return "";
     }
 
+    /**
+     *
+     * @return
+     */
     public static String sendPostRequest() {
         String urlParam ="http://localhost:9527/api/account/transfer";
 

@@ -33,6 +33,71 @@
 }
 </style>
 <body>
+<div id="id01" class="w3-modal" style="padding-top: 30px">
+  <div class="w3-modal-content w3-card-4 w3-animate-left" style="max-width:1000px">
+
+    <div class="w3-center"><br>
+      <span
+              onclick="document.getElementById('id01').style.display='none'"
+              class="w3-button w3-xlarge w3-transparent w3-display-topright"
+              title="Close Modal">×</span>
+      <h3>Welcome to Cloud Platform Registration page!</h3>
+    </div>
+
+    <form class="w3-container" action="${pageContext.request.contextPath}/login/register" enctype="multipart/form-data" method="post" name="form1">
+      <input type="hidden" name="Referer" value=<%= request.getAttribute("Referer") %>>
+      <div class="w3-row-padding">
+        <div class="w3-half" style="border-right:1px dashed #dddddd">
+          <h5>Notice:</h5>
+          <ul>
+            When you join us, you will receive <b>1000</b> peanuts as initial fund.
+          </ul>
+
+          <h5>User</h5>
+          <ul>
+            <li>The normal charge standard for using application is 5 peanuts. 3 for developer, 2 for service provider. (i.e. You will only need to <b>pay once for an application</b> within session lifecycle.) </li>
+            <li>You can choose to become a developer any time.</li>
+          </ul>
+
+          <h5>Developer</h5>
+          <ul>
+            <li>For each visit, You can receive <b>3 peanuts</b> under normal charge standard.</li>
+            <li>You will be <b>allocated a database</b> and you can view it under <b>application page</b>.
+              Please remember to <span style="color: red">alter</span> your <b>database configurations</b>.</li>
+          </ul>
+
+          <h6>For more information, please visit our <a class="w3-hover-text-blue" href="/guide"><b>guide page</b></a></h6>
+        </div>
+        <div class="w3-half">
+          <div class="w3-section">
+            <label><b>Username</b></label>
+            <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="username" required>
+            <label><b>Password</b></label>
+            <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
+            <label><b>Email</b></label>
+            <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Email Address" name="email" required>
+            <label><b>Upload a custom avatar</b></label>
+            <input class="w3-input w3-border w3-margin-bottom" type="file" name="avatar">
+            <label><b>Become a</b></label>
+            <div class="w3-row">
+              <div class="w3-half"><input type="radio" checked="checked" name="role" value="USER" /><span style="padding-left:10px">User</span></div>
+              <div class="w3-half"><input type="radio" name="role" value="DEVELOPER" /><span style="padding-left:10px">Developer</span></div>
+            </div>
+            <button class="w3-button w3-block w3-black w3-section w3-padding" type="submit">Register</button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+    <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+      <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-black">Cancel</button>
+      <!-- <span class="w3-right w3-padding w3-hide-small"><a href="#">Upload a custom avatar?</a></span> -->
+    </div>
+
+  </div>
+</div>
+
 <div>
   <div class="w3-bar" id="myNavbar">
     <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
@@ -62,41 +127,7 @@
 	</div>
 
 
-  <div id="id01" class="w3-modal">
-    <div class="w3-modal-content w3-card-4 w3-animate-left" style="max-width:600px">
 
-      <div class="w3-center"><br>
-				<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
-				<h3>Welcome to Cloud Platform Registration page!</h3>
-      </div>
-
-      <form class="w3-container" action="${pageContext.request.contextPath}/login/register" enctype="multipart/form-data" method="post" name="form1">
-        <input type="hidden" name="Referer" value=<%= request.getAttribute("Referer") %>>
-        <div class="w3-section">
-          <label><b>Username</b></label>
-          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="username" required>
-          <label><b>Password</b></label>
-          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
-		  <label><b>Email</b></label>
-		  <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Email Address" name="email" required>
-		  <label><b>Upload a custom avatar</b></label>
-		  <input class="w3-input w3-border w3-margin-bottom" type="file" name="avatar">
-          <label><b>Become a</b></label>
-          <div class="w3-row">
-            <div class="w3-half"><input type="radio" checked="checked" name="role" value="USER" /><span style="padding-left:10px">User</span></div>
-            <div class="w3-half"><input type="radio" name="role" value="DEVELOPER" /><span style="padding-left:10px">Developer</span></div>
-          </div>
-          <button class="w3-button w3-block w3-black w3-section w3-padding" type="submit">Register</button>
-        </div>
-      </form>
-
-      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-        <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-black">Cancel</button>
-				<!-- <span class="w3-right w3-padding w3-hide-small"><a href="#">Upload a custom avatar?</a></span> -->
-      </div>
-
-    </div>
-  </div>
 
   <div id="id02" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-right" style="max-width:600px">

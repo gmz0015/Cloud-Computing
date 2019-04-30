@@ -17,4 +17,6 @@ public interface IUserService {
     Boolean changeAvatar(String userId, String avatar);
 
     User getUserInfo(String userId);
+
+    Boolean logout(Long userId);
 }

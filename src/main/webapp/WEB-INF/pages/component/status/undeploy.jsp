@@ -9,7 +9,7 @@
 <html>
 <div class="w3-tag w3-round" style="padding:3px;background-color: transparent">
     <div class="w3-tag w3-round" style="background-color: transparent">
-        <span class="w3-text-amber"><b>Undeploy</b></span>
+        <span class="w3-text-amber"><b>Undeployed</b></span>
     </div>
 </div>
 </html>

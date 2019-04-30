@@ -40,7 +40,7 @@ public class ManagerDaoImpl implements IManagerDao {
     }
 
     @Override
-    public void insertNewApp(Application application) throws SQLException {
+    public void insertNewApp(Application application, String appUUID) throws SQLException {
         /* Initial Connection */
         Connection conn = null;
         PreparedStatement st = null;
@@ -63,8 +63,10 @@ public class ManagerDaoImpl implements IManagerDao {
                     application.getDbId() + "', '" +
                     application.getWarPath() + "', '" +
                     application.getContextPath() + "', '" +
-                    application.getIconPath() +
+                    application.getIconPath() + "', '" +
+                    appUUID +
                     "');";
+            System.out.println("insert sql" + sql);
             System.out.println("sql is: " + sql);
             st = conn.prepareStatement(sql);
             st.execute();

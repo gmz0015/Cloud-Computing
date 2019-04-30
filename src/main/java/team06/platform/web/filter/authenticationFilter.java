@@ -5,12 +5,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 public class authenticationFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
+        System.out.printf("[%-23s] Init Filter\n", new Timestamp(new Date().getTime()));
     }
 
     @Override

@@ -1,6 +1,8 @@
 package team06.platform.service.impl;
 
+import team06.platform.dao.IAccountDao;
 import team06.platform.dao.IUserDao;
+import team06.platform.dao.impl.AccountDaoImpl;
 import team06.platform.dao.impl.UserDaoImpl;
 import team06.platform.domain.Database;
 import team06.platform.domain.User;
@@ -10,6 +12,7 @@ import team06.platform.service.IUserService;
 public class UserServiceImpl implements IUserService {
     private IUserDao userDao = new UserDaoImpl();
     private IDatabaseService databaseService = new DatabaseServiceImpl();
+    private IAccountDao accountDao = new AccountDaoImpl();
 
     @Override
     public User login(String userName, String password) {
@@ -49,5 +52,10 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User getUserInfo(String userId) {
         return userDao.queryUserInfoById(userId);
+    }
+
+    @Override
+    public Boolean logout(Long userId) {
+        return accountDao.deleteCharge(userId);
     }
 }

@@ -2,6 +2,7 @@ package team06.platform.dao.impl;
 
 import team06.platform.dao.IAccountDao;
 import team06.platform.domain.Account;
+import team06.platform.domain.Charge;
 import team06.platform.domain.Transaction;
 import team06.platform.utils.JdbcUtils;
 
@@ -133,6 +134,92 @@ public class AccountDaoImpl implements IAccountDao {
             JdbcUtils.release(conn, st, rs);
         }
         return result;
+    }
+
+    @Override
+    public boolean insertCharge(Charge charge) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        boolean result = false;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            conn.setAutoCommit(false); // start transaction
+
+            String sql = "INSERT INTO " +
+                    "CloudComputing.charge " +
+                    "VALUES (" +
+                    charge.getUserId() + ", " +
+                    charge.getAppId() + ");";
+            System.out.println("Charge sql" + sql);
+            st = conn.prepareStatement(sql);
+            st.execute();
+            conn.commit();
+            result = true;
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.AccountDaoImpl.insertCharge]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return result;
+    }
+
+    @Override
+    public boolean deleteCharge(Long userId) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        boolean result = false;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            conn.setAutoCommit(false); // start transaction
+
+            String sql = "DELETE FROM CloudComputing.charge WHERE userId=" + userId + ";";
+            st = conn.prepareStatement(sql);
+            st.execute();
+            conn.commit();
+            result = true;
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.AccountDaoImpl.deleteCharge]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return result;
+    }
+
+    @Override
+    public List<Charge> queryCharge(Long userId) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        List<Charge> charge = new ArrayList<>();
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            conn.setAutoCommit(false); // start transaction
+
+            String sql = "SELECT * FROM CloudComputing.charge WHERE userId='" + userId + "';";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            conn.commit();
+            while(rs.next()) {
+                charge.add(new Charge(rs.getLong("userId"), rs.getLong("appId")));
+            }
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.AccountDaoImpl.queryCharge]: " + e);
+            charge.add(new Charge(Long.valueOf(0), Long.valueOf(0)));
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return charge;
     }
 
     @Override

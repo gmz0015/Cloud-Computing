@@ -20,22 +20,27 @@ public class LogonAPIServlet {
     @Path("userinfo")
     public Map<String, String> getBalance(@CookieParam("token") String token){
         Map<String, String> userInfo = new HashMap<>();
-        Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
-        JWTVerifier verifier = JWT.require(algorithm).build();
-        DecodedJWT jwt = verifier.verify(token);
-        String userId = jwt.getClaim("userId").asString();
-        String userName = jwt.getClaim("userName").asString();
-        String userRole = jwt.getClaim("userRole").asString();
-
-
-        if (userId == null || userId.equals("")) {
-            userInfo.put("userId", "Failed Query");
+        if (token == null) {
+            userInfo.put("status", "fail");
             return userInfo;
         }else {
-            userInfo.put("userId", userId);
-            userInfo.put("userName", userName);
-            userInfo.put("userRole", userRole);
-            return userInfo;
+            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT jwt = verifier.verify(token);
+            String userId = jwt.getClaim("userId").asString();
+            String userName = jwt.getClaim("userName").asString();
+            String userRole = jwt.getClaim("userRole").asString();
+
+
+            if (userId == null || userId.equals("")) {
+                userInfo.put("userId", "Failed Query");
+                return userInfo;
+            }else {
+                userInfo.put("userId", userId);
+                userInfo.put("userName", userName);
+                userInfo.put("userRole", userRole);
+                return userInfo;
+            }
         }
     }
 }

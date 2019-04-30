@@ -1,5 +1,6 @@
 package team06.platform.service;
 
+import team06.platform.domain.Charge;
 import team06.platform.domain.Transaction;
 
 import java.util.List;
@@ -20,4 +21,6 @@ public interface IAccountService {
     List<Transaction> getTransaction(Long userId);
 
     List<Transaction> getAppTransaction(Long appId);
+
+    Boolean isCharge(Charge charge);
 }

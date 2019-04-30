@@ -20,6 +20,8 @@ public interface IApplicationService {
 
     Application getAppByContext(String context);
 
+    Application getAppByUUID(String appUUID);
+
     void increaseVisitByContext(String appContext);
 
     Integer getVisit(String appId);
@@ -38,6 +40,10 @@ public interface IApplicationService {
     String getContextById(String appId);
 
     void setStatusById(String appId, int status);
+
+    void setAppUUID(String appID, String appUUID);
+
+    String getAppUUID(String appId);
 
     Boolean changeName(String appId, String appName);
 

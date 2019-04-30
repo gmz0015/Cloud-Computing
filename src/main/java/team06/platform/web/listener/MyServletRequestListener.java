@@ -24,13 +24,13 @@ public class MyServletRequestListener implements ServletRequestListener, HttpSes
     @Override
     public void requestDestroyed(ServletRequestEvent servletRequestEvent){
         HttpServletRequest request = (HttpServletRequest) servletRequestEvent.getServletRequest();
-//        System.out.printf("[%-23s] Destroy URI: %s\n", new Timestamp(new Date().getTime()), request.getRequestURI());
+        System.out.printf("[%-23s] Destroy URI: %s\n", new Timestamp(new Date().getTime()), request.getRequestURI());
     }
 
     @Override
     public void requestInitialized(ServletRequestEvent servletRequestEvent) {
         HttpServletRequest request = (HttpServletRequest) servletRequestEvent.getServletRequest();
-//        System.out.printf("[%-23s] Initialize URI: %s\n", new Timestamp(new Date().getTime()), request.getRequestURI());
+        System.out.printf("[%-23s] Initialize URI: %s\n", new Timestamp(new Date().getTime()), request.getRequestURI());
 
 //        if (request.getRequestURI().equals("/")) {
 //            synchronized (lock) {
@@ -46,14 +46,14 @@ public class MyServletRequestListener implements ServletRequestListener, HttpSes
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
         HttpSession session = httpSessionEvent.getSession();
         ServletContext servletContext = session.getServletContext();
-//        System.out.printf("[%-23s] Create Session: %s\n", new Timestamp(new Date().getTime()), servletContext);
+        System.out.printf("[%-23s] Create Session: %s\n", new Timestamp(new Date().getTime()), servletContext);
     }
 
     @Override
     public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
         HttpSession session = httpSessionEvent.getSession();
         ServletContext servletContext = session.getServletContext();
-//        System.out.printf("[%-23s] Destroy Session: %s\n", new Timestamp(new Date().getTime()), servletContext);
+        System.out.printf("[%-23s] Destroy Session: %s\n", new Timestamp(new Date().getTime()), servletContext);
 
         Object object = servletContext.getAttribute("userCount");
         if (object != null){

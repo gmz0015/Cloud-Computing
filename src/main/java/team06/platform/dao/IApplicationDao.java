@@ -30,6 +30,8 @@ public interface IApplicationDao {
      */
     Application queryAppByAppId(String appId);
 
+    Application queryAppByUUID(String appUUID);
+
     /* PATH */
     /**
      * query the path of war file by appId
@@ -78,6 +80,8 @@ public interface IApplicationDao {
      */
     Application queryAppByContext(String context);
 
+    String queryAppUUID(String appId);
+
     /**
      * update the status of an application
      * @param appId
@@ -96,4 +100,6 @@ public interface IApplicationDao {
     Boolean updateAppDescriptionById(String appId, String description);
 
     Boolean updateAppIconById(String appId, String icon);
+
+    Boolean updateAppUUID(String appId, String appUUID);
 }

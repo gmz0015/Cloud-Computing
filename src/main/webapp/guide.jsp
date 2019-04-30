@@ -54,6 +54,7 @@
                             </ul>
                             <li><a class="w3-hover-text-blue" href="#developer">As Developer</a></li>
                             <ul>
+                                <li><a class="w3-text-red w3-hover-text-blue" href="#developer-beforeUpload">Before Upload</a></li>
                                 <li><a class="w3-hover-text-blue" href="#developer-database">How to Use Database</a></li>
                                 <li><a class="w3-hover-text-blue" href="#developer-create">How to Create Application</a></li>
                                 <li><a class="w3-hover-text-blue" href="#developer-status">How about the Application Status</a></li>
@@ -70,14 +71,23 @@
 
                             <li><a class="w3-hover-text-blue" href="#reference">Reference</a></li>
                             <ul>
+                                <li><a class="w3-hover-text-blue" href="#reference-login">How to Redirect to Login Page</a></li>
                                 <li>
-                                    <a class="w3-hover-text-blue" href="#reference-api">How to Send an API Request</a>
+                                    <a class="w3-hover-text-blue" href="#reference-api">What kind of API we provide</a>
                                     <ul>
-                                        <li><a class="w3-hover-text-blue" href="#reference-api-get">GET Request</a></li>
-                                        <li><a class="w3-hover-text-blue" href="#reference-api-post">POST Request</a></li>
+                                        <li><a class="w3-hover-text-blue" href="#reference-api-accountBalance">Account Balance</a></li>
+                                        <li><a class="w3-hover-text-blue" href="#reference-api-accountTransfer">Account Transfer</a></li>
+                                        <li><a class="w3-hover-text-blue" href="#reference-api-userInfo">User Information</a></li>
                                     </ul>
                                 </li>
-                                <li><a class="w3-hover-text-blue" href="reference-transaction">Transaction Type</a></li>
+                                <li>
+                                    <a class="w3-hover-text-blue" href="#reference-apiSend">How to Send an API Request</a>
+                                    <ul>
+                                        <li><a class="w3-hover-text-blue" href="#reference-apiSend-get">GET Request</a></li>
+                                        <li><a class="w3-hover-text-blue" href="#reference-apiSend-post">POST Request</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="w3-hover-text-blue" href="#reference-transaction">Transaction Type</a></li>
                                 <li><a class="w3-hover-text-blue" href="#reference-authority">Authority List</a></li>
                             </ul>
                         </ul>
@@ -194,6 +204,50 @@
                     </div>
                     <div class="w3-card" style="background-color:white">
                         <div class="w3-container">
+                            <h3 id="developer-beforeUpload">Before Upload</h3>
+                            <p>
+                                Before you upload and deploy your application, you need to make sure that you have check the items below.
+                            </p>
+                            <h4><b>Checklist</b></h4>
+                            <ul>
+                                <li><b>Logon Service</b></li>
+                                <ul>
+                                    <li>
+                                        As we currently cannot control the access to an application if a user directly enter the URL address,
+                                        your application should <span style="color: red">redirect</span> the user to our login interface if there is not a token in cookie.
+                                    </li>
+                                    <li><i class="fas fa-star" style="color: red"></i> For the detail about redirect, please refer to <a class="w3-text-blue w3-hover-text-green" href="#reference">Reference</a> -> <a class="w3-text-blue w3-hover-text-green" href="#reference-login">How to Redirect to Login Page</a>.</li>
+                                    <li><i class="fas fa-star" style="color: red"></i> For the detail about API, please refer to <a class="w3-text-blue w3-hover-text-green" href="#reference">Reference</a> -> <a class="w3-text-blue w3-hover-text-green" href="#reference-api">API</a> -> <a class="w3-text-blue w3-hover-text-green" href="#reference-api-userInfo">User Information</a>.</li>
+                                </ul>
+                                <li><b>Database Configuration</b></li>
+                                <ul>
+                                    <li>As we provide the <b>database</b>, <b>database username</b> and <b>database password</b>, you need to change your own database configuration.</li>
+                                </ul>
+                                <li><b>UUID</b></li>
+                                <ul>
+                                    <li>In order to improve security for trading, we provide a UUID for each application to identify and this UUID <span style="color: red">should not be award by anyone except yourself</span>.</li>
+                                    <li>The UUID is used for send API request for transfering money from a user to another user.</li>
+                                </ul>
+                                <li><b>Context Path</b></li>
+                                <ul>
+                                    <li>We <span style="color: red">highly recommend</span> you use <code class="w3-codespan">request.getContextPath()</code> before any URL to avoid using absolute path.
+                                        This is because we generate a <b>random application context path</b> when you deploy your application and it means that you can't know which prefix is before you deploy.</li>
+                                </ul>
+                                <li><b>API Configuration</b></li>
+                                <ul>
+                                    <li>As we provide several APIs, please refer to the <a class="w3-text-blue w3-hover-text-green" href="#reference">Reference</a> -> <a class="w3-text-blue w3-hover-text-green" href="#reference-api">API</a> that we provide</li>
+                                </ul>
+                                <li><span style="color: red"><b>Security Awareness</b></span></li>
+                                <ul>
+                                    <li>
+                                        As it is not safe to use the userId, userName and userRole in session for some key steps,
+                                        we provide an API to get user information securely.
+                                    </li>
+                                    <li><i class="fas fa-star" style="color: red"></i> For the detail about API, please refer to <a class="w3-text-blue w3-hover-text-green" href="#reference">Reference</a> -> <a class="w3-text-blue w3-hover-text-green" href="#reference-api">API</a> -> <a class="w3-text-blue w3-hover-text-green" href="#reference-api-userInfo">User Information</a>.</li>
+                                </ul>
+                            </ul>
+
+                            <hr size="20" />
                             <h3 id="developer-database">How to Use Database</h3>
                             <p>
                                 We will create the <b>database</b>, <b>database username</b> and <b>database password</b> at the first login.
@@ -288,13 +342,189 @@
                     </div>
                     <div class="w3-card" style="background-color:white">
                         <div class="w3-container">
-                            <h3 id="reference-api">How to Send an API Request</h3>
+                            <h3 id="reference-login">How to Redirect to Login Page</h3>
+                            <p>
+                                You can use <code class="w3-codespan">request.sendRedirect()</code> to redirect to our login page.
+                            </p>
+
+
+                            <hr size="20" />
+                            <h3 id="reference-api">What kind of API we provide</h3>
+                            <p>
+                                We provide kinds of API for retrieving infomation.
+                                Here is a demo code about how to send request to our API and retrieve data.
+                            </p>
+
+                            <hr size="20" />
+                            <p>
+                            <h3 id="reference-api-accountBalance">API - Account Balance</h3>
+                            <ul>
+                                <li><b>Method:</b> <code class="w3-codespan">GET</code></li>
+                                <li><b>Parameters:</b></li>
+                                <ul>
+                                    <li><code class="w3-codespan">123456</code>: The id of user</li>
+                                </ul>
+                                <li><b>Responses:</b></li>
+                                <ul>
+                                    <li>Item(Successful): <code class="w3-codespan">123456</code></li>
+                                    <li>Item(Failed): <code class="w3-codespan">"fail"</code></li>
+                                    <li>Description: if request is successful, the response will be a number. Otherwise, the response will be a string "fail"</li>
+                                </ul>
+                            </ul>
+                            </p>
+
+                            <hr size="20" />
+                            <p>
+                            <h3 id="reference-api-accountTransfer">API - Account Transfer</h3>
+                            <ul>
+                                Within this way, you need send an POST request. The specific method is listed below.<br/>
+                                <span style="color:red;">Notice:</span> The application's UUID is the encryption identification, it should not be awared by anyone except yourself.
+                                <li><b>Method:</b> <code class="w3-codespan">POST</code></li>
+                                <li><b>Parameters:</b></li>
+                                <ul>
+                                    <li><code class="w3-codespan">fromUserId</code>: The user's id who pay</li>
+                                    <li><code class="w3-codespan">toUserId</code>: The user's id who receive</li>
+                                    <li><code class="w3-codespan">amount</code>: The amount of this transfer</li>
+                                    <li><code class="w3-codespan">appUUID</code>: Yours application's UUID</li>
+                                </ul>
+                                <li><b>Responses:</b></li>
+                                <ul>
+                                    <li>Item(Successful): <code class="w3-codespan">"success"</code></li>
+                                    <li>Item(Failed): <code class="w3-codespan">fail</code></li>
+                                    <li>Description: if request is successful, the response will be a string "success". Otherwise, the response will be a string "fail"</li>
+                                </ul>
+                            </ul>
+                            </p>
+
+                            <hr size="20" />
+                            <p>
+                            <h3 id="reference-api-userInfo">API - User Information</h3>
+                            <b>Unencrypted</b>
+                            <ul>
+                                <span style="color:red;">Notice:</span> This is not safe way for a key step.
+                                <li><b>Method:</b> <code class="w3-codespan">N/A</code></li>
+                                <li><b>Parameters:</b></li>
+                                <ul>
+                                    <li>N/A</li>
+                                </ul>
+                                <li><b>Responses:</b></li>
+                                <ul>
+                                    <li>Item: <code class="w3-codespan">userId=123456&userName=test&userRole=USER</code></li>
+                                    <li>
+                                        Description:
+                                        <ul>
+                                            <li><code class="w3-codespan">userId</code>: The unique id of a user</li>
+                                            <li><code class="w3-codespan">userName</code>: The user name</li>
+                                            <li><code class="w3-codespan">userRole</code>: The user role (<code class="w3-codespan">USER</code>, <code class="w3-codespan">DEVELOPER</code>, <code class="w3-codespan">ADMIN</code>)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <li>Example:</li>
+                                <ul>
+                                    <div class="w3-code javaHigh notranslate">
+                                        String userId = null;<br/>
+                                        String userName = null;<br/>
+                                        String userIuserRoled = null;<br/>
+                                        for (Cookie cookie:request.getCookies()) {<br/>
+                                        &nbsp;&nbsp;if (cookie.getName().equals("userId"))<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;userId = cookie.getValue();<br/>
+                                        &nbsp;&nbsp;if (cookie.getName().equals("userName"))<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;userName = cookie.getValue();<br/>
+                                        &nbsp;&nbsp;if (cookie.getName().equals("userRole"))<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;userRole = cookie.getValue();<br/>
+                                        }<br/>
+                                    </div>
+                                </ul>
+                            </ul>
+                            <b>Encrypted</b>
+                            <ul>
+                                Within this way, you need send an POST request contained token in session. The specific method is listed below.
+                                <li><b>Method:</b> <code class="w3-codespan">N/A</code></li>
+                                <li><b>Parameters:</b></li>
+                                <ul>
+                                    <li>N/A</li>
+                                </ul>
+                                <li><b>Responses:</b></li>
+                                <ul>
+                                    <li>Item(Successful): <code class="w3-codespan">userId=123456&userName=test&userRole=USER</code></li>
+                                    <li>Item(Failed): <code class="w3-codespan">{"status", "fail"}</code></li>
+                                    <li>
+                                        Description:
+                                        <ul>
+                                            <li><code class="w3-codespan">userId</code>: The unique id of a user</li>
+                                            <li><code class="w3-codespan">userName</code>: The user name</li>
+                                            <li><code class="w3-codespan">userRole</code>: The user role (<code class="w3-codespan">USER</code>, <code class="w3-codespan">DEVELOPER</code>, <code class="w3-codespan">ADMIN</code>)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <li>Example:</li>
+                                <ul>
+                                    <div class="w3-code javaHigh notranslate">
+                                        /**<br/>
+                                        * send a post request to a URL and receive response data<br/>
+                                        * @return the request result<br/>
+                                        */<br/>
+                                        public static String sendPostRequest() {<br/>
+                                        &nbsp;&nbsp;/* Initial Parameter */<br/>
+                                        &nbsp;&nbsp;String urlParam ="http://localhost:9527/api/logon/userinfo";<br/>
+                                        &nbsp;&nbsp;URLConnection con = null;<br/>
+                                        &nbsp;&nbsp;PrintWriter out = null;<br/>
+                                        &nbsp;&nbsp;BufferedReader buffer = null;<br/>
+                                        &nbsp;&nbsp;StringBuffer resultBuffer = null;<br/>
+                                        &nbsp;&nbsp;String token = request.getSession().getAttribute("token").toString();;
+                                        <br/>
+                                        &nbsp;&nbsp;try {<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;/* Open Connection */<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;URL url = new URL(urlParam);<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;con = url.openConnection();<br/>
+                                        <br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;/* Set Request Parameter */<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;con.setRequestProperty("accept", "*/*");<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;// IMPORTANT<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;con.setDoOutput(true);<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;con.setDoInput(true);<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;con.setUseCaches(false);<br/>
+                                        <br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;/* Write Request Data */<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;// get output stream of URLConnection<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;out = new PrintWriter(con.getOutputStream());<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;// send post data<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;out.print("token=" + token);<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;// flush<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;out.flush();<br/>
+                                        <br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;/* Receive Response Stream */<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;InputStream inputStream = con.getInputStream();<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;resultBuffer = new StringBuffer(); // convert stream into string<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;String line;<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;buffer = new BufferedReader(new InputStreamReader(inputStream, "GBK"));<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;while ((line = buffer.readLine()) != null) {<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultBuffer.append(line);<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;// return request result as successful<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;// resultBuffer.toString() = "userId=123456&userName=test&userRole=USER"<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;return resultBuffer.toString(); <br/>
+
+                                        &nbsp;&nbsp;}catch(Exception e) {<br/>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();<br/>
+                                        &nbsp;&nbsp;}<br/>
+
+                                        &nbsp;&nbsp;return ""; // return request result as failed<br/>
+                                        }<br/>
+                                    </div>
+                                </ul>
+                            </ul>
+                            </p>
+
+                            <hr size="20" />
+                            <h3 id="reference-apiSend">How to Send an API Request</h3>
                             <p>
                                 We provide kinds of API for retrieving infomation.
                                 Here is a demo code about how to send request to our API and retrieve data.
                             </p>
                             <p>
-                            <h5 id="reference-api-get">GET Request</h5>
+                            <h5 id="reference-apiSend-get">GET Request</h5>
                             <div class="w3-code javaHigh notranslate" >
                                 /**<br/>
                                 * send a get request to a URL and receive response data<br/>
@@ -302,7 +532,9 @@
                                 */<br/>
                                 public static String sendGetRequest() {<br/>
                                 &nbsp;&nbsp;/* Initial Parameter */<br/>
-                                &nbsp;&nbsp;String urlParam ="http://localhost:9527/api/account/balance/345897325";<br/>
+                                &nbsp;&nbsp;// At here put your get parameters<br/>
+                                &nbsp;&nbsp;String getParameter = "";<br/>
+                                &nbsp;&nbsp;String urlParam ="http://localhost:9527/api/account/balance/" + getParameter;<br/>
                                 &nbsp;&nbsp;URLConnection con = null;<br/>
                                 &nbsp;&nbsp;BufferedReader buffer = null;<br/>
                                 &nbsp;&nbsp;StringBuffer resultBuffer = null;<br/>
@@ -338,7 +570,7 @@
                             </div>
                             </p>
                             <p>
-                            <h5 id="reference-api-post">POST Request</h5>
+                            <h5 id="reference-apiSend-post">POST Request</h5>
                             <div class="w3-code javaHigh notranslate">
                                 /**<br/>
                                 * send a post request to a URL and receive response data<br/>
@@ -346,11 +578,13 @@
                                 */<br/>
                                 public static String sendPostRequest() {<br/>
                                 &nbsp;&nbsp;/* Initial Parameter */<br/>
-                                &nbsp;&nbsp;String urlParam ="http://localhost:9527/api/account/balance/345897325";<br/>
+                                &nbsp;&nbsp;String urlParam ="http://localhost:9527/api/account/transfer";<br/>
                                 &nbsp;&nbsp;URLConnection con = null;<br/>
                                 &nbsp;&nbsp;PrintWriter out = null;<br/>
                                 &nbsp;&nbsp;BufferedReader buffer = null;<br/>
                                 &nbsp;&nbsp;StringBuffer resultBuffer = null;<br/>
+                                &nbsp;&nbsp;// At here put your post parameters<br/>
+                                &nbsp;&nbsp;String postParameter = "";<br/>
                                 <br/>
                                 &nbsp;&nbsp;try {<br/>
                                 &nbsp;&nbsp;&nbsp;&nbsp;/* Open Connection */<br/>
@@ -369,7 +603,7 @@
                                 &nbsp;&nbsp;&nbsp;&nbsp;// get output stream of URLConnection<br/>
                                 &nbsp;&nbsp;&nbsp;&nbsp;out = new PrintWriter(con.getOutputStream());<br/>
                                 &nbsp;&nbsp;&nbsp;&nbsp;// send post data<br/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;out.print("fromUserId=345897325&toUserId=392849790&amount=5&appId=0");<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;out.print(postParameter);<br/>
                                 &nbsp;&nbsp;&nbsp;&nbsp;// flush<br/>
                                 &nbsp;&nbsp;&nbsp;&nbsp;out.flush();<br/>
                                 <br/>

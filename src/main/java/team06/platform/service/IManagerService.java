@@ -6,5 +6,5 @@ import java.sql.SQLException;
 
 public interface IManagerService {
 
-    int insertNewApp(Application application) throws SQLException;
+    int insertNewApp(Application application, String UUID) throws SQLException;
 }

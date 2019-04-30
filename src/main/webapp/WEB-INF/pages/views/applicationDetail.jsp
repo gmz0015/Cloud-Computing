@@ -160,7 +160,7 @@
 
             <!-- Operation -->
             <div class="w3-third">
-                <div class="w3-card" style="background-color:white">
+                <div class="w3-card" style="background-color:white;">
 
                     <header class="w3-container w3-padding" style="height:45px;text-align: center;background-color: #f9f9f9">
                         <span style="color: #333333;font-size: 20px">Operation</span>
@@ -272,6 +272,20 @@
                 </div>
 
                 <div class="w3-third">
+                    <div class="w3-card" style="background-color:white;position:relative">
+
+                        <header class="w3-container w3-padding" style="height:45px;text-align: center;background-color: #f9f9f9">
+                            <span style="color: #333333;font-size: 20px">Application UUID</span>
+                        </header>
+
+                        <div class="w3-row" style="height:100%">
+                            <div class="w3-display-container w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;min-height: 80px;margin: 10px">
+                                <span class="w3-display-middle" style="color:#9B9EA0">
+                                    <%= appCreateBean.getAppUUID() %>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

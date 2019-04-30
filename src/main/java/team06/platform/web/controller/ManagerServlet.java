@@ -16,6 +16,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Map;
+import java.util.UUID;
 
 @MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB
         maxFileSize=1024*1024*10, // 10MB
@@ -106,6 +107,7 @@ public class ManagerServlet {
             if (temp[0].equals("OK")) {
                 applicationService.setContextById(appid, target_path);
                 applicationService.setStatusById(appid, 2);
+                applicationService.setAppUUID(appid, UUID.randomUUID().toString());
             }
 
         } catch (MalformedURLException e) {

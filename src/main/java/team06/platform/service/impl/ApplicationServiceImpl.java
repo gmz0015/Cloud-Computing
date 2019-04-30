@@ -28,6 +28,11 @@ public class ApplicationServiceImpl implements IApplicationService {
     }
 
     @Override
+    public Application getAppByUUID(String appUUID) {
+        return appDao.queryAppByUUID(appUUID);
+    }
+
+    @Override
     public void increaseVisitByContext(String appContext) {
         System.out.println("appContext is:" + appContext);
         appDao.updateVisitByContext(appContext, this.getVisitByContext(appContext) + 1);
@@ -79,6 +84,16 @@ public class ApplicationServiceImpl implements IApplicationService {
     @Override
     public void setStatusById(String appId, int status) {
         appDao.updateStatusById(appId, status);
+    }
+
+    @Override
+    public void setAppUUID(String appID, String appUUID) {
+        appDao.updateAppUUID(appID, appUUID);
+    }
+
+    @Override
+    public String getAppUUID(String appId) {
+        return appDao.queryAppUUID(appId);
     }
 
     @Override

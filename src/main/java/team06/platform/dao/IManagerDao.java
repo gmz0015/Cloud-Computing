@@ -21,5 +21,5 @@ public interface IManagerDao {
      */
     void insertContextPath(String ContextPath);
 
-    void insertNewApp(Application application) throws SQLException;
+    void insertNewApp(Application application, String appUUID) throws SQLException;
 }

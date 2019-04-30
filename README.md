@@ -24,7 +24,7 @@ The sharing place for team 06.
     - `mv ./ROOT/image/avatar ./backup/avatar`
     - tomcat deploy
     - `mv ./backup/uploadedFiles ./ROOT/uploadedFiles`
-    - `mv ./ROOT/image/avatar ./backup/avatar`
+    - `mv ./backup/avatar ./ROOT/image/`
     - `mv platform ROOT`
 
 ## TODO

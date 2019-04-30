@@ -91,12 +91,44 @@ public class ApplicationDaoImpl implements IApplicationDao {
             while (rs.next()){
                 appInfo = new Application(
                         appId, rs.getString("appName"), rs.getString("description"), rs.getString("ownerId"),
-                        "", rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
+                        rs.getString("ownerName"), rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
                         rs.getString("dbId"), rs.getString("warPath"), rs.getString("contextPath"), rs.getString("iconPath"));
             }
 
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.queryAppByAppId]: " + e);
+            appInfo = new Application("", "", "", "", "",
+                    0, 0, 0, "", "", "", "");
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return appInfo;
+    }
+
+    @Override
+    public Application queryAppByUUID(String appUUID) {
+        Application appInfo = null;
+
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "SELECT * FROM CloudComputing.applications WHERE appUUID='" + appUUID + "';";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            while (rs.next()){
+                appInfo = new Application(
+                        rs.getString("appId"), rs.getString("appName"), rs.getString("description"), rs.getString("ownerId"),
+                        rs.getString("ownerName"), rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
+                        rs.getString("dbId"), rs.getString("warPath"), rs.getString("contextPath"), rs.getString("iconPath"));
+            }
+
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.queryAppByUUID]: " + e);
             appInfo = new Application("", "", "", "", "",
                     0, 0, 0, "", "", "", "");
         }finally{
@@ -223,7 +255,7 @@ public class ApplicationDaoImpl implements IApplicationDao {
         /* Connect */
         try{
             conn = JdbcUtils.getConnection();
-            String sql = "DELETE FROM CloudComputing.applications WHERE ('appId' = '" + appId + "');";
+            String sql = "DELETE FROM CloudComputing.applications WHERE appId = '" + appId + "';";
             st = conn.prepareStatement(sql);
             st.execute();
         }catch (Exception e) {
@@ -308,6 +340,33 @@ public class ApplicationDaoImpl implements IApplicationDao {
             JdbcUtils.release(conn, st, rs);
         }
         return appInfo;
+    }
+
+    @Override
+    public String queryAppUUID(String appId) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        String appUUID = "0";
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "SELECT appUUID FROM CloudComputing.applications WHERE appId='" + appId + "';";
+            System.out.println("appUUID sql:" + sql);
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            while (rs.next()){
+                appUUID = rs.getString("appUUID");
+                System.out.println("appUUID is:" + appUUID);
+            }
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.queryAppUUID]: " + e);
+            appUUID = "0";
+            JdbcUtils.release(conn, st, rs);
+        }
+        return appUUID;
     }
 
     @Override
@@ -413,6 +472,29 @@ public class ApplicationDaoImpl implements IApplicationDao {
             result = true;
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.updateAppIconById]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return result;
+    }
+
+    @Override
+    public Boolean updateAppUUID(String appId, String appUUID) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        Boolean result = false;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "UPDATE CloudComputing.applications SET appUUID='" + appUUID + "' WHERE appId='" + appId + "';";
+            st = conn.prepareStatement(sql);
+            st.executeUpdate();
+            result = true;
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.updateAppUUID]: " + e);
         }finally{
             JdbcUtils.release(conn, st, rs);
         }

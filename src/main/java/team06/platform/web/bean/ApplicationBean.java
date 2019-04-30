@@ -22,6 +22,7 @@ public class ApplicationBean implements Serializable {
     private String userId;
     private String appId;
     private List<Application> appInfo;
+    private String appUUID;
     private Integer total = 0;
     private Integer running = 0;
     private Integer stop = 0;
@@ -40,6 +41,7 @@ public class ApplicationBean implements Serializable {
      */
     public void doQuery(HttpServletRequest request, HttpServletResponse response) throws IOException{
         appInfo = applicationService.getAppByUserId(this.userId);
+//        appUUID = applicationService.getAppUUID(this.appInfo);
         count();
     }
 
@@ -90,6 +92,9 @@ public class ApplicationBean implements Serializable {
     }
 
     /* Setter and Getter */
+    public String getAppUUID() {
+        return appUUID;
+    }
 
     public String getAppId() {
         return appId;

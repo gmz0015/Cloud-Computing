@@ -8,6 +8,7 @@ import team06.platform.dao.impl.ApplicationDaoImpl;
 import team06.platform.dao.impl.UserDaoImpl;
 import team06.platform.domain.Account;
 import team06.platform.domain.Application;
+import team06.platform.domain.Charge;
 import team06.platform.domain.Transaction;
 import team06.platform.service.IAccountService;
 
@@ -48,20 +49,41 @@ public class AccountServiceImpl implements IAccountService {
 
     @Override
     public void charge(Long fromUserId, Long appId, Integer amount) {
+        accountDao.insertCharge(new Charge(fromUserId, appId));
         Application application = applicationDao.queryAppByAppId(appId.toString());
         String ownerId = application.getOwnerId();
         String ownerName = application.getOwnerName();
         Date date = new Date();
         this.withdrawal(fromUserId, amount);
-        this.deposit(Long.valueOf(ownerId), amount);
+        this.deposit(Long.valueOf(ownerId), (amount - 2));
+        this.deposit(Long.valueOf("1556610304306556"), 1);
+        this.deposit(Long.valueOf(ownerId), 1);
         accountDao.insertTransaction(new Transaction(
                 fromUserId,
                 userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
                 Long.valueOf(ownerId),
                 ownerName,
-                "Royalties",
+                "Royalties - DEV",
                 appId,
-                amount,
+                (amount - 2),
+                new Timestamp(date.getTime())));
+        accountDao.insertTransaction(new Transaction(
+                fromUserId,
+                userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
+                Long.valueOf("1556610304306556"),
+                ownerName,
+                "Royalties - SignIn",
+                appId,
+                1,
+                new Timestamp(date.getTime())));
+        accountDao.insertTransaction(new Transaction(
+                fromUserId,
+                userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
+                Long.valueOf("1556610304306556"),
+                "MingzeGao",
+                "Royalties - Bank",
+                appId,
+                1,
                 new Timestamp(date.getTime())));
 
 //        TODO deposit to login & account
@@ -92,6 +114,19 @@ public class AccountServiceImpl implements IAccountService {
     @Override
     public List<Transaction> getAppTransaction(Long appId) {
         return accountDao.queryAppTransaction(appId);
+    }
+
+    @Override
+    public Boolean isCharge(Charge charge) {
+        Boolean chargeStatus = false;
+
+        for (Charge currentCharge: accountDao.queryCharge(charge.getUserId())) {
+            System.out.println(currentCharge.getAppId() + "--" + charge.getAppId());
+            if (currentCharge.getAppId().equals(charge.getAppId())) {
+                chargeStatus = true;
+            }
+        }
+        return chargeStatus;
     }
 
 

@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 
 <style>
 
@@ -33,7 +34,7 @@
 }
 </style>
 <body>
-<div id="id01" class="w3-modal" style="padding-top: 30px">
+<div id="id01" class="w3-modal" style="padding-top: 10px">
   <div class="w3-modal-content w3-card-4 w3-animate-left" style="max-width:1000px">
 
     <div class="w3-center"><br>
@@ -64,6 +65,7 @@
             <li>For each visit, You can receive <b>3 peanuts</b> under normal charge standard.</li>
             <li>You will be <b>allocated a database</b> and you can view it under <b>application page</b>.
               Please remember to <span style="color: red">alter</span> your <b>database configurations</b>.</li>
+            <li><i class="fas fa-star" style="color: red"></i> Please look through <a class="w3-hover-text-blue" href="/guide#developer-beforeUpload" style="color: red">Before Upload</a> in guide page.</li>
           </ul>
 
           <h6>For more information, please visit our <a class="w3-hover-text-blue" href="/guide"><b>guide page</b></a></h6>

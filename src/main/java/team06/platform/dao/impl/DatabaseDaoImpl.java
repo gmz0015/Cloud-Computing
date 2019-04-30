@@ -42,7 +42,7 @@ public class DatabaseDaoImpl implements IDatabaseDao {
             String sql2 = "CREATE database " + DBNAME + " DEFAULT CHARSET utf8 COLLATE utf8_general_ci;";
             st = conn.prepareStatement(sql2);
             st.execute();
-            String sql3 = "GRANT SELECT ,CREATE ,INSERT ,UPDATE on " + DBNAME + ".* TO '" + DBUSERNAME + "'@'localhost';";
+            String sql3 = "GRANT SELECT,CREATE,INSERT,UPDATE,DELETE on " + DBNAME + ".* TO '" + DBUSERNAME + "'@'localhost';";
             st = conn.prepareStatement(sql3);
             st.execute();
             String sql4 = "INSERT INTO CloudComputing.database VALUES (" +

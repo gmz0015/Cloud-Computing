@@ -11,8 +11,8 @@ public class ManagerService implements IManagerService {
     private IManagerDao managerDao = new ManagerDaoImpl();
 
     @Override
-    public int insertNewApp(Application application) throws SQLException {
-        managerDao.insertNewApp(application);
+    public int insertNewApp(Application application, String UUID) throws SQLException {
+        managerDao.insertNewApp(application, UUID);
         return 0;
     }
 }

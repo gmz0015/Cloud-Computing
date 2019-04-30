@@ -270,10 +270,10 @@
         <url-pattern>/login/register</url-pattern>
     </servlet-mapping>
 
-    <listener>
-        <description>ServletRequestListener</description>
-        <listener-class>team06.platform.web.listener.MyServletRequestListener</listener-class>
-    </listener>
+    <!--<listener>-->
+        <!--<description>ServletRequestListener</description>-->
+        <!--<listener-class>team06.platform.web.listener.MyServletRequestListener</listener-class>-->
+    <!--</listener>-->
 
     <!-- Whitelist -->
     <servlet-mapping>

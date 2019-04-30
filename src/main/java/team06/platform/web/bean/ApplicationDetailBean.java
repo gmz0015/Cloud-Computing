@@ -21,6 +21,7 @@ public class ApplicationDetailBean implements Serializable {
     private String userId;
     private String appId;
     private Application appInfo;
+    private String appUUID;
     private static final String TOKEN_SECRET = "fd8780zdufb7f5bnz456fd";
 
     private IApplicationService applicationService = new ApplicationServiceImpl();
@@ -30,6 +31,7 @@ public class ApplicationDetailBean implements Serializable {
     public Application doQuery(HttpServletRequest request, HttpServletResponse response) throws IOException {
         if (applicationService.checkAppUser(this.userId, this.appId)) {
             appInfo = applicationService.getAppByAppId(this.appId);
+            appUUID = applicationService.getAppUUID(this.appId);
             System.out.println("TEST queryApp:" + appInfo.getOwnerName());
         }else {
             response.sendRedirect(request.getContextPath() + "/console?error=401.4");
@@ -53,6 +55,11 @@ public class ApplicationDetailBean implements Serializable {
         }else {
             this.userId = null;
         }
+    }
+
+    /* Setter and Getter */
+    public String getAppUUID() {
+        return appUUID;
     }
 
     public Application getAppInfo() {

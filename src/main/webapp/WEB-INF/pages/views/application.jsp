@@ -22,7 +22,7 @@
 <jsp:setProperty name="databaseBean" property="appId" value='<%= session.getAttribute("appId") %>'/>
 <%
     databaseBean.getInfo(request);
-    appBean.getInfo(request);
+    appBean.setUserId(databaseBean.getUserId());
     appBean.doQuery(request, response);
     Database databaseInfo = databaseBean.queryDBbyId(request, response);
 %>
@@ -89,7 +89,7 @@
                             <span style="font-size: 20px">Account Balance</span>
                         </header>
 
-                        <div class="w3-row" style="height:100%">
+                        <div class="w3-row" style="height: 100px">
                             <div class="w3-display-container w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;min-height: 80px;margin: 10px">
                                 <span class="w3-display-middle w3-xlarge" style="color:#9B9EA0">
                                     <%= appBean.getBalance() %>
@@ -148,72 +148,74 @@
             </div>
             <div class="w3-row-padding" style="min-height:150px">
                 <div class="w3-quarter">
-                    <div class="w3-card" style="background-color:white;height: 100%">
+                    <div class="w3-card" style="background-color:white">
 
                     <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
                         <span style="font-size: 20px">Information</span>
                     </header>
 
-                    <div class="w3-row-padding w3-display-container" style="min-height: 80px">
-                        <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
-                             style="background-color: #F5F5F6;height: 85%;width: 95%">
-                            <div class="w3-display-container" style="height: 100%;width: 100%">
-                                <h5 class="w3-display-topleft" style="padding-left: 10px;color: #666;margin-top: 0">
-                                    Database Name
-                                </h5>
-                                <div>
+                        <div style="height: 320px">
+                            <div class="w3-row-padding w3-display-container" style="min-height: 80px">
+                                <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
+                                     style="background-color: #F5F5F6;height: 85%;width: 95%">
+                                    <div class="w3-display-container" style="height: 100%;width: 100%">
+                                        <h5 class="w3-display-topleft" style="padding-left: 10px;color: #666;margin-top: 0">
+                                            Database Name
+                                        </h5>
+                                        <div>
                                     <span class="w3-display-middle" style="font-size: 16px;color:#9B9EA0;padding-top: 20px">
                                         <%= databaseInfo.getDbName() %>
                                     </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="w3-row-padding w3-display-container" style="min-height: 80px;border-right:1px dashed #dddddd;border-left:1px dashed #dddddd">
-                        <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
-                             style="background-color: #F5F5F6;height: 85%;width: 95%">
-                            <div class="w3-display-container" style="height: 100%;width: 100%">
-                                <h5 class="w3-display-topleft" style="padding-left: 10px;color: #666;margin-top: 0">
-                                    User Name
-                                </h5>
-                                <div>
+                            <div class="w3-row-padding w3-display-container" style="min-height: 80px;border-right:1px dashed #dddddd;border-left:1px dashed #dddddd">
+                                <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
+                                     style="background-color: #F5F5F6;height: 85%;width: 95%">
+                                    <div class="w3-display-container" style="height: 100%;width: 100%">
+                                        <h5 class="w3-display-topleft" style="padding-left: 10px;color: #666;margin-top: 0">
+                                            User Name
+                                        </h5>
+                                        <div>
                                     <span class="w3-display-middle" style="font-size: 16px;color:#9B9EA0;padding-top: 20px">
                                         <%= databaseInfo.getDbUsername() %>
                                     </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="w3-display-container" style="min-height: 80px">
-                        <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
-                             style="background-color: #F5F5F6;height: 85%;width: 95%">
-                            <div class="w3-display-container" style="height: 100%;width: 100%">
-                                <h5 class="w3-display-topleft" style="padding-left: 10px;color: #666;margin-top: 0">
-                                    User Password
-                                </h5>
-                                <div>
+                            <div class="w3-display-container" style="min-height: 80px">
+                                <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
+                                     style="background-color: #F5F5F6;height: 85%;width: 95%">
+                                    <div class="w3-display-container" style="height: 100%;width: 100%">
+                                        <h5 class="w3-display-topleft" style="padding-left: 10px;color: #666;margin-top: 0">
+                                            User Password
+                                        </h5>
+                                        <div>
                                     <span class="w3-display-middle" style="font-size: 16px;color:#9B9EA0;padding-top: 20px">
                                         <%= databaseInfo.getDbPassword() %>
                                     </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="w3-display-container" style="min-height: 80px;border-left:1px dashed #dddddd">
-                        <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
-                             style="background-color: #F5F5F6;height: 85%;width: 95%">
-                            <div class="w3-display-container" style="height: 100%;width: 100%">
-                                <h5 class="w3-display-topleft" style="padding-left: 10px;color: #666;margin-top: 0">
-                                    Total Usage
-                                </h5>
-                                <div>
+                            <div class="w3-display-container" style="min-height: 80px;border-left:1px dashed #dddddd">
+                                <div class="w3-display-middle w3-border w3-border-white w3-hover-white w3-hover-border-cyan"
+                                     style="background-color: #F5F5F6;height: 85%;width: 95%">
+                                    <div class="w3-display-container" style="height: 100%;width: 100%">
+                                        <h5 class="w3-display-topleft" style="padding-left: 10px;color: #666;margin-top: 0">
+                                            Total Usage
+                                        </h5>
+                                        <div>
                                     <span class="w3-display-middle" style="font-size: 16px;color:#9B9EA0;padding-top: 20px">
                                         <%= databaseBean.queryUsage(databaseInfo.getDbName()) %>
                                     </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
                 </div>
                 <div class="w3-threequarter">

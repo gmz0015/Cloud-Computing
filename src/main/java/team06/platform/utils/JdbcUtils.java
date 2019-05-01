@@ -3,10 +3,8 @@ package team06.platform.utils;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.Date;
 
 public class JdbcUtils {
 
@@ -33,6 +31,7 @@ public class JdbcUtils {
      * @throws SQLException
      */
     public static Connection getConnection() throws SQLException{
+//        System.out.printf("[%-23s] Create Connection\n", new Timestamp(new Date().getTime()));
         return ds.getConnection();
     }
 
@@ -46,6 +45,7 @@ public class JdbcUtils {
      * @param rs
      */
     public static void release(Connection conn,Statement st,ResultSet rs){
+//        System.out.printf("[%-23s] Release Connection\n", new Timestamp(new Date().getTime()));
         if(rs!=null){
             try{
                 //close ResultSet Object

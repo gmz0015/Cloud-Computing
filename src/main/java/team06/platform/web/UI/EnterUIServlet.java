@@ -52,7 +52,6 @@ public class EnterUIServlet extends HttpServlet {
                 userAvatar = jwt.getClaim("userAvatar").asString();
 
                 application = applicationService.getAppByContext(request.getQueryString());
-                System.out.println("application:" + application.getAppId());
 
                 if (!accountService.isCharge(new Charge(Long.valueOf(userId), Long.valueOf(application.getAppId())))) {
                     accountService.charge(Long.valueOf(userId), Long.valueOf(application.getAppId()), 5);

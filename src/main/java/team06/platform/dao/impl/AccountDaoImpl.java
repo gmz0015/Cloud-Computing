@@ -154,7 +154,6 @@ public class AccountDaoImpl implements IAccountDao {
                     "VALUES (" +
                     charge.getUserId() + ", " +
                     charge.getAppId() + ");";
-            System.out.println("Charge sql" + sql);
             st = conn.prepareStatement(sql);
             st.execute();
             conn.commit();

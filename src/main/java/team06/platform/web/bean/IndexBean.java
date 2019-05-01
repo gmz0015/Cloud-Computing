@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.List;
 
-public class IndexBean implements Serializable {
+public class IndexBean {
     private String userId;
     private String userName;
     private List<String> appsId;

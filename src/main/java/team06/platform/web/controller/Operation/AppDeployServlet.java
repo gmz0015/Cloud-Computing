@@ -34,6 +34,7 @@ public class AppDeployServlet extends HttpServlet {
                 JWTVerifier verifier = JWT.require(algorithm).build();
                 DecodedJWT jwt = verifier.verify(token);
                 userId = jwt.getClaim("userId").asString();
+                userName = jwt.getClaim("userName").asString();
 
                 if (applicationService.checkAppUser(userId, request.getParameter("appId"))) {
                     result = managerServlet.deploy(

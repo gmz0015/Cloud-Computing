@@ -57,7 +57,7 @@ public class AccountServiceImpl implements IAccountService {
         this.withdrawal(fromUserId, amount);
         this.deposit(Long.valueOf(ownerId), (amount - 2));
         this.deposit(Long.valueOf("1556610304306556"), 1);
-        this.deposit(Long.valueOf(ownerId), 1);
+        this.deposit(Long.valueOf("1556714056396556"), 1);
         accountDao.insertTransaction(new Transaction(
                 fromUserId,
                 userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
@@ -70,8 +70,8 @@ public class AccountServiceImpl implements IAccountService {
         accountDao.insertTransaction(new Transaction(
                 fromUserId,
                 userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
-                Long.valueOf("1556610304306556"),
-                ownerName,
+                Long.valueOf("1556714056396556"),
+                "ChenyiLei",
                 "Royalties - SignIn",
                 appId,
                 1,
@@ -85,8 +85,6 @@ public class AccountServiceImpl implements IAccountService {
                 appId,
                 1,
                 new Timestamp(date.getTime())));
-
-//        TODO deposit to login & account
     }
 
     @Override
@@ -121,7 +119,6 @@ public class AccountServiceImpl implements IAccountService {
         Boolean chargeStatus = false;
 
         for (Charge currentCharge: accountDao.queryCharge(charge.getUserId())) {
-            System.out.println(currentCharge.getAppId() + "--" + charge.getAppId());
             if (currentCharge.getAppId().equals(charge.getAppId())) {
                 chargeStatus = true;
             }

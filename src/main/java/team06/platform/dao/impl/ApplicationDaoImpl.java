@@ -354,12 +354,10 @@ public class ApplicationDaoImpl implements IApplicationDao {
         try{
             conn = JdbcUtils.getConnection();
             String sql = "SELECT appUUID FROM CloudComputing.applications WHERE appId='" + appId + "';";
-            System.out.println("appUUID sql:" + sql);
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             while (rs.next()){
                 appUUID = rs.getString("appUUID");
-                System.out.println("appUUID is:" + appUUID);
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.queryAppUUID]: " + e);

@@ -30,7 +30,7 @@ public interface IApplicationService {
 
     boolean checkAppUser(String userId, String appId);
 
-    void deleteAppByAppId(String appId);
+    String deleteAppByAppId(String appId);
 
     /* PATH */
     String getWarById(String appId);

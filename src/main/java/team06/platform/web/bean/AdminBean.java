@@ -18,7 +18,7 @@ import java.net.URLConnection;
 import java.sql.Timestamp;
 import java.util.*;
 
-public class AdminBean extends HttpServlet implements Serializable {
+public class AdminBean extends HttpServlet  {
     private ConfigUtils configUtils = new ConfigUtils();
     private String PORT;
     private String USERNAME;

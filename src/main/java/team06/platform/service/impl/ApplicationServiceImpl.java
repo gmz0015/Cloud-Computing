@@ -4,6 +4,8 @@ import team06.platform.dao.IApplicationDao;
 import team06.platform.dao.impl.ApplicationDaoImpl;
 import team06.platform.domain.Application;
 import team06.platform.service.IApplicationService;
+
+import java.io.File;
 import java.util.List;
 
 public class ApplicationServiceImpl implements IApplicationService {
@@ -59,8 +61,22 @@ public class ApplicationServiceImpl implements IApplicationService {
     }
 
     @Override
-    public void deleteAppByAppId(String appId) {
+    public String deleteAppByAppId(String appId) {
+//        String fileName = appDao.queryWarById(appId);
+//        File file = new File(fileName);
+//        if (file.exists() && file.isFile()) {
+//            if (file.delete()) {
+//                appDao.deleteAppById(appId);
+//                return "Delete File Success";
+//            } else {
+//                return "Delete File Failed";
+//            }
+//        } else {
+//            return "Delete File Failed";
+//        }
         appDao.deleteAppById(appId);
+        return "Delete File Success";
+
     }
 
     @Override

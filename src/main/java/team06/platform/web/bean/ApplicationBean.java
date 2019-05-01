@@ -18,7 +18,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ApplicationBean implements Serializable {
+public class ApplicationBean{
     private String userId;
     private String appId;
     private List<Application> appInfo;
@@ -40,7 +40,7 @@ public class ApplicationBean implements Serializable {
      * Invoke service to query Database and retrieve applications data
      */
     public void doQuery(HttpServletRequest request, HttpServletResponse response) throws IOException{
-        appInfo = applicationService.getAppByUserId(this.userId);
+        appInfo = applicationService.getAppByUserId(userId);
 //        appUUID = applicationService.getAppUUID(this.appInfo);
         count();
     }
@@ -54,12 +54,12 @@ public class ApplicationBean implements Serializable {
                 Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
                 JWTVerifier verifier = JWT.require(algorithm).build();
                 DecodedJWT jwt = verifier.verify(token);
-                this.userId = jwt.getClaim("userId").asString();
+                userId = jwt.getClaim("userId").asString();
             }else {
-                this.userId = null;
+                userId = null;
             }
         }else {
-            this.userId = null;
+            userId = null;
         }
     }
 
@@ -92,6 +92,15 @@ public class ApplicationBean implements Serializable {
     }
 
     /* Setter and Getter */
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     public String getAppUUID() {
         return appUUID;
     }

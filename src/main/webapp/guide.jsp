@@ -359,6 +359,7 @@
                             <p>
                             <h3 id="reference-api-accountBalance">API - Account Balance</h3>
                             <ul>
+                                <li><b>URL:</b> <code class="w3-codespan">/api/account/balance/</code></li>
                                 <li><b>Method:</b> <code class="w3-codespan">GET</code></li>
                                 <li><b>Parameters:</b></li>
                                 <ul>
@@ -382,6 +383,7 @@
                                 <li><b>Method:</b> <code class="w3-codespan">POST</code></li>
                                 <li><b>Parameters:</b></li>
                                 <ul>
+                                    <li><b>URL:</b> <code class="w3-codespan">/api/account/transfer</code></li>
                                     <li><code class="w3-codespan">fromUserId</code>: The user's id who pay</li>
                                     <li><code class="w3-codespan">toUserId</code>: The user's id who receive</li>
                                     <li><code class="w3-codespan">amount</code>: The amount of this transfer</li>
@@ -439,6 +441,7 @@
                             <b>Encrypted</b>
                             <ul>
                                 Within this way, you need send an POST request contained token in session. The specific method is listed below.
+                                <li><b>URL:</b> <code class="w3-codespan">/api/logon/userinfo</code></li>
                                 <li><b>Method:</b> <code class="w3-codespan">N/A</code></li>
                                 <li><b>Parameters:</b></li>
                                 <ul>
@@ -525,6 +528,7 @@
                             </p>
                             <p>
                             <h5 id="reference-apiSend-get">GET Request</h5>
+                            <p><code class="w3-codespan">getParameter</code> should be replaced to the parameter that an API requires</p>
                             <div class="w3-code javaHigh notranslate" >
                                 /**<br/>
                                 * send a get request to a URL and receive response data<br/>
@@ -571,6 +575,8 @@
                             </p>
                             <p>
                             <h5 id="reference-apiSend-post">POST Request</h5>
+
+                            <p><code class="w3-codespan">postParameter</code> should be replaced to the parameter that an API requires</p>
                             <div class="w3-code javaHigh notranslate">
                                 /**<br/>
                                 * send a post request to a URL and receive response data<br/>
@@ -631,7 +637,9 @@
                             <p>
                                 There are two transaction types showed in transaction history at <a class="w3-text-blue w3-hover-text-green" href="/account">account page</a>.
                             <ul>
-                                <li><b>Royalties:</b> the charge of visiting a application</li>
+                                <li><b>Royalties - DEV:</b> the charge of visiting a application, give 3 to developer</li>
+                            <li><b>Royalties - Signin:</b> the charge of visiting a application, give 1 to signin service</li>
+                            <li><b>Royalties - Bank:</b> the charge of visiting a application, give 1 to bank service</li>
                                 <li><b>Application:</b> Consumption: the consumption within a application</li>
                             </ul>
                             </p>

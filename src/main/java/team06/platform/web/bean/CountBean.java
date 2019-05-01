@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class CountBean implements Serializable {
+public class CountBean {
     private Object lock = new Object();
     private IApplicationService applicationService = new ApplicationServiceImpl();
 

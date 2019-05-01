@@ -22,4 +22,4 @@
 
     </div>
 </div>
-<% } request.setAttribute("message", null);%>
+<% request.setAttribute("message", null); } %>

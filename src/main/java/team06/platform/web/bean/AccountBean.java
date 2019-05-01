@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.List;
 
-public class AccountBean implements Serializable {
+public class AccountBean  {
     private IAccountService accountService = new AccountServiceImpl();
     private String userId;
     private static final String TOKEN_SECRET = "fd8780zdufb7f5bnz456fd";

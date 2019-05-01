@@ -16,10 +16,11 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public class DatabaseBean {
+public class DatabaseBean{
     private IDatabaseDao databaseDao = new DatabaseDaoImpl();
     private static final String TOKEN_SECRET = "fd8780zdufb7f5bnz456fd";
     private String userId;
@@ -37,16 +38,32 @@ public class DatabaseBean {
                 Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
                 JWTVerifier verifier = JWT.require(algorithm).build();
                 DecodedJWT jwt = verifier.verify(token);
-                this.userId = jwt.getClaim("userId").asString();
-                this.userName = jwt.getClaim("userName").asString();
+                userId = jwt.getClaim("userId").asString();
+                userName = jwt.getClaim("userName").asString();
             }else {
-                this.userId = null;
-                this.userName = null;
+                userId = null;
+                userName = null;
             }
         }else {
-            this.userId = null;
-            this.userName = null;
+            userId = null;
+            userName = null;
         }
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public Database queryDBbyId(HttpServletRequest request, HttpServletResponse response) throws IOException {

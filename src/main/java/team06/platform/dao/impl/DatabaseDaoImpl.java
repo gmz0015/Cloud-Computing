@@ -14,7 +14,7 @@ public class DatabaseDaoImpl implements IDatabaseDao {
     @Override
     public Database createDBbyId(String userId, String userName) {
         String dbId = userId + generateID().substring(1,3);
-        String DBNAME = userName + userId + generateID().substring(1,5);
+        String DBNAME = userName;
         String DBUSERNAME = userName + generateID();
         String tempPWDs = UUID.randomUUID().toString();
         StringBuilder DBPASSWORD = new StringBuilder();
@@ -42,7 +42,7 @@ public class DatabaseDaoImpl implements IDatabaseDao {
             String sql2 = "CREATE database " + DBNAME + " DEFAULT CHARSET utf8 COLLATE utf8_general_ci;";
             st = conn.prepareStatement(sql2);
             st.execute();
-            String sql3 = "GRANT SELECT,CREATE,INSERT,UPDATE,DELETE on " + DBNAME + ".* TO '" + DBUSERNAME + "'@'localhost';";
+            String sql3 = "GRANT SELECT,INSERT,UPDATE ,DELETE ,CREATE,DROP on " + DBNAME + ".* TO '" + DBUSERNAME + "'@'localhost';";
             st = conn.prepareStatement(sql3);
             st.execute();
             String sql4 = "INSERT INTO CloudComputing.database VALUES (" +

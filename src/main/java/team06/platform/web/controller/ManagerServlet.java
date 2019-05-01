@@ -8,13 +8,9 @@ import team06.platform.utils.ConfigUtils;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
+import java.io.*;
+import java.net.*;
+import java.sql.DriverManager;
 import java.util.Map;
 import java.util.UUID;
 
@@ -77,31 +73,55 @@ public class ManagerServlet {
      */
     public String deploy(String appid, String war_path, String target_path) {
         String message = "";
+        URLConnection con = null;
+        PrintWriter out = null;
+        BufferedReader buffer = null;
+        StringBuffer resultBuffer = null;
         try {
             URL url = new URL("http://localhost:" + PORT + "/manager/text/deploy?path=/app/" + target_path + "&war=file:" + war_path);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            System.out.println("Deploy an app:" + url);
 
-            conn.setAllowUserInteraction(false);
-            conn.setDoInput(true);
-            conn.setUseCaches(false);
+            /* Open Connection */
+            con = url.openConnection();
 
-            conn.setDoOutput(false);
-            conn.setRequestMethod("GET");
+            /* Set Request Parameter */
+            con.setRequestProperty("Content-Type", "text/plain;charset=GBK");
+            con.setDoOutput(true);
+            con.setDoInput(true);
+            con.setUseCaches(false);
 
-            conn.setRequestProperty("Accept-Charset", "utf-8");
-            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            /* Set Request Parameter */
+            con.setRequestProperty("accept", "*/*");
+            // IMPORTANT
+            con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            con.setDoOutput(true);
+            con.setDoInput(true);
+            con.setUseCaches(false);
+            con.setConnectTimeout(300);
             String authoInfo = Base64.encode((USERNAME + ":" + PASSWORD).getBytes());
-            conn.setRequestProperty("Authorization", "Basic " + authoInfo);
-//            conn.setRequestProperty("Connection", "keep-alive");
-            conn.connect();
+            con.setRequestProperty("Authorization", "Basic " + authoInfo);
 
-            InputStream input = conn.getInputStream();
-            byte[] bs = new byte[1024];
-            int len = -1;
-
-            while ((len = input.read(bs)) != -1) {
-                message += new String(bs, 0, len);
+            /* Receive Response Stream */
+            InputStream inputStream = con.getInputStream();
+            resultBuffer = new StringBuffer(); // convert stream into string
+            String line;
+            buffer = new BufferedReader(new InputStreamReader(inputStream, "GBK"));
+            while ((line = buffer.readLine()) != null) {
+                resultBuffer.append(line);
             }
+            message = resultBuffer.toString();
+            // Release Resource
+            inputStream.close();
+
+
+//            InputStream input = conn.getInputStream();
+//            byte[] bs = new byte[1024];
+//            int len = -1;
+//
+//            while ((len = input.read(bs)) != -1) {
+//                message += new String(bs, 0, len);
+//            }
+
             String[] temp = message.split(" - ");
 
             if (temp[0].equals("OK")) {
@@ -127,32 +147,75 @@ public class ManagerServlet {
      */
     public String undeploy(String appid, String context) {
         String message = "";
+        URLConnection con = null;
+        PrintWriter out = null;
+        BufferedReader buffer = null;
+        StringBuffer resultBuffer = null;
+        if (applicationService.getAppByAppId(appid).getStatus() == 2) {
+            stop(appid, context);
+        }
         try {
             URL url = new URL("http://localhost:" + PORT + "/manager/text/undeploy?path=/app/" + context);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            System.out.println("Undeploy an app:" + url);
+//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
-            conn.setAllowUserInteraction(false);
-            conn.setDoInput(true);
-            conn.setUseCaches(false);
+            /* Open Connection */
+            con = url.openConnection();
 
-            conn.setDoOutput(false);
-            conn.setRequestMethod("GET");
+            /* Set Request Parameter */
+            con.setRequestProperty("Content-Type", "text/plain;charset=GBK");
+            con.setDoOutput(true);
+            con.setDoInput(true);
+            con.setUseCaches(false);
 
-            conn.setRequestProperty("Accept-Charset", "utf-8");
-            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-
+            /* Set Request Parameter */
+            con.setRequestProperty("accept", "*/*");
+            // IMPORTANT
+            con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            con.setDoOutput(true);
+            con.setDoInput(true);
+            con.setUseCaches(false);
+            con.setConnectTimeout(300);
             String authoInfo = Base64.encode((USERNAME + ":" + PASSWORD).getBytes());
-            conn.setRequestProperty("Authorization", "Basic " + authoInfo);
-//            conn.setRequestProperty("Connection", "keep-alive");
-            conn.connect();
+            con.setRequestProperty("Authorization", "Basic " + authoInfo);
 
-            InputStream input = conn.getInputStream();
-            byte[] bs = new byte[1024];
-            int len = -1;
-
-            while ((len = input.read(bs)) != -1) {
-                message += new String(bs, 0, len);
+            /* Receive Response Stream */
+            InputStream inputStream = con.getInputStream();
+            resultBuffer = new StringBuffer(); // convert stream into string
+            String line;
+            buffer = new BufferedReader(new InputStreamReader(inputStream, "GBK"));
+            while ((line = buffer.readLine()) != null) {
+                resultBuffer.append(line);
             }
+            message = resultBuffer.toString();
+            // Release Resource
+            inputStream.close();
+
+//            conn.setAllowUserInteraction(false);
+//            conn.setDoInput(true);
+//            conn.setUseCaches(false);
+//
+//            conn.setDoOutput(false);
+//            conn.setRequestMethod("GET");
+//
+//            conn.setRequestProperty("Accept-Charset", "utf-8");
+//            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+//
+//            String authoInfo = Base64.encode((USERNAME + ":" + PASSWORD).getBytes());
+//            conn.setRequestProperty("Authorization", "Basic " + authoInfo);
+////            conn.setRequestProperty("Connection", "keep-alive");
+//            conn.connect();
+//
+//            InputStream input = conn.getInputStream();
+//            byte[] bs = new byte[1024];
+//            int len = -1;
+//
+//            while ((len = input.read(bs)) != -1) {
+//                message += new String(bs, 0, len);
+//            }
+//            // Release Resource
+//            input.close();
+//            conn.disconnect();
             String[] temp = message.split(" - ");
 
             if (temp[0].equals("OK")) {
@@ -204,6 +267,9 @@ public class ManagerServlet {
             while ((len = input.read(bs)) != -1) {
                 message += new String(bs, 0, len);
             }
+            // Release Resource
+            input.close();
+            conn.disconnect();
             String[] temp = message.split(" - ");
 
             if (temp[0].equals("OK")) {
@@ -227,32 +293,72 @@ public class ManagerServlet {
      */
     public String stop(String appid, String context) {
         String message = "";
+        URLConnection con = null;
+        PrintWriter out = null;
+        BufferedReader buffer = null;
+        StringBuffer resultBuffer = null;
         try {
             URL url = new URL("http://localhost:" + PORT + "/manager/text/stop?path=/app/" + context);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            System.out.println("Stop an app:" + url);
 
-            conn.setAllowUserInteraction(false);
-            conn.setDoInput(true);
-            conn.setUseCaches(false);
+            /* Open Connection */
+            con = url.openConnection();
 
-            conn.setDoOutput(false);
-            conn.setRequestMethod("GET");
+            /* Set Request Parameter */
+            con.setRequestProperty("Content-Type", "text/plain;charset=GBK");
+            con.setDoOutput(true);
+            con.setDoInput(true);
+            con.setUseCaches(false);
 
-            conn.setRequestProperty("Accept-Charset", "utf-8");
-            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-
+            /* Set Request Parameter */
+            con.setRequestProperty("accept", "*/*");
+            // IMPORTANT
+            con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            con.setDoOutput(true);
+            con.setDoInput(true);
+            con.setUseCaches(false);
+            con.setConnectTimeout(300);
             String authoInfo = Base64.encode((USERNAME + ":" + PASSWORD).getBytes());
-            conn.setRequestProperty("Authorization", "Basic " + authoInfo);
-//            conn.setRequestProperty("Connection", "keep-alive");
-            conn.connect();
+            con.setRequestProperty("Authorization", "Basic " + authoInfo);
 
-            InputStream input = conn.getInputStream();
-            byte[] bs = new byte[1024];
-            int len = -1;
-
-            while ((len = input.read(bs)) != -1) {
-                message += new String(bs, 0, len);
+            /* Receive Response Stream */
+            InputStream inputStream = con.getInputStream();
+            resultBuffer = new StringBuffer(); // convert stream into string
+            String line;
+            buffer = new BufferedReader(new InputStreamReader(inputStream, "GBK"));
+            while ((line = buffer.readLine()) != null) {
+                resultBuffer.append(line);
             }
+            message = resultBuffer.toString();
+            // Release Resource
+            inputStream.close();
+//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//
+//            conn.setAllowUserInteraction(false);
+//            conn.setDoInput(true);
+//            conn.setUseCaches(false);
+//
+//            conn.setDoOutput(false);
+//            conn.setRequestMethod("GET");
+//
+//            conn.setRequestProperty("Accept-Charset", "utf-8");
+//            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+//
+//            String authoInfo = Base64.encode((USERNAME + ":" + PASSWORD).getBytes());
+//            conn.setRequestProperty("Authorization", "Basic " + authoInfo);
+////            conn.setRequestProperty("Connection", "keep-alive");
+//            conn.connect();
+//
+//            InputStream input = conn.getInputStream();
+//            byte[] bs = new byte[1024];
+//            int len = -1;
+//
+//            while ((len = input.read(bs)) != -1) {
+//                message += new String(bs, 0, len);
+//            }
+//            // Release Resource
+//            input.close();
+//            conn.disconnect();
             String[] temp = message.split(" - ");
 
             if (temp[0].equals("OK")) {
@@ -273,11 +379,16 @@ public class ManagerServlet {
         if (status == 0) {
             applicationService.deleteAppByAppId(appid);
             return "Delete Successful";
-        }else {
-            String message = undeploy(appid, context);
-            String[] temp = message.split(" - ");
-            applicationService.deleteAppByAppId(appid);
-            return message;
+        }else if (status == 1) {
+            String message1 = undeploy(appid, context);
+            String message2 = applicationService.deleteAppByAppId(appid);
+            return message1 + ";" + message2;
+        }else{
+            String message0 = stop(appid, context);
+            String message1 = undeploy(appid, context);
+//            String[] temp = message.split(" - ");
+            String message2 = applicationService.deleteAppByAppId(appid);
+            return message0 + ";" + message1 + ";" + message2;
         }
     }
 }

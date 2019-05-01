@@ -12,9 +12,10 @@ import team06.platform.service.impl.AccountServiceImpl;
 import team06.platform.service.impl.UserServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
 import java.util.List;
 
-public class PreferenceBean {
+public class PreferenceBean  {
     private String userId;
     private User user;
     private static final String TOKEN_SECRET = "fd8780zdufb7f5bnz456fd";

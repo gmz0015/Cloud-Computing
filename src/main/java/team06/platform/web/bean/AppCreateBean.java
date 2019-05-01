@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 
-public class AppCreateBean extends HttpServlet implements Serializable {
+public class AppCreateBean extends HttpServlet  {
     private int uploadStatus = 0;
     private int deployStatus = 0;
     private int startupStatus = 0;

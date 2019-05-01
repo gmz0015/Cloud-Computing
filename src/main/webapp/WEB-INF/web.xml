@@ -272,17 +272,17 @@
 
     <!--<listener>-->
         <!--<description>ServletRequestListener</description>-->
-        <!--<listener-class>team06.platform.web.listener.MyServletRequestListener</listener-class>-->
+        <!--<listener-class>team06.platform.web.listener.DriverMangerListner</listener-class>-->
     <!--</listener>-->
 
     <!-- Whitelist -->
-    <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>*.jpg</url-pattern>
-        <url-pattern>*.svg</url-pattern>
-        <url-pattern>*.png</url-pattern>
-        <url-pattern>/manager/*</url-pattern>
-    </servlet-mapping>
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>default</servlet-name>-->
+        <!--<url-pattern>*.jpg</url-pattern>-->
+        <!--<url-pattern>*.svg</url-pattern>-->
+        <!--<url-pattern>*.png</url-pattern>-->
+        <!--<url-pattern>/manager/*</url-pattern>-->
+    <!--</servlet-mapping>-->
 
     <!-- Error Page -->
     <!--<error-page>-->

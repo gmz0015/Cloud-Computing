@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serializable;
 
-public class ApplicationDetailBean implements Serializable {
+public class ApplicationDetailBean  {
     private String userId;
     private String appId;
     private Application appInfo;
@@ -29,10 +29,9 @@ public class ApplicationDetailBean implements Serializable {
     public ApplicationDetailBean() {}
 
     public Application doQuery(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        if (applicationService.checkAppUser(this.userId, this.appId)) {
-            appInfo = applicationService.getAppByAppId(this.appId);
-            appUUID = applicationService.getAppUUID(this.appId);
-            System.out.println("TEST queryApp:" + appInfo.getOwnerName());
+        if (applicationService.checkAppUser(userId, appId)) {
+            appInfo = applicationService.getAppByAppId(appId);
+            appUUID = applicationService.getAppUUID(appId);
         }else {
             response.sendRedirect(request.getContextPath() + "/console?error=401.4");
         }
@@ -48,16 +47,21 @@ public class ApplicationDetailBean implements Serializable {
                 Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
                 JWTVerifier verifier = JWT.require(algorithm).build();
                 DecodedJWT jwt = verifier.verify(token);
-                this.userId = jwt.getClaim("userId").asString();
+                userId = jwt.getClaim("userId").asString();
             }else {
-                this.userId = null;
+                userId = null;
             }
         }else {
-            this.userId = null;
+            userId = null;
         }
     }
 
     /* Setter and Getter */
+
+    public String getUserId() {
+        return userId;
+    }
+
     public String getAppUUID() {
         return appUUID;
     }

@@ -22,7 +22,7 @@
 <%-- onload --%>
 <%
     appCreateBean.getInfo(request);
-    appBean.getInfo(request);
+    appBean.setUserId(appCreateBean.getUserId());
     Application appInfo = appCreateBean.doQuery(request, response);
 %>
 
@@ -278,7 +278,7 @@
                             <span style="color: #333333;font-size: 20px">Application UUID</span>
                         </header>
 
-                        <div class="w3-row" style="height:100%">
+                        <div class="w3-row" style="height:100px">
                             <div class="w3-display-container w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;min-height: 80px;margin: 10px">
                                 <span class="w3-display-middle" style="color:#9B9EA0">
                                     <%= appCreateBean.getAppUUID() %>

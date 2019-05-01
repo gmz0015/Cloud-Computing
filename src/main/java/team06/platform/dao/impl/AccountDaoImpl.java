@@ -268,7 +268,6 @@ public class AccountDaoImpl implements IAccountDao {
             conn.setAutoCommit(false); // start transaction
 
             String sql = "SELECT * FROM CloudComputing.transaction WHERE appId='" + appId + "';";
-            System.out.printf("[%-23s] AccountDaoImpl queryAppTransaction sql=%s\n", new Timestamp(new Date().getTime()), sql);
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             conn.commit();

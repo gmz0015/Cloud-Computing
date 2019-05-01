@@ -31,11 +31,9 @@ public class ApplicationDetailBean  {
     public ApplicationDetailBean() {}
 
     public Application doQuery(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        System.out.printf("[%-23s] ApplicationDetailBean doQuery userID=%s; appId=%s\n", new Timestamp(new Date().getTime()), userId, appId);
         if (applicationService.checkAppUser(userId, appId)) {
             appInfo = applicationService.getAppByAppId(appId);
             appUUID = applicationService.getAppUUID(appId);
-            System.out.printf("[%-23s] ApplicationDetailBean doQuery after appInfo=%s; appUUID=%s\n", new Timestamp(new Date().getTime()), appInfo, appUUID);
         }else {
             response.sendRedirect(request.getContextPath() + "/console?error=401.4");
         }
@@ -47,7 +45,6 @@ public class ApplicationDetailBean  {
 
         token = request.getSession().getAttribute("token").toString();
         if (token != null) {
-            System.out.printf("[%-23s] ApplicationDetailBean getInfo\n", new Timestamp(new Date().getTime()));
             Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
             JWTVerifier verifier = JWT.require(algorithm).build();
             DecodedJWT jwt = verifier.verify(token);

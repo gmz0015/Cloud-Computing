@@ -100,7 +100,6 @@ public class ApplicationBean{
     }
 
     public void setUserId(String userId) {
-        System.out.printf("[%-23s] ApplicationBean setUserId:%s\n", new Timestamp(new Date().getTime()), userId);
         this.userId = userId;
     }
 

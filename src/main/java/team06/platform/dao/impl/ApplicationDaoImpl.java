@@ -26,7 +26,6 @@ public class ApplicationDaoImpl implements IApplicationDao {
         try{
             conn = JdbcUtils.getConnection();
             String sql = "SELECT * FROM CloudComputing.applications";
-            System.out.printf("[%-23s] ApplicationDaoImpl queryAllApps sql=%s\n", new Timestamp(new Date().getTime()), sql);
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             while (rs.next()){
@@ -90,7 +89,6 @@ public class ApplicationDaoImpl implements IApplicationDao {
             conn = JdbcUtils.getConnection();
             conn.setAutoCommit(false); // start transaction
             String sql = "SELECT * FROM CloudComputing.applications WHERE appId='" + appId + "';";
-            System.out.printf("[%-23s] ApplicationDaoImpl queryAppByAppId sql=%s\n", new Timestamp(new Date().getTime()), sql);
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             conn.commit();
@@ -125,7 +123,6 @@ public class ApplicationDaoImpl implements IApplicationDao {
             conn = JdbcUtils.getConnection();
             conn.setAutoCommit(false); // start transaction
             String sql = "SELECT * FROM CloudComputing.applications WHERE appUUID='" + appUUID + "';";
-            System.out.printf("[%-23s] ApplicationDaoImpl queryAppByUUID sql=%s\n", new Timestamp(new Date().getTime()), sql);
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             conn.commit();
@@ -362,7 +359,6 @@ public class ApplicationDaoImpl implements IApplicationDao {
         try{
             conn = JdbcUtils.getConnection();
             String sql = "SELECT appUUID FROM CloudComputing.applications WHERE appId='" + appId + "';";
-            System.out.printf("[%-23s] ApplicationDaoImpl queryAppUUID sql=%s\n", new Timestamp(new Date().getTime()), sql);
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             while (rs.next()){

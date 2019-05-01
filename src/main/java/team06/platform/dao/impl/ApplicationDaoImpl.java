@@ -7,7 +7,9 @@ import team06.platform.utils.JdbcUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ApplicationDaoImpl implements IApplicationDao {
@@ -24,6 +26,7 @@ public class ApplicationDaoImpl implements IApplicationDao {
         try{
             conn = JdbcUtils.getConnection();
             String sql = "SELECT * FROM CloudComputing.applications";
+            System.out.printf("[%-23s] ApplicationDaoImpl queryAllApps sql=%s\n", new Timestamp(new Date().getTime()), sql);
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             while (rs.next()){
@@ -85,9 +88,12 @@ public class ApplicationDaoImpl implements IApplicationDao {
         /* Connect */
         try{
             conn = JdbcUtils.getConnection();
+            conn.setAutoCommit(false); // start transaction
             String sql = "SELECT * FROM CloudComputing.applications WHERE appId='" + appId + "';";
+            System.out.printf("[%-23s] ApplicationDaoImpl queryAppByAppId sql=%s\n", new Timestamp(new Date().getTime()), sql);
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
+            conn.commit();
             while (rs.next()){
                 appInfo = new Application(
                         appId, rs.getString("appName"), rs.getString("description"), rs.getString("ownerId"),
@@ -117,16 +123,18 @@ public class ApplicationDaoImpl implements IApplicationDao {
         /* Connect */
         try{
             conn = JdbcUtils.getConnection();
+            conn.setAutoCommit(false); // start transaction
             String sql = "SELECT * FROM CloudComputing.applications WHERE appUUID='" + appUUID + "';";
+            System.out.printf("[%-23s] ApplicationDaoImpl queryAppByUUID sql=%s\n", new Timestamp(new Date().getTime()), sql);
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
+            conn.commit();
             while (rs.next()){
                 appInfo = new Application(
                         rs.getString("appId"), rs.getString("appName"), rs.getString("description"), rs.getString("ownerId"),
                         rs.getString("ownerName"), rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
                         rs.getString("dbId"), rs.getString("warPath"), rs.getString("contextPath"), rs.getString("iconPath"));
             }
-
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.queryAppByUUID]: " + e);
             appInfo = new Application("", "", "", "", "",
@@ -354,6 +362,7 @@ public class ApplicationDaoImpl implements IApplicationDao {
         try{
             conn = JdbcUtils.getConnection();
             String sql = "SELECT appUUID FROM CloudComputing.applications WHERE appId='" + appId + "';";
+            System.out.printf("[%-23s] ApplicationDaoImpl queryAppUUID sql=%s\n", new Timestamp(new Date().getTime()), sql);
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             while (rs.next()){
@@ -362,6 +371,7 @@ public class ApplicationDaoImpl implements IApplicationDao {
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.queryAppUUID]: " + e);
             appUUID = "0";
+        }finally{
             JdbcUtils.release(conn, st, rs);
         }
         return appUUID;

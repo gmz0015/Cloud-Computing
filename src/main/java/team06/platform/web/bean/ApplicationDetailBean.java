@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.Date;
 
 public class ApplicationDetailBean  {
     private String userId;
@@ -29,9 +31,11 @@ public class ApplicationDetailBean  {
     public ApplicationDetailBean() {}
 
     public Application doQuery(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        System.out.printf("[%-23s] ApplicationDetailBean doQuery userID=%s; appId=%s\n", new Timestamp(new Date().getTime()), userId, appId);
         if (applicationService.checkAppUser(userId, appId)) {
             appInfo = applicationService.getAppByAppId(appId);
             appUUID = applicationService.getAppUUID(appId);
+            System.out.printf("[%-23s] ApplicationDetailBean doQuery after appInfo=%s; appUUID=%s\n", new Timestamp(new Date().getTime()), appInfo, appUUID);
         }else {
             response.sendRedirect(request.getContextPath() + "/console?error=401.4");
         }
@@ -41,17 +45,15 @@ public class ApplicationDetailBean  {
     public void getInfo(HttpServletRequest request) {
         String token = null;
 
-        if (request.getSession().getAttribute("token") != null) {
-            token = request.getSession().getAttribute("token").toString();
-            if (token != null) {
-                Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
-                JWTVerifier verifier = JWT.require(algorithm).build();
-                DecodedJWT jwt = verifier.verify(token);
-                userId = jwt.getClaim("userId").asString();
-            }else {
-                userId = null;
-            }
+        token = request.getSession().getAttribute("token").toString();
+        if (token != null) {
+            System.out.printf("[%-23s] ApplicationDetailBean getInfo\n", new Timestamp(new Date().getTime()));
+            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT jwt = verifier.verify(token);
+            userId = jwt.getClaim("userId").asString();
         }else {
+            System.out.printf("[%-23s] ApplicationDetailBean getInfo token=null\n", new Timestamp(new Date().getTime()));
             userId = null;
         }
     }

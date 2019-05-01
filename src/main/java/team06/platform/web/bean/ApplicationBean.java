@@ -15,7 +15,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ApplicationBean{
@@ -98,6 +100,7 @@ public class ApplicationBean{
     }
 
     public void setUserId(String userId) {
+        System.out.printf("[%-23s] ApplicationBean setUserId:%s\n", new Timestamp(new Date().getTime()), userId);
         this.userId = userId;
     }
 

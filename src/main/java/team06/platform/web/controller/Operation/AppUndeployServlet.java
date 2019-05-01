@@ -35,9 +35,10 @@ public class AppUndeployServlet extends HttpServlet {
                 userId = jwt.getClaim("userId").asString();
 
                 if (applicationService.checkAppUser(userId, request.getParameter("appId"))) {
+                    String appId = applicationService.getContextById(request.getParameter("appId"));
                     result = managerServlet.undeploy(
                             request.getParameter("appId"),
-                            applicationService.getContextById(request.getParameter("appId")));
+                            appId);
                 }else {
                     result = "Delete Failed - You have no access to undeploy the application";
                 }

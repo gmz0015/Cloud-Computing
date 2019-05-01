@@ -53,7 +53,8 @@ public class EnterUIServlet extends HttpServlet {
 
                 application = applicationService.getAppByContext(request.getQueryString());
 
-                if (!accountService.isCharge(new Charge(Long.valueOf(userId), Long.valueOf(application.getAppId())))) {
+                Boolean result = accountService.isCharge(new Charge(Long.valueOf(userId), Long.valueOf(application.getAppId())));
+                if (!result) {
                     accountService.charge(Long.valueOf(userId), Long.valueOf(application.getAppId()), 5);
                 }
                 countBean.doCount(request.getQueryString());

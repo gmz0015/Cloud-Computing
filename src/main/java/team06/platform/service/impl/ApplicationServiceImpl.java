@@ -31,6 +31,7 @@ public class ApplicationServiceImpl implements IApplicationService {
 
     @Override
     public Application getAppByUUID(String appUUID) {
+
         return appDao.queryAppByUUID(appUUID);
     }
 

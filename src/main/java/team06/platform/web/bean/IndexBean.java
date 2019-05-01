@@ -12,6 +12,7 @@ import team06.platform.service.impl.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class IndexBean {
@@ -29,7 +30,8 @@ public class IndexBean {
 
     public IndexBean() {
         IApplicationService appService = new ApplicationServiceImpl();
-        appInfo = appService.getAllApps();
+//        appInfo = appService.getAllApps();
+        appInfo = new ArrayList<>();
     }
 
     public void getInfo(HttpServletRequest request) {

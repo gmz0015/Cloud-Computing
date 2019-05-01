@@ -9,6 +9,7 @@ import team06.platform.utils.JdbcUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -267,6 +268,7 @@ public class AccountDaoImpl implements IAccountDao {
             conn.setAutoCommit(false); // start transaction
 
             String sql = "SELECT * FROM CloudComputing.transaction WHERE appId='" + appId + "';";
+            System.out.printf("[%-23s] AccountDaoImpl queryAppTransaction sql=%s\n", new Timestamp(new Date().getTime()), sql);
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             conn.commit();

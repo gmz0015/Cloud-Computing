@@ -485,13 +485,15 @@
                             <p>
                             <h3 id="reference-api-accountTransfer2">API - Account Transfer - Mode 2</h3>
                             <ul>
-                                Within this way, you need send an POST request. The specific method is listed below.<br/>
+                                As we provide 3 charge mode, this API is used for mode 2 - <%@ include file="/WEB-INF/pages/component/chargeMode/both.jsp"%>.<br/>
+                                Within the transfer, part of amount will give to <b>bank service</b>
                                 <li><b>Method:</b> <code class="w3-codespan">POST</code></li>
                                 <li><b>Parameters:</b></li>
                                 <ul>
                                     <li><b>URL:</b> <code class="w3-codespan">/api/account/transfer</code></li>
                                     <li><code class="w3-codespan">fromUserId</code>: The user's id who pay</li>
                                     <li><code class="w3-codespan">toUserId</code>: The user's id who receive</li>
+                                    <li><code class="w3-codespan">devAmount</code>: The amount of this transfer that will give to developer</li>
                                     <li><code class="w3-codespan">amount</code>: The amount of this transfer</li>
                                     <li><code class="w3-codespan">appUUID</code>: The appUUID stored in cookie</li>
                                 </ul>
@@ -512,13 +514,15 @@
                             <p>
                             <h3 id="reference-api-accountTransfer3">API - Account Transfer - Mode 3</h3>
                             <ul>
-                                Within this way, you need send an POST request. The specific method is listed below.<br/>
+                                As we provide 3 charge mode, this API is used for mode 3 - <%@ include file="/WEB-INF/pages/component/chargeMode/inApp.jsp"%>.<br/>
+                                Within the transfer, part of amount will give to <b>bank service</b> and part of amount will give to <b>login service</b>
                                 <li><b>Method:</b> <code class="w3-codespan">POST</code></li>
                                 <li><b>Parameters:</b></li>
                                 <ul>
                                     <li><b>URL:</b> <code class="w3-codespan">/api/account/transfer</code></li>
                                     <li><code class="w3-codespan">fromUserId</code>: The user's id who pay</li>
                                     <li><code class="w3-codespan">toUserId</code>: The user's id who receive</li>
+                                    <li><code class="w3-codespan">devAmount</code>: The amount of this transfer that will give to developer</li>
                                     <li><code class="w3-codespan">amount</code>: The amount of this transfer</li>
                                     <li><code class="w3-codespan">appUUID</code>: The appUUID stored in cookie</li>
                                 </ul>

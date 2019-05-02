@@ -7,10 +7,10 @@ The sharing place for team 06.
 
 ## OpenNebula
 ### Login to VM
-`$ ssh -i cloudkey root@143.167.9.209`
+`$ ssh -i cloudkey root@143.167.9.229`
 ### Uploading to VM
-- `$ scp -i cloudkey <source-path> root@143.167.9.209:<destination-path>`
-- `$ scp -i cloudkey -r platform/web root@143.167.9.209:/var/lib/tomcat8/webapps/platform`
+- `$ scp -i cloudkey <source-path> root@143.167.9.229:<destination-path>`
+- `$ scp -i cloudkey -r platform/web root@143.167.9.229:/var/lib/tomcat8/webapps/platform`
 
 ## Deploy
 - Copy the folder to `/var/lib/tomcat8/webapps/`
@@ -22,10 +22,10 @@ The sharing place for team 06.
 - Step(under`/var/lib/tomcat8/webapps`):
     - `mv ./ROOT/uploadedFiles ./backup/uploadedFiles`
     - `mv ./ROOT/image/avatar ./backup/avatar`
-    - tomcat deploy
-    - `mv ./backup/uploadedFiles ./ROOT/uploadedFiles`
-    - `mv ./backup/avatar ./ROOT/image/`
     - `mv platform ROOT`
+    - `mv ./backup/uploadedFiles ./ROOT/uploadedFiles`
+    - `mv ./backup/avatar ./ROOT/image/avatar`
+    
 
 ## TODO
 - Optimise 

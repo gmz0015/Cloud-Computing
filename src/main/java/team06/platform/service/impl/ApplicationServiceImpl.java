@@ -63,20 +63,20 @@ public class ApplicationServiceImpl implements IApplicationService {
 
     @Override
     public String deleteAppByAppId(String appId) {
-//        String fileName = appDao.queryWarById(appId);
-//        File file = new File(fileName);
-//        if (file.exists() && file.isFile()) {
-//            if (file.delete()) {
-//                appDao.deleteAppById(appId);
-//                return "Delete File Success";
-//            } else {
-//                return "Delete File Failed";
-//            }
-//        } else {
-//            return "Delete File Failed";
-//        }
-        appDao.deleteAppById(appId);
-        return "Delete File Success";
+        String fileName = appDao.queryWarById(appId);
+        File file = new File(fileName);
+        if (file.exists() && file.isFile()) {
+            if (file.delete()) {
+                appDao.deleteAppById(appId);
+                return "Delete File Success";
+            } else {
+                return "Delete File Failed";
+            }
+        } else {
+            return "Delete File Failed";
+        }
+//        appDao.deleteAppById(appId);
+//        return "Delete File Success";
 
     }
 

@@ -92,7 +92,8 @@
                                 List<Transaction> transactions = accountBean.getTransaction();
                                 for (Transaction transaction: transactions) {
                             %>
-                            <tr style="text-align: center">
+                            <% if (transaction.getType().equals("Royalties - DEV")) { %>
+                            <tr class="w3-pale-green" style="text-align: center">
                                 <td><%= i++ %></td>
                                 <td><%= transaction.getFromUserName() %></td>
                                 <td><%= transaction.getToUserName() %></td>
@@ -101,6 +102,40 @@
                                 <td><%= transaction.getAmount() %></td>
                                 <td><%= transaction.getTime() %></td>
                             </tr>
+                            <% } %>
+                            <% if (transaction.getType().equals("Royalties - SignIn")) { %>
+                            <tr class="w3-pale-blue" style="text-align: center">
+                                <td><%= i++ %></td>
+                                <td><%= transaction.getFromUserName() %></td>
+                                <td><%= transaction.getToUserName() %></td>
+                                <td><%= transaction.getType() %></td>
+                                <td><%= transaction.getAppId() %></td>
+                                <td><%= transaction.getAmount() %></td>
+                                <td><%= transaction.getTime() %></td>
+                            </tr>
+                            <% } %>
+                            <% if (transaction.getType().equals("Royalties - Royalties - SignIn")) { %>
+                            <tr class="w3-pale-blue" style="text-align: center">
+                                <td><%= i++ %></td>
+                                <td><%= transaction.getFromUserName() %></td>
+                                <td><%= transaction.getToUserName() %></td>
+                                <td><%= transaction.getType() %></td>
+                                <td><%= transaction.getAppId() %></td>
+                                <td><%= transaction.getAmount() %></td>
+                                <td><%= transaction.getTime() %></td>
+                            </tr>
+                            <% } %>
+                            <% if (transaction.getType().equals("Application Consumption")) { %>
+                            <tr class="w3-pale-yellow" style="text-align: center">
+                                <td><%= i++ %></td>
+                                <td><%= transaction.getFromUserName() %></td>
+                                <td><%= transaction.getToUserName() %></td>
+                                <td><%= transaction.getType() %></td>
+                                <td><%= transaction.getAppId() %></td>
+                                <td><%= transaction.getAmount() %></td>
+                                <td><%= transaction.getTime() %></td>
+                            </tr>
+                            <% } %>
                             <% } %>
                         </table>
                     </div>

@@ -29,49 +29,45 @@ public class EnterUIServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.isUserInRole("USER") || request.isUserInRole("DEVELOPER") || request.isUserInRole("ADMIN")) {
-            String token = null;
-            String userId = null;
-            String userName = null;
-            String userRole = null;
-            String userAvatar = null;
-            Application application = null;
-            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
-            Map<String, Object> header = new HashMap<>(2);
-            header.put("typ", "JWT");
-            header.put("alg", "HS256");
+        String token = null;
+        String userId = null;
+        String userName = null;
+        String userRole = null;
+        String userAvatar = null;
+        Application application = null;
+        Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+        Map<String, Object> header = new HashMap<>(2);
+        header.put("typ", "JWT");
+        header.put("alg", "HS256");
 
-            token = request.getSession().getAttribute("token").toString();
+        token = request.getSession().getAttribute("token").toString();
 
-            if (token != null) {
-                JWTVerifier verifier = JWT.require(algorithm).build();
-                DecodedJWT jwt = verifier.verify(token);
-                userId = jwt.getClaim("userId").asString();
-                userName = jwt.getClaim("userName").asString();
-                userRole = jwt.getClaim("userRole").asString();
-                userAvatar = jwt.getClaim("userAvatar").asString();
+        if (token != null) {
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT jwt = verifier.verify(token);
+            userId = jwt.getClaim("userId").asString();
+            userName = jwt.getClaim("userName").asString();
+            userRole = jwt.getClaim("userRole").asString();
+            userAvatar = jwt.getClaim("userAvatar").asString();
 
-                application = applicationService.getAppByContext(request.getQueryString());
+            application = applicationService.getAppByContext(request.getQueryString());
 
-                Boolean result = accountService.isCharge(new Charge(Long.valueOf(userId), Long.valueOf(application.getAppId())));
-                if (!result) {
-                    accountService.charge(Long.valueOf(userId), Long.valueOf(application.getAppId()), 5);
-                }
-                countBean.doCount(request.getQueryString());
-
-                token = JWT.create()
-                        .withHeader(header)
-                        .withClaim("userId", userId)
-                        .withClaim("userName", userName)
-                        .withClaim("userRole", userRole)
-                        .withClaim("userAvatar", userAvatar)
-                        .sign(algorithm);
-                request.getSession().setAttribute("token", token);
-
-                response.sendRedirect("/app/" + request.getQueryString());
-            }else {
-                request.getRequestDispatcher(request.getContextPath() + "/errorPage/errorLogon.jsp").forward(request, response);
+            Boolean result = accountService.isCharge(new Charge(Long.valueOf(userId), Long.valueOf(application.getAppId())));
+            if (!result) {
+                accountService.charge(Long.valueOf(userId), Long.valueOf(application.getAppId()), 5);
             }
+            countBean.doCount(request.getQueryString());
+
+            token = JWT.create()
+                    .withHeader(header)
+                    .withClaim("userId", userId)
+                    .withClaim("userName", userName)
+                    .withClaim("userRole", userRole)
+                    .withClaim("userAvatar", userAvatar)
+                    .sign(algorithm);
+            request.getSession().setAttribute("token", token);
+
+            response.sendRedirect("/app/" + request.getQueryString());
         }else {
             request.getRequestDispatcher(request.getContextPath() + "/errorPage/errorLogon.jsp").forward(request, response);
         }

@@ -38,7 +38,7 @@ public class AccountBean  {
         }
     }
 
-    public Integer getBalance() {
+    public Double getBalance() {
         return accountService.getBalance(Long.valueOf(this.userId));
     }
 

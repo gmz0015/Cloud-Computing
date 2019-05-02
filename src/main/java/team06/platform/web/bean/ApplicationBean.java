@@ -94,7 +94,7 @@ public class ApplicationBean{
         return applicationService.getAllLiveAppInfo();
     }
 
-    public Integer getBalance() {
+    public Double getBalance() {
         return accountService.getBalance(Long.valueOf(this.userId));
     }
 

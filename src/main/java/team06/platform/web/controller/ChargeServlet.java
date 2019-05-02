@@ -31,52 +31,56 @@ public class ChargeServlet extends HttpServlet {
 
         String token = null;
 
-        if (type != null) {
-            if (request.getSession().getAttribute("token") != null) {
-                token = request.getSession().getAttribute("token").toString();
-                if (token != null) {
-                    Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
-                    JWTVerifier verifier = JWT.require(algorithm).build();
-                    DecodedJWT jwt = verifier.verify(token);
-                    userId = jwt.getClaim("userId").asString();
-                    userName = jwt.getClaim("userName").asString();
+        if (request.getSession().getAttribute("token") != null) {
+            token = request.getSession().getAttribute("token").toString();
+            if (token != null) {
+                Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+                JWTVerifier verifier = JWT.require(algorithm).build();
+                DecodedJWT jwt = verifier.verify(token);
+                userId = jwt.getClaim("userId").asString();
+                userName = jwt.getClaim("userName").asString();
 
-                    // Check whether is developer
-                    if (userId == null || userId.equals("")) {
-                        response.sendRedirect(request.getContextPath() + "/console?error=401.1");
-                    } else {
-                        // change to Entrance Mode
-                        if (type == 0) {
-                            if (applicationService.checkAppUser(userId, request.getSession().getAttribute("appId").toString())) {
-                                applicationService.setChargeByAppId(request.getSession().getAttribute("appId").toString(), 0);
-                                response.getWriter().println("<script>alert('Change to Entrance Mode Successful. ');window.location.href='/application'</script>");
-                            }else {
-                                response.getWriter().println("<script>alert('Change to Entrance Mode Failed. You can try it again.');window.location.href='/logout'</script>");
-                            }
+                // Check whether is developer
+                if (userId == null || userId.equals("")) {
+                    response.sendRedirect(request.getContextPath() + "/console?error=401.1");
+                } else {
+                    // change to Entrance Mode
+                    if (type == 0) {
+                        if (applicationService.checkAppUser(userId, request.getSession().getAttribute("appId").toString())) {
+                            applicationService.setChargeByAppId(request.getSession().getAttribute("appId").toString(), 0);
+                            response.getWriter().println("<script>alert('Change to Entrance Mode Successful. ');window.location.href='/application'</script>");
+                        }else {
+                            response.getWriter().println("<script>alert('Change to Entrance Mode Failed. You can try it again.');window.location.href='/logout'</script>");
                         }
+                    }
 
-                        // change to Both Mode
-                        if (type == 1) {
-                            if (applicationService.checkAppUser(userId, request.getSession().getAttribute("appId").toString())) {
-                                applicationService.setChargeByAppId(request.getSession().getAttribute("appId").toString(), 1);
-                                response.getWriter().println("<script>alert('Change to Entrance + In-app Mode Successful. ');window.location.href='/application'</script>");
-                            }else {
-                                response.getWriter().println("<script>alert('Change to Entrance + In-app Mode Failed. You can try it again.');window.location.href='/logout'</script>");
-                            }
+                    // change to Both Mode
+                    if (type == 1) {
+                        if (applicationService.checkAppUser(userId, request.getSession().getAttribute("appId").toString())) {
+                            applicationService.setChargeByAppId(request.getSession().getAttribute("appId").toString(), 1);
+                            response.getWriter().println("<script>alert('Change to Entrance + In-app Mode Successful. ');window.location.href='/application'</script>");
+                        }else {
+                            response.getWriter().println("<script>alert('Change to Entrance + In-app Mode Failed. You can try it again.');window.location.href='/logout'</script>");
                         }
+                    }
 
-                        // change to In-App Mode
-                        if (type == 2) {
-                            if (applicationService.checkAppUser(userId, request.getSession().getAttribute("appId").toString())) {
-                                applicationService.setChargeByAppId(request.getSession().getAttribute("appId").toString(), 2);
-                                response.getWriter().println("<script>alert('Change to In-app Mode Successful. ');window.location.href='/application'</script>");
-                            }else {
-                                response.getWriter().println("<script>alert('Change to In-app Mode Failed. You can try it again.');window.location.href='/logout'</script>");
-                            }
+                    // change to In-App Mode
+                    if (type == 2) {
+                        if (applicationService.checkAppUser(userId, request.getSession().getAttribute("appId").toString())) {
+                            applicationService.setChargeByAppId(request.getSession().getAttribute("appId").toString(), 2);
+                            response.getWriter().println("<script>alert('Change to In-app Mode Successful. ');window.location.href='/application'</script>");
+                        }else {
+                            response.getWriter().println("<script>alert('Change to In-app Mode Failed. You can try it again.');window.location.href='/logout'</script>");
                         }
                     }
                 }
+            }else {
+                // no access
+                response.sendRedirect(request.getContextPath() + "/console?error=401.1");
             }
+        }else {
+            // no access
+            response.sendRedirect(request.getContextPath() + "/console?error=401.1");
         }
     }
 }

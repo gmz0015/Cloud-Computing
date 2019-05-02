@@ -45,12 +45,12 @@ public class AccountDaoImpl implements IAccountDao {
     }
 
     @Override
-    public Integer queryBalance(Long userId) {
+    public Double queryBalance(Long userId) {
         /* Initial Connection */
         Connection conn = null;
         PreparedStatement st = null;
         ResultSet rs = null;
-        Integer balance = null;
+        Double balance = null;
 
         /* Connect */
         try{
@@ -62,7 +62,7 @@ public class AccountDaoImpl implements IAccountDao {
             rs = st.executeQuery();
             conn.commit();
             while (rs.next()) {
-                balance = rs.getInt("balance");
+                balance = rs.getDouble("balance");
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.AccountDaoImpl.queryBalance]: " + e);
@@ -244,7 +244,7 @@ public class AccountDaoImpl implements IAccountDao {
                         rs.getLong("fromUserId"), rs.getString("fromUserName"),
                         rs.getLong("toUserId"), rs.getString("toUserName"),
                         rs.getString("type"), rs.getLong("appId"),
-                        rs.getInt("number"), rs.getTimestamp("time")));
+                        rs.getDouble("number"), rs.getTimestamp("time")));
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.AccountDaoImpl.queryTransaction]: " + e);
@@ -276,7 +276,7 @@ public class AccountDaoImpl implements IAccountDao {
                         rs.getLong("fromUserId"), rs.getString("fromUserName"),
                         rs.getLong("toUserId"), rs.getString("toUserName"),
                         rs.getString("type"), rs.getLong("appId"),
-                        rs.getInt("number"), rs.getTimestamp("time")));
+                        rs.getDouble("number"), rs.getTimestamp("time")));
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.AccountDaoImpl.queryTransaction]: " + e);

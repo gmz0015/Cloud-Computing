@@ -55,6 +55,13 @@ public interface IApplicationDao {
     Integer queryVisit(String appId);
 
     /**
+     * query the rating of an application by its id
+     * @param appId
+     * @return
+     */
+    Double queryRating(String appId);
+
+    /**
      * query the visits of an application by its context path
      * @param appContext
      * @return
@@ -108,6 +115,8 @@ public interface IApplicationDao {
      */
     void updateVisitByContext(String appContext, Integer newVisits);
 
+    void updateVisitById(String appId, Integer newVisits);
+
     Boolean updateAppNameById(String appId, String name);
 
     Boolean updateAppDescriptionById(String appId, String description);
@@ -115,4 +124,6 @@ public interface IApplicationDao {
     Boolean updateAppIconById(String appId, String icon);
 
     Boolean updateAppUUID(String appId, String appUUID);
+
+    void updateRating(String appId, Double rating);
 }

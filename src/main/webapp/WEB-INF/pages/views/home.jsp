@@ -553,15 +553,15 @@
                                 <%
                                     int unit = (int) appInfo.getRating();
                                     int tenths = (int) (appInfo.getRating() * 10 - unit * 10);
-                                    for (int i=0; i<unit; i++){
+                                    int k = 0;
+                                    for (int j=0; j<unit; j++){
+                                        k++;
                                 %>
                                 <i class="fas fa-star"></i>
-                                <%
-
-                                    }
-                                    if (tenths > 5) {
-                                %>
+                                <% } if (tenths > 5) { k++; %>
                                 <i class="fas fa-star-half-alt"></i>
+                                <% } for (int kk = k; kk < 5 ; kk++ ) {%>
+                                <i class="far fa-star"></i>
                                 <% } %>
                             </td>
                             <td>

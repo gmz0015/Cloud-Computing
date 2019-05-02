@@ -5,9 +5,9 @@ public class Account {
 
     private String username;
 
-    private Integer balance;
+    private Double balance;
 
-    public Account(Long userId, String username, Integer balance) {
+    public Account(Long userId, String username, Double balance) {
         this.userId = userId;
         this.username = username;
         this.balance = balance;
@@ -29,11 +29,11 @@ public class Account {
         this.username = username;
     }
 
-    public Integer getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(Integer balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 }

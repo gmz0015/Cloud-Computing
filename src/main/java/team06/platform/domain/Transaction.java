@@ -16,11 +16,11 @@ public class Transaction {
 
     private Long appId;
 
-    private Integer amount;
+    private Double amount;
 
     private Timestamp time;
 
-    public Transaction(Long fromUserId, String fromUserName, Long toUserId, String toUserName, String type, Long appId, Integer amount, Timestamp time) {
+    public Transaction(Long fromUserId, String fromUserName, Long toUserId, String toUserName, String type, Long appId, Double amount, Timestamp time) {
         this.fromUserId = fromUserId;
         this.fromUserName = fromUserName;
         this.toUserId = toUserId;
@@ -80,11 +80,11 @@ public class Transaction {
         this.appId = appId;
     }
 
-    public Integer getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 

@@ -79,7 +79,8 @@
                                     <a class="w3-hover-text-blue" href="#reference-api">What kind of API we provide</a>
                                     <ul>
                                         <li><a class="w3-hover-text-blue" href="#reference-api-accountBalance">Account Balance</a></li>
-                                        <li><a class="w3-hover-text-blue" href="#reference-api-accountTransfer">Account Transfer</a></li>
+                                        <li><a class="w3-hover-text-blue" href="#reference-api-accountTransfer2">Account Transfer-Mode 2</a></li>
+                                        <li><a class="w3-hover-text-blue" href="#reference-api-accountTransfer3">Account Transfer-Mode 3</a></li>
                                         <li><a class="w3-hover-text-blue" href="#reference-api-userInfo">User Information</a></li>
                                     </ul>
                                 </li>
@@ -400,7 +401,7 @@
                                     <ul>
                                         <li>(1 - stars x 0.1) peanut for bank service</li>
                                         <li>(1 - stars x 0.1) peanut for login service</li>
-                                        <li>(3 - stars x 0.1) peanut for application developer</li>
+                                        <li>(3 + rest) peanut for application developer</li>
                                     </ul>
                                     Tips: stars - the current rating of the application.
                                 </li>
@@ -482,7 +483,7 @@
 
                             <hr size="20" />
                             <p>
-                            <h3 id="reference-api-accountTransfer">API - Account Transfer</h3>
+                            <h3 id="reference-api-accountTransfer2">API - Account Transfer - Mode 2</h3>
                             <ul>
                                 Within this way, you need send an POST request. The specific method is listed below.<br/>
                                 <li><b>Method:</b> <code class="w3-codespan">POST</code></li>
@@ -500,6 +501,37 @@
                                     <li>Item(Failed): <code class="w3-codespan">fail</code></li>
                                     <li>Description: if request is successful, the response will be a string "success". Otherwise, the response will be a string "fail"</li>
                                 </ul>
+                                <li>Example:</li>
+                                <ul>
+                                    <li>Parameter: <code class="w3-codespan">fromUserId=123456&toUserId=123456&appUUID=edasfjk89&devAmount=3&amount=&6</code></li>
+                                </ul>
+                            </ul>
+                            </p>
+
+                            <hr size="20" />
+                            <p>
+                            <h3 id="reference-api-accountTransfer3">API - Account Transfer - Mode 3</h3>
+                            <ul>
+                                Within this way, you need send an POST request. The specific method is listed below.<br/>
+                                <li><b>Method:</b> <code class="w3-codespan">POST</code></li>
+                                <li><b>Parameters:</b></li>
+                                <ul>
+                                    <li><b>URL:</b> <code class="w3-codespan">/api/account/transfer</code></li>
+                                    <li><code class="w3-codespan">fromUserId</code>: The user's id who pay</li>
+                                    <li><code class="w3-codespan">toUserId</code>: The user's id who receive</li>
+                                    <li><code class="w3-codespan">amount</code>: The amount of this transfer</li>
+                                    <li><code class="w3-codespan">appUUID</code>: The appUUID stored in cookie</li>
+                                </ul>
+                                <li><b>Responses:</b></li>
+                                <ul>
+                                    <li>Item(Successful): <code class="w3-codespan">"success"</code></li>
+                                    <li>Item(Failed): <code class="w3-codespan">fail</code></li>
+                                    <li>Description: if request is successful, the response will be a string "success". Otherwise, the response will be a string "fail"</li>
+                                </ul>
+                                <li>Example:</li>
+                                <ul>
+                                    <li>Parameter: <code class="w3-codespan">fromUserId=123456&toUserId=123456&appUUID=edasfjk89&devAmount=3&amount=&6</code></li>
+                                </ul>
                             </ul>
                             </p>
 
@@ -516,7 +548,6 @@
                                 </ul>
                                 <li><b>Responses:</b></li>
                                 <ul>
-                                    <li>Item: <code class="w3-codespan">userId=123456&userName=test&userRole=USER</code></li>
                                     <li>
                                         Description:
                                         <ul>

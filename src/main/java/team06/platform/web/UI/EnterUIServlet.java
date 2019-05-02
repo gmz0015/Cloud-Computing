@@ -56,7 +56,7 @@ public class EnterUIServlet extends HttpServlet {
 
             Boolean result = accountService.isCharge(new Charge(Long.valueOf(userId), Long.valueOf(application.getAppId())));
             if (!result) {
-                accountService.charge(Long.valueOf(userId), Long.valueOf(application.getAppId()), 5);
+                accountService.charge(Long.valueOf(userId), Long.valueOf(application.getAppId()), 5.0);
             }
             countBean.doCount(request.getQueryString());
 

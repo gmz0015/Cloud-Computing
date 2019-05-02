@@ -20,7 +20,7 @@ public class IndexBean {
     private String userName;
     private List<String> appsId;
     private List<Application> appInfo;
-    private Integer balance;
+    private Double balance;
     private String avatar;
     private String userRole;
     private String usage;
@@ -52,18 +52,18 @@ public class IndexBean {
                 this.userName = null;
                 this.userRole = null;
                 this.avatar = null;
-                this.balance = 0;
+                this.balance = 0.0;
             }
         }else {
             this.userId = null;
             this.userName = null;
             this.userRole = null;
             this.avatar = null;
-            this.balance = 0;
+            this.balance = 0.0;
         }
     }
 
-    public Integer getBalance() {
+    public Double getBalance() {
         return balance;
     }
 

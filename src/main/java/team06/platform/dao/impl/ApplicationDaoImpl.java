@@ -267,6 +267,31 @@ public class ApplicationDaoImpl implements IApplicationDao {
     }
 
     @Override
+    public Double queryRating(String appId) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        Double rating = null;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "SELECT rating FROM CloudComputing.applications WHERE appId='" + appId + "';";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            while (rs.next()){
+                rating = rs.getDouble("rating");
+            }
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.queryRating]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return rating;
+    }
+
+    @Override
     public Integer queryVisitByContext(String appContext) {
         /* Initial Connection */
         Connection conn = null;
@@ -475,6 +500,26 @@ public class ApplicationDaoImpl implements IApplicationDao {
     }
 
     @Override
+    public void updateVisitById(String appId, Integer newVisits) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "UPDATE CloudComputing.applications SET visits=" + newVisits + " WHERE appId='" + appId + "';";
+            st = conn.prepareStatement(sql);
+            st.executeUpdate();
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.updateVisitById]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+    }
+
+    @Override
     public Boolean updateAppNameById(String appId, String name) {
         /* Initial Connection */
         Connection conn = null;
@@ -564,5 +609,25 @@ public class ApplicationDaoImpl implements IApplicationDao {
             JdbcUtils.release(conn, st, rs);
         }
         return result;
+    }
+
+    @Override
+    public void updateRating(String appId, Double rating) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "UPDATE CloudComputing.applications SET rating=" + rating + " WHERE appId='" + appId + "';";
+            st = conn.prepareStatement(sql);
+            st.executeUpdate();
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.updateRating]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
     }
 }

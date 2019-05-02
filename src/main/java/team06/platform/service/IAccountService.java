@@ -8,15 +8,35 @@ import java.util.List;
 public interface IAccountService {
     void createAccount(Long userId, String userName);
 
-    Integer getBalance(Long userid);
+    Double getBalance(Long userid);
 
-    Integer withdrawal(Long userid, Integer amount);
+    Double withdrawal(Long userid, Double amount);
 
-    Integer deposit(Long userid, Integer amount);
+    Double deposit(Long userid, Double amount);
 
-    void charge(Long fromUserId, Long appId, Integer amount);
+    void charge(Long fromUserId, Long appId, Double amount);
 
-    Boolean transfer(Long fromUserId, Long toUserId, String type, Long appId, Integer amount);
+    /**
+     * For mode 2. pay for bank
+     * @param fromUserId
+     * @param toUserId
+     * @param type
+     * @param appId
+     * @param amount
+     * @return
+     */
+    Boolean transfer2(Long fromUserId, Long toUserId, String type, Long appId, Double devAmount, Double amount);
+
+    /**
+     * For mode 3. pay for login, bank
+     * @param fromUserId
+     * @param toUserId
+     * @param type
+     * @param appId
+     * @param amount
+     * @return
+     */
+    Boolean transfer3(Long fromUserId, Long toUserId, String type, Long appId, Double devAmount, Double amount);
 
     List<Transaction> getTransaction(Long userId);
 

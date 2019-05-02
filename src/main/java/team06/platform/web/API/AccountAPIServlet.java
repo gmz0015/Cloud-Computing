@@ -27,7 +27,7 @@ public class AccountAPIServlet {
         if (userId == null) {
             return "fail";
         }else {
-            Integer balance = accountService.getBalance(userId);
+            Double balance = accountService.getBalance(userId);
             if (balance == null) {
                 return "fail";
             }else {
@@ -38,9 +38,9 @@ public class AccountAPIServlet {
 
     @POST
     @Produces(MediaType.TEXT_PLAIN)
-    @Path("transfer")
-    public String transfer(@FormParam("fromUserId") Long fromUserId, @FormParam("toUserId") Long toUserId, @FormParam("appUUID") String appUUID, @FormParam("amount") Integer amount){
-        if (fromUserId == null || toUserId == null || appUUID == null || amount == null) {
+    @Path("transfer2")
+    public String transfe2(@FormParam("fromUserId") Long fromUserId, @FormParam("toUserId") Long toUserId, @FormParam("appUUID") String appUUID, @FormParam("devAmount") Double devAmount, @FormParam("amount") Double amount){
+        if (fromUserId == null || toUserId == null || appUUID == null || devAmount == null || amount == null) {
             return "fail";
         }else {
             Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
@@ -48,16 +48,50 @@ public class AccountAPIServlet {
             header.put("typ", "JWT");
             header.put("alg", "HS256");
             JWTVerifier verifier = JWT.require(algorithm).build();
-            DecodedJWT jwt = verifier.verify(appUUID);
-            String appId = jwt.getClaim("appId").asString();
-            if (appId == null) {
-                return "fail";
-            }else {
-                if (accountService.transfer(fromUserId, toUserId, "Application Consumption", Long.valueOf(appId), amount)) {
-                    return "success";
-                }else {
+            try {
+                DecodedJWT jwt = verifier.verify(appUUID);
+                String appId = jwt.getClaim("appId").asString();
+                if (appId == null) {
                     return "fail";
+                }else {
+                    if (accountService.transfer2(fromUserId, toUserId, "In-App - Mode 2", Long.valueOf(appId), devAmount, amount)) {
+                        return "success";
+                    }else {
+                        return "fail";
+                    }
                 }
+            }catch (Exception e) {
+                return "fail";
+            }
+        }
+    }
+
+    @POST
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("transfer3")
+    public String transfer3(@FormParam("fromUserId") Long fromUserId, @FormParam("toUserId") Long toUserId, @FormParam("appUUID") String appUUID, @FormParam("devAmount") Double devAmount, @FormParam("amount") Double amount){
+        if (fromUserId == null || toUserId == null || appUUID == null || devAmount == null || amount == null) {
+            return "fail";
+        }else {
+            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+            Map<String, Object> header = new HashMap<>(2);
+            header.put("typ", "JWT");
+            header.put("alg", "HS256");
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            try {
+                DecodedJWT jwt = verifier.verify(appUUID);
+                String appId = jwt.getClaim("appId").asString();
+                if (appId == null) {
+                    return "fail";
+                }else {
+                    if (accountService.transfer3(fromUserId, toUserId, "In-App - Mode 3", Long.valueOf(appId), devAmount, amount)) {
+                        return "success";
+                    }else {
+                        return "fail";
+                    }
+                }
+            }catch (Exception e) {
+                return "fail";
             }
         }
     }

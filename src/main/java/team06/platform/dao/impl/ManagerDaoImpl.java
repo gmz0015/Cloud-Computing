@@ -67,8 +67,6 @@ public class ManagerDaoImpl implements IManagerDao {
                     appUUID + "', " +
                     0 +
                     ");";
-            System.out.println("insert sql" + sql);
-            System.out.println("sql is: " + sql);
             st = conn.prepareStatement(sql);
             st.execute();
             conn.commit();

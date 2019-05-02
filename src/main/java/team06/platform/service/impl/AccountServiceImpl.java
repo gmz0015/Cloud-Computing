@@ -27,23 +27,23 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
-    public Integer getBalance(Long userId) {
+    public Double getBalance(Long userId) {
         return  accountDao.queryBalance(userId);
     }
 
     @Override
-    public Integer withdrawal(Long userId, Integer amount) {
-        Integer currentBalance = accountDao.queryBalance(userId);
-        Integer newBalance = currentBalance - amount;
+    public Double withdrawal(Long userId, Double amount) {
+        Double currentBalance = accountDao.queryBalance(userId);
+        Double newBalance = currentBalance - amount;
         accountDao.updateBalance(new Account(userId, "", newBalance));
         return newBalance;
     }
 
     @Override
-    public Integer deposit(Long userId, Integer amount) {
-        Integer currentBalance = accountDao.queryBalance(userId);
+    public Double deposit(Long userId, Double amount) {
+        Double currentBalance = accountDao.queryBalance(userId);
         if (currentBalance != null) {
-            Integer newBalance = currentBalance + amount;
+            Double newBalance = currentBalance + amount;
             accountDao.updateBalance(new Account(userId, "", newBalance));
             return newBalance;
         }
@@ -51,50 +51,69 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
-    public void charge(Long fromUserId, Long appId, Integer amount) {
-        accountDao.insertCharge(new Charge(fromUserId, appId));
-        Application application = applicationDao.queryAppByAppId(appId.toString());
-        String ownerId = application.getOwnerId();
-        String ownerName = application.getOwnerName();
-        Date date = new Date();
-        this.withdrawal(fromUserId, amount);
-        this.deposit(Long.valueOf(ownerId), (amount - 2));
-        this.deposit(Long.valueOf("1556610304306556"), 1);
-        this.deposit(Long.valueOf("1556714056396556"), 1);
-        accountDao.insertTransaction(new Transaction(
-                fromUserId,
-                userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
-                Long.valueOf(ownerId),
-                ownerName,
-                "Royalties - DEV",
-                appId,
-                (amount - 2),
-                new Timestamp(date.getTime())));
-        accountDao.insertTransaction(new Transaction(
-                fromUserId,
-                userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
-                Long.valueOf("1556714056396556"),
-                "ChenyiLei",
-                "Royalties - SignIn",
-                appId,
-                1,
-                new Timestamp(date.getTime())));
-        accountDao.insertTransaction(new Transaction(
-                fromUserId,
-                userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
-                Long.valueOf("1556610304306556"),
-                "MingzeGao",
-                "Royalties - Bank",
-                appId,
-                1,
-                new Timestamp(date.getTime())));
+    public void charge(Long fromUserId, Long appId, Double amount) {
+        Integer chargeMode = applicationDao.queryChargeByAppId(appId.toString());
+        Double rating = applicationDao.queryRating(appId.toString());
+        if (chargeMode != 2) {
+            Double forBank = 1.0 - rating*0.1;
+            Double forLogin = 1.0 - rating*0.1;
+            Double forDev = 3.0 + (1.0-forBank) + (1.0-forLogin);
+            accountDao.insertCharge(new Charge(fromUserId, appId));
+            Application application = applicationDao.queryAppByAppId(appId.toString());
+            String ownerId = application.getOwnerId();
+            String ownerName = application.getOwnerName();
+            Date date = new Date();
+            this.withdrawal(fromUserId, amount);
+            this.deposit(Long.valueOf(ownerId), forDev);
+            this.deposit(Long.valueOf("1556610304306556"), forBank);
+            this.deposit(Long.valueOf("1556714056396556"), forLogin);
+            accountDao.insertTransaction(new Transaction(
+                    fromUserId,
+                    userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
+                    Long.valueOf(ownerId),
+                    ownerName,
+                    "Royalties - Dev",
+                    appId,
+                    forDev,
+                    new Timestamp(date.getTime())));
+            accountDao.insertTransaction(new Transaction(
+                    fromUserId,
+                    userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
+                    Long.valueOf("1556714056396556"),
+                    "ChenyiLei",
+                    "Royalties - SignIn",
+                    appId,
+                    forLogin,
+                    new Timestamp(date.getTime())));
+            accountDao.insertTransaction(new Transaction(
+                    fromUserId,
+                    userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
+                    Long.valueOf("1556610304306556"),
+                    "MingzeGao",
+                    "Royalties - Bank",
+                    appId,
+                    forBank,
+                    new Timestamp(date.getTime())));
+        }
     }
 
     @Override
-    public Boolean transfer(Long fromUserId, Long toUserId, String type, Long appId, Integer amount) {
+    public Boolean transfer2(Long fromUserId, Long toUserId, String type, Long appId, Double devAmount, Double amount) {
+        Double rating = applicationDao.queryRating(appId.toString());
+        Double forBank = 1.0 - rating*0.1;
+        Application application = applicationDao.queryAppByAppId(appId.toString());
+
         Date date = new Date();
+        Double left = amount - forBank - devAmount;
+        if (left < 0) {
+            return false;
+        }else {
+            this.deposit(toUserId, left);
+        }
         this.withdrawal(fromUserId, amount);
-        this.deposit(toUserId, amount);
+        this.deposit(Long.valueOf("1556610304306556"), forBank);
+        this.deposit(Long.valueOf(application.getOwnerId()), devAmount);
+
         accountDao.insertTransaction(new Transaction(
                 fromUserId,
                 userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
@@ -102,7 +121,83 @@ public class AccountServiceImpl implements IAccountService {
                 userDao.queryUserInfoById(toUserId.toString()).getUserName(),
                 type,
                 appId,
-                amount,
+                left,
+                new Timestamp(date.getTime())));
+        accountDao.insertTransaction(new Transaction(
+                fromUserId,
+                userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
+                Long.valueOf("1556610304306556"),
+                userDao.queryUserInfoById("1556610304306556").getUserName(),
+                "In-App - Mode 2 - Bank",
+                appId,
+                forBank,
+                new Timestamp(date.getTime())));
+        accountDao.insertTransaction(new Transaction(
+                fromUserId,
+                userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
+                Long.valueOf(application.getOwnerId()),
+                userDao.queryUserInfoById(application.getOwnerId()).getUserName(),
+                "In-App - Mode 2 - Dev",
+                appId,
+                devAmount,
+                new Timestamp(date.getTime())));
+        return true;
+    }
+
+    @Override
+    public Boolean transfer3(Long fromUserId, Long toUserId, String type, Long appId, Double devAmount, Double amount) {
+        Double rating = applicationDao.queryRating(appId.toString());
+        Double forBank = 1.0 - rating*0.1;
+        Double forLogin = 1.0 - rating*0.1;
+        Application application = applicationDao.queryAppByAppId(appId.toString());
+
+        Date date = new Date();
+        Double left = amount - forBank - forLogin - devAmount;
+        if (left < 0) {
+            return false;
+        }else {
+            this.deposit(toUserId, left);
+        }
+        this.withdrawal(fromUserId, amount);
+        this.deposit(Long.valueOf("1556610304306556"), forBank);
+        this.deposit(Long.valueOf("1556714056396556"), forLogin);
+        this.deposit(Long.valueOf(application.getOwnerId()), devAmount);
+
+        accountDao.insertTransaction(new Transaction(
+                fromUserId,
+                userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
+                toUserId,
+                userDao.queryUserInfoById(toUserId.toString()).getUserName(),
+                type,
+                appId,
+                left,
+                new Timestamp(date.getTime())));
+        accountDao.insertTransaction(new Transaction(
+                fromUserId,
+                userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
+                Long.valueOf("1556610304306556"),
+                userDao.queryUserInfoById("1556610304306556").getUserName(),
+                "In-App - Mode 3 - Bank",
+                appId,
+                forBank,
+                new Timestamp(date.getTime())));
+        accountDao.insertTransaction(new Transaction(
+                fromUserId,
+                userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
+                Long.valueOf("1556714056396556"),
+                userDao.queryUserInfoById("1556714056396556").getUserName(),
+                "In-App - Mode 3 - SignIn",
+                appId,
+                forLogin,
+                new Timestamp(date.getTime())));
+        accountDao.insertTransaction(new Transaction(
+                fromUserId,
+                userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
+                Long.valueOf(application.getOwnerId()),
+                userDao.queryUserInfoById(application.getOwnerId()).getUserName(),
+                "In-App - Mode 3 - Dev",
+                appId,
+                devAmount,
                 new Timestamp(date.getTime())));
         return true;
     }

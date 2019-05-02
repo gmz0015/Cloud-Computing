@@ -28,6 +28,17 @@
 
     <!-- Change Operation -->
     <servlet>
+        <servlet-name>Rating</servlet-name>
+        <servlet-class>team06.platform.web.controller.RatingServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Rating</servlet-name>
+        <url-pattern>/rating</url-pattern>
+    </servlet-mapping>
+
+    <!-- Change Operation -->
+    <servlet>
         <servlet-name>Change</servlet-name>
         <servlet-class>team06.platform.web.controller.ChangeServlet</servlet-class>
     </servlet>

@@ -119,6 +119,20 @@ public class ApplicationServiceImpl implements IApplicationService {
     }
 
     @Override
+    public void setRatingByAppId(String appId, Integer rating) {
+        Double currentRating = appDao.queryRating(appId);
+        Integer currentVisit = appDao.queryVisit(appId);
+        Double newRating;
+        if (currentVisit == 0) {
+            newRating = rating.doubleValue();
+        }else {
+            newRating = ((currentRating * currentVisit) + rating) / (currentVisit + 1);
+        }
+        appDao.updateVisitById(appId, (currentVisit + 1));
+        appDao.updateRating(appId, newRating);
+    }
+
+    @Override
     public String getAppUUID(String appId) {
         return appDao.queryAppUUID(appId);
     }

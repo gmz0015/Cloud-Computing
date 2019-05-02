@@ -92,7 +92,7 @@
                                 List<Transaction> transactions = accountBean.getTransaction();
                                 for (Transaction transaction: transactions) {
                             %>
-                            <% if (transaction.getType().equals("Royalties - DEV")) { %>
+                            <% if (transaction.getType().equals("Royalties - Dev")) { %>
                             <tr class="w3-pale-green" style="text-align: center">
                                 <td><%= i++ %></td>
                                 <td><%= transaction.getFromUserName() %></td>
@@ -125,7 +125,18 @@
                                 <td><%= transaction.getTime() %></td>
                             </tr>
                             <% } %>
-                            <% if (transaction.getType().equals("Application Consumption")) { %>
+                            <% if (transaction.getType().equals("In-App - Mode 2")) { %>
+                            <tr class="w3-pale-yellow" style="text-align: center">
+                                <td><%= i++ %></td>
+                                <td><%= transaction.getFromUserName() %></td>
+                                <td><%= transaction.getToUserName() %></td>
+                                <td><%= transaction.getType() %></td>
+                                <td><%= transaction.getAppId() %></td>
+                                <td><%= transaction.getAmount() %></td>
+                                <td><%= transaction.getTime() %></td>
+                            </tr>
+                            <% } %>
+                            <% if (transaction.getType().equals("In-App - Mode 3")) { %>
                             <tr class="w3-pale-yellow" style="text-align: center">
                                 <td><%= i++ %></td>
                                 <td><%= transaction.getFromUserName() %></td>

@@ -47,6 +47,8 @@ public interface IApplicationService {
 
     void setChargeByAppId(String appId, Integer chargeMode);
 
+    void setRatingByAppId(String appId, Integer rating);
+
     String getAppUUID(String appId);
 
     Boolean changeName(String appId, String appName);

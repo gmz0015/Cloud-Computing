@@ -34,6 +34,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 <style>
     body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 </style>
@@ -74,14 +75,6 @@
         <% } %>
         <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>About</a>
         <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Contact</a>
-    </div>
-    <div class="w3-panel w3-large">
-        <i class="fa fa-facebook-official w3-hover-opacity"></i>
-        <i class="fa fa-instagram w3-hover-opacity"></i>
-        <i class="fa fa-snapchat w3-hover-opacity"></i>
-        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-        <i class="fa fa-twitter w3-hover-opacity"></i>
-        <i class="fa fa-linkedin w3-hover-opacity"></i>
     </div>
 </nav>
 
@@ -140,6 +133,20 @@
             <div class="w3-container w3-white">
                 <p><b><a href="/enter/?<%=appInfo.getContextPath()%>"><%= appInfo.getName() %></a> - <%= appInfo.getOwnerName() %></b></p>
                 <p><%= appInfo.getDescription() %></p>
+                <p>
+                    <%
+                        int unit = (int) appInfo.getRating();
+                        int tenths = (int) (appInfo.getRating() * 10 - unit * 10);
+                        int k = 0;
+                        for (int j=0; j<unit; j++){
+                    %>
+                    <i class="fas fa-star rating-star" style="cursor: pointer;" onclick="window.location.href='/rating?level=<%=k+1%>&appId=<%=appInfo.getAppId()%>'"></i>
+                    <% k++; } if (tenths > 5) { %>
+                    <i class="fas fa-star-half-alt rating-star" style="cursor: pointer;" onclick="window.location.href='/rating?level=<%=k+1%>&appId=<%=appInfo.getAppId()%>'"></i>
+                    <% k++; } for (int kk = k; kk < 5 ; kk++ ) {%>
+                        <i class="far fa-star rating-star" style="cursor: pointer;" onclick="window.location.href='/rating?level=<%=k+1%>&appId=<%=appInfo.getAppId()%>'"></i>
+                    <% k++; } %>
+                </p>
             </div>
         </div>
         <% if ((i % 3) == 2) { %>
@@ -354,6 +361,7 @@
         -webkit-transform: rotate(90deg); /* Safari and Chrome */
         -o-transform: rotate(90deg); /* Opera */
     }
+    .rating-star:hover{color: red;}
 </style>
 
 <script>

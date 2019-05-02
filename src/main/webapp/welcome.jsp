@@ -281,7 +281,7 @@
                 </div>
             </div>
             <div class="w3-display-container w3-col m3">
-                <img class="" src="<%=request.getContextPath()%>/image/MingzeGao.jpg" alt="Mingze Gao" style="width:100%">
+                <img class="" src="${pageContext.servletContext.contextPath}/image/MingzeGao.jpg" alt="Mingze Gao" style="width:100%">
                 <div class="w3-display-bottommiddle nameBoard" style="width:95%;margin-bottom: 10px;padding-left: 20px;padding-right: 20px">
                     <h3 style="color: black;text-align: center">Mingze Gao</h3>
                 </div>

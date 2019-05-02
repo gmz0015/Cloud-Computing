@@ -30,8 +30,7 @@ public class IndexBean {
 
     public IndexBean() {
         IApplicationService appService = new ApplicationServiceImpl();
-//        appInfo = appService.getAllApps();
-        appInfo = new ArrayList<>();
+        appInfo = appService.getAllApps();
     }
 
     public void getInfo(HttpServletRequest request) {

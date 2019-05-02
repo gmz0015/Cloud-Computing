@@ -42,9 +42,12 @@ public class AccountServiceImpl implements IAccountService {
     @Override
     public Integer deposit(Long userId, Integer amount) {
         Integer currentBalance = accountDao.queryBalance(userId);
-        Integer newBalance = currentBalance + amount;
-        accountDao.updateBalance(new Account(userId, "", newBalance));
-        return newBalance;
+        if (currentBalance != null) {
+            Integer newBalance = currentBalance + amount;
+            accountDao.updateBalance(new Account(userId, "", newBalance));
+            return newBalance;
+        }
+        return null;
     }
 
     @Override

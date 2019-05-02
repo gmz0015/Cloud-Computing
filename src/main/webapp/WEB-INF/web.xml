@@ -37,6 +37,18 @@
         <url-pattern>/change</url-pattern>
     </servlet-mapping>
 
+    <!-- Charge Operation -->
+    <servlet>
+        <servlet-name>Charge</servlet-name>
+        <servlet-class>team06.platform.web.controller.ChargeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Charge</servlet-name>
+        <url-pattern>/charge</url-pattern>
+    </servlet-mapping>
+
+
     <!-- API -->
     <servlet>
         <servlet-name>JAX-RS Servlet</servlet-name>

@@ -7,6 +7,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import team06.platform.domain.Transaction;
 import team06.platform.service.IAccountService;
 import team06.platform.service.impl.AccountServiceImpl;
+import team06.platform.web.API.AccountAPIServlet;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ public class AccountBean  {
     private IAccountService accountService = new AccountServiceImpl();
     private String userId;
     private static final String TOKEN_SECRET = "fd8780zdufb7f5bnz456fd";
+
 
     public void getInfo(HttpServletRequest request) {
         String token = null;

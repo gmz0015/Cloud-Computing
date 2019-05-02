@@ -126,6 +126,17 @@
         <%-- Application --%>
         <div class="w3-third w3-container w3-margin-bottom">
             <img src="/image/icon/<%= appInfo.getIconPath() %>" alt="<%= appInfo.getName() %>" style="width:100%;max-height: 250px" class="w3-hover-opacity">
+            <div class="w3-container w3-white" style="padding-top:20px">
+                <% if (appInfo.getChargeMode() == 0) { %>
+                <%@ include file="/WEB-INF/pages/component/chargeMode/entrance.jsp"%>
+                <% } %>
+                <% if (appInfo.getChargeMode() == 1) { %>
+                <%@ include file="/WEB-INF/pages/component/chargeMode/both.jsp"%>
+                <% } %>
+                <% if (appInfo.getChargeMode() == 2) { %>
+                <%@ include file="/WEB-INF/pages/component/chargeMode/inApp.jsp"%>
+                <% } %>
+            </div>
             <div class="w3-container w3-white">
                 <p><b><a href="/enter/?<%=appInfo.getContextPath()%>"><%= appInfo.getName() %></a> - <%= appInfo.getOwnerName() %></b></p>
                 <p><%= appInfo.getDescription() %></p>

@@ -64,8 +64,9 @@ public class ManagerDaoImpl implements IManagerDao {
                     application.getWarPath() + "', '" +
                     application.getContextPath() + "', '" +
                     application.getIconPath() + "', '" +
-                    appUUID +
-                    "');";
+                    appUUID + "', " +
+                    0 +
+                    ");";
             System.out.println("insert sql" + sql);
             System.out.println("sql is: " + sql);
             st = conn.prepareStatement(sql);

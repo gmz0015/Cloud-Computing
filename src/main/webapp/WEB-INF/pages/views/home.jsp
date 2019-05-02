@@ -518,6 +518,7 @@
                         <tr class="" style="width:10%">
                             <th>Application Name</th>
                             <th>Owner</th>
+                            <th>Charge Mode</th>
                             <th>Visits</th>
                             <th>Rating</th>
                             <th>Status</th>
@@ -536,6 +537,17 @@
                                 <% } %>
                             </td>
                             <td><%= appInfo.getOwnerName() %></td>
+                            <td>
+                                <% if (appInfo.getChargeMode() == 0) { %>
+                                <%@ include file="/WEB-INF/pages/component/chargeMode/entrance.jsp"%>
+                                <% } %>
+                                <% if (appInfo.getChargeMode() == 1) { %>
+                                <%@ include file="/WEB-INF/pages/component/chargeMode/both.jsp"%>
+                                <% } %>
+                                <% if (appInfo.getChargeMode() == 2) { %>
+                                <%@ include file="/WEB-INF/pages/component/chargeMode/inApp.jsp"%>
+                                <% } %>
+                            </td>
                             <td><%= appInfo.getVisits() %></td>
                             <td>
                                 <%

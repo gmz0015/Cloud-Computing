@@ -24,6 +24,7 @@
     appCreateBean.getInfo(request);
     appBean.setUserId(appCreateBean.getUserId());
     Application appInfo = appCreateBean.doQuery(request, response);
+    appBean.applicationDetailInitial();
 %>
 
 <%-- Message --%>
@@ -103,6 +104,60 @@
 
         <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
             <button onclick="document.getElementById('changeDescription').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+        </div>
+
+    </div>
+</div>
+
+<%-- Change Entrance Mode --%>
+<div id="changeMode1" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+        <form class="w3-container" action="/charge?type=0" method="post">
+            <div class="w3-section">
+                <label>Please Confirm to change <b>Charge Mode</b> to <%@ include file="/WEB-INF/pages/component/chargeMode/entrance.jsp"%> Mode</label>
+                <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Confirm</button>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('changeMode1').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+        </div>
+
+    </div>
+</div>
+
+<%-- Change Both Mode --%>
+<div id="changeMode2" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:800px">
+
+        <form class="w3-container" action="/charge?type=1" method="post">
+            <div class="w3-section">
+                <label>Please Confirm to change <b>Charge Mode</b> to <%@ include file="/WEB-INF/pages/component/chargeMode/both.jsp"%> Mode</label>
+                <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Confirm</button>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('changeMode2').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+        </div>
+
+    </div>
+</div>
+
+<%-- Change In-app Mode --%>
+<div id="changeMode3" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+        <form class="w3-container" action="/charge?type=2" method="post">
+            <div class="w3-section">
+                <label>Please Confirm to change <b>Charge Mode</b> to <%@ include file="/WEB-INF/pages/component/chargeMode/inApp.jsp"%> Mode</label>
+                <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Confirm</button>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('changeMode3').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
         </div>
 
     </div>
@@ -279,23 +334,38 @@
                         </header>
 
                         <div class="w3-row-padding" style="padding:5px;">
+                            <% if (appBean.getChargeMode() == 0) { %>
                             <div class="w3-display-container w3-border w3-border-blue w3-white"
-                                 style="background-color: #F5F5F6;height:55px;cursor: pointer;"
-                                 onclick="document.getElementById('changeIcon').style.display='block'">
+                                 style="background-color: #F5F5F6;height:55px;">
+                                <% }else { %>
+                                <div class="w3-display-container w3-border w3-border-white w3-hover-white w3-hover-border-red"
+                                     style="background-color: #F5F5F6;height:55px;cursor: pointer;"
+                                     onclick="document.getElementById('changeMode1').style.display='block'">
+                                <% } %>
                                 <span class="w3-display-middle" style="color: #666;"><%@ include file="/WEB-INF/pages/component/chargeMode/entrance.jsp"%></span>
                             </div>
                         </div>
                         <div class="w3-row-padding" style="padding:5px;">
-                            <div class="w3-display-container w3-border w3-border-white w3-hover-white w3-hover-border-red"
-                                 style="background-color: #F5F5F6;height:55px;cursor: pointer;"
-                                 onclick="document.getElementById('changeIcon').style.display='block'">
-                                <span class="w3-display-middle" style="color: #666;width: 225px"><%@ include file="/WEB-INF/pages/component/chargeMode/both.jsp"%></span>
+                            <% if (appBean.getChargeMode() == 1) { %>
+                            <div class="w3-display-container w3-border w3-border-blue w3-white"
+                                 style="background-color: #F5F5F6;height:55px;">
+                                <% }else { %>
+                                <div class="w3-display-container w3-border w3-border-white w3-hover-white w3-hover-border-red"
+                                     style="background-color: #F5F5F6;height:55px;cursor: pointer;"
+                                     onclick="document.getElementById('changeMode2').style.display='block'">
+                                    <% } %>
+                                <span class="w3-display-middle" style="color: #666;width: 246px"><%@ include file="/WEB-INF/pages/component/chargeMode/both.jsp"%></span>
                             </div>
                         </div>
                         <div class="w3-row-padding" style="padding:5px;">
-                            <div class="w3-display-container w3-border w3-border-white w3-hover-white w3-hover-border-red"
-                                 style="background-color: #F5F5F6;height:55px;cursor: pointer;"
-                                 onclick="document.getElementById('changeIcon').style.display='block'">
+                            <% if (appBean.getChargeMode() == 2) { %>
+                            <div class="w3-display-container w3-border w3-border-blue w3-white"
+                                 style="background-color: #F5F5F6;height:55px;">
+                                <% }else { %>
+                                <div class="w3-display-container w3-border w3-border-white w3-hover-white w3-hover-border-red"
+                                     style="background-color: #F5F5F6;height:55px;cursor: pointer;"
+                                     onclick="document.getElementById('changeMode3').style.display='block'">
+                                    <% } %>
                                 <span class="w3-display-middle" style="color: #666;"><%@ include file="/WEB-INF/pages/component/chargeMode/inApp.jsp"%></span>
                             </div>
                         </div>

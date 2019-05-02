@@ -26,6 +26,7 @@ public class ApplicationBean{
     private List<Application> appInfo;
     private String appUUID;
     private Integer total = 0;
+    private Integer chargeMode = 0;
     private Integer running = 0;
     private Integer stop = 0;
     private Integer undeploy = 0;
@@ -45,6 +46,14 @@ public class ApplicationBean{
         appInfo = applicationService.getAppByUserId(userId);
 //        appUUID = applicationService.getAppUUID(this.appInfo);
         count();
+    }
+
+    public void applicationDetailInitial() {
+        this.chargeMode = applicationService.getChargeByAppId(this.appId);
+    }
+
+    public void applicationInitial() {
+        this.chargeMode = applicationService.getChargeByAppId(this.appId);
     }
 
     public void getInfo(HttpServletRequest request) {
@@ -94,6 +103,10 @@ public class ApplicationBean{
     }
 
     /* Setter and Getter */
+
+    public Integer getChargeMode() {
+        return chargeMode;
+    }
 
     public String getUserId() {
         return userId;

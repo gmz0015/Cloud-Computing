@@ -17,6 +17,7 @@
 
 <%-- Java Bean --%>
 <jsp:useBean id="appBean" scope="page" class="team06.platform.web.bean.ApplicationBean" />
+<jsp:setProperty name="appBean" property="appId" value='<%= session.getAttribute("appId") %>'/>
 
 <jsp:useBean id="databaseBean" scope="page" class="team06.platform.web.bean.DatabaseBean" />
 <jsp:setProperty name="databaseBean" property="appId" value='<%= session.getAttribute("appId") %>'/>
@@ -25,6 +26,7 @@
     appBean.setUserId(databaseBean.getUserId());
     appBean.doQuery(request, response);
     Database databaseInfo = databaseBean.queryDBbyId(request, response);
+    appBean.applicationInitial();
 %>
 
 <%-- Authentication --%>
@@ -268,22 +270,41 @@
                     <div class="w3-card" style="background-color:white">
 
                         <header class="w3-container w3-padding" style="text-align: left;background-color: #f9f9f9">
-                            <span style="font-size: 15px;vertical-align: middle">
-                                <% if (appInfo.getStatus() == 2) { %>
-                                <a href="/enter/?<%=appInfo.getContextPath()%>"><%= appInfo.getName() %></a>
-                                <% } else { %>
-                                <%= appInfo.getName() %>
-                                <% } %>
-                            </span>
-                            <form class="w3-right" action="${pageContext.request.contextPath}/application/detail" method="POST">
-                                <input type="hidden" name="appId" value=<%= appInfo.getAppId() %>>
-                                <input class="w3-button w3-round-large w3-border w3-hover-white w3-hover-border-cyan" type="submit" name="Detail" value="View Detail" >
-                            </form>
+                            <div class="w3-display-container" style="height: 50px">
+                                <div class="w3-display-topleft">
+                                    <span style="font-size: 15px;vertical-align: middle">
+                                        <% if (appInfo.getStatus() == 2) { %>
+                                        <a href="/enter/?<%=appInfo.getContextPath()%>"><%= appInfo.getName() %></a>
+                                        <% } else { %>
+                                        <%= appInfo.getName() %>
+                                        <% } %>
+                                    </span>
+                                </div>
+
+                                <div class="w3-display-bottomleft">
+                                    <% if (appInfo.getChargeMode() == 0) { %>
+                                    <%@ include file="/WEB-INF/pages/component/chargeMode/entrance.jsp"%>
+                                    <% } %>
+                                    <% if (appInfo.getChargeMode() == 1) { %>
+                                    <%@ include file="/WEB-INF/pages/component/chargeMode/both.jsp"%>
+                                    <% } %>
+                                    <% if (appInfo.getChargeMode() == 2) { %>
+                                    <%@ include file="/WEB-INF/pages/component/chargeMode/inApp.jsp"%>
+                                    <% } %>
+                                </div>
+
+                                <form class="" action="${pageContext.request.contextPath}/application/detail" method="POST">
+                                    <input type="hidden" name="appId" value=<%= appInfo.getAppId() %>>
+                                    <input class="w3-display-right w3-button w3-round-large w3-border w3-hover-white w3-hover-border-cyan" type="submit" name="Detail" value="View Detail" >
+                                </form>
+                            </div>
+
+
                         </header>
 
                         <table class="w3-table w3-centered" style="table-layout:fixed">
                             <tr>
-                                <th rowspan="2" style="text-align: center;vertical-align: middle;border-right:2px dashed #dddddd">
+                                <th rowspan="3" style="text-align: center;vertical-align: middle;border-right:2px dashed #dddddd">
                                     <% if (appInfo.getStatus() == 0) { %>
                                     <%@ include file="/WEB-INF/pages/component/status/undeploy.jsp"%>
                                     <% } else if (appInfo.getStatus() == 1) { %>
@@ -292,10 +313,15 @@
                                     <%@ include file="/WEB-INF/pages/component/status/running.jsp"%>
                                     <% } %>
                                 </th>
-                                <td>Visits <%= appInfo.getVisits() %></td>
+                                <td>Visits - <%= appInfo.getVisits() %></td>
                             </tr>
                             <tr>
-                                <td>Rating <%= appInfo.getRating() %></td>
+                                <td>Rating - <%= appInfo.getRating() %></td>
+                            </tr>
+                            <tr>
+                                <td>
+
+                                </td>
                             </tr>
                         </table>
                     </div>

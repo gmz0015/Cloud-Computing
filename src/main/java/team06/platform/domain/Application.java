@@ -13,6 +13,7 @@ public class Application {
     private String warPath;
     private String contextPath;
     private String iconPath;
+    private Integer chargeMode;
 
     public Application(String appId, String name, String description, String ownerId, String ownerName, int visits, double rating, int status, String dbId, String warPath, String contextPath, String iconPath) {
         this.appId = appId;
@@ -31,6 +32,14 @@ public class Application {
 
 
     /* Getter and Setter */
+
+    public Integer getChargeMode() {
+        return chargeMode;
+    }
+
+    public void setChargeMode(Integer chargeMode) {
+        this.chargeMode = chargeMode;
+    }
 
     public String getAppId() {
         return appId;

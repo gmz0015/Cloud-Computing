@@ -29,15 +29,19 @@ public class ApplicationDaoImpl implements IApplicationDao {
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             while (rs.next()){
-                appsInfo.add(new Application(
+                Application newApplication = new Application(
                         rs.getString("appId"), rs.getString("appName"), rs.getString("description"), rs.getString("ownerId"),
                         rs.getString("ownerName"), rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
-                        rs.getString("dbId"), rs.getString("warPath"), rs.getString("contextPath"), rs.getString("iconPath")));
+                        rs.getString("dbId"), rs.getString("warPath"), rs.getString("contextPath"), rs.getString("iconPath"));
+                newApplication.setChargeMode(rs.getInt("chargeMode"));
+                appsInfo.add(newApplication);
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.queryAllApps]: " + e);
-            appsInfo.add(new Application("", "", "", "", "",
-                    0, 0, 0, "", "", "", ""));
+            Application newApplication = new Application("", "", "", "", "",
+                    0, 0, 0, "", "", "", "");
+            newApplication.setChargeMode(0);
+            appsInfo.add(newApplication);
         }finally{
             JdbcUtils.release(conn, st, rs);
         }
@@ -60,15 +64,19 @@ public class ApplicationDaoImpl implements IApplicationDao {
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             while (rs.next()){
-                appsInfo.add(new Application(
+                Application newApplication = new Application(
                         rs.getString("appId"), rs.getString("appName"), rs.getString("description"), rs.getString("ownerId"),
                         rs.getString("ownerName"), rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
-                        rs.getString("dbId"), rs.getString("warPath"), rs.getString("contextPath"), rs.getString("iconPath")));
+                        rs.getString("dbId"), rs.getString("warPath"), rs.getString("contextPath"), rs.getString("iconPath"));
+                newApplication.setChargeMode(rs.getInt("chargeMode"));
+                appsInfo.add(newApplication);
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.queryAllApps]: " + e);
-            appsInfo.add(new Application("", "", "", "", "",
-                    0, 0, 0, "", "", "", ""));
+            Application newApplication = new Application("", "", "", "", "",
+                    0, 0, 0, "", "", "", "");
+            newApplication.setChargeMode(0);
+            appsInfo.add(newApplication);
         }finally{
             JdbcUtils.release(conn, st, rs);
         }
@@ -107,6 +115,35 @@ public class ApplicationDaoImpl implements IApplicationDao {
             JdbcUtils.release(conn, st, rs);
         }
         return appInfo;
+    }
+
+    @Override
+    public Integer queryChargeByAppId(String appId) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        Integer chargeMode = 0;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            conn.setAutoCommit(false); // start transaction
+            String sql = "SELECT chargeMode FROM CloudComputing.applications WHERE appId='" + appId + "';";
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            conn.commit();
+            while (rs.next()){
+                chargeMode = rs.getInt("chargeMode");
+            }
+
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.queryChargeByAppId]: " + e);
+            chargeMode = 0;
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        return chargeMode;
     }
 
     @Override
@@ -158,15 +195,19 @@ public class ApplicationDaoImpl implements IApplicationDao {
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             while (rs.next()){
-                appInfo.add(new Application(
+                Application newApplication = new Application(
                         rs.getString("appId"), rs.getString("appName"), rs.getString("description"), userId,
                         "", rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
-                        rs.getString("dbId"), rs.getString("warPath"), rs.getString("contextPath"), rs.getString("iconPath")));
+                        rs.getString("dbId"), rs.getString("warPath"), rs.getString("contextPath"), rs.getString("iconPath"));
+                newApplication.setChargeMode(rs.getInt("chargeMode"));
+                appInfo.add(newApplication);
             }
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.implApplicationDaoImpl.queryAppByUserId]: " + e);
-            appInfo.add(new Application("", "", "", "", "",
-                    0, 0, 0, "", "", "", ""));
+            Application newApplication = new Application("", "", "", "", "",
+                    0, 0, 0, "", "", "", "");
+            newApplication.setChargeMode(0);
+            appInfo.add(newApplication);
         }finally{
             JdbcUtils.release(conn, st, rs);
         }
@@ -285,6 +326,26 @@ public class ApplicationDaoImpl implements IApplicationDao {
             st.executeUpdate();
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.updateContextById]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+    }
+
+    @Override
+    public void updateChargeByAppId(String appId, Integer chargeMode) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "UPDATE CloudComputing.applications SET chargeMode=" + chargeMode + " WHERE appId='" + appId + "';";
+            st = conn.prepareStatement(sql);
+            st.executeUpdate();
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.updateChargeByAppId]: " + e);
         }finally{
             JdbcUtils.release(conn, st, rs);
         }

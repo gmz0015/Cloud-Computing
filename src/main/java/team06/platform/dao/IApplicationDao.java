@@ -30,6 +30,13 @@ public interface IApplicationDao {
      */
     Application queryAppByAppId(String appId);
 
+    /**
+     * get the application's charge mode by appId
+     * @param appId
+     * @return
+     */
+    Integer queryChargeByAppId(String appId);
+
     Application queryAppByUUID(String appUUID);
 
     /* PATH */
@@ -65,6 +72,12 @@ public interface IApplicationDao {
      * @param appId
      */
     void updateContextById(String appId, String contextPath);
+
+    /**
+     * update the application's charge mode by appId
+     * @param appId
+     */
+    void updateChargeByAppId(String appId, Integer chargeMode);
 
     /**
      * query the context path by appId

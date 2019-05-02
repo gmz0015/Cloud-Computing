@@ -18,6 +18,8 @@ public interface IApplicationService {
 
     Application getAppByAppId(String appId);
 
+    Integer getChargeByAppId(String appId);
+
     Application getAppByContext(String context);
 
     Application getAppByUUID(String appUUID);
@@ -42,6 +44,8 @@ public interface IApplicationService {
     void setStatusById(String appId, int status);
 
     void setAppUUID(String appID, String appUUID);
+
+    void setChargeByAppId(String appId, Integer chargeMode);
 
     String getAppUUID(String appId);
 

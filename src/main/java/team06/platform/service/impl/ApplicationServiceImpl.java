@@ -25,6 +25,11 @@ public class ApplicationServiceImpl implements IApplicationService {
     }
 
     @Override
+    public Integer getChargeByAppId(String appId) {
+        return appDao.queryChargeByAppId(appId);
+    }
+
+    @Override
     public Application getAppByContext(String context) {
         return appDao.queryAppByContext(context);
     }
@@ -106,6 +111,11 @@ public class ApplicationServiceImpl implements IApplicationService {
     @Override
     public void setAppUUID(String appID, String appUUID) {
         appDao.updateAppUUID(appID, appUUID);
+    }
+
+    @Override
+    public void setChargeByAppId(String appId, Integer chargeMode) {
+        appDao.updateChargeByAppId(appId, chargeMode);
     }
 
     @Override

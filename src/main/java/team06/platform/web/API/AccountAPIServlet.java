@@ -11,6 +11,8 @@ import team06.platform.service.impl.ApplicationServiceImpl;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.HashMap;
+import java.util.Map;
 
 @Path("/account")
 public class AccountAPIServlet {
@@ -41,12 +43,22 @@ public class AccountAPIServlet {
         if (fromUserId == null || toUserId == null || appUUID == null || amount == null) {
             return "fail";
         }else {
-            String appId = applicationService.getAppByUUID(appUUID).getAppId();
-           if (accountService.transfer(fromUserId, toUserId, "Application Consumption", Long.valueOf(appId), amount)) {
-               return "success";
-           }else {
-               return "fail";
-           }
+            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
+            Map<String, Object> header = new HashMap<>(2);
+            header.put("typ", "JWT");
+            header.put("alg", "HS256");
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT jwt = verifier.verify(appUUID);
+            String appId = jwt.getClaim("appId").asString();
+            if (appId == null) {
+                return "fail";
+            }else {
+                if (accountService.transfer(fromUserId, toUserId, "Application Consumption", Long.valueOf(appId), amount)) {
+                    return "success";
+                }else {
+                    return "fail";
+                }
+            }
         }
     }
 }

@@ -120,7 +120,7 @@
                   class="w3-panel w3-leftbar w3-border-blue w3-display-container">
                 <span style="font-size: 16px">Overview</span>
                 <input type="hidden" name="appId" value=<%= session.getAttribute("appId") %>>
-                <input class="w3-display-right w3-button w3-red w3-round-large w3-border w3-border-white w3-hover-white w3-hover-border-red"
+                <input class="w3-display-right w3-button w3-red w3-round-large w3-border w3-hover-white w3-hover-border-red"
                        style="margin-right: 10px"
                        type="submit" name="Deploy" value="Delete This Application" >
             </form>
@@ -272,19 +272,34 @@
                 </div>
 
                 <div class="w3-third">
-                    <div class="w3-card" style="background-color:white;position:relative">
+                    <div class="w3-card" style="background-color:white">
 
                         <header class="w3-container w3-padding" style="height:45px;text-align: center;background-color: #f9f9f9">
-                            <span style="color: #333333;font-size: 20px">Application UUID</span>
+                            <span style="color: #333333;font-size: 20px">Charge Mode</span>
                         </header>
 
-                        <div class="w3-row" style="height:100px">
-                            <div class="w3-display-container w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;min-height: 80px;margin: 10px">
-                                <span class="w3-display-middle" style="color:#9B9EA0">
-                                    <%= appCreateBean.getAppUUID() %>
-                                </span>
+                        <div class="w3-row-padding" style="padding:5px;">
+                            <div class="w3-display-container w3-border w3-border-blue w3-white"
+                                 style="background-color: #F5F5F6;height:55px;cursor: pointer;"
+                                 onclick="document.getElementById('changeIcon').style.display='block'">
+                                <span class="w3-display-middle" style="color: #666;"><%@ include file="/WEB-INF/pages/component/chargeMode/entrance.jsp"%></span>
                             </div>
                         </div>
+                        <div class="w3-row-padding" style="padding:5px;">
+                            <div class="w3-display-container w3-border w3-border-white w3-hover-white w3-hover-border-red"
+                                 style="background-color: #F5F5F6;height:55px;cursor: pointer;"
+                                 onclick="document.getElementById('changeIcon').style.display='block'">
+                                <span class="w3-display-middle" style="color: #666;width: 225px"><%@ include file="/WEB-INF/pages/component/chargeMode/both.jsp"%></span>
+                            </div>
+                        </div>
+                        <div class="w3-row-padding" style="padding:5px;">
+                            <div class="w3-display-container w3-border w3-border-white w3-hover-white w3-hover-border-red"
+                                 style="background-color: #F5F5F6;height:55px;cursor: pointer;"
+                                 onclick="document.getElementById('changeIcon').style.display='block'">
+                                <span class="w3-display-middle" style="color: #666;"><%@ include file="/WEB-INF/pages/component/chargeMode/inApp.jsp"%></span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -47,6 +47,7 @@
                             <li><a class="w3-hover-text-blue" href="#guest">As Guest</a></li>
                             <li><a class="w3-hover-text-blue" href="#user">As User</a></li>
                             <ul>
+                                <li><a class="w3-text-red w3-hover-text-blue" href="#user-beforeUse">Before Use</a></li>
                                 <li><a class="w3-hover-text-blue" href="#user-app">How to Use Application</a></li>
                                 <li><a class="w3-hover-text-blue" href="#user-charge">How about the Charge</a></li>
                                 <li><a class="w3-hover-text-blue" href="#user-developer">How to Become a Developer</a></li>
@@ -71,6 +72,8 @@
 
                             <li><a class="w3-hover-text-blue" href="#reference">Reference</a></li>
                             <ul>
+                                <li><a class="w3-hover-text-blue" href="#reference-chargeStandard">How about the charge standard</a></li>
+                                <li><a class="w3-hover-text-blue" href="#reference-charge">How about the charge mode</a></li>
                                 <li><a class="w3-hover-text-blue" href="#reference-login">How to Redirect to Login Page</a></li>
                                 <li>
                                     <a class="w3-hover-text-blue" href="#reference-api">What kind of API we provide</a>
@@ -87,6 +90,7 @@
                                         <li><a class="w3-hover-text-blue" href="#reference-apiSend-post">POST Request</a></li>
                                     </ul>
                                 </li>
+                                <li><a class="w3-hover-text-blue" href="#reference-listener">How to Implement an Listener</a></li>
                                 <li><a class="w3-hover-text-blue" href="#reference-transaction">Transaction Type</a></li>
                                 <li><a class="w3-hover-text-blue" href="#reference-authority">Authority List</a></li>
                             </ul>
@@ -163,6 +167,31 @@
                     </div>
                     <div class="w3-card" style="background-color:white">
                         <div class="w3-container">
+                            <h3 id="user-beforeUse">Before Use</h3>
+                            <p>
+                                Before you use an application, you need to aware the following notices.
+                            </p>
+                            <h4><b>Notice</b></h4>
+                            <ul>
+                                <li><b>Charge Standard</b></li>
+                                <ul>
+                                    <li>
+                                        As we have rating system, the charge standard will change with different ratings.
+                                    </li>
+                                    <li><i class="fas fa-star" style="color: red"></i> For the detail about Charge Standard, please refer to <a class="w3-text-blue w3-hover-text-green" href="#reference">Reference</a> -> <a class="w3-text-blue w3-hover-text-green" href="#reference-chargeStandard">Charge Standard</a>.</li>
+                                </ul>
+                                <li><b>Charge Mode</b></li>
+                                <ul>
+                                    <li>As we provide the developer to choose different charge mode for their application, it will be different when and how to charge</li>
+                                    <li><i class="fas fa-star" style="color: red"></i> For the detail about implement listener, please refer to <a class="w3-text-blue w3-hover-text-green" href="#reference">Reference</a> -> <a class="w3-text-blue w3-hover-text-green" href="#reference-charge">Charge Mode</a>.</li>
+                                </ul>
+                                <li><b>Rating System</b></li>
+                                <ul>
+                                    <li>We provide rating system for each application. </li>
+                                    <li><i class="fas fa-star" style="color: red"></i> For the detail about using UUID, please refer to <a class="w3-text-blue w3-hover-text-green" href="#reference">Reference</a> -> <a class="w3-text-blue w3-hover-text-green" href="#reference-api">API</a> -> <a class="w3-text-blue w3-hover-text-green" href="#reference-api-accountTransfer">Account Transfer</a>.</li>
+                                </ul>
+                            </ul>
+
                             <h3 id="user-app">How to Use Application</h3>
                             <p>
                                 Each application can only be visited after logon.
@@ -210,6 +239,9 @@
                             </p>
                             <h4><b>Checklist</b></h4>
                             <ul>
+                                <li><b>Charge Standard</b></li>
+                                <li><b>Charge Mode</b></li>
+                                <li><b>Rating System</b></li>
                                 <li><b>Logon Service</b></li>
                                 <ul>
                                     <li>
@@ -222,16 +254,24 @@
                                 <li><b>Database Configuration</b></li>
                                 <ul>
                                     <li>As we provide the <b>database</b>, <b>database username</b> and <b>database password</b>, you need to change your own database configuration.</li>
+                                    <li>
+                                        We <span style="color: red">highly recommend</span> you implement an listener to setup your tables within your database.
+                                    </li>
+                                    <li><i class="fas fa-star" style="color: red"></i> For the detail about implement listener, please refer to <a class="w3-text-blue w3-hover-text-green" href="#reference">Reference</a> -> <a class="w3-text-blue w3-hover-text-green" href="#reference-listener">Implement Listener</a>.</li>
                                 </ul>
                                 <li><b>UUID</b></li>
                                 <ul>
-                                    <li>In order to improve security for trading, we provide a UUID for each application to identify and this UUID <span style="color: red">should not be award by anyone except yourself</span>.</li>
+                                    <li>In order to improve security for trading, we provide a UUID for each visit to an application to identify.</li>
+                                    <li>It stores in cookid named <code class="w3-codespan">appUUID</code>. It should be part of request parameter when send API request.</li>
                                     <li>The UUID is used for send API request for transfering money from a user to another user.</li>
+                                    <li><i class="fas fa-star" style="color: red"></i> For the detail about using UUID, please refer to <a class="w3-text-blue w3-hover-text-green" href="#reference">Reference</a> -> <a class="w3-text-blue w3-hover-text-green" href="#reference-api">API</a> -> <a class="w3-text-blue w3-hover-text-green" href="#reference-api-accountTransfer">Account Transfer</a>.</li>
                                 </ul>
                                 <li><b>Context Path</b></li>
                                 <ul>
-                                    <li>We <span style="color: red">highly recommend</span> you use <code class="w3-codespan">request.getContextPath()</code> before any URL to avoid using absolute path.
-                                        This is because we generate a <b>random application context path</b> when you deploy your application and it means that you can't know which prefix is before you deploy.</li>
+                                    <li>
+                                        We <span style="color: red">highly recommend</span> you use <code class="w3-codespan">request.getContextPath()</code> before any URL to avoid using absolute path.
+                                        This is because we generate a <b>random application context path</b> when you deploy your application and it means that you can't know which prefix is before you deploy.
+                                    </li>
                                 </ul>
                                 <li><b>API Configuration</b></li>
                                 <ul>
@@ -342,6 +382,72 @@
                     </div>
                     <div class="w3-card" style="background-color:white">
                         <div class="w3-container">
+                            <h3 id="reference-chargeStandard">How about the charge standard</h3>
+                            <p>
+                                As we provide rating system, the charge standard will be different with different ratings.
+                            </p>
+                            <ul>
+                                <li id="reference-chargeStandard-normal">
+                                    <b>Normal Charge Standard</b>
+                                    <ul>
+                                        <li>1 peanut for bank service</li>
+                                        <li>1 peanut for login service</li>
+                                        <li>3 peanut for application developer</li>
+                                    </ul>
+                                </li>
+                                <li id="reference-chargeStandard-flexible">
+                                    <b>Flexible Charge Standard</b>
+                                    <ul>
+                                        <li>(1 - stars x 0.1) peanut for bank service</li>
+                                        <li>(1 - stars x 0.1) peanut for login service</li>
+                                        <li>(3 - stars x 0.1) peanut for application developer</li>
+                                    </ul>
+                                    Tips: stars - the current rating of the application.
+                                </li>
+                            </ul>
+
+                            <hr size="20" />
+                            <h3 id="reference-charge">How about the charge mode</h3>
+                            <p>
+                                As we provide three charge mode, you should aware them before using an application.
+                            </p>
+                            <ul>
+                                <li>
+                                    <%@ include file="/WEB-INF/pages/component/chargeMode/entrance.jsp"%>
+                                    <ul>
+                                        <li><b>When</b>: It will <b>only</b> charge when user enter the application the first time since logon</li>
+                                        <li><b>How much</b>: Under normal charge standard, it will be 5 peanuts. (3 for developer, 1 for bank service and 1 for login service)</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <%@ include file="/WEB-INF/pages/component/chargeMode/both.jsp"%>
+                                    <ul>
+                                        <li>
+                                            <b>When</b>:
+                                            <ol>
+                                                <li>It will charge when user enter the application the first time since logon.</li>
+                                                <li>Within the application, the developer will decide when and how to charge.</li>
+                                            </ol>
+                                        </li>
+                                        <li>
+                                            <b>How much</b>:
+                                            <ol>
+                                                <li>Under normal charge standard, it will be 5 peanuts. (3 for developer, 1 for bank service and 1 for login service)</li>
+                                                <li>The specific amount will be decided by the developer. <b>Within the amount</b>, 1 peanut will be paid to bank service under <a class="w3-text-blue w3-hover-text-green" href="#reference-chargeStandard">normal charge standard</a>.</li>
+                                            </ol>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <%@ include file="/WEB-INF/pages/component/chargeMode/inApp.jsp"%>
+                                    <ul>
+                                        <li><b>When</b>: In the application, the developer will decide when and how to charge</li>
+                                        <li><b>How much</b>: The specific amount will be decided by the developer. <b>Within the amount</b>, 1 peanut for bank service and 1 peanut for login service under <a class="w3-text-blue w3-hover-text-green" href="#reference-chargeStandard">normal charge standard</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <hr size="20" />
                             <h3 id="reference-login">How to Redirect to Login Page</h3>
                             <p>
                                 You can use <code class="w3-codespan">request.sendRedirect()</code> to redirect to our login page.
@@ -379,7 +485,6 @@
                             <h3 id="reference-api-accountTransfer">API - Account Transfer</h3>
                             <ul>
                                 Within this way, you need send an POST request. The specific method is listed below.<br/>
-                                <span style="color:red;">Notice:</span> The application's UUID is the encryption identification, it should not be awared by anyone except yourself.
                                 <li><b>Method:</b> <code class="w3-codespan">POST</code></li>
                                 <li><b>Parameters:</b></li>
                                 <ul>
@@ -387,7 +492,7 @@
                                     <li><code class="w3-codespan">fromUserId</code>: The user's id who pay</li>
                                     <li><code class="w3-codespan">toUserId</code>: The user's id who receive</li>
                                     <li><code class="w3-codespan">amount</code>: The amount of this transfer</li>
-                                    <li><code class="w3-codespan">appUUID</code>: Yours application's UUID</li>
+                                    <li><code class="w3-codespan">appUUID</code>: The appUUID stored in cookie</li>
                                 </ul>
                                 <li><b>Responses:</b></li>
                                 <ul>

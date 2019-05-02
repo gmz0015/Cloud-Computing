@@ -104,7 +104,7 @@
                             </tr>
                             <% } %>
                             <% if (transaction.getType().equals("Royalties - SignIn")) { %>
-                            <tr class="w3-pale-blue" style="text-align: center">
+                            <tr class="" style="text-align: center">
                                 <td><%= i++ %></td>
                                 <td><%= transaction.getFromUserName() %></td>
                                 <td><%= transaction.getToUserName() %></td>
@@ -114,8 +114,8 @@
                                 <td><%= transaction.getTime() %></td>
                             </tr>
                             <% } %>
-                            <% if (transaction.getType().equals("Royalties - Royalties - SignIn")) { %>
-                            <tr class="w3-pale-blue" style="text-align: center">
+                            <% if (transaction.getType().equals("Royalties - Bank")) { %>
+                            <tr class="" style="text-align: center">
                                 <td><%= i++ %></td>
                                 <td><%= transaction.getFromUserName() %></td>
                                 <td><%= transaction.getToUserName() %></td>

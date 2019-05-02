@@ -40,9 +40,11 @@ public class EnterUIServlet extends HttpServlet {
         header.put("typ", "JWT");
         header.put("alg", "HS256");
 
-        token = request.getSession().getAttribute("token").toString();
 
-        if (token != null) {
+        if (request.getSession().getAttribute("token") == null) {
+            request.getRequestDispatcher(request.getContextPath() + "/errorPage/errorLogon.jsp").forward(request, response);
+        }else {
+            token = request.getSession().getAttribute("token").toString();
             JWTVerifier verifier = JWT.require(algorithm).build();
             DecodedJWT jwt = verifier.verify(token);
             userId = jwt.getClaim("userId").asString();
@@ -67,9 +69,16 @@ public class EnterUIServlet extends HttpServlet {
                     .sign(algorithm);
             request.getSession().setAttribute("token", token);
 
+            String appUUID = JWT.create()
+                    .withHeader(header)
+                    .withClaim("appId", application.getAppId())
+                    .sign(algorithm);
+            Cookie UUIDCookie = new Cookie("appUUID", appUUID);
+            UUIDCookie.setMaxAge(1*24*60*60);
+            UUIDCookie.setPath("/");
+            response.addCookie(UUIDCookie);
+
             response.sendRedirect("/app/" + request.getQueryString());
-        }else {
-            request.getRequestDispatcher(request.getContextPath() + "/errorPage/errorLogon.jsp").forward(request, response);
         }
 
     }

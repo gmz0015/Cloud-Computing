@@ -112,25 +112,20 @@
                                   enctype="multipart/form-data"
                                   method="POST"
                                   style="height:100%">
-                                <div class="w3-display-container" style="height: 50%">
+                                <div class="w3-row w3-display-container" style="height: 50%">
                                     <div class="w3-display-middle w3-border w3-border-white"
                                          style="width: 99%;height: 90%;background-color: #F5F5F6;">
                                         <div class="w3-display-container" style="height: 100%">
                                             <input class="w3-display-middle" type="file" name="file" size="60" style="width: 270px"/>
                                         </div>
-                                        <%-- target="nm_iframe" --%>
-                                        <%-- <iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe> --%>
                                     </div>
                                 </div>
 
+
                                 <div class="w3-display-container" style="height: 50%">
-                                    <%--<div class="w3-display-middle w3-border w3-border-white"--%>
-                                         <%--style="width: 99%;height: 90%;background-color: #F5F5F6;">--%>
-                                        <%--<div class="w3-display-container" style="height: 100%">--%>
-                                            <input class="w3-display-middle w3-button w3-round-large w3-border w3-hover-white w3-hover-border-cyan" type="submit" name="Upload" value="Upload">
-                                        <%--</div>--%>
-                                    <%--</div>--%>
+                                    <input class="w3-display-middle w3-button w3-round-large w3-border w3-hover-white w3-hover-border-cyan" type="submit" name="Upload" value="Upload">
                                 </div>
+
                             </form>
                         </div>
 

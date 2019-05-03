@@ -114,7 +114,7 @@
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
 
         <form class="w3-container"
-              action="/change?type=warFile"
+              action="/changeWar?type=warFile"
               enctype="multipart/form-data"
               method="POST">
             <div class="w3-section">
@@ -471,8 +471,63 @@
                                 <td><%= transaction.getTime() %></td>
                             </tr>
                             <% } %>
+                            <% if (transaction.getType().equals("In-App - Mode 2 - Bank")) { %>
+                            <tr class="" style="text-align: center">
+                                <td><%= i++ %></td>
+                                <td><%= transaction.getFromUserName() %></td>
+                                <td><%= transaction.getToUserName() %></td>
+                                <td><%= transaction.getType() %></td>
+                                <td><%= transaction.getAppId() %></td>
+                                <td><%= transaction.getAmount() %></td>
+                                <td><%= transaction.getTime() %></td>
+                            </tr>
+                            <% } %>
+                            <% if (transaction.getType().equals("In-App - Mode 2 - Dev")) { %>
+                            <tr class="" style="text-align: center">
+                                <td><%= i++ %></td>
+                                <td><%= transaction.getFromUserName() %></td>
+                                <td><%= transaction.getToUserName() %></td>
+                                <td><%= transaction.getType() %></td>
+                                <td><%= transaction.getAppId() %></td>
+                                <td><%= transaction.getAmount() %></td>
+                                <td><%= transaction.getTime() %></td>
+                            </tr>
+                            <% } %>
                             <% if (transaction.getType().equals("In-App - Mode 3")) { %>
                             <tr class="w3-pale-yellow" style="text-align: center">
+                                <td><%= i++ %></td>
+                                <td><%= transaction.getFromUserName() %></td>
+                                <td><%= transaction.getToUserName() %></td>
+                                <td><%= transaction.getType() %></td>
+                                <td><%= transaction.getAppId() %></td>
+                                <td><%= transaction.getAmount() %></td>
+                                <td><%= transaction.getTime() %></td>
+                            </tr>
+                            <% } %>
+                            <% if (transaction.getType().equals("In-App - Mode 3 - Bank")) { %>
+                            <tr class="" style="text-align: center">
+                                <td><%= i++ %></td>
+                                <td><%= transaction.getFromUserName() %></td>
+                                <td><%= transaction.getToUserName() %></td>
+                                <td><%= transaction.getType() %></td>
+                                <td><%= transaction.getAppId() %></td>
+                                <td><%= transaction.getAmount() %></td>
+                                <td><%= transaction.getTime() %></td>
+                            </tr>
+                            <% } %>
+                            <% if (transaction.getType().equals("In-App - Mode 3 - SignIn")) { %>
+                            <tr class="" style="text-align: center">
+                                <td><%= i++ %></td>
+                                <td><%= transaction.getFromUserName() %></td>
+                                <td><%= transaction.getToUserName() %></td>
+                                <td><%= transaction.getType() %></td>
+                                <td><%= transaction.getAppId() %></td>
+                                <td><%= transaction.getAmount() %></td>
+                                <td><%= transaction.getTime() %></td>
+                            </tr>
+                            <% } %>
+                            <% if (transaction.getType().equals("In-App - Mode 3 - Dev")) { %>
+                            <tr class="" style="text-align: center">
                                 <td><%= i++ %></td>
                                 <td><%= transaction.getFromUserName() %></td>
                                 <td><%= transaction.getToUserName() %></td>

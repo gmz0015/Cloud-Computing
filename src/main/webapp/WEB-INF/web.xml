@@ -48,6 +48,17 @@
         <url-pattern>/change</url-pattern>
     </servlet-mapping>
 
+    <!-- Change War Operation -->
+    <servlet>
+        <servlet-name>ChangeWar</servlet-name>
+        <servlet-class>team06.platform.web.controller.ChangeWarServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ChangeWar</servlet-name>
+        <url-pattern>/changeWar</url-pattern>
+    </servlet-mapping>
+
     <!-- Charge Operation -->
     <servlet>
         <servlet-name>Charge</servlet-name>

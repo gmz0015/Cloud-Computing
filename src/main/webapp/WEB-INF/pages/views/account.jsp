@@ -136,8 +136,63 @@
                                 <td><%= transaction.getTime() %></td>
                             </tr>
                             <% } %>
+                            <% if (transaction.getType().equals("In-App - Mode 2 - Bank")) { %>
+                            <tr class="" style="text-align: center">
+                                <td><%= i++ %></td>
+                                <td><%= transaction.getFromUserName() %></td>
+                                <td><%= transaction.getToUserName() %></td>
+                                <td><%= transaction.getType() %></td>
+                                <td><%= transaction.getAppId() %></td>
+                                <td><%= transaction.getAmount() %></td>
+                                <td><%= transaction.getTime() %></td>
+                            </tr>
+                            <% } %>
+                            <% if (transaction.getType().equals("In-App - Mode 2 - Dev")) { %>
+                            <tr class="" style="text-align: center">
+                                <td><%= i++ %></td>
+                                <td><%= transaction.getFromUserName() %></td>
+                                <td><%= transaction.getToUserName() %></td>
+                                <td><%= transaction.getType() %></td>
+                                <td><%= transaction.getAppId() %></td>
+                                <td><%= transaction.getAmount() %></td>
+                                <td><%= transaction.getTime() %></td>
+                            </tr>
+                            <% } %>
                             <% if (transaction.getType().equals("In-App - Mode 3")) { %>
                             <tr class="w3-pale-yellow" style="text-align: center">
+                                <td><%= i++ %></td>
+                                <td><%= transaction.getFromUserName() %></td>
+                                <td><%= transaction.getToUserName() %></td>
+                                <td><%= transaction.getType() %></td>
+                                <td><%= transaction.getAppId() %></td>
+                                <td><%= transaction.getAmount() %></td>
+                                <td><%= transaction.getTime() %></td>
+                            </tr>
+                            <% } %>
+                            <% if (transaction.getType().equals("In-App - Mode 3 - Bank")) { %>
+                            <tr class="" style="text-align: center">
+                                <td><%= i++ %></td>
+                                <td><%= transaction.getFromUserName() %></td>
+                                <td><%= transaction.getToUserName() %></td>
+                                <td><%= transaction.getType() %></td>
+                                <td><%= transaction.getAppId() %></td>
+                                <td><%= transaction.getAmount() %></td>
+                                <td><%= transaction.getTime() %></td>
+                            </tr>
+                            <% } %>
+                            <% if (transaction.getType().equals("In-App - Mode 3 - SignIn")) { %>
+                            <tr class="" style="text-align: center">
+                                <td><%= i++ %></td>
+                                <td><%= transaction.getFromUserName() %></td>
+                                <td><%= transaction.getToUserName() %></td>
+                                <td><%= transaction.getType() %></td>
+                                <td><%= transaction.getAppId() %></td>
+                                <td><%= transaction.getAmount() %></td>
+                                <td><%= transaction.getTime() %></td>
+                            </tr>
+                            <% } %>
+                            <% if (transaction.getType().equals("In-App - Mode 3 - Dev")) { %>
+                            <tr class="" style="text-align: center">
                                 <td><%= i++ %></td>
                                 <td><%= transaction.getFromUserName() %></td>
                                 <td><%= transaction.getToUserName() %></td>

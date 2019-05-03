@@ -15,15 +15,10 @@ import team06.platform.service.impl.ApplicationServiceImpl;
 import team06.platform.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.*;
 import java.io.*;
 import java.util.List;
-import java.util.regex.Matcher;
 
-@MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB
-        maxFileSize=1024*1024*10, // 10MB
-        maxRequestSize=1024*1024*50) // 50MB
 public class ChangeServlet extends HttpServlet {
     private IApplicationService applicationService = new ApplicationServiceImpl();
     private IUserService userService = new UserServiceImpl();
@@ -133,50 +128,6 @@ public class ChangeServlet extends HttpServlet {
                                     response.sendRedirect(request.getContextPath() + "/console?error=401.4");
                                 }
 
-                            }
-                        }
-
-                        // Change War File
-                        if (type.equals("warFile")) {
-                            String appPath = request.getServletContext().getRealPath("");
-                            if (request.getContentType() != null) {
-                                System.out.println("request.getContentType() != null");
-                                if (request.getContentType().split(";")[0].equals("multipart/form-data")) {
-                                    for (Part part : request.getParts()) {
-                                        if (part.getName().equals("file")) {
-                                            try {
-                                                // Invoke upload process
-                                                String savePath = managerServlet.upload(appPath + SAVE_DIR, part);
-                                                if (savePath.equals("Failed Upload: Wrong File Type")) {
-                                                    response.getWriter().println("<script>alert('Sorry, Change Failed. Wrong File Type. Please Try Again');window.location.href='/application'</script>");
-                                                }
-
-                                                // Delete Previous War File
-                                                String fileName = applicationService.getWarById(request.getSession().getAttribute("appId").toString());
-                                                File file = new File(fileName);
-                                                if (file.exists() && file.isFile()) {
-                                                    if (file.delete()) {
-                                                        applicationService.setWarById(request.getSession().getAttribute("appId").toString(), savePath);
-                                                        response.getWriter().println("<script>alert('War File Change Successful.');window.location.href='/application'</script>");
-                                                    } else {
-                                                        response.getWriter().println("<script>alert('Sorry, Delete Previous File Failed. Please Try Again');window.location.href='/application'</script>");
-                                                    }
-                                                } else {
-                                                    response.getWriter().println("<script>alert('Sorry, Previous File is not existed. Please Try Again');window.location.href='/application'</script>");
-                                                }
-                                            } catch (Exception e) {
-                                                System.out.println("[team06.platform.web.controller.CreateNewAppServlet.doGet]: " + e);
-                                                // Upload Failed, dispatch back
-                                                response.getWriter().println("<script>alert('Sorry, Change Failed. Please Try Again');window.location.href='/application'</script>");
-                                            }
-                                        }
-                                    }
-                                    response.getWriter().println("<script>alert('Sorry, Change Failed. Please Try Again');window.location.href='/logout'</script>");
-                                }else {
-                                    response.getWriter().println("<script>alert('Sorry, Change Failed. Please Try Again');window.location.href='/logout'</script>");
-                                }
-                            }else {
-                                response.getWriter().println("<script>alert('Sorry, Change Failed. Please Try Again');window.location.href='/logout'</script>");
                             }
                         }
 
@@ -344,10 +295,12 @@ public class ChangeServlet extends HttpServlet {
                                     }
                                 }
                                 //verify the username and password
+                                System.out.println("appId" + request.getSession().getAttribute("appId").toString());
                                 User webuser = userService.login(userName, userPassword);
                                 if(webuser == null) {
                                     response.sendRedirect(request.getContextPath() + "/console?error=401.4");
                                 }else {
+
                                     if (applicationService.checkAppUser(userId, request.getSession().getAttribute("appId").toString())) {
                                         if (applicationService.changeIcon(request.getSession().getAttribute("appId").toString(), fileName, savepath)) {
                                             response.getWriter().println("<script>alert('Icon Change Successful.');window.location.href='/console'</script>");

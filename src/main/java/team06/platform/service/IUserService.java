@@ -14,7 +14,7 @@ public interface IUserService {
 
     Boolean changeToDeveloper(String userId, String userName);
 
-    Boolean changeAvatar(String userId, String avatar);
+    Boolean changeAvatar(String userId, String avatar, String savePath);
 
     User getUserInfo(String userId);
 

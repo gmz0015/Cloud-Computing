@@ -39,6 +39,8 @@ public interface IApplicationService {
 
     void setContextById(String appId, String context);
 
+    void setWarById(String appId, String warPath);
+
     String getContextById(String appId);
 
     void setStatusById(String appId, int status);
@@ -55,5 +57,5 @@ public interface IApplicationService {
 
     Boolean changeDescription(String appId, String appDescription);
 
-    Boolean changeIcon(String appId, String icon);
+    Boolean changeIcon(String appId, String icon, String savePath);
 }

@@ -34,40 +34,18 @@ public class EnterUIServlet extends HttpServlet {
         String userName = null;
         String userRole = null;
         String userAvatar = null;
-        Application application = null;
+        Application application = applicationService.getAppByContext(request.getQueryString());
         Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
         Map<String, Object> header = new HashMap<>(2);
         header.put("typ", "JWT");
         header.put("alg", "HS256");
 
 
-        if (request.getSession().getAttribute("token") == null) {
-            request.getRequestDispatcher(request.getContextPath() + "/errorPage/errorLogon.jsp").forward(request, response);
-        }else {
-            token = request.getSession().getAttribute("token").toString();
-            JWTVerifier verifier = JWT.require(algorithm).build();
-            DecodedJWT jwt = verifier.verify(token);
-            userId = jwt.getClaim("userId").asString();
-            userName = jwt.getClaim("userName").asString();
-            userRole = jwt.getClaim("userRole").asString();
-            userAvatar = jwt.getClaim("userAvatar").asString();
-
-            application = applicationService.getAppByContext(request.getQueryString());
-
-            Boolean result = accountService.isCharge(new Charge(Long.valueOf(userId), Long.valueOf(application.getAppId())));
-            if (!result) {
-                accountService.charge(Long.valueOf(userId), Long.valueOf(application.getAppId()), 5.0);
-            }
+        if (application.getChargeMode() == null) {
+            response.getWriter().println("<script>alert('Application info is incorrect! Please refresh page and try again');window.location.href='" + request.getHeader("Referer") + "'</script>");
+            return ;
+        }else if (application.getChargeMode() == 2) {
             countBean.doCount(request.getQueryString());
-
-            token = JWT.create()
-                    .withHeader(header)
-                    .withClaim("userId", userId)
-                    .withClaim("userName", userName)
-                    .withClaim("userRole", userRole)
-                    .withClaim("userAvatar", userAvatar)
-                    .sign(algorithm);
-            request.getSession().setAttribute("token", token);
 
             String appUUID = JWT.create()
                     .withHeader(header)
@@ -79,8 +57,45 @@ public class EnterUIServlet extends HttpServlet {
             response.addCookie(UUIDCookie);
 
             response.sendRedirect("/app/" + request.getQueryString());
-        }
+        }else {
+            if (request.getSession().getAttribute("token") == null) {
+                request.getRequestDispatcher(request.getContextPath() + "/errorPage/errorLogon.jsp").forward(request, response);
+            }else {
+                token = request.getSession().getAttribute("token").toString();
+                JWTVerifier verifier = JWT.require(algorithm).build();
+                DecodedJWT jwt = verifier.verify(token);
+                userId = jwt.getClaim("userId").asString();
+                userName = jwt.getClaim("userName").asString();
+                userRole = jwt.getClaim("userRole").asString();
+                userAvatar = jwt.getClaim("userAvatar").asString();
 
+                Boolean result = accountService.isCharge(new Charge(Long.valueOf(userId), Long.valueOf(application.getAppId())));
+                if (!result) {
+                    accountService.charge(Long.valueOf(userId), Long.valueOf(application.getAppId()), 5.0);
+                }
+                countBean.doCount(request.getQueryString());
+
+                token = JWT.create()
+                        .withHeader(header)
+                        .withClaim("userId", userId)
+                        .withClaim("userName", userName)
+                        .withClaim("userRole", userRole)
+                        .withClaim("userAvatar", userAvatar)
+                        .sign(algorithm);
+                request.getSession().setAttribute("token", token);
+
+                String appUUID = JWT.create()
+                        .withHeader(header)
+                        .withClaim("appId", application.getAppId())
+                        .sign(algorithm);
+                Cookie UUIDCookie = new Cookie("appUUID", appUUID);
+                UUIDCookie.setMaxAge(1*24*60*60);
+                UUIDCookie.setPath("/");
+                response.addCookie(UUIDCookie);
+
+                response.sendRedirect("/app/" + request.getQueryString());
+            }
+        }
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)

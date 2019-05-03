@@ -490,7 +490,7 @@
                                 <li><b>Method:</b> <code class="w3-codespan">POST</code></li>
                                 <li><b>Parameters:</b></li>
                                 <ul>
-                                    <li><b>URL:</b> <code class="w3-codespan">/api/account/transfer</code></li>
+                                    <li><b>URL:</b> <code class="w3-codespan">/api/account/transfer2</code></li>
                                     <li><code class="w3-codespan">fromUserId</code>: The user's id who pay</li>
                                     <li><code class="w3-codespan">toUserId</code>: The user's id who receive</li>
                                     <li><code class="w3-codespan">devAmount</code>: The amount of this transfer that will give to developer</li>
@@ -505,7 +505,7 @@
                                 </ul>
                                 <li>Example:</li>
                                 <ul>
-                                    <li>Parameter: <code class="w3-codespan">fromUserId=123456&toUserId=123456&appUUID=edasfjk89&devAmount=3&amount=&6</code></li>
+                                    <li>Parameter: <code class="w3-codespan">fromUserId=123456&toUserId=123456&appUUID=edasfjk89&devAmount=3&amount=6</code></li>
                                 </ul>
                             </ul>
                             </p>
@@ -519,7 +519,7 @@
                                 <li><b>Method:</b> <code class="w3-codespan">POST</code></li>
                                 <li><b>Parameters:</b></li>
                                 <ul>
-                                    <li><b>URL:</b> <code class="w3-codespan">/api/account/transfer</code></li>
+                                    <li><b>URL:</b> <code class="w3-codespan">/api/account/transfer3</code></li>
                                     <li><code class="w3-codespan">fromUserId</code>: The user's id who pay</li>
                                     <li><code class="w3-codespan">toUserId</code>: The user's id who receive</li>
                                     <li><code class="w3-codespan">devAmount</code>: The amount of this transfer that will give to developer</li>
@@ -534,7 +534,7 @@
                                 </ul>
                                 <li>Example:</li>
                                 <ul>
-                                    <li>Parameter: <code class="w3-codespan">fromUserId=123456&toUserId=123456&appUUID=edasfjk89&devAmount=3&amount=&6</code></li>
+                                    <li>Parameter: <code class="w3-codespan">fromUserId=123456&toUserId=123456&appUUID=edasfjk89&devAmount=3&amount=6</code></li>
                                 </ul>
                             </ul>
                             </p>

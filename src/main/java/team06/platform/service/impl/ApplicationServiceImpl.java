@@ -80,9 +80,6 @@ public class ApplicationServiceImpl implements IApplicationService {
         } else {
             return "Delete File Failed";
         }
-//        appDao.deleteAppById(appId);
-//        return "Delete File Success";
-
     }
 
     @Override
@@ -96,6 +93,11 @@ public class ApplicationServiceImpl implements IApplicationService {
     @Override
     public void setContextById(String appId, String context) {
         appDao.updateContextById(appId, context);
+    }
+
+    @Override
+    public void setWarById(String appId, String warPath) {
+        appDao.updateWarById(appId, warPath);
     }
 
     @Override
@@ -148,7 +150,17 @@ public class ApplicationServiceImpl implements IApplicationService {
     }
 
     @Override
-    public Boolean changeIcon(String appId, String icon) {
-        return appDao.updateAppIconById(appId, icon);
+    public Boolean changeIcon(String appId, String icon, String savePath) {
+        String oldIconPath = savePath + "/" + appDao.queryAppByAppId(appId).getIconPath();
+        File file = new File(oldIconPath);
+        if (file.exists() && file.isFile()) {
+            if (file.delete()) {
+                return appDao.updateAppIconById(appId, icon);
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 }

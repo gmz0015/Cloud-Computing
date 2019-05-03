@@ -9,6 +9,8 @@ import team06.platform.domain.User;
 import team06.platform.service.IDatabaseService;
 import team06.platform.service.IUserService;
 
+import java.io.File;
+
 public class UserServiceImpl implements IUserService {
     private IUserDao userDao = new UserDaoImpl();
     private IDatabaseService databaseService = new DatabaseServiceImpl();
@@ -45,8 +47,19 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public Boolean changeAvatar(String userId, String avatar) {
-        return userDao.updateUserAvatar(userId, avatar);
+    public Boolean changeAvatar(String userId, String avatar, String savePath) {
+        String oldAvatarPath = savePath + "/" + userDao.queryUserInfoById(userId).getAvatar();
+        System.out.println("oldAvatarPath:" + oldAvatarPath);
+        File file = new File(oldAvatarPath);
+        if (file.exists() && file.isFile()) {
+            if (file.delete()) {
+                return userDao.updateUserAvatar(userId, avatar);
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
     @Override

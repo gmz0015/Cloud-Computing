@@ -81,6 +81,13 @@ public interface IApplicationDao {
     void updateContextById(String appId, String contextPath);
 
     /**
+     * update the war file path by app id
+     * @param appId
+     * @param warPath
+     */
+    void updateWarById(String appId, String warPath);
+
+    /**
      * update the application's charge mode by appId
      * @param appId
      */

@@ -49,11 +49,14 @@ public class CreateNewAppServlet extends HttpServlet {
             if (request.getContentType().split(";")[0].equals("multipart/form-data")) {
                 for (Part part : request.getParts()) {
                     if (part.getName().equals("file")) {
-
                         try {
 
                             // Invoke upload process
                             String savePath = managerServlet.upload(appPath + SAVE_DIR, part);
+                            if (savePath.equals("Failed Upload: Wrong File Type")) {
+                                // Upload Failed, dispatch back
+                                response.sendRedirect(request.getContextPath() + "/application?error=0");
+                            }
 
                             // Insert to database
                             managerService.insertNewApp(new Application(

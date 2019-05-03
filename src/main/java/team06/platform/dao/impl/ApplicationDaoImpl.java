@@ -357,6 +357,26 @@ public class ApplicationDaoImpl implements IApplicationDao {
     }
 
     @Override
+    public void updateWarById(String appId, String warPath) {
+        /* Initial Connection */
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        /* Connect */
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "UPDATE CloudComputing.applications SET warPath='" + warPath + "' WHERE appId='" + appId + "';";
+            st = conn.prepareStatement(sql);
+            st.executeUpdate();
+        }catch (Exception e) {
+            System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.updateWarById]: " + e);
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+    }
+
+    @Override
     public void updateChargeByAppId(String appId, Integer chargeMode) {
         /* Initial Connection */
         Connection conn = null;
@@ -417,16 +437,20 @@ public class ApplicationDaoImpl implements IApplicationDao {
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             while (rs.next()){
-                appInfo = new Application(
+                Application applicationReturn = new Application(
                         rs.getString("appId"), rs.getString("appName"), rs.getString("description"), rs.getString("ownerId"),
                         "", rs.getInt("visits"), rs.getDouble("rating"), rs.getInt("status"),
                         rs.getString("dbId"), rs.getString("warPath"), context, rs.getString("iconPath"));
+                applicationReturn.setChargeMode(rs.getInt("chargeMode"));
+                appInfo = applicationReturn;
             }
 
         }catch (Exception e) {
             System.out.println("[team06.platform.dao.impl.ApplicationDaoImpl.queryAppByContext]: " + e);
-            appInfo = new Application("", "", "", "", "",
+            Application application = new Application("", "", "", "", "",
                     0, 0, 0, "", "", "", "");
+            application.setChargeMode(null);
+            appInfo = application;
         }finally{
             JdbcUtils.release(conn, st, rs);
         }

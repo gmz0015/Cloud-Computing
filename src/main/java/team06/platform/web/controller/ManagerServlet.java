@@ -53,11 +53,7 @@ public class ManagerServlet {
                     saveName = fileName + "_" + System.currentTimeMillis() + "." + fileType;
                     part.write(savePath + File.separator + saveName);
                 } else {
-                    // For test, REMOVE AFTER FINISH
-                    System.out.println("Not war");
-                    saveName = fileName + "_" + System.currentTimeMillis() + "." + fileType;
-                    part.write(savePath + File.separator + saveName);
-//                        return "Failed Upload: Wrong File Type";
+                        return "Failed Upload: Wrong File Type";
                 }
                 deployPath = savePath + File.separator + saveName;
             }
@@ -190,32 +186,6 @@ public class ManagerServlet {
             message = resultBuffer.toString();
             // Release Resource
             inputStream.close();
-
-//            conn.setAllowUserInteraction(false);
-//            conn.setDoInput(true);
-//            conn.setUseCaches(false);
-//
-//            conn.setDoOutput(false);
-//            conn.setRequestMethod("GET");
-//
-//            conn.setRequestProperty("Accept-Charset", "utf-8");
-//            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-//
-//            String authoInfo = Base64.encode((USERNAME + ":" + PASSWORD).getBytes());
-//            conn.setRequestProperty("Authorization", "Basic " + authoInfo);
-////            conn.setRequestProperty("Connection", "keep-alive");
-//            conn.connect();
-//
-//            InputStream input = conn.getInputStream();
-//            byte[] bs = new byte[1024];
-//            int len = -1;
-//
-//            while ((len = input.read(bs)) != -1) {
-//                message += new String(bs, 0, len);
-//            }
-//            // Release Resource
-//            input.close();
-//            conn.disconnect();
             String[] temp = message.split(" - ");
 
             if (temp[0].equals("OK")) {

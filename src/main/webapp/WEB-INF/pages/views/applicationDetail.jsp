@@ -109,6 +109,28 @@
     </div>
 </div>
 
+<%-- Change War FIle --%>
+<div id="changeFile" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+        <form class="w3-container"
+              action="/change?type=warFile"
+              enctype="multipart/form-data"
+              method="POST">
+            <div class="w3-section">
+                <label><b>Please Upload Your New War File</b></label>
+                <input class="w3-input w3-border" type="file" name="file" size="60" style="width: 100%"/>
+                <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" name="Upload">Upload</button>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('changeFile').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+        </div>
+
+    </div>
+</div>
+
 <%-- Change Entrance Mode --%>
 <div id="changeMode1" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
@@ -279,7 +301,7 @@
                                 </div>
                             </div>
 
-                            <div class="w3-row" style=";margin-top: 5px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;">
+                            <div class="w3-row" style=";margin-top: 10px;margin-bottom: 5px;margin-right: 10px;margin-left: 10px;">
                                 <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" onclick="document.getElementById('changeDescription').style.display='block'">
                                     <span style="vertical-align: middle;color: #666;">Change Description</span>
                                 </div>
@@ -290,6 +312,11 @@
                             <div class="w3-row" style=";margin-top: 10px;margin-bottom: 5px;margin-right: 10px;margin-left: 10px;">
                                 <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" onclick="document.getElementById('changeIcon').style.display='block'">
                                     <span style="vertical-align: middle;color: #666;">Change Icon</span>
+                                </div>
+                            </div>
+                            <div class="w3-row" style=";margin-top: 10px;margin-bottom: 5px;margin-right: 10px;margin-left: 10px;">
+                                <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" onclick="document.getElementById('changeFile').style.display='block'">
+                                    <span style="vertical-align: middle;color: #666;">Reupload War File</span>
                                 </div>
                             </div>
                         </div>

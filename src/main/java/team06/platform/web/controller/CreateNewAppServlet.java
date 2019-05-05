@@ -71,7 +71,7 @@ public class CreateNewAppServlet extends HttpServlet {
                                     databaseService.queryDBbyid(userId, userName).getDbId(),
                                     savePath,
                                     null,
-                                    "defalutAPP.jpg"), "0");
+                                    "defaultAPP.jpg"), "0");
                         }catch (Exception e) {
                             System.out.println("[team06.platform.web.controller.CreateNewAppServlet.doGet]: " + e);
 

@@ -7,11 +7,8 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import team06.platform.domain.Transaction;
 import team06.platform.service.IAccountService;
 import team06.platform.service.impl.AccountServiceImpl;
-import team06.platform.web.API.AccountAPIServlet;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
 import java.util.List;
 
 public class AccountBean  {

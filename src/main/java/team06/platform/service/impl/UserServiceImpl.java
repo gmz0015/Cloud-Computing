@@ -48,17 +48,21 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public Boolean changeAvatar(String userId, String avatar, String savePath) {
-        String oldAvatarPath = savePath + "/" + userDao.queryUserInfoById(userId).getAvatar();
-        System.out.println("oldAvatarPath:" + oldAvatarPath);
-        File file = new File(oldAvatarPath);
-        if (file.exists() && file.isFile()) {
-            if (file.delete()) {
-                return userDao.updateUserAvatar(userId, avatar);
+        String avatarName = userDao.queryUserInfoById(userId).getAvatar();
+        if (avatarName.equals("avatar.jpg")) {
+            return userDao.updateUserAvatar(userId, avatar);
+        }else {
+            String oldAvatarPath = savePath + "/" + avatarName;
+            File file = new File(oldAvatarPath);
+            if (file.exists() && file.isFile()) {
+                if (file.delete()) {
+                    return userDao.updateUserAvatar(userId, avatar);
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }
-        } else {
-            return false;
         }
     }
 

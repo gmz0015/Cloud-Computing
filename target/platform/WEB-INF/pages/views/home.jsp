@@ -11,8 +11,6 @@
 <%-- import --%>
 <%@ page import="team06.platform.domain.Application" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.sql.Timestamp" %>
-<%@ page import="java.util.Date" %>
 
 <%-- Java Bean --%>
 <jsp:useBean id="indexBean" scope="page" class="team06.platform.web.bean.IndexBean" />
@@ -30,11 +28,11 @@
         <form class="w3-container" action="/change?type=password" method="post">
             <div class="w3-section">
                 <label><b>Please Enter Your Old Password</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Old Password" name="psw0" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Old Password" name="psw0" required>
                 <label><b>Please Enter Your New Password</b></label>
-                <input class="w3-input w3-border" type="text" placeholder="Enter New Password" name="psw1" required>
+                <input class="w3-input w3-border" type="password" placeholder="Enter New Password" name="psw1" required>
                 <label><b>Please Enter Your New Password Again</b></label>
-                <input class="w3-input w3-border" type="text" placeholder="Enter New Password Again" name="psw2" required>
+                <input class="w3-input w3-border" type="password" placeholder="Enter New Password Again" name="psw2" required>
                 <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Change</button>
             </div>
         </form>
@@ -53,7 +51,7 @@
         <form class="w3-container" action="/change?type=avatar" enctype="multipart/form-data" method="post" >
             <div class="w3-section">
                 <label><b>Please Enter Your Password</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Password" name="psw" required>
                 <label><b>Please Upload Your New Avatar</b></label>
                 <input class="w3-input w3-border w3-margin-bottom" type="file" name="avatar">
                 <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Change</button>
@@ -74,7 +72,7 @@
         <form class="w3-container" action="/change?type=email" method="post">
             <div class="w3-section">
                 <label><b>Please Enter Your Password</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Password" name="psw" required>
                 <label><b>Please Enter Your New Email</b></label>
                 <input class="w3-input w3-border" type="text" placeholder="Enter New Email" name="email" required>
                 <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Change</button>
@@ -95,7 +93,7 @@
         <form class="w3-container" action="/change?type=developer" method="post">
             <div class="w3-section">
                 <label><b>Please Enter Your Password</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Password" name="psw" required>
                 <label><b>Confirm to Become a Developer</b></label>
                 <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Confirm</button>
             </div>
@@ -275,27 +273,6 @@
 
             <%-- Browsing History - User --%>
             <div class="w3-third">
-                <div class="w3-card" style="background-color:white">
-
-                    <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
-                        <span style="font-size: 20px">Browsing History</span>
-                    </header>
-
-                    <div style="height:90px">
-                        <div class="w3-container w3-row" style="margin-top: 10px;margin-bottom: 5px;">
-                            <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;">
-                                <span style="vertical-align: middle;color: #666;">Last View:</span>
-                                <span style="vertical-align: middle;color: #666;">Test Food Search</span>
-                            </div>
-                        </div>
-                        <div class="w3-container w3-row" style="margin-top: 5px;margin-bottom: 10px;">
-                            <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="vertical-align: middle;background-color: #F5F5F6;height:35px;text-align: center;">
-                                <span style="vertical-align: middle;color: #666;">View Browsing History</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
             <% }else if(indexBean.getUserRole().equals("DEVELOPER")) { %>
             <%-- Welcome Message - Developer --%>
@@ -374,28 +351,6 @@
 
             <%-- Database Usage - Developer --%>
             <div class="w3-third">
-                <div class="w3-card" style="background-color:white">
-
-                    <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
-                        <span style="font-size: 20px">Database Usage</span>
-                    </header>
-
-                    <div style="height:90px">
-                        <div class="w3-container w3-row" style="margin-top: 10px;margin-bottom: 5px;">
-                            <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;">
-                                <span style="vertical-align: middle;color: #666;">Use</span>
-                                <span style="vertical-align: middle;color: #666;">1.34 G</span>
-                            </div>
-                        </div>
-                        <div class="w3-container w3-row" style="margin-top: 5px;margin-bottom: 10px;">
-                            <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="vertical-align: middle;background-color: #F5F5F6;height:35px;text-align: center;">
-                                <span style="vertical-align: middle;color: #666;">Remain</span>
-                                <span style="vertical-align: middle;color: #666;">0.63 G</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
             <% }else if(indexBean.getUserRole().equals("ADMIN")) { %>
             <%-- Welcome Message - Admin --%>
@@ -464,7 +419,7 @@
 
                             <div class="w3-row" style=";margin-top: 5px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;">
                                 <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;cursor: pointer;" >
-                                    <span style="vertical-align: middle;color: #666;">You are Developer</span>
+                                    <span style="vertical-align: middle;color: #666;">You are Admin</span>
                                 </div>
                             </div>
                         </div>
@@ -474,28 +429,6 @@
 
             <%-- Database Usage - Admin --%>
             <div class="w3-third">
-                <div class="w3-card" style="background-color:white">
-
-                    <header class="w3-container w3-padding" style="color: #333333;text-align: center;background-color: #f9f9f9">
-                        <span style="font-size: 20px">Database Usage</span>
-                    </header>
-
-                    <div style="height:90px">
-                        <div class="w3-container w3-row" style="margin-top: 10px;margin-bottom: 5px;">
-                            <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="background-color: #F5F5F6;height:35px;text-align: center;">
-                                <span style="vertical-align: middle;color: #666;">Use</span>
-                                <span style="vertical-align: middle;color: #666;">1.34 G</span>
-                            </div>
-                        </div>
-                        <div class="w3-container w3-row" style="margin-top: 5px;margin-bottom: 10px;">
-                            <div class="w3-border w3-border-white w3-hover-white w3-hover-border-cyan" style="vertical-align: middle;background-color: #F5F5F6;height:35px;text-align: center;">
-                                <span style="vertical-align: middle;color: #666;">Remain</span>
-                                <span style="vertical-align: middle;color: #666;">0.63 G</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
             <% } %>
         </div>

@@ -47,12 +47,12 @@
             <i class="fa fa-remove"></i>
         </a>
         <% if (indexBean.getUserId() == null) { %>
-        <img src="/image/avatar/avatar.jpg" style="width:45%;" class="w3-round"><br><br>
+        <img src="/image/avatar/avatar.jpg" style="width:120px;" class="w3-round"><br><br>
         <h4><b>
             Hello Guest
         </b></h4>
         <% }else { %>
-        <img src="/image/avatar/<%= indexBean.getAvatar() %>" style="width:45%;" class="w3-round"><br><br>
+        <img src="/image/avatar/<%= indexBean.getAvatar() %>" style="width:120px;" class="w3-round"><br><br>
         <h4><b>
             Hello <%= indexBean.getUserName() %>
         </b></h4>
@@ -74,7 +74,6 @@
         <a href="#" class="w3-bar-item w3-button" onclick="window.location.href='<%= request.getContextPath() + "/logout" %>'"><i class="fa fa-step-backward fa-fw w3-margin-right"></i>Logout</a>
         <% } %>
         <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>About</a>
-        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Contact</a>
     </div>
 </nav>
 
@@ -86,7 +85,6 @@
 
     <!-- Header -->
     <header id="portfolio">
-        <a href="#"><img src="/image/food.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
         <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
         <div class="w3-container">
             <h1><b>
@@ -171,7 +169,7 @@
 
         <div class="w3-quarter">
             <div class="w3-card w3-white">
-                <img src="/image/avatar6.png" alt="User" style="width:100%">
+                <img src="/image/img_avatar3.jpg" alt="User" style="width:100%">
                 <div class="w3-container">
                     <h3>User</h3>
                     <ul>
@@ -199,7 +197,7 @@
 
         <div class="w3-quarter">
             <div class="w3-card w3-white">
-                <img src="/image/avatar4.png" alt="Mountains" style="width:100%">
+                <img src="/image/avatar4.png" alt="Admin" style="width:100%">
                 <div class="w3-container">
                     <h3>Admin</h3>
                     <ul>
@@ -311,31 +309,14 @@
                 </div>
             </div>
         </div>
-        <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
     </div>
 
-    <!-- Contact Section -->
-    <div class="w3-container w3-padding-large w3-grey">
-        <h4 id="contact"><b>Contact Us</b></h4>
-        <hr class="w3-opacity">
-        <form action="/action_page.php" target="_blank">
-            <div class="w3-section">
-                <label>Name</label>
-                <input class="w3-input w3-border" type="text" name="Name" required>
-            </div>
-            <div class="w3-section">
-                <label>Email</label>
-                <input class="w3-input w3-border" type="text" name="Email" required>
-            </div>
-            <div class="w3-section">
-                <label>Message</label>
-                <input class="w3-input w3-border" type="text" name="Message" required>
-            </div>
-            <button type="submit" class="w3-button w3-black w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right"></i>Send Message</button>
-        </form>
+    <div class="w3-black w3-center w3-padding-24">
+        <h6>Develop by Team 06</h6>
+        <h6>Powered by <a href="https://www.w3schools.com/w3css/default.asp">w3.css</a></h6>
+        <h6>defaultAPP.jpg - Copyright © 2012 Sven Müller. All rights reserved.</h6>
+        <h6>img_avatar3.jpg;avatar2.png;avatar4.png - Powered by <a href="https://www.w3schools.com/w3css/default.asp">w3.css</a></h6>
     </div>
-
-    <div class="w3-black w3-center w3-padding-24">Develop by Team 06</div>
 
     <!-- End page content -->
 </div>

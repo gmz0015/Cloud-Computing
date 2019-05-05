@@ -4,15 +4,11 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import team06.platform.domain.Account;
 import team06.platform.domain.Application;
 import team06.platform.service.*;
 import team06.platform.service.impl.*;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class IndexBean {

@@ -6,16 +6,11 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import team06.platform.domain.Application;
 import team06.platform.service.IApplicationService;
-import team06.platform.service.IDatabaseService;
 import team06.platform.service.impl.ApplicationServiceImpl;
-import team06.platform.service.impl.DatabaseServiceImpl;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 

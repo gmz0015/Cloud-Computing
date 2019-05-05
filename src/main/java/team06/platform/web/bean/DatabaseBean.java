@@ -12,11 +12,9 @@ import team06.platform.service.IDatabaseService;
 import team06.platform.service.impl.ApplicationServiceImpl;
 import team06.platform.service.impl.DatabaseServiceImpl;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 

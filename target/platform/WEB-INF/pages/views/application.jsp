@@ -12,8 +12,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="team06.platform.domain.Database" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="java.sql.Timestamp" %>
-<%@ page import="java.util.Date" %>
 
 <%-- Java Bean --%>
 <jsp:useBean id="appBean" scope="page" class="team06.platform.web.bean.ApplicationBean" />

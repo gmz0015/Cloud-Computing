@@ -20,6 +20,10 @@ public class AccountServiceImpl implements IAccountService {
     private IAccountDao accountDao = new AccountDaoImpl();
     private IUserDao userDao = new UserDaoImpl();
     private IApplicationDao applicationDao = new ApplicationDaoImpl();
+    private String BANK_ID = "1556781235850556";
+    private String BANK_NAME = "Peanut Bank Service";
+    private String SIGN_ID = "1556714056396556";
+    private String SIGN_NAME = "Sign-in Service";
 
     @Override
     public void createAccount(Long userId, String userName) {
@@ -65,8 +69,8 @@ public class AccountServiceImpl implements IAccountService {
             Date date = new Date();
             this.withdrawal(fromUserId, amount);
             this.deposit(Long.valueOf(ownerId), forDev);
-            this.deposit(Long.valueOf("1556610304306556"), forBank);
-            this.deposit(Long.valueOf("1556714056396556"), forLogin);
+            this.deposit(Long.valueOf(BANK_ID), forBank);
+            this.deposit(Long.valueOf(SIGN_ID), forLogin);
             accountDao.insertTransaction(new Transaction(
                     fromUserId,
                     userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
@@ -79,8 +83,8 @@ public class AccountServiceImpl implements IAccountService {
             accountDao.insertTransaction(new Transaction(
                     fromUserId,
                     userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
-                    Long.valueOf("1556714056396556"),
-                    "ChenyiLei",
+                    Long.valueOf(SIGN_ID),
+                    SIGN_NAME,
                     "Royalties - SignIn",
                     appId,
                     forLogin,
@@ -88,8 +92,8 @@ public class AccountServiceImpl implements IAccountService {
             accountDao.insertTransaction(new Transaction(
                     fromUserId,
                     userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
-                    Long.valueOf("1556610304306556"),
-                    "MingzeGao",
+                    Long.valueOf(BANK_ID),
+                    BANK_NAME,
                     "Royalties - Bank",
                     appId,
                     forBank,
@@ -111,7 +115,7 @@ public class AccountServiceImpl implements IAccountService {
             this.deposit(toUserId, left);
         }
         this.withdrawal(fromUserId, amount);
-        this.deposit(Long.valueOf("1556781235850556"), forBank);
+        this.deposit(Long.valueOf(BANK_ID), forBank);
         this.deposit(Long.valueOf(application.getOwnerId()), devAmount);
 
         accountDao.insertTransaction(new Transaction(
@@ -126,8 +130,8 @@ public class AccountServiceImpl implements IAccountService {
         accountDao.insertTransaction(new Transaction(
                 fromUserId,
                 userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
-                Long.valueOf("1556781235850556"),
-                userDao.queryUserInfoById("1556781235850556").getUserName(),
+                Long.valueOf(BANK_ID),
+                BANK_NAME,
                 "In-App - Mode 2 - Bank",
                 appId,
                 forBank,
@@ -159,8 +163,8 @@ public class AccountServiceImpl implements IAccountService {
             this.deposit(toUserId, left);
         }
         this.withdrawal(fromUserId, amount);
-        this.deposit(Long.valueOf("1556781235850556"), forBank);
-        this.deposit(Long.valueOf("1556714056396556"), forLogin);
+        this.deposit(Long.valueOf(BANK_ID), forBank);
+        this.deposit(Long.valueOf(SIGN_ID), forLogin);
         this.deposit(Long.valueOf(application.getOwnerId()), devAmount);
 
         accountDao.insertTransaction(new Transaction(
@@ -175,8 +179,8 @@ public class AccountServiceImpl implements IAccountService {
         accountDao.insertTransaction(new Transaction(
                 fromUserId,
                 userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
-                Long.valueOf("1556781235850556"),
-                userDao.queryUserInfoById("1556781235850556").getUserName(),
+                Long.valueOf(BANK_ID),
+                BANK_NAME,
                 "In-App - Mode 3 - Bank",
                 appId,
                 forBank,
@@ -184,8 +188,8 @@ public class AccountServiceImpl implements IAccountService {
         accountDao.insertTransaction(new Transaction(
                 fromUserId,
                 userDao.queryUserInfoById(fromUserId.toString()).getUserName(),
-                Long.valueOf("1556714056396556"),
-                userDao.queryUserInfoById("1556714056396556").getUserName(),
+                Long.valueOf(SIGN_ID),
+                SIGN_NAME,
                 "In-App - Mode 3 - SignIn",
                 appId,
                 forLogin,

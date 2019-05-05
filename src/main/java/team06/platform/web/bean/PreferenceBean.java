@@ -4,16 +4,11 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import team06.platform.domain.Application;
 import team06.platform.domain.User;
-import team06.platform.service.IAccountService;
 import team06.platform.service.IUserService;
-import team06.platform.service.impl.AccountServiceImpl;
 import team06.platform.service.impl.UserServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
-import java.util.List;
 
 public class PreferenceBean  {
     private String userId;

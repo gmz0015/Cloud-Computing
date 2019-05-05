@@ -3,8 +3,6 @@ package team06.platform.web.bean;
 import team06.platform.service.IApplicationService;
 import team06.platform.service.impl.ApplicationServiceImpl;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 

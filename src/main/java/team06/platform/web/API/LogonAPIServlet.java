@@ -4,8 +4,6 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import team06.platform.service.IUserService;
-import team06.platform.service.impl.UserServiceImpl;
 
 import javax.ws.rs.*;
 import java.util.HashMap;
@@ -18,7 +16,7 @@ public class LogonAPIServlet {
     @GET
     @Produces("application/json")
     @Path("userinfo")
-    public Map<String, String> getBalance(@CookieParam("token") String token){
+    public Map<String, String> getInfo(@CookieParam("token") String token){
         Map<String, String> userInfo = new HashMap<>();
         if (token == null) {
             userInfo.put("status", "fail");

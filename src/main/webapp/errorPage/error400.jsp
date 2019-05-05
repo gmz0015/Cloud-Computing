@@ -35,7 +35,8 @@
         <p class="w3-large w3-center">You need <a href="#" onclick="window.location.href='/'" >go back</a></p>
     </div>
     <div class="w3-display-bottomleft w3-padding-large">
-        Designed by Team 06</a>
+        Designed by Team 06
+        <h6>Powered by <a href="https://www.w3schools.com/w3css/default.asp">w3.css</a></h6>
     </div>
 </div>
 

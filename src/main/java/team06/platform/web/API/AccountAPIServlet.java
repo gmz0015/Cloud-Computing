@@ -17,7 +17,6 @@ import java.util.Map;
 @Path("/account")
 public class AccountAPIServlet {
     private IAccountService accountService = new AccountServiceImpl();
-    private IApplicationService applicationService = new ApplicationServiceImpl();
     private static final String TOKEN_SECRET = "fd8780zdufb7f5bnz456fd";
 
     @GET

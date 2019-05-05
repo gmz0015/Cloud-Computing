@@ -28,18 +28,18 @@
     <div id="main" style="margin-left: 50px">
             <form class="w3-container" action="/change?type=password" method="post" style="padding-top: 20px">
                 <label><b>Please Enter Your Old Password.</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Old Password" name="psw0" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Old Password" name="psw0" required>
                 <label><b>Please Enter Your New Password</b></label>
-                <input class="w3-input w3-border" type="text" placeholder="Enter New Password" name="psw1" required>
+                <input class="w3-input w3-border" type="password" placeholder="Enter New Password" name="psw1" required>
                 <label><b>Please Enter Your New Password Again</b></label>
-                <input class="w3-input w3-border" type="text" placeholder="Enter New Password Again" name="psw2" required>
+                <input class="w3-input w3-border" type="password" placeholder="Enter New Password Again" name="psw2" required>
                 <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Change</button>
             </form>
         <div class="w3-section w3-bottombar w3-padding-16"></div>
             <form class="w3-container" action="/change?type=email" method="post" style="padding-top: 20px">
                 <div class="w3-section">
                     <label><b>Please Enter Your Password</b></label>
-                    <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
+                    <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Password" name="psw" required>
                     <label><b>Please Enter Your New Email. Your Old Email: </b><%= preferenceBean.getUser().getEmail() %></label>
                     <input class="w3-input w3-border" type="text" placeholder="Enter New Email" name="email" required>
                     <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Change</button>
@@ -49,7 +49,7 @@
             <form class="w3-container" action="/change?type=avatar" enctype="multipart/form-data" method="post"style="padding-top: 20px">
                 <div class="w3-section">
                     <label><b>Please Enter Your Password</b></label>
-                    <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
+                    <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Password" name="psw" required>
                     <label><b>Please Upload Your New Avatar. Your Old Avatar: </b><%= preferenceBean.getUser().getAvatar() %></label>
                     <input class="w3-input w3-border w3-margin-bottom" type="file" name="avatar">
                     <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Change</button>

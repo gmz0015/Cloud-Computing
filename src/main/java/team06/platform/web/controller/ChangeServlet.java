@@ -232,7 +232,7 @@ public class ChangeServlet extends HttpServlet {
                         // Change Icon
                         if (type.equals("icon")) {
                             String fileNameTemp = null;
-                            String fileName = "defalutAPP.jpg";
+                            String fileName = "defaultAPP.jpg";
                             String savepath = this.getServletContext().getRealPath("/image/icon");
                             String userPassword = "";
                             try {

@@ -151,16 +151,22 @@ public class ApplicationServiceImpl implements IApplicationService {
 
     @Override
     public Boolean changeIcon(String appId, String icon, String savePath) {
-        String oldIconPath = savePath + "/" + appDao.queryAppByAppId(appId).getIconPath();
-        File file = new File(oldIconPath);
-        if (file.exists() && file.isFile()) {
-            if (file.delete()) {
-                return appDao.updateAppIconById(appId, icon);
+        String iconPath = appDao.queryAppByAppId(appId).getIconPath();
+        if (iconPath.equals("defaultAPP.jpg")) {
+            return appDao.updateAppIconById(appId, icon);
+
+        }else {
+            String oldIconPath = savePath + "/" + iconPath;
+            File file = new File(oldIconPath);
+            if (file.exists() && file.isFile()) {
+                if (file.delete()) {
+                    return appDao.updateAppIconById(appId, icon);
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }
-        } else {
-            return false;
         }
     }
 }

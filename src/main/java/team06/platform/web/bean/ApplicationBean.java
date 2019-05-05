@@ -11,13 +11,10 @@ import team06.platform.service.IApplicationService;
 import team06.platform.service.impl.AccountServiceImpl;
 import team06.platform.service.impl.ApplicationServiceImpl;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ApplicationBean{

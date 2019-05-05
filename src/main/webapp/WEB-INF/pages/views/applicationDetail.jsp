@@ -10,8 +10,6 @@
 <%-- import --%>
 <%@ page import="java.util.List" %>
 <%@ page import="team06.platform.domain.Transaction" %>
-<%@ page import="java.sql.Timestamp" %>
-<%@ page import="java.util.Date" %>
 
 <%-- Java Bean --%>
 <jsp:useBean id="appCreateBean" scope="page" class="team06.platform.web.bean.ApplicationDetailBean" />
@@ -53,7 +51,7 @@
         <form class="w3-container" action="/change?type=name" method="post">
             <div class="w3-section">
                 <label><b>Please Enter Your Password</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Password" name="psw" required>
                 <label><b>Please Enter Your Application's New Name</b></label>
                 <input class="w3-input w3-border" type="text" placeholder="Enter New Name" name="name" required>
                 <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Change</button>
@@ -74,7 +72,7 @@
         <form class="w3-container" action="/change?type=icon" enctype="multipart/form-data" method="post" >
             <div class="w3-section">
                 <label><b>Please Enter Your Password</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Password" name="psw" required>
                 <label><b>Please Upload Your Application's New Icon</b></label>
                 <input class="w3-input w3-border w3-margin-bottom" type="file" name="icon">
                 <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Change</button>
@@ -95,7 +93,7 @@
         <form class="w3-container" action="/change?type=description" method="post">
             <div class="w3-section">
                 <label><b>Please Enter Your Password</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Password" name="psw" required>
                 <label><b>Please Enter Your Application's New Description</b></label>
                 <input class="w3-input w3-border" type="text" placeholder="Enter New Description" name="description" required>
                 <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Change</button>

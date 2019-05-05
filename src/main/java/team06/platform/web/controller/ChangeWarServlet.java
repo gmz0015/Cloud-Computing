@@ -68,19 +68,19 @@ public class ChangeWarServlet extends HttpServlet {
                                                 if (savePath.equals("Failed Upload: Wrong File Type")) {
                                                     response.getWriter().println("<script>alert('Sorry, Change Failed. Wrong File Type. Please Try Again');window.location.href='/application'</script>");
                                                 }
+                                                applicationService.setWarById(request.getSession().getAttribute("appId").toString(), savePath);
 
                                                 // Delete Previous War File
                                                 String fileName = applicationService.getWarById(request.getSession().getAttribute("appId").toString());
                                                 File file = new File(fileName);
                                                 if (file.exists() && file.isFile()) {
                                                     if (file.delete()) {
-                                                        applicationService.setWarById(request.getSession().getAttribute("appId").toString(), savePath);
                                                         response.getWriter().println("<script>alert('War File Change Successful.');window.location.href='/application'</script>");
                                                     } else {
-                                                        response.getWriter().println("<script>alert('Sorry, Delete Previous File Failed. Please Try Again');window.location.href='/application'</script>");
+                                                        response.getWriter().println("<script>alert('Sorry, Delete Previous File Failed. Please Contact Admin to Delete Previous File');window.location.href='/application'</script>");
                                                     }
                                                 } else {
-                                                    response.getWriter().println("<script>alert('Sorry, Previous File is not existed. Please Try Again');window.location.href='/application'</script>");
+                                                    response.getWriter().println("<script>alert('War File Change Successful. No Previous War File need to be Deleted');window.location.href='/application'</script>");
                                                 }
                                             } catch (Exception e) {
                                                 System.out.println("[team06.platform.web.controller.CreateNewAppServlet.doGet]: " + e);

@@ -19,7 +19,7 @@
 
 /* First image (Logo. Full height) */
 .bgimg-1 {
-  background-image: url('/image/6.jpg');
+  background-image: url('/image/111.jpg');
   min-height: 100%;
 }
 
@@ -58,6 +58,7 @@
           <ul>
             <li>The normal charge standard for using application is 5 peanuts. 3 for developer, 2 for service provider. (i.e. You will only need to <b>pay once for an application</b> within session lifecycle.) </li>
             <li>You can choose to become a developer any time.</li>
+            <li><i class="fas fa-star" style="color: red"></i> Please look through <a class="w3-hover-text-blue" href="/guide#user-beforeUse" style="color: red">Before Use</a> in guide page.</li>
           </ul>
 
           <h5>Developer</h5>
@@ -74,8 +75,10 @@
           <div class="w3-section">
             <label><b>Username</b></label>
             <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="username" required>
-            <label><b>Password</b></label>
-            <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Password" name="psw" required>
+            <label><b>New Password</b></label>
+            <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Your New Password" name="psw" required>
+            <label><b>New Password Again</b></label>
+            <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Your New Password Again" name="psw2" required>
             <label><b>Email</b></label>
             <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Email Address" name="email" required>
             <label><b>Upload a custom avatar</b></label>
@@ -136,7 +139,7 @@
 
       <div class="w3-center"><br>
         <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">x</span>
-        <img src="/image/avatar/avatar.jpg" alt="Avatar" style="width:30%;height:30%" class="w3-circle w3-margin-top">
+        <img src="/image/defaultAvatar.jpg" alt="Avatar" style="width:30%;height:30%" class="w3-circle w3-margin-top">
       </div>
 
       <form class="w3-container" action="${pageContext.request.contextPath}/login/login" method="post" name="form1">
@@ -156,7 +159,7 @@
 </div>
 <div class="w3-black w3-center w3-padding-24" style="margin-top:80px">
   <h6>Develop by Team 06</h6>
-  <h6>6.jpg - Copyright © 2019 secursoft.com.br - <img style="vertical-align: middle" src="//cdn.secursoft.net/images/gr3/piva-ss.png">.</h6>
+  <h6>111.jpg - <a href="https://www.w3schools.com/about/about_copyright.asp" class="w3-hover-text-green">Copyright 1999-2019</a> by Refsnes Data.</h6>
 </div>
 
 <script>

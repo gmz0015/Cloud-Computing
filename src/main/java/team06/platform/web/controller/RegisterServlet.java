@@ -34,6 +34,7 @@ public class RegisterServlet extends HttpServlet {
         String referer = null;
         String username = null;
         String password = null;
+        String passwordTwo = null;
         String email = null;
         String avatar = null;
         String role = "USER";
@@ -73,6 +74,12 @@ public class RegisterServlet extends HttpServlet {
                     } else if(i==3) {
                         password = item.getString();
                     } else if(i==4) {
+                        passwordTwo = item.getString();
+                        if (!passwordTwo.equals(password)) {
+                            pw.println("<script>alert('The two passwords you typed do not match!');window.location.href='/login'</script>");
+                            return;
+                        }
+                    } else if(i==5) {
                         email =item.getString();
 
                         //verify whether the mailbox is legal or not
@@ -81,7 +88,7 @@ public class RegisterServlet extends HttpServlet {
                             pw.println("<script>alert('email address is illegal!');window.location.href='/login'</script>");
                             return;
                         }
-                    } else if(i==5) {
+                    } else if(i==6) {
                         role = item.getString();
                     }
                     i++;

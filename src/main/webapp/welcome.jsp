@@ -121,7 +121,11 @@
         <% }/* end if */ %>
         <%-- Application --%>
         <div class="w3-third w3-container w3-margin-bottom">
-            <img src="/image/icon/<%= appInfo.getIconPath() %>" alt="<%= appInfo.getName() %>" style="width:100%;max-height: 250px" class="w3-hover-opacity">
+            <% if (appInfo.getIconPath().equals("defaultAPP.jpg")) { %>
+            <img src="/image/defaultAPP.jpg" alt="<%= appInfo.getName() %>" style="width:100%;height: 250px" class="w3-hover-opacity">
+            <% } else {%>
+            <img src="/image/icon/<%= appInfo.getIconPath() %>" alt="<%= appInfo.getName() %>" style="width:100%;height: 250px" class="w3-hover-opacity">
+            <% } %>
             <div class="w3-container w3-white" style="padding-top:20px">
                 <% if (appInfo.getChargeMode() == 0) { %>
                 <%@ include file="/WEB-INF/pages/component/chargeMode/entrance.jsp"%>
@@ -290,13 +294,13 @@
         <div class="w3-row-padding w3-padding-16" id="about">
 
             <div class="w3-display-container w3-col m3">
-                <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Stelios Steliou" style="width:100%">
+                <img src="<%=request.getContextPath()%>/image/SteliosSteliou.jpg" alt="Stelios Steliou" style="width:100%">
                 <div class="w3-display-bottommiddle nameBoard" style="width:95%;margin-bottom: 10px;padding-left: 20px;padding-right: 20px">
                     <h3 style="color: black;text-align: center">Stelios Steliou</h3>
                 </div>
             </div>
             <div class="w3-display-container w3-col m3">
-                <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Aleksandar Pantovic" style="width:100%">
+                <img src="<%=request.getContextPath()%>/image/AleksandarPantovic.jpg" alt="Aleksandar Pantovic" style="width:100%">
                 <div class="w3-display-bottommiddle nameBoard" style="width:95%;margin-bottom: 10px;padding-left: 20px;padding-right: 20px">
                     <h3 style="color: black;text-align: center">Aleksandar Pantovic</h3>
                 </div>
@@ -308,7 +312,7 @@
                 </div>
             </div>
             <div class="w3-display-container w3-col m3">
-                <img src="<%=request.getContextPath()%>/image/img_avatar3.jpg" alt="Yilei Chen" style="width:100%">
+                <img src="<%=request.getContextPath()%>/image/YileiChen.jpg" alt="Yilei Chen" style="width:100%">
                 <div class="w3-display-bottommiddle nameBoard" style="width:95%;margin-bottom: 10px;padding-left: 20px;padding-right: 20px">
                     <h3 style="color: black;text-align: center">Yilei Chen</h3>
                 </div>
@@ -319,8 +323,7 @@
     <div class="w3-black w3-center w3-padding-24">
         <h6>Develop by Team 06</h6>
         <h6>Powered by <a href="https://www.w3schools.com/w3css/default.asp">w3.css</a></h6>
-        <h6>defaultAPP.jpg - Copyright © 2012 Sven Müller. All rights reserved.</h6>
-        <h6>img_avatar3.jpg;avatar2.png;avatar4.png - Powered by <a href="https://www.w3schools.com/w3css/default.asp">w3.css</a></h6>
+        <h6>defaultAPP.jpg;img_avatar3.jpg;avatar2.png;avatar4.png - <a href="https://www.w3schools.com/about/about_copyright.asp" class="w3-hover-text-green">Copyright 1999-2019</a> by Refsnes Data</h6>
     </div>
 
     <!-- End page content -->

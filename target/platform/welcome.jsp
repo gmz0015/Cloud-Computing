@@ -47,9 +47,14 @@
             <i class="fa fa-remove"></i>
         </a>
         <% if (indexBean.getUserId() == null) { %>
-        <img src="/image/avatar/avatar.jpg" style="width:120px;" class="w3-round"><br><br>
+        <img src="/image/defaultAvatar.jpg" style="width:120px;" class="w3-round"><br><br>
         <h4><b>
             Hello Guest
+        </b></h4>
+        <% }else if (indexBean.getAvatar().equals("avatar.jpg")) { %>
+        <img src="/image/defaultAvatar.jpg" style="width:120px;" class="w3-round"><br><br>
+        <h4><b>
+            Hello <%= indexBean.getUserName() %>
         </b></h4>
         <% }else { %>
         <img src="/image/avatar/<%= indexBean.getAvatar() %>" style="width:120px;" class="w3-round"><br><br>

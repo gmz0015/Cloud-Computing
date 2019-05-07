@@ -7,104 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84a28a88-ea42-435a-b6cc-1d511b886d38" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/image/defaultAvatar.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/dao/impl/AccountDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/dao/impl/AccountDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/dao/impl/ApplicationDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/dao/impl/ApplicationDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/service/impl/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/service/impl/AccountServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/service/impl/ApplicationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/service/impl/ApplicationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/API/AccountAPIServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/API/AccountAPIServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/API/LogonAPIServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/API/LogonAPIServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/UI/AccountUIServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/UI/AccountUIServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/UI/AdminUIServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/UI/AdminUIServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/AccountBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/AccountBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/AdminBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/AdminBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/AppCreateBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/AppCreateBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/ApplicationBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/ApplicationBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/ApplicationDetailBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/ApplicationDetailBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/CountBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/CountBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/DatabaseBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/DatabaseBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/IndexBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/IndexBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/PreferenceBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/bean/PreferenceBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/controller/ChangeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/controller/ChangeServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/controller/ChangeWarServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/controller/ChangeWarServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/controller/CreateNewAppServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/controller/CreateNewAppServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/team06/platform/web/controller/ManagerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/team06/platform/web/controller/ManagerServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/views/application.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/views/application.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/views/applicationDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/views/applicationDetail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/views/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/views/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/views/preference.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/views/preference.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/errorPage/error400.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/errorPage/error400.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/errorPage/error404.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/errorPage/error404.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/errorPage/error500.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/errorPage/error500.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/errorPage/errorLogon.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/errorPage/errorLogon.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/image/app.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/image/defalutAPP.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/image/icon/defaultAPP.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/image/food.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/image/icon/defalutAPP.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/configTomcat.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/configTomcat.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/loginApp.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/welcome.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/dao/impl/AccountDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/dao/impl/AccountDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/dao/impl/ApplicationDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/dao/impl/ApplicationDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/service/impl/AccountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/service/impl/AccountServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/service/impl/ApplicationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/service/impl/ApplicationServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/API/AccountAPIServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/API/AccountAPIServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/API/LogonAPIServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/API/LogonAPIServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/UI/AccountUIServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/UI/AccountUIServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/UI/AdminUIServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/UI/AdminUIServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/AccountBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/AccountBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/AdminBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/AdminBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/AppCreateBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/AppCreateBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/ApplicationBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/ApplicationBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/ApplicationDetailBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/ApplicationDetailBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/CountBean$CountThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/CountBean$CountThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/CountBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/CountBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/DatabaseBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/DatabaseBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/IndexBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/IndexBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/PreferenceBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/bean/PreferenceBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/controller/ChangeServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/controller/ChangeServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/controller/ChangeWarServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/controller/ChangeWarServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/controller/CreateNewAppServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/controller/CreateNewAppServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/team06/platform/web/controller/ManagerServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/team06/platform/web/controller/ManagerServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/dao/impl/AccountDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/dao/impl/AccountDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/dao/impl/ApplicationDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/dao/impl/ApplicationDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/service/impl/AccountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/service/impl/AccountServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/service/impl/ApplicationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/service/impl/ApplicationServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/API/AccountAPIServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/API/AccountAPIServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/API/LogonAPIServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/API/LogonAPIServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/UI/AccountUIServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/UI/AccountUIServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/UI/AdminUIServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/UI/AdminUIServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/AccountBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/AccountBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/AdminBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/AdminBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/AppCreateBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/AppCreateBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/ApplicationBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/ApplicationBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/ApplicationDetailBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/ApplicationDetailBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/CountBean$CountThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/CountBean$CountThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/CountBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/CountBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/DatabaseBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/DatabaseBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/IndexBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/IndexBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/PreferenceBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/bean/PreferenceBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/controller/ChangeServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/controller/ChangeServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/controller/ChangeWarServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/controller/ChangeWarServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/controller/CreateNewAppServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/controller/CreateNewAppServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/controller/ManagerServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/classes/team06/platform/web/controller/ManagerServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/pages/views/application.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/pages/views/application.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/pages/views/applicationDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/pages/views/applicationDetail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/pages/views/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/pages/views/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/WEB-INF/pages/views/preference.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/WEB-INF/pages/views/preference.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/errorPage/error400.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/errorPage/error400.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/errorPage/error404.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/errorPage/error404.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/errorPage/error500.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/errorPage/error500.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/errorPage/errorLogon.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/errorPage/errorLogon.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/image/app.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/image/defalutAPP.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/image/food.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/image/icon/defalutAPP.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/platform/loginApp.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/platform.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/platform/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/platform/welcome.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -133,15 +42,15 @@
     <session id="1757789685">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.16" value="2" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.open.time.9" value="2" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -149,15 +58,15 @@
           <entry key="MF" value="3" />
           <entry key="class" value="5" />
           <entry key="html" value="1" />
-          <entry key="java" value="1019" />
+          <entry key="java" value="1020" />
           <entry key="jpg" value="14" />
           <entry key="js" value="1" />
-          <entry key="jsp" value="313" />
+          <entry key="jsp" value="315" />
           <entry key="md" value="9" />
           <entry key="png" value="8" />
-          <entry key="properties" value="22" />
+          <entry key="properties" value="23" />
           <entry key="sql" value="1" />
-          <entry key="xml" value="83" />
+          <entry key="xml" value="84" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -165,14 +74,14 @@
           <entry key="CLASS" value="5" />
           <entry key="HTML" value="1" />
           <entry key="Image" value="22" />
-          <entry key="JAVA" value="1019" />
-          <entry key="JSP" value="313" />
+          <entry key="JAVA" value="1020" />
+          <entry key="JSP" value="315" />
           <entry key="JavaScript" value="1" />
           <entry key="Manifest" value="3" />
           <entry key="Markdown" value="9" />
-          <entry key="Properties" value="22" />
+          <entry key="Properties" value="23" />
           <entry key="Scratch" value="1" />
-          <entry key="XML" value="83" />
+          <entry key="XML" value="84" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -180,7 +89,7 @@
           <entry key="dummy" value="7" />
           <entry key="html" value="29" />
           <entry key="java" value="20529" />
-          <entry key="jsp" value="17423" />
+          <entry key="jsp" value="17443" />
           <entry key="md" value="146" />
           <entry key="properties" value="62" />
           <entry key="txt" value="463" />
@@ -191,7 +100,7 @@
         <counts>
           <entry key="HTML" value="29" />
           <entry key="JAVA" value="20529" />
-          <entry key="JSP" value="17423" />
+          <entry key="JSP" value="17443" />
           <entry key="Markdown" value="146" />
           <entry key="PLAIN_TEXT" value="470" />
           <entry key="Properties" value="62" />
@@ -203,19 +112,23 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/views/preference.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/welcome.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="51" column="85" selection-start-line="51" selection-start-column="85" selection-end-line="51" selection-end-column="85" />
+            <state relative-caret-position="412">
+              <caret line="62" column="17" lean-forward="true" selection-start-line="62" selection-start-column="17" selection-end-line="62" selection-end-column="17" />
+              <folding>
+                <element signature="n#style#0;n#img#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#2;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/team06/platform/web/controller/ChangeWarServlet.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/team06/platform/web/controller/LoginServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="79" column="74" selection-start-line="79" selection-start-column="74" selection-end-line="79" selection-end-column="74" />
+            <state relative-caret-position="43">
+              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -224,10 +137,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/login.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="76" column="42" lean-forward="true" selection-start-line="76" selection-start-column="42" selection-end-line="76" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/META-INF/context.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="18">
-              <caret line="1" column="13" selection-start-line="1" selection-start-column="16" selection-end-line="12" selection-end-column="14" />
+              <caret line="1" column="9" lean-forward="true" selection-start-line="1" selection-start-column="9" selection-end-line="12" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -235,8 +157,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/configTomcat.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+            <state relative-caret-position="108">
+              <caret line="6" column="11" lean-forward="true" selection-start-line="6" selection-start-column="11" selection-end-line="8" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -322,12 +244,12 @@
         <option value="$PROJECT_DIR$/src/main/webapp/errorPage/errorLogon.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/team06/platform/service/impl/ApplicationServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/team06/platform/service/impl/AccountServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/welcome.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/views/home.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/views/applicationDetail.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/views/preference.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/team06/platform/web/controller/ChangeWarServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/welcome.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/configTomcat.properties" />
       </list>
@@ -379,6 +301,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -429,91 +352,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="team06" type="462c0819:PsiDirectoryNode" />
               <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="team06" type="462c0819:PsiDirectoryNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="team06" type="462c0819:PsiDirectoryNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="team06" type="462c0819:PsiDirectoryNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="team06" type="462c0819:PsiDirectoryNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="team06" type="462c0819:PsiDirectoryNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="team06" type="462c0819:PsiDirectoryNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="team06" type="462c0819:PsiDirectoryNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="API" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="team06" type="462c0819:PsiDirectoryNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="bean" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="platform" type="b2602c69:ProjectViewProjectNode" />
@@ -531,26 +370,7 @@
               <item name="platform" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="team06" type="462c0819:PsiDirectoryNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="UI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="errorPage" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="platform" type="b2602c69:ProjectViewProjectNode" />
@@ -568,15 +388,6 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="image" type="462c0819:PsiDirectoryNode" />
               <item name="avatar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="image" type="462c0819:PsiDirectoryNode" />
-              <item name="icon" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="platform" type="b2602c69:ProjectViewProjectNode" />
@@ -606,47 +417,12 @@
             <path>
               <item name="platform" type="b2602c69:ProjectViewProjectNode" />
               <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="error" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
               <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="platform" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -654,7 +430,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557087425082" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557159367002" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -670,11 +446,11 @@
       <recent name="$PROJECT_DIR$/src/main/webapp" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/image" />
       <recent name="$PROJECT_DIR$/target/platform/image/avatar" />
       <recent name="$PROJECT_DIR$/src/main/webapp/image/icon" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes" />
       <recent name="$PROJECT_DIR$/src/main/webapp" />
-      <recent name="$PROJECT_DIR$/src/main/java/team06" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -799,6 +575,8 @@
       <workItem from="1556713458184" duration="1483000" />
       <workItem from="1556730868020" duration="46613000" />
       <workItem from="1556907938607" duration="33616000" />
+      <workItem from="1557159132381" duration="324000" />
+      <workItem from="1557209635659" duration="266000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1556115749502</created>
@@ -986,13 +764,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="247787000" />
+    <option name="totallyTimeSpent" value="248435000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21816881" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22389127" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1003,7 +781,7 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49785408" visible="true" weight="0.35421687" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49785408" weight="0.35421687" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1126,9 +904,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1143,9 +918,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1170,23 +942,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/team06/platform/web/controller/LoginServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/team06/platform/web/controller/RatingServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1211,9 +970,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1221,9 +977,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1231,9 +984,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1248,9 +998,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1265,9 +1012,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1275,9 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1303,9 +1044,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="333">
           <caret line="77" column="46" selection-start-line="77" selection-start-column="46" selection-end-line="77" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1323,9 +1061,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-435">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1333,9 +1068,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1367,9 +1099,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-177">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1377,15 +1106,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
           <caret line="155" column="25" selection-start-line="155" selection-start-column="25" selection-end-line="155" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#465#466#0" expanded="true" />
-            <element signature="e#509#510#0" expanded="true" />
-            <element signature="e#798#799#0" expanded="true" />
-            <element signature="e#853#854#0" expanded="true" />
-            <element signature="e#2804#2805#0" expanded="true" />
-            <element signature="e#2856#2857#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1406,9 +1126,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/image/app.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/image/app.png" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/image/avatar2.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -1425,36 +1143,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3356">
           <caret line="191" column="25" selection-start-line="191" selection-start-column="25" selection-end-line="191" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/loginApp.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/loginApp.jsp" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/logout.jsp">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/welcome.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="313" column="4" lean-forward="true" selection-start-line="313" selection-start-column="4" selection-end-line="318" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="143" column="32" lean-forward="true" selection-start-line="143" selection-start-column="32" selection-end-line="143" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#h6#1;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/views/application.jsp">
       <provider selected="true" editor-type-id="text-editor">
@@ -1477,16 +1171,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/views/preference.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="51" column="85" selection-start-line="51" selection-start-column="85" selection-end-line="51" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/team06/platform/web/controller/ChangeWarServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
+        <state relative-caret-position="474">
           <caret line="79" column="74" selection-start-line="79" selection-start-column="74" selection-end-line="79" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1494,17 +1181,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/views/preference.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="51" column="85" selection-start-line="51" selection-start-column="85" selection-end-line="51" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/welcome.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="62" column="17" lean-forward="true" selection-start-line="62" selection-start-column="17" selection-end-line="62" selection-end-column="17" />
+          <folding>
+            <element signature="n#style#0;n#img#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#2;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/team06/platform/web/controller/LoginServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="43">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="76" column="42" lean-forward="true" selection-start-line="76" selection-start-column="42" selection-end-line="76" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/META-INF/context.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="16" selection-end-line="12" selection-end-column="14" />
+          <caret line="1" column="9" lean-forward="true" selection-start-line="1" selection-start-column="9" selection-end-line="12" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/configTomcat.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        <state relative-caret-position="108">
+          <caret line="6" column="11" lean-forward="true" selection-start-line="6" selection-start-column="11" selection-end-line="8" selection-end-column="12" />
         </state>
       </provider>
     </entry>

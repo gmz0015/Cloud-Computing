@@ -75,7 +75,7 @@
             <label><b>Username</b></label>
             <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="username" required>
             <label><b>Password</b></label>
-            <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="psw" required>
+            <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Password" name="psw" required>
             <label><b>Email</b></label>
             <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Email Address" name="email" required>
             <label><b>Upload a custom avatar</b></label>
